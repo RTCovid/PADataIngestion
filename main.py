@@ -6,6 +6,7 @@ import tempfile
 import shutil
 import os
 import csv
+import base64
 
 # TODO: Log all of this
 # track success
@@ -25,7 +26,8 @@ def load_credentials():
     return creds
         
 
-def get_latest_file(creds, prefix="HOS_ResourceCapacity", target_dir="data/"):
+# On Google Cloud, only /tmp is writeable.
+def get_latest_file(creds, prefix="HOS_ResourceCapacity", target_dir="/tmp/"):
     cnopts = pysftp.CnOpts()
     cnopts.hostkeys.load('copaftp.pub')
     username = creds['sftp']['username']
@@ -38,8 +40,9 @@ def get_latest_file(creds, prefix="HOS_ResourceCapacity", target_dir="data/"):
         # Filenames look like HOS_ResourceCapacity_2020-03-30_00-00.csv
         # And timestamps are in UTC
         latest_filename = files[-1]
-        print(latest_filename)
-        sftp.get(latest_filename, f'data/{latest_filename}')
+        print("The latest file is: f{latest_filename}")
+        sftp.get(latest_filename, f'{target_dir}/{latest_filename}')
+        print("Finished downloading f{latest_filename}")
         return (latest_filename, target_dir)
 
 def upload_to_arcgis(creds, source_data_dir, source_data_file, original_data_file_name, 
@@ -77,10 +80,11 @@ def upload_to_arcgis(creds, source_data_dir, source_data_file, original_data_fil
         os.chdir(tmpdirname)
         result = fs.manager.overwrite(original_data_file_name)
         os.chdir(original_dir)
+        os.remove(os.path.join(source_data_dir, source_data_file))
     return result
 
 
-if __name__== "__main__":
+def main():
     # The name of the file you created the layer service with.
     original_data_file_name = "HOS_ResourceCapacity_2020-03-28_21-00.csv"
     # You can get this id from the URL in arcgis online when you look at layer; eg:
@@ -94,3 +98,9 @@ if __name__== "__main__":
                             original_data_file_name, arcgis_item_id_for_feature_layer)
     print(latest_filename, status)
 
+
+def hello_pubsub(event, context):
+    main()
+
+if __name__== "__main__":
+    main()
