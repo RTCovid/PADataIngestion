@@ -7,6 +7,8 @@ import shutil
 import os
 import csv
 import base64
+import pandas as pd
+import header_mapping as hm
 
 # TODO: Log all of this
 # track success
@@ -85,7 +87,10 @@ def upload_to_arcgis(creds, source_data_dir, source_data_file, original_data_fil
     # from the published layer, you can use the FLC manager's overwrite() method successfully.
 
     feature_item = gis.content.get(arcgis_item_id_for_feature_layer)
-    fs = feature_item.layers[0].container
+    if "type:Table" in str(feature_item):
+        fs = feature_item.tables[0].container
+    else:
+        fs = feature_item.layers[0].container
 
     # Overwrite docs:
     # https://developers.arcgis.com/python/api-reference/arcgis.features.managers.html#featurelayercollectionmanager
@@ -111,8 +116,31 @@ def upload_to_arcgis(creds, source_data_dir, source_data_file, original_data_fil
     return result
 
 
-def main():
-    print("Started ingestion processing run")
+
+
+def load_csv_to_df(csv_file_path):
+    df = pd.read_csv(csv_file_path)
+    return df
+
+def create_supplies_table(df):
+    columns = ["Type"]
+    for s, col_name in hm.supplies_on_hand_headers.items():
+        columns.append(col_name)
+
+    new_df = pd.DataFrame(columns=columns)
+
+    for supply_type, value in hm.columns_to_sum_for_supplies_on_hand.items():
+        new_row = {}
+        new_row["Type"] = supply_type
+        for time_window, column_name in value.items():
+            new_row[hm.supplies_on_hand_headers[time_window]] = df[column_name].count()
+        new_df = new_df.append(new_row, ignore_index=True)
+
+    return new_df
+
+
+def process_hospital(creds):
+    print("Starting load of hospital data")
     # The name of the file you created the layer service with.
     original_data_file_name = "processed_HOS.csv"
     # You can get this id from the URL in arcgis online when you look at layer; eg:
@@ -120,15 +148,37 @@ def main():
     # This would be the page with Source: Feature Service on it.
     arcgis_item_id_for_feature_layer = "38592574c8de4a02b180d6f65918e385"
 
-    creds = load_credentials()
     data_dir, latest_filename = get_latest_file(creds)
     processed_dir, processed_filename = process_csv(data_dir, latest_filename)
     print(f"Finished processing {data_dir}/{latest_filename}, file is {processed_dir}/{processed_filename}")
     status = upload_to_arcgis(creds, processed_dir, processed_filename, 
                             original_data_file_name, arcgis_item_id_for_feature_layer)
     print(status)
-    print("Finished ingestion processing run")
+    print("Finished load of hospital data")
+    return processed_dir, processed_filename
 
+def process_supplies(creds, processed_dir, processed_filename):
+    print("Starting load of supplies data")
+    original_data_file_name = "supplies.csv"
+    arcgis_supplies_item_id = "8fad710d5df6434f8567373979dd9dbe"
+    supplies_filename = "supplies.csv"
+
+    df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
+    supplies = create_supplies_table(df)
+
+    supplies.to_csv(os.path.join(processed_dir, supplies_filename), index=False)
+
+    status = upload_to_arcgis(creds, processed_dir, supplies_filename, 
+                            original_data_file_name, arcgis_supplies_item_id)
+    print(status)
+    print("Finished load of supplies data")
+
+def main():
+    print("Started ingestion processing run")
+    creds = load_credentials()
+    processed_dir, processed_filename = process_hospital(creds)
+    process_supplies(creds, processed_dir, processed_filename)
+    print("Finished ingestion processing run")
 
 def hello_pubsub(event, context):
     main()
