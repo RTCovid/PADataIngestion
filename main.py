@@ -288,12 +288,16 @@ def process_historical(creds, gis):
     item_id = "ab2820906d2c4b7fa68fcf47a5261916"
     files_to_not_sftp = get_files_to_not_sftp(gis, item_id)
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
+    if len(file_details) == 0:
+        print("No new files to process for historical data.")
+        print("Finished processing historical tables.")
+        return
+        
     data_dir = file_details[0]["target_dir"]
-
     processed_dir, processed_filenames = process_csv(data_dir, file_details)
     process_summaries(gis, processed_dir, file_details)
 
-    print("Finished processing historical tables...")
+    print("Finished processing historical tables.")
 
 def main():
     print("Started ingestion processing run")
