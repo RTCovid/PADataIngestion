@@ -1,25 +1,32 @@
 #!/usr/bin/env python3
 import pandas as pd
 
-summary_table_header = [
-    "Date/Time",
-    "Available Beds Adult ICU Staffed",
-    "Available Beds Adult ICU",
-    "Current Available",
-    "% Available Adult ICU Beds",
-    "Available Beds Med/Surg Beds Staffed",
-    "Available Beds Med/Surg Beds Current Available",
-    "% Available Med/Surg Beds",
-    "Available Beds Pediatric Intensive Care Staffed",
-    "Available Beds Pediatric Intensive Current Available",
-    "% Available Beds Pediatric Intensive Care",
-    "Available Beds Pediatric Staffed",
-    "Available Beds Pediatric Current Available",
-    "% Available Pediatric Beds",
-    "Other Beds Airborne Infection Isolation Staffed",
-    "Other Beds Airborne Infection Isolation Current Available",
-    "% Available Airborne Isolation Bed",
-]
+summary_table_header = {
+    "Percent Available Adult ICU Beds": 
+    {
+        "n": "Available Beds-Adult Intensive Care Unit (ICU) Current Available",
+        "d": "Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds" ,
+    },
+    "Percent Available Med/Surg Beds": 
+    {
+        "n": "Available Beds-Medical and Surgical (Med/Surg) Current Available",
+        "d": "Available Beds-Medical and Surgical (Med/Surg) Staffed Beds",
+    },
+    "Percent Available Beds Pediatric Intensive Care":
+    {
+        "n": "Available Beds-Pediatric Intensive Care Current Available",
+        "d": "Available Beds-Pediatric Intensive Care Staffed Beds",
+    },
+    "Percent Available Pediatric Beds": {
+        "n": "Available Beds-Pediatric Current Available",
+        "d": "Available Beds-Pediatric Staffed Beds",
+    },
+    "Percent Available Airborne Isolation Bed": 
+    {
+        "n": "Other Beds-Airborne Infection Isolation Current Available",
+        "d": "Other Beds-Airborne Infection Isolation Staffed Beds",
+    }
+}
 
 supplies_on_hand_headers = {
     "3": "Less Than 3 Days",
