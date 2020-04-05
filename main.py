@@ -12,6 +12,7 @@ import header_mapping as hm
 from datetime import datetime
 from pprint import pprint
 import glob
+import argparse
 
 
 def load_credentials():
@@ -185,7 +186,7 @@ def create_summary_table_row(df, source_data_timestamp, source_filename):
         new_row[pct_col_name] = pct
     return new_row
 
-def process_hospital(gis, processed_dir, processed_filename):
+def process_hospital(gis, processed_dir, processed_filename, dry_run=False):
     print("Starting load of hospital data")
     # The name of the file you created the layer service with.
     original_data_file_name = "processed_HOS.csv"
@@ -193,13 +194,17 @@ def process_hospital(gis, processed_dir, processed_filename):
     # https://pema.maps.arcgis.com/home/item.html?id=b815071a19394023872f5dd88f273614
     # This would be the page with Source: Feature Service on it.
     arcgis_item_id_for_feature_layer = "38592574c8de4a02b180d6f65918e385"
-    status = upload_to_arcgis(gis, processed_dir, processed_filename, 
+    if dry_run:
+        print("Dry run set, not uploading HOS table to ArcGIS.")
+        status = "Dry run"
+    else:
+        status = upload_to_arcgis(gis, processed_dir, processed_filename, 
                             original_data_file_name, arcgis_item_id_for_feature_layer)
     print(status)
     print("Finished load of hospital data")
     return processed_dir, processed_filename
 
-def process_supplies(gis, processed_dir, processed_filename):
+def process_supplies(gis, processed_dir, processed_filename, dry_run=False):
     print("Starting load of supplies data")
     original_data_file_name = "supplies.csv"
     arcgis_supplies_item_id = "8fad710d5df6434f8567373979dd9dbe"
@@ -210,22 +215,91 @@ def process_supplies(gis, processed_dir, processed_filename):
 
     supplies.to_csv(os.path.join(processed_dir, supplies_filename), index=False)
 
-    status = upload_to_arcgis(gis, processed_dir, supplies_filename, 
+    if dry_run:
+        print("Dry run set, not uploading summary table to ArcGIS.")
+        status = "Dry run"
+    else:
+        status = upload_to_arcgis(gis, processed_dir, supplies_filename, 
                             original_data_file_name, arcgis_supplies_item_id)
     print(status)
     print("Finished load of supplies data")
 
 
 def get_files_to_not_sftp(gis, item_id):
-    table = gis.content.get(item_id)
-    t = table.tables[0]
+    fs = gis.content.get(item_id)
+
+    if "type:Table" in str(fs):
+        t = fs.tables[0]
+    else:
+        t = fs.layers[0]
+
     qr = t.query(out_fields='Source_Filename')
     filenames_to_not_sftp = []
     for f in qr.features:
         filenames_to_not_sftp.append(f.attributes['Source_Filename'])
+    filenames_to_not_sftp = list(set(filenames_to_not_sftp))
     return filenames_to_not_sftp
 
-def process_summaries(gis, processed_dir, processed_file_details):
+def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=False):
+    print("Starting load of historical HOS table...")
+    original_data_file_name = "historical_hos_table.csv"
+    arcgis_historical_item_id = "46f25552405a4fef9a6658fb5c0c68bf"
+
+
+    table = gis.content.get(arcgis_historical_item_id)
+    t = table.layers[0]
+
+    new_col_names = {}
+    for name in t.properties.fields:
+        new_col_names[name["alias"]]  = name["name"]
+
+    header = {}
+    features = []
+    for f in processed_file_details:
+        fname = f["processed_filename"]
+        size = os.path.getsize(os.path.join(processed_dir, fname))
+        if size > 0:
+            processed_time =  datetime.utcnow().isoformat()
+            with open(os.path.join(processed_dir, fname), newline='') as csvfile:
+                reader = csv.DictReader(csvfile)
+                for row in reader:
+                    # add our rows
+                    new_row ={}
+                    row["Source Data Timestamp"] = f["source_datetime"].isoformat()
+                    row["Processed At"] = processed_time
+                    row["Source Filename"] = f["filename"]
+                    header.update(row)
+                    # rename the headers based on alias
+                    for alias, name in new_col_names.items():
+                        if alias in row:
+                            new_row[name] = row[alias]
+                    ft = Feature(attributes=new_row)
+                    features.append(ft)
+        else:
+            print(f"{fname} has a filesize of {size}, not processing.")
+
+    # historical for generating a new source CSV
+    # you'll need to create a new_rows list above
+    #if len(new_rows) > 0:
+    #    with open(original_data_file_name, "w") as csvfile:
+    #        writer = csv.DictWriter(csvfile, fieldnames=header)
+    #        writer.writeheader()
+    #        writer.writerows(new_rows)
+    # Done CSV generation
+
+    # It's okay if features is empty; status will reflect arcgis telling us that,
+    # but it won't stop the processing.
+    fs = FeatureSet(features)
+    if dry_run:
+        print("Dry run set, not editing features.")
+        status = "Dry run"
+    else:
+        status = t.edit_features(adds=features)
+    print(status)
+    print("Finished load of historical HOS table")
+
+
+def process_summaries(gis, processed_dir, processed_file_details, dry_run=False):
     print("Starting load of summary table...")
     original_data_file_name = "summary_table.csv"
     arcgis_summary_item_id = "ab2820906d2c4b7fa68fcf47a5261916"
@@ -257,12 +331,16 @@ def process_summaries(gis, processed_dir, processed_file_details):
     # It's okay if features is empty; status will reflect arcgis telling us that,
     # but it won't stop the processing.
     fs = FeatureSet(features)
-    status = t.edit_features(adds=features)
+    if dry_run:
+        print("Dry run set, not editing features.")
+        status = "Dry run"
+    else:
+        status = t.edit_features(adds=features)
     print(status)
     print("Finished load of summary table")
 
 
-def process_instantaneous(creds, gis):
+def process_instantaneous(creds, gis, dry_run=False):
     print("Processing instantaneous tables...")
     print("Getting latest HOS file from SFTP...")
     file_details, all_filenames = get_files_from_sftp(creds)
@@ -276,11 +354,11 @@ def process_instantaneous(creds, gis):
     processed_filename = processed_file_details[0]["processed_filename"]
 
     print(f"Finished processing {data_dir}/{latest_filename}, file is {processed_dir}/{processed_filename}")
-    process_hospital(gis, processed_dir, processed_filename)
-    process_supplies(gis, processed_dir, processed_filename)
+    process_hospital(gis, processed_dir, processed_filename, dry_run=dry_run)
+    process_supplies(gis, processed_dir, processed_filename, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
-def process_historical(creds, gis):
+def process_historical(creds, gis, dry_run=False):
     print("Processing historical tables...")
     # These processors manage their own SFTP's, since they may need to get many files.
 
@@ -288,29 +366,53 @@ def process_historical(creds, gis):
     item_id = "ab2820906d2c4b7fa68fcf47a5261916"
     files_to_not_sftp = get_files_to_not_sftp(gis, item_id)
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
+
+    if len(file_details) == 0:
+        print("No new files to process for historical summary table data.")
+    else:
+        data_dir = file_details[0]["target_dir"]
+        processed_dir, processed_filenames = process_csv(data_dir, file_details)
+        process_summaries(gis, processed_dir, file_details, dry_run=dry_run)
+
+    # Full HOS historical table
+    item_id = "46f25552405a4fef9a6658fb5c0c68bf"
+    files_to_not_sftp = []
+    file_details = []
+    all_filenames = []
+    files_to_not_sftp = get_files_to_not_sftp(gis, item_id)
+    # XXX remove
+    print(len(files_to_not_sftp))
+    files_to_not_sftp =  files_to_not_sftp[:-1]
+    print(len(files_to_not_sftp))
+    file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:
         print("No new files to process for historical data.")
-        print("Finished processing historical tables.")
-        return
-        
-    data_dir = file_details[0]["target_dir"]
-    processed_dir, processed_filenames = process_csv(data_dir, file_details)
-    process_summaries(gis, processed_dir, file_details)
+    else:
+        data_dir = file_details[0]["target_dir"]
+        processed_dir, processed_filenames = process_csv(data_dir, file_details)
+        process_historical_hos(gis, processed_dir, file_details, dry_run=dry_run)
 
     print("Finished processing historical tables.")
 
-def main():
+def main(dry_run=False):
     print("Started ingestion processing run")
     creds = load_credentials()
     print("Connecting to ArcGIS...")
     gis = get_gis(creds)
     print("Connected.")
-    process_instantaneous(creds, gis)
-    process_historical(creds, gis)
+    process_instantaneous(creds, gis, dry_run=dry_run)
+    process_historical(creds, gis, dry_run=dry_run)
     print("Finished ingestion processing run")
 
 def hello_pubsub(event, context):
     main()
 
 if __name__== "__main__":
-    main()
+    dry_run = False
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--dry_run")
+    args = parser.parse_args()
+    if args.dry_run is not None:
+        dry_run = True
+    dry_run=True
+    main(dry_run)
