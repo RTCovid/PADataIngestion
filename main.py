@@ -380,10 +380,6 @@ def process_historical(creds, gis, dry_run=False):
     file_details = []
     all_filenames = []
     files_to_not_sftp = get_files_to_not_sftp(gis, item_id)
-    # XXX remove
-    print(len(files_to_not_sftp))
-    files_to_not_sftp =  files_to_not_sftp[:-1]
-    print(len(files_to_not_sftp))
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:
         print("No new files to process for historical data.")
@@ -414,5 +410,4 @@ if __name__== "__main__":
     args = parser.parse_args()
     if args.dry_run is not None:
         dry_run = True
-    dry_run=True
     main(dry_run)
