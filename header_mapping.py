@@ -64,3 +64,46 @@ columns_to_sum_for_supplies_on_hand = {
         "29": "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-29 or more days Response ?"
     }
 }
+
+
+columns_for_public_release = [
+    "HospitalName",
+    "HospitalStreetAddress",
+    "HospitalCity",
+    "HospitalState",
+    "HospitalZip",
+    "HospitalLatitude",
+    "HospitalLongitude",
+    "Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds",
+    "Available Beds-Adult Intensive Care Unit (ICU) Current Available",
+    "Available Beds-Adult Intensive Care Unit (ICU) 24hr Beds",
+    "Available Beds-Adult Intensive Care Unit (ICU) 72hr Beds",
+    "Available Beds-Medical and Surgical (Med/Surg) Staffed Beds",
+    "Available Beds-Medical and Surgical (Med/Surg) Current Available",
+    "Available Beds-Medical and Surgical (Med/Surg) 24hr Beds",
+    "Available Beds-Medical and Surgical (Med/Surg) 72hr Beds",
+    "Available Beds-Pediatric Intensive Care Staffed Beds",
+    "Available Beds-Pediatric Intensive Care Current Available",
+    "Available Beds-Pediatric Intensive Care 24hr Beds",
+    "Available Beds-Pediatric Intensive Care 72hr Beds",
+    "Available Beds-Pediatric Staffed Beds",
+    "Available Beds-Pediatric Current Available",
+    "Available Beds-Pediatric 24hr Beds",
+    "Available Beds-Pediatric 72hr Beds",
+    "Other Beds-Airborne Infection Isolation Staffed Beds",
+    "Other Beds-Airborne Infection Isolation Current Available",
+    "Other Beds-Airborne Infection Isolation 24hr Beds",
+    "Other Beds-Airborne Infection Isolation 72hr Beds",
+    "COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19:",
+    "COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI):",
+    "COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators:",
+    "COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO:",
+    "COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED?",
+    "COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU?",
+    "COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU?",
+    "Ventilator Counts-Ventilators Number of ventilators",
+    "Ventilator Counts-Ventilators Number of ventilators in use",
+    "Ventilator Counts-Ventilators Number of Anestesia Machines",
+    "Ventilator Counts-Ventilators Number of Anestesia Machines that are converted to be used as a Vent",
+]
+

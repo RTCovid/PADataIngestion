@@ -72,8 +72,7 @@ def get_files_from_sftp(creds, prefix="HOS_ResourceCapacity_", target_dir="/tmp"
             file_details.append({"target_dir": target_dir, "filename": f, "source_datetime": source_date})
     return (file_details, files)
 
-def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="processed_HOS_"):
-   # data = pd.read_csv(os.path.join(source_data_dir, source_data_file), engine="python")
+def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="processed_HOS_", columns_wanted=[]):
 
     output_file_details = []
     
@@ -85,21 +84,26 @@ def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="pro
         output_path = os.path.join(output_dir, output_filename)
         rows = []
         with open (os.path.join(source_data_dir, source_data_file), newline='') as rf:
-            reader = csv.reader(rf)
-            header = True
+            reader = csv.DictReader(rf)
+            # using dictreader, we don't need to read the header row in.
             for row in reader:
-                if header:
-                    header_row = []
-                    for c in row:
-                        if "'" in c:
-                            c = c.replace("'", "")
-                        header_row.append(c)
-                    rows.append(header_row)
-                    header = False
-                else:
-                    rows.append(row)
+                new_row = {}
+                if len(columns_wanted) > 0:
+                    ks = list(row.keys())
+                    for k in ks:
+                        if k.strip() not in columns_wanted:
+                            del row[k]
+                for k, v in row.items():
+                    # ArcGIS can't handle ' in header column names.
+                    if "'" in k:
+                        new_k = k.replace("'", "")
+                    else:
+                        new_k = k
+                    new_row[new_k] = v
+                rows.append(new_row)
         with open (output_path, 'w', newline='') as wf:
-            writer = csv.writer(wf)
+            writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
+            writer.writeheader()
             writer.writerows(rows)
         output_file_details.append(source_file_details)
     return (output_dir, output_file_details)
@@ -186,20 +190,14 @@ def create_summary_table_row(df, source_data_timestamp, source_filename):
         new_row[pct_col_name] = pct
     return new_row
 
-def process_hospital(gis, processed_dir, processed_filename, dry_run=False):
+def process_hospital(gis, processed_dir, processed_filename, arcgis_item_id, original_data_file_name, dry_run=False):
     print("Starting load of hospital data")
-    # The name of the file you created the layer service with.
-    original_data_file_name = "processed_HOS.csv"
-    # You can get this id from the URL in arcgis online when you look at layer; eg:
-    # https://pema.maps.arcgis.com/home/item.html?id=b815071a19394023872f5dd88f273614
-    # This would be the page with Source: Feature Service on it.
-    arcgis_item_id_for_feature_layer = "38592574c8de4a02b180d6f65918e385"
     if dry_run:
         print("Dry run set, not uploading HOS table to ArcGIS.")
         status = "Dry run"
     else:
         status = upload_to_arcgis(gis, processed_dir, processed_filename, 
-                            original_data_file_name, arcgis_item_id_for_feature_layer)
+                            original_data_file_name, arcgis_item_id)
     print(status)
     print("Finished load of hospital data")
     return processed_dir, processed_filename
@@ -349,12 +347,33 @@ def process_instantaneous(creds, gis, dry_run=False):
     source_datetime = file_details[0]["source_datetime"]
     print("Finished.")
 
-    #data_dir, latest_filename, source_datetime, all_filenames = get_latest_file(creds)
+    # Public-only data
+    public_processed_dir, public_processed_file_details = process_csv(data_dir, [file_details[0]],
+                    output_prefix="public_processed_HOS_", columns_wanted=hm.columns_for_public_release)
+    public_processed_filename = public_processed_file_details[0]["processed_filename"]
+
+    # Full data
     processed_dir, processed_file_details = process_csv(data_dir, [file_details[0]])
     processed_filename = processed_file_details[0]["processed_filename"]
 
     print(f"Finished processing {data_dir}/{latest_filename}, file is {processed_dir}/{processed_filename}")
-    process_hospital(gis, processed_dir, processed_filename, dry_run=dry_run)
+    # The name of the file you created the layer service with.
+    original_data_file_name = "processed_HOS.csv"
+    # The ArcGIS item id of the feature service
+    # You can get this id from the URL in arcgis online when you look at layer; eg:
+    # https://pema.maps.arcgis.com/home/item.html?id=b815071a19394023872f5dd88f273614
+    # This would be the page with Source: Feature Service on it.
+    arcgis_item_id_for_feature_layer = "38592574c8de4a02b180d6f65918e385"
+    process_hospital(gis, processed_dir, processed_filename, arcgis_item_id_for_feature_layer, 
+            original_data_file_name, 
+    dry_run=dry_run)
+
+    # id for the public layer
+    arcgis_item_id_for_public_feature_layer = "1affcef28be04f4f994c99dea72d1a0e"
+    public_original_filename = "public_processed_HOS.csv"
+    process_hospital(gis, public_processed_dir, public_processed_filename, 
+        arcgis_item_id_for_public_feature_layer, public_original_filename, dry_run=dry_run)
+
     process_supplies(gis, processed_dir, processed_filename, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
