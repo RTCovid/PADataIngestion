@@ -13,6 +13,8 @@ from datetime import datetime
 from pprint import pprint
 import glob
 import argparse
+from geo_utils import HospitalLocations
+
 
 
 def load_credentials():
@@ -72,10 +74,11 @@ def get_files_from_sftp(creds, prefix="HOS_ResourceCapacity_", target_dir="/tmp"
             file_details.append({"target_dir": target_dir, "filename": f, "source_datetime": source_date})
     return (file_details, files)
 
+
 def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="processed_HOS_", columns_wanted=[]):
+    hl = HospitalLocations()
 
     output_file_details = []
-    
     for source_file_details in file_details:
         source_data_file = source_file_details["filename"]
         output_filename = output_prefix + source_data_file
@@ -100,6 +103,10 @@ def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="pro
                     else:
                         new_k = k
                     new_row[new_k] = v
+
+                # Add the county; future proof in case they add it later
+                if "HospitalCounty" not in new_row:
+                    new_row["HospitalCounty"] = hl.get_location_for_hospital(new_row["HospitalName"])["GeocodedHospitalCounty"]
                 rows.append(new_row)
         with open (output_path, 'w', newline='') as wf:
             writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
@@ -176,7 +183,9 @@ def create_supplies_table(df):
 
     return new_df
 
-def create_summary_table_row(df, source_data_timestamp, source_filename):
+
+
+def create_summary_table_row(df, source_data_timestamp, source_filename, loc_cache):
     new_row = {}
     new_row["Source Data Timestamp"] = source_data_timestamp.isoformat()
     new_row["Processed At"] = datetime.utcnow().isoformat()
@@ -296,6 +305,14 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
     print(status)
     print("Finished load of historical HOS table")
 
+def process_county_summaries(gis, processed_dir, processed_file_details, dry_run=False):
+    print("Starting load of county summary table...")
+    original_data_file_name = "county_summary_table.csv"
+    arcgis_summary_item_id = ""
+    table = gis.content.get(arcgis_summary_item_id)
+    t = table.tables[0]
+    summary_df = pd.DataFrame()
+
 
 def process_summaries(gis, processed_dir, processed_file_details, dry_run=False):
     print("Starting load of summary table...")
@@ -313,6 +330,7 @@ def process_summaries(gis, processed_dir, processed_file_details, dry_run=False)
             df = load_csv_to_df(os.path.join(processed_dir, fname))
             table_row = create_summary_table_row(df,f["source_datetime"], f["filename"])
             summary_df = summary_df.append(table_row, ignore_index = True)
+            print(table_row)
         else:
             print(f"{fname} has a filesize of {size}, not processing.")
 
