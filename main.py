@@ -305,13 +305,16 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
     print(status)
     print("Finished load of historical HOS table")
 
-def process_county_summaries(gis, processed_dir, processed_file_details, dry_run=False):
+def process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id, dry_run=False):
     print("Starting load of county summary table...")
     original_data_file_name = "county_summary_table.csv"
-    arcgis_summary_item_id = ""
-    table = gis.content.get(arcgis_summary_item_id)
+    df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
+    d2 = df.groupby(["HospitalCounty"])[hm.county_sum_columns].sum()
+    print(d2)
+    d2.to_csv(original_data_file_name)
+
+    table = gis.content.get(arcgis_item_id)
     t = table.tables[0]
-    summary_df = pd.DataFrame()
 
 
 def process_summaries(gis, processed_dir, processed_file_details, dry_run=False):
@@ -393,6 +396,13 @@ def process_instantaneous(creds, gis, dry_run=False):
         arcgis_item_id_for_public_feature_layer, public_original_filename, dry_run=dry_run)
 
     process_supplies(gis, processed_dir, processed_filename, dry_run=dry_run)
+
+
+    arcgis_item_id_for_public_feature_layer = ""
+    public_original_filename = "public_county_summary_processed_HOS.csv"
+
+    arcgis_item_id_for_county_summaries = ""
+    process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
 def process_historical(creds, gis, dry_run=False):
