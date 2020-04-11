@@ -186,7 +186,7 @@ def create_supplies_table(df):
 
 
 
-def create_summary_table_row(df, source_data_timestamp, source_filename, loc_cache):
+def create_summary_table_row(df, source_data_timestamp, source_filename):
     new_row = {}
     new_row["Source Data Timestamp"] = source_data_timestamp.isoformat()
     new_row["Processed At"] = datetime.utcnow().isoformat()
