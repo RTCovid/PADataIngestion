@@ -3,6 +3,7 @@ import pandas as pd
 
 
 county_sum_columns = [
+        "HospitalCounty",
         "Available Beds-Adult Intensive Care Unit (ICU) Current Available",
         "Available Beds-Medical and Surgical (Med/Surg) Current Available",
         "Available Beds-Pediatric Intensive Care Current Available",

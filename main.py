@@ -158,6 +158,7 @@ def upload_to_arcgis(gis, source_data_dir, source_data_file, original_data_file_
 
         original_dir = os.getcwd()
         os.chdir(tmpdirname)
+        print(f"Uploading to ArcGIS: {source_data_dir}/{source_data_file} as {original_data_file_name} to item id {arcgis_item_id_for_feature_layer}")
         result = fs.manager.overwrite(original_data_file_name)
         os.chdir(original_dir)
         #os.remove(os.path.join(source_data_dir, source_data_file))
@@ -308,13 +309,21 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
 def process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id, dry_run=False):
     print("Starting load of county summary table...")
     original_data_file_name = "county_summary_table.csv"
+    new_data_filename = "new_county_summary_table.csv"
     df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
     d2 = df.groupby(["HospitalCounty"])[hm.county_sum_columns].sum()
-    print(d2)
-    d2.to_csv(original_data_file_name)
 
-    table = gis.content.get(arcgis_item_id)
-    t = table.tables[0]
+    # don't use index=False here; HospitalCounty is the index
+    d2.to_csv(os.path.join(processed_dir, new_data_filename))
+
+    if dry_run:
+        print("Dry run set, not uploading county summary table to ArcGIS.")
+        status = "Dry run"
+    else:
+        status = upload_to_arcgis(gis, processed_dir, new_data_filename, 
+                            original_data_file_name, arcgis_item_id)
+    print(status)
+    print("Finished load of county summary data")
 
 
 def process_summaries(gis, processed_dir, processed_file_details, dry_run=False):
@@ -385,23 +394,21 @@ def process_instantaneous(creds, gis, dry_run=False):
     # https://pema.maps.arcgis.com/home/item.html?id=b815071a19394023872f5dd88f273614
     # This would be the page with Source: Feature Service on it.
     arcgis_item_id_for_feature_layer = "38592574c8de4a02b180d6f65918e385"
+
     process_hospital(gis, processed_dir, processed_filename, arcgis_item_id_for_feature_layer, 
-            original_data_file_name, 
-    dry_run=dry_run)
+            original_data_file_name, dry_run=dry_run)
 
     # id for the public layer
     arcgis_item_id_for_public_feature_layer = "1affcef28be04f4f994c99dea72d1a0e"
     public_original_filename = "public_processed_HOS.csv"
+
     process_hospital(gis, public_processed_dir, public_processed_filename, 
-        arcgis_item_id_for_public_feature_layer, public_original_filename, dry_run=dry_run)
+         arcgis_item_id_for_public_feature_layer, public_original_filename, dry_run=dry_run)
 
     process_supplies(gis, processed_dir, processed_filename, dry_run=dry_run)
 
 
-    arcgis_item_id_for_public_feature_layer = ""
-    public_original_filename = "public_county_summary_processed_HOS.csv"
-
-    arcgis_item_id_for_county_summaries = ""
+    arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea"
     process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
