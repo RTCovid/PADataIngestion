@@ -1,6 +1,20 @@
 #!/usr/bin/env python3
 import pandas as pd
 
+
+county_sum_columns = [
+        "HospitalCounty",
+        "Available Beds-Adult Intensive Care Unit (ICU) Current Available",
+        "Available Beds-Medical and Surgical (Med/Surg) Current Available",
+        "Available Beds-Pediatric Intensive Care Current Available",
+        "Other Beds-Airborne Infection Isolation Current Available",
+	"COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators: ",
+	"COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO: ",
+	"COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19: ",
+	"Ventilator Counts-Ventilators Number of ventilators",
+	"Ventilator Counts-Ventilators Number of ventilators in use",
+]
+
 summary_table_header = {
     "Percent Available Adult ICU Beds": 
     {

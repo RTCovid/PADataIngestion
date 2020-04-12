@@ -1,0 +1,293 @@
+HospitalName,HospitalCity,HospitalState,HospitalLatitude,HospitalLongitude,HospitalStreetAddress,GeocodedHospitalCounty,GeocodedHospitalLocality,GeocodedHospitalLocalityType,GeocodedHospitalState
+Gettysburg Hospital,Gettysburg,PA,39.82335,-77.23375,147 Gettys St.,Adams,GETTYSBURG,unknown,PA
+AHN-Allegheny General Hospital,Pittsburgh,PA,40.45662,-80.00348,320 E. North Ave.,Allegheny,,,
+AHN-Allegheny Valley Hospital,Natrona Heights,PA,40.61761,-79.73705,1301 Carlisle St.,Allegheny,,,
+Childrens Home of Pittsburgh,Pittsburgh,PA,40.46147,-79.93785,5324 Penn Ave.,Allegheny,PITTSBURGH,unknown,PA
+Children's Hospital of Pittsburgh of UPMC,Pittsburgh,PA,40.46587,-79.95304,4401 Penn Ave.,Allegheny,,,
+Children's Hospital of Pittsburgh-Transplant Center,Pittsburgh,PA,40.442224,-79.95795,3705 Fifth Ave.,Allegheny,,,
+Children's Institute of Pittsburgh,Pittsburgh,PA,40.443102,-79.919514,1405 Shady Ave.,Allegheny,,,
+Encompass Harmarville Rehab,Pittsburgh,PA,40.552004,-79.877403,320 Guys Run Road,Allegheny,,,
+Encompass Health Rehabiltation Hosp of Sewickley,Sewickley,PA,40.572152,-80.201313,351 Camp Meeting Rd.,Allegheny,,,
+AHN-Forbes Hospital,Monroeville,PA,40.428477,-79.751161,2570 Haymaker Rd.,Allegheny,,,
+Healthsouth Monroeville,Monroeville,PA,40.424156,-79.744608,2380 McGinley Rd.,Allegheny,,,
+Healthsouth of Pittsburgh LLC,Monroeville,PA,40.424156,-79.744608,2380 McGinley Rd.,Allegheny,,,
+Heritage Valley Med Cntr Sewickley,Sewickley,PA,40.543284,-80.179065,720 Blackburn Rd,Allegheny,,,
+Kindred Hospital-Pittsburgh,Oakdale,PA,40.454353,-80.008375,7777 Steubansville Pk.,Allegheny,,,
+Lifecare Hospitals of Pittsburgh-North Campus,Pittsburgh,PA,40.494915,-80.060548,100 S. Jackson Ave.,Allegheny,,,
+Magee-Womens Hospital UPMC,Pittsburgh,PA,40.43676,-79.95938,300 Halket St.,Allegheny,,,
+Mercy North Shore Psych,Pittsburgh,PA,40.45472,-80.00814,1004 Arch St.,Allegheny,,,
+Select Specialty Hospital-Mckeesport,McKeesport,PA,40.441883,-79.960693,1500 Fifth Ave.,Allegheny,,,
+Southwood Psychiatric Hospital,Pittsburgh,PA,40.31997,-80.11522,2575 Boyce Plaza Rd.,Allegheny,,,
+St. Clair Memorial,Pittsburgh,PA,40.37718,-80.066416,1000 Bower Hill Rd.,Allegheny,,,
+UPMC-East,Monroeville,PA,40.436878,-79.758393,2775 Mosside Blvd.,Allegheny,MONROEVILLE,unknown,PA
+UPMC-McKeesport,Mckeesport,PA,40.352052,-79.850907,1500 Fifth Ave.,Allegheny,MC KEESPORT,unknown,PA
+UPMC-Mercy,Pittsburgh,PA,40.4366,-79.98548,1400 Locust St.,Allegheny,PITTSBURGH,unknown,PA
+UPMC-Passavant-McCandless,Pittsburgh,PA,40.57331,-80.01578,9100 Babcock Blvd.,Allegheny,,,
+UPMC-Presbyterian,Pittsburgh,PA,40.44238,-79.9604,200 Lothrop St.,Allegheny,,,
+UPMC-Shadyside,Pittsburgh,PA,40.45478,-79.94095,5200 Centre Ave.,Allegheny,,,
+UPMC-St Margaret,Pittsburgh,PA,40.489344,-79.896028,815 Freeport Rd.,Allegheny,PITTSBURGH,unknown,PA
+UPMC-Western Psych,Pittsburgh,PA,40.4436,-79.95986,3811 O'Hara St.,Allegheny,,,
+VA Pittsburgh Healthcare System,Pittsburgh,PA,40.44634,-79.96111,University Drive C,Allegheny,,,
+AHN-West Penn Hospital,Pittsburgh,PA,40.46216,-79.94638,4800 Friendship Ave.,Allegheny,,,
+AHN-Jefferson Hospital,Jefferson Hills,PA,40.319101,-79.934557,565 Coal Valley Rd.,Allegheny,,,Pennsylvania
+Lifecare Behavioral Health Pittsburgh,Wilkinsburg,PA,40.446291,-79.892359,225 Penn Ave.,Allegheny,,,Pennsylvania
+Ohio Valley,Mckees Rocks,PA,40.473089,-80.093904,25 Heckel Rd.,Allegheny,Kennedy Township,locality,Pennsylvania
+Armstrong County Memorial,Kittanning,PA,40.815233,-79.566418,1 Nolte Dr.,Armstrong,,,
+Curahealth Hospital of Heritage Valley Beaver,Beaver,PA,40.7096,-80.32414,1000 Durch Ridge Rd.,Beaver,,,
+Valley Medical Center Beaver,Beaver,PA,40.70931,-80.32389,1000 Dutch Ridge Rd.,Beaver,,,
+UPMC-Bedford Memorial,Everett,PA,40.023686,-78.428834,10455 Lincoln Hwy.,Bedford,EVERETT,unknown,PA
+Encompass Health Rehabilitation Hospital of Reading,Reading,PA,40.291181,-75.924081,1623 Morgantown Rd.,Berks,,,
+Haven Behavioral Hospital Reading,Reading,PA,40.337594,-75.925768,145 N. Sixth St.,Berks,,,
+PSH-St. Joseph Medical Center,Reading,PA,40.376579,-75.977267,2500 Bernville Rd.,Berks,,,
+Surgical Institute of Reading,Wyomissing,PA,40.357876,-75.987868,2752 Century Blvd.,Berks,WYOMISSING,unknown,PA
+Wernersville State Hospital,Wernersville,PA,40.336642,-76.104738,Route 422 & Sportsman Rd,Berks,WERNERSVILLE,unknown,PA
+Tower Health System-Reading Hospital ,West Reading,PA,40.32999,-75.948293,420 S. 5th Ave,Berks,CP Leisey,hamlet,Pennsylvania
+UPMC-Altoona,Altoona,PA,40.52159,-78.39798,620 Howard Ave.,Blair,ALTOONA,unknown,PA
+Encompass Health of Altoona,Altoona,PA,40.49777,-78.39112,2005 Valley View Blvd.,Blair,,,
+James E. Van Zandt VA Medical Center,Altoona,PA,40.48959,-78.39849,2907 Pleasant Valley Blvd.,Blair,,,
+Conemaugh Nason Medical Center,Roaring Spring,PA,40.337844,-78.388927,105 Nason Dr.,Blair,ROARING SPRING,unknown,PA
+Tyrone Hospital,Tyrone,PA,40.675952,-78.252718,187 Hospital Dr.,Blair,,,
+Guthrie Towanda Memorial Hospital ,Towanda,PA,41.783739,-76.448885,91 Hospital Dr.,Bradford,,,
+Guthrie Robert Packer Hospital,Sayre,PA,41.980913,-76.518735,1 Guthrie Sq.,Bradford,,,
+Guthrie Troy Community Hospital,Troy,PA,41.792777,-76.794608,275 Guthrie Drive,Bradford,,,
+Jefferson Bucks County Campus,Langhorne,PA,40.183046,-74.8675011,380 N. Oxford Valley Rd.,Bucks,,,
+Barix Clinics of Pennsylvania,Langhorne,PA,40.181795,-74.884581,280 Middletown Blvd.,Bucks,LANGHORNE,unknown,PA
+Doylestown Hospital,Doylestown,PA,40.305419,-75.142189,595 W. State St.,Bucks,DOYLESTOWN,unknown,PA
+Foundations Behavioral Health,Doylestown,PA,40.300101,-75.15527,833 E. Butler Ave.,Bucks,DOYLESTOWN,unknown,PA
+Grand View Hospital,Sellersville,PA,40.362516,-75.324099,700 Lawn Ave.,Bucks,SELLERSVILLE,unknown,PA
+Lower Bucks Hospital,Bristol,PA,40.102288,-74.862875,501 Bath Rd.,Bucks,BRISTOL,unknown,PA
+Rothman Specialty Hospital,Bensalem,PA,40.11679,-74.96104,3300 Tillman Dr.,Bucks,,,
+St. Luke's Quakertown Campus,Quakertown,PA,40.437884,-75.348395,1021 Park Ave.,Bucks,,,
+St. Mary Medical Center,Langhorne,PA,40.202785,-74.929197,232 W. Route 25 1201 LANGHORNE NEWTOWN RD,Bucks,,,
+Butler Memorial Hospital,Butler,PA,40.8668,-79.88159,1 Hospital Wy.,Butler,BUTLER,unknown,PA
+VA Medical Center Butler,Butler,PA,40.87493,-79.94527,325 New Castle Rd.,Butler,,,
+UPMC-Passavant Cranberry,Cranberry Twp.,PA,40.68275,-80.09926,1 St. Francis Way,Butler,Criders Corners,hamlet,Pennsylvania
+Conemaugh Memorial Medical Center,Johnstown,PA,40.304319,-78.92006,1086 Franklin St.,Cambria,JOHNSTOWN,unknown,PA
+Crichton Rehabilitation Center,Johnstown,PA,40.326581,-78.921367,320 Main St.,Cambria,,,
+Miners Hospital,Hastings,PA,40.65889,-78.705976,290 Haida Ave.,Cambria,,,
+Select Specialty Hospital-Johnstown,Johnstown,PA,40.326581,-78.921367,320 Main St.,Cambria,,,
+Blue Mountain Hospital-Gnaden Huetten Campus (L),Lehighton,PA,40.833269,-75.725928,211 N. 12th St.,Carbon,,,
+Meadows Psychiatric Center,Centre Hall,PA,40.18611,-77.21796,132 The Meadows Dr.,Centre,CENTRE HALL,unknown,PA
+Mount Nittany Medical Center,State College,PA,40.819113,-77.843547,1800 E. Park Ave.,Centre,STATE COLLEGE,unknown,PA
+Encompass Health Nittany Valley Rehabilitation Hospital,Pleasant Gap,PA,40.859701,-77.759092,550 W. College Ave.,Centre,,,Pennsylvania
+Brandywine Hospital Coatesville,Coatesville,PA,40.012562,-75.790617,201 Reeceville Rd.,Chester,,,
+Bryn Mawr Rehabilitation Hospital,Malvern,PA,40.010422,-75.5286336,414 Paoli Pike,Chester,,,
+Chester County Hospital,West Chester,PA,39.972079,-75.600719,701 E. Marshall St.,Chester,WEST CHESTER,unknown,PA
+Devereux Children's Behavioral Health Institute,Malvern,PA,40.008162,-75.51445,655 Sugartown Rd.Building 150 PO Box 275,Chester,,,
+Jennersville Hospital West Grove,West Grove,PA,39.82261,-75.888518,1015 W. Baltimore Pike,Chester,,,
+Lifecare Hospitals of Chester County,West Chester,PA,39.968871,-75.602371,400 E. Marshall St.,Chester,,,
+Main Line-Paoli Memorial Hospital,Paoli,PA,40.042043,-75.499586,255 W. Lancaster Ave.,Chester,,,
+Phoenixville Hospital,Phoenixville,PA,40.123412,-75.513517,140 Nutt Rd.,Chester,PHOENIXVILLE,unknown,PA
+St. John Vianney Hospital,Downingtown,PA,40.01426,-75.6854,151 Woodbine Rd.,Chester,,,
+VA Medical Center Coatesville,Coatesville,PA,39.998724,-75.800325,1400 Black Horse Rd.,Chester,,,
+Clarion Hospital,Clarion,PA,41.19128,-79.3974,1 Hospital Dr.,Clarion,CLARION,unknown,PA
+Clarion Psychiatric Center,Clarion,PA,41.19385,-79.396586,2 Hospital Dr,Clarion,CLARION,unknown,PA
+Pennhighlands Clearfield,Clearfield,PA,41.033007,-78.449147,809 Turnpike Ave.,Clearfield,,,
+Pennhighlands Dubois,DuBois,PA,41.11492,-78.775151,100 Hospital Ave.,Clearfield,DuBois,town,Pennsylvania
+Bucktail Medical Center,Renovo,PA,41.32683,-77.738064,1001 Pine St.,Clinton,RENOVO,unknown,PA
+UPMC Susquehanna Lock Haven Hospital,Lock Haven,PA,41.133214,-77.467996,24 Cree Dr.,Clinton,,,
+Berwick Hospital Center,Berwick,PA,41.07048,-76.23104,701 E. 16th St.,Columbia,BERWICK,unknown,PA
+Geisinger Bloomsburg Hospital,Bloomsburg,PA,41.00871,-76.45326,549 E. Fair St.,Columbia,BLOOMSBURG,unknown,PA
+Meadville Medical Center,Meadville,PA,41.641447,-80.145617,751 Liberty St.,Crawford,MEADVILLE,unknown,PA
+Titusville Area Hospital,Titusville,PA,41.633218,-79.679286,406 W. Oak St.,Crawford,,,
+UPMC Pinnacle Carlisle,Carlisle,PA,40.183434,-77.223103,361 Alexander Spring Rd.,Cumberland,,,
+Encompass Health Rehabilitation Hospital of Mechanicsburg,Mechanicsburg,PA,40.210847,-76.974637,175 Lancaster Blvd.,Cumberland,,,
+Healthsouth Regional Specialty Hospital,Mechanicsburg,PA,40.209092,-76.971793,4950 Wilson Ln.,Cumberland,,,
+Geisinger-Holy Spirit Hospital,Camp Hill,PA,40.25377,-76.921997,503 N. 21st St.,Cumberland,,,
+Roxbury Treatment Center,Shippensburg,PA,40.05407,-77.538034,601 Roxbury Rd.,Cumberland,SHIPPENSBURG,unknown,PA
+Select Specialty Hospital-Camp Hill,Camp Hill,PA,40.25427,-76.92424,503 N. 21st St. Fifth Floor,Cumberland,,,
+2Memorial Child/Adolescent Partial Hospital Program,Harrisburg,PA,40.285755,-76.89852,2501 N. 3rd Street,Dauphin,,,
+Adult IP Service Lines ,Harrisburg,PA,40.285699,-76.898799,2501 N 3rd Street,Dauphin,,,
+Child/Adolescent IP Service Lines,Harrisburg,PA,40.285699,-76.898799,2501 N 3rd Street,Dauphin,,,
+Edgewater Psychiatric Center,Harrisburg,PA,40.273998,-76.896975,1829 N. Front St.,Dauphin,,,
+Milton S Hershey Medical Center,Hershey,PA,40.265695,-76.674223,500 University Dr.PO Box 850 H142,Dauphin,HERSHEY,unknown,PA
+Milton S Hershey Medical Center-Transplant Center,Hershey,PA,40.265695,-76.674223,500 University Dr.PO Box 850,Dauphin,,,
+Penn State Hershey Rehabilitation LLC,Harrisburg,PA,40.285582,-76.898698,2501 N. Third St.,Dauphin,,,
+Pennsylvania Psychiatric Institute,Harrisburg,PA,40.285755,-76.89852,2501 North 3rd Street,Dauphin,HARRISBURG,unknown,PA
+UPMC Pinnacle Harrisburg,Harrisburg,PA,40.259531,-76.884314,111 N. Front St.,Dauphin,,,
+Select Medical Harrisburg,Harrisburg,PA,40.285582,-76.898698,111 South Front Street,Dauphin,,,
+UPMC Pinnacle-Transplant Center,Harrisburg,PA,40.25647,-76.874999,409 S. Second St.,Dauphin,,,
+Crozer-Chester Medical Center,Upland,PA,39.857076,-75.366162,1 Medical Center Blvd.,Delaware,UPLAND,unknown,PA
+Delaware County Memorial Hospital,Drexel Hill,PA,39.953489,-75.283583,501 N. Lansdowne Ave.,Delaware,DREXEL HILL,unknown,PA
+Kindred Hospital Philadelphia Havertown,Havertown,PA,39.975373,-75.333777,2000 Old W. Chester Pike,Delaware,,,
+Kindred Hospital-Delaware County,Darby,PA,39.92545,-75.26736,1500 N. Lansdowne Ave.6th Floor,Delaware,,,
+Main Line-Bryn Mawr Hospital,Bryn Mawr,PA,40.019103,-75.321288,130 S. Bryn Mawr Ave.,Delaware,,,
+Mercy Fitzgerald Hospital,Darby,PA,39.926591,-75.267953,1500 Lansdowne Ave.,Delaware,,,
+Riddle Memorial Hospital,Media,PA,39.914268,-75.428202,1068 W. Baltimore Pk.,Delaware,MEDIA,unknown,PA
+Springfield Hospital,Springfield,PA,39.92208,-75.348518,190 W. Sproul Rd.,Delaware,,,
+Taylor Hospital,Ridley Park,PA,39.87673,-75.319798,175 E. Chester Pk.,Delaware,,,
+Pennhighlands Elk,St. Marys,PA,41.426325,-78.578108,763 Johnsonburg Rd.,Elk,Saint Marys,town,Pennsylvania
+Corry Memorial Hospital,Corry,PA,41.936202,-79.612053,965 Shamrock Lane,Erie,,,
+Encompass Rehab Hospital of Erie,Erie,PA,42.1337,-80.08584,143 E. Second St.,Erie,,,
+Millcreek Community Hospital,Erie,PA,42.074,-80.09298,5515 Peach St.,Erie,ERIE,unknown,PA
+AHN-Saint Vincent Hospital,Erie,PA,42.11143,-80.07916,232 W. 25th St.,Erie,,,
+Select Specialty Hospital-Erie,Erie,PA,42.1225,-80.0868,252 W. 11th St.,Erie,,,
+Shriners Hospital For Children Erie,Erie,PA,42.11399,-80.11927,1645 W. Eighth St.,Erie,,,
+UPMC Hamot,Erie,PA,42.13289,-80.08792,201 State St.,Erie,ERIE,unknown,PA
+VA Medical Center Erie,Erie,PA,42.10271,-80.06449,135 E. 38th St.,Erie,,,
+Highlands Hospital,Connellsville,PA,40.0229,-79.58814,401 E. Murphy Ave.,Fayette,CONNELLSVILLE,unknown,PA
+Uniontown,Uniontown,PA,39.902348,-79.737862,500 W. Berkeley St.,Fayette,,,
+Chambersburg Hospital,Chambersburg,PA,39.93474,-77.64741,112 N. Seventh St.,Franklin,CHAMBERSBURG,unknown,PA
+Waynesboro Hospital,Waynesboro,PA,39.751432,-77.569276,501 E. Main St.,Franklin,WAYNESBORO,unknown,PA
+Fulton County Medical Center,McConnellsburg,PA,39.937386,-78.008928,214 Peach Orchard Rd.,Fulton,MCCONNELLSBURG,unknown,PA
+Washington Health System - Greene,Waynesburg,PA,39.900261,-80.173861,350 Bonar Ave.,Greene,,,
+JC Blair Memorial Hospital,Huntingdon,PA,40.493578,-78.013898,1225 Warm Springs Ave.,Huntingdon,,,
+Indiana Ambulatory Surgical Associates,Indiana,PA,40.608465,-79.158841,841 Hospital Rd.,Indiana,,,
+Indiana Hospital,Indiana,PA,40.608514,-79.158834,835 Hospital Rd.PO Box 788,Indiana,,,
+Pennhighlands Brookville,Brookville,PA,41.157135,-79.091571,100 Hospital Rd.,Jefferson,,,
+Punxsutawney Area Hospital Inc,Punxsutawney,PA,40.960228,-78.998758,81 Hillcrest Dr.,Jefferson,,,
+Allied Services Institute of Rehabilitation,Scranton,PA,41.454369,-75.678543,475 Morgan Hwy.,Lackawanna,,,
+Clarks Summit State Hospital,Clarks Summit,PA,41.47968,-75.73873,1451 HIillside Dr.,Lackawanna,CLARKS SUMMIT,unknown,PA
+Geisinger Community Medical Center,Scranton,PA,41.400186,-75.645978,1822 Mulberry St.,Lackawanna,SCRANTON,unknown,PA
+Moses Taylor Hospital,Scranton,PA,41.410212,-75.651241,700 Quincy Ave.,Lackawanna,SCRANTON,unknown,PA
+Regional Hospital of Scranton,Scranton,PA,41.412823,-75.653986,746 Jefferson Ave.PO Box 994,Lackawanna,SCRANTON,unknown,PA
+Wellspan Ephrata Hospital,Ephrata,PA,40.187164,-76.182459,169 Martin Ave.,Lancaster,,,
+UPMC-Pinnacle Lititz,Lititz,PA,40.132207,-76.311773,1500 Highland Dr.,Lancaster,,,
+Lancaster General Hospital,Lancaster,PA,40.047167,-76.305338,555 N. Duke St.,Lancaster,LANCASTER,unknown,PA
+Lancaster Rehabilitation Hospital,Lancaster,PA,40.064563,-76.349055,675 Good Dr.,Lancaster,,,
+UPMC Jameson,New Castle,PA,41.013052,-80.35095,1211 Wilmington Ave.,Lawrence,NEW CASTLE,unknown,PA
+Wellspan Good Samaritan Hospital,Lebanon,PA,40.337144,-76.417499,4th & Walnut St. S,Lebanon,,,
+VA Medical Center Lebanon,Lebanon,PA,40.313796,-76.407755,1700 S. Lincoln Ave.,Lebanon,,,
+Philhaven Psychiatric Hospital,Mt Gretna,PA,40.265927,-76.461294,283 S. Butler Road,Lebanon,Mount Gretna Heights,hamlet,Pennsylvania
+Allentown State Hospital,Allentown,PA,40.61909,-75.431838,1600 Hanover Ave.,Lehigh,,,
+Coordinated Health Hosp of Allentown,Allentown,PA,40.6126,-75.5337,1503 Cedar Crest Blvd.,Lehigh,,,
+Good Shepherd Rehabilitation Hospital,Allentown,PA,40.593347,-75.463689,850 S. 5th St.,Lehigh,,,
+Kidspeace Orchard Hills Campus,Orefield,PA,40.649389,-75.611905,5300 Kids Peace Dr.,Lehigh,,,
+Lehigh Valley Hospital 17th & Chew,Allentown,PA,40.600521,-75.494054,17th St. & Chew St.,Lehigh,,,
+Lehigh Valley Hospital-Cedar Crest,Allentown,PA,40.568463,-75.529246,1200 S. Cedar Crest Blvd.,Lehigh,,,
+Lehigh Valley Hospital-Tilghman,Allentown,PA,40.58927,-75.56341,4815 Tilghman St.,Lehigh,,,
+Sacred Heart Hospital,Allentown,PA,40.60813,-75.46819,421 Chew St.,Lehigh,ALLENTOWN,unknown,PA
+St. Lukes Hospital-Allentown,Allentown,PA,40.596194,-75.493437,1736 Hamilton St.,Lehigh,,,
+First Hospital of Wyoming Valley,Kingston,PA,41.269552,-75.888776,562 Wyoming Ave.,Luzerne,KINGSTON,unknown,PA
+Geisinger Wyoming Valley Med Center-Kidney Transplant Unit,Wilkes Barre,PA,41.256879,-75.811703,1000 E. Mountain Dr.,Luzerne,,,
+Geisinger Wyoming Valley Medical Center,Wilkes-Barre,PA,41.256879,-75.811703,1000 E. Mountain Dr.,Luzerne,WILKES BARRE,unknown,PA
+Lehigh Valley Hospital - Hazleton,Hazleton,PA,40.950076,-75.963288,700 E. Broad St.,Luzerne,HAZLETON,unknown,PA
+John Heinz Institute of Rehabilitation,Wilkes Barre,PA,41.244375,-75.854376,150 Mundy St.,Luzerne,,,
+Lehigh Valley Hospital - Hazleton,Hazleton,PA,40.950076,-75.963288,700 E. Broad St.,Luzerne,HAZLETON,unknown,PA
+Special Care Hospital,Nanticoke,PA,41.195725,-76.002955,128 W. Washington St.,Luzerne,,,
+Wilkes-Barre General Hospital,Wilkes-Barre,PA,41.258415,-75.868039,575 N. River St.,Luzerne,WILKES-BARRE,unknown,PA
+Kindred Hospital-Wyoming Valley,Wilkesbarre,PA,41.258415,-75.868039,575 N. River St.Seventh Floor,Luzerne,,,Pennsylvania
+VA Medical Center Wilkes-Barre,Wilkes-Barre,PA,41.247578,-75.841253,1111 E. End Blvd.,Luzerne,Wilkes-Barre Township,locality,Pennsylvania
+ Geisinger Jersey Shore Hospital,Jersey Shore,PA,41.201694,-77.26795,1020 Thompson St.,Lycoming,,,
+UPMC Susquehanna Muncy Valley Hospital,Muncy,PA,41.209031,-76.775645,215 E. Water St.,Lycoming,,,
+UPMC Susquehanna Williamsport Hospital,Williamsport,PA,41.246999,-77.015411,700 High St.,Lycoming,,,
+Bradford Regional Medical Center,Bradford,PA,41.96051,-78.66024,116 Interstate Pkwy.,Mckean,,,
+UPMC-Kane,Kane,PA,41.671959,-78.817067,4372 Route 6,Mckean,KANE,unknown,PA
+UPMC Pinnacle West Shore,Mechanicsburg PA,40.281624,-76.978275,1995 Technology Parkway,Cumberland,Mechanicsburg,unknown,PA,
+Edgewood Surgical Hospital,Transfer,PA,41.330082,-80.419485,239 Edgewood Dr. Ext,Mercer,TRANSFER,unknown,PA
+AHN-Grove City Hospital,Grove City,PA,41.170724,-80.083227,631 N. Broad St. Ext,Mercer,,,
+Sharon Regional Medical Center,Sharon,PA,41.232958,-80.495933,740 E. State St.,Mercer,,,
+UPMC-Horizon Greenville,Greenville,PA,41.209479,-80.47103,110 N. Main St.,Mercer,,,
+UPMC-Horizon Shenango Valley,Farrell,PA,41.411219,-80.372198,2200 Memorial Dr.,Mercer,,,
+Geisinger-Lewistown Hospital,Lewistown,PA,40.618036,-77.566943,400 Highland Ave.,Mifflin,LEWISTOWN,unknown,PA
+St. Luke's - Monroe Campus,Stroudsburg,PA,40.997772,-75.259464,100 St. Luke's Lane,Monroe,,,
+Abington Memorial Hospital,Abington,PA,40.117134,-75.120499,1200 Old York Rd.,Montgomery,ABINGTON,unknown,PA
+Albert Einstein at Elkins Park,Elkins Park,PA,40.071166,-75.100553,60 E. Township Line Rd.,Montgomery,,,
+Brooke Glen Behavioral Hospital,Fort Washington,PA,40.135091,-75.215932,7170 Lafayette Ave.,Montgomery,FORT WASHINGTON,unknown,PA
+Eagleville Hospital,Eagleville,PA,40.15576,-75.4126169,100 Eagleville Rd.P.O. Box 45,Montgomery,EAGLEVILLE,unknown,PA
+Horsham Clinic,Ambler,PA,40.18468,-75.18631,722 E. Butler Pk.,Montgomery,AMBLER,unknown,PA
+Lansdale Hospital,Lansdale,PA,40.251464,-75.269428,100 Medical Campus Dr.,Montgomery,LANSDALE,unknown,PA
+Main Line-Lankenau Hospital,Wynnewood,PA,39.98833,-75.262387,100 E Lancaster Ave.,Montgomery,,,
+Main Line-Lankenau Hospital-Transplant Center,Wynnewood,PA,39.98833,-75.262387,100 E Lancaster Ave.,Montgomery,,,
+Suburban Community Hospital-Norristown,Norristown,PA,40.138363,-75.315629,2701 Dekalb Pike,Montgomery,,,
+Montgomery County MH/MR Emergency Services Inc.,Norristown,PA,40.151254,-75.344473,50 Beech Dr.Gate #4 Building 50,Montgomery,,,
+Norristown State Hospital,Norristown,PA,40.135104,-75.345489,1001 Sterigere St.,Montgomery,NORRISTOWN,unknown,PA
+Northwestern Institute of Psychiatry,Fort Washington,PA,40.134684,-75.213644,450 Bethlehem Pk.,Montgomery,,,
+Physicians Care Surgical Hospital ,Royersford,PA,40.217136,-75.555039,454 Enterprise Dr,Montgomery,,,
+Pottstown Memorial Medical Center,Pottstown,PA,40.242726,-75.612056,1600 E. High St.,Montgomery,,,
+Valley Forge Medical Center & Hospital,Norristown,PA,40.156621,-75.369207,1033 W. Germantown Pk.,Montgomery,,,
+Einstein Medical Center-Montgomery Hospital,East Norriton,PA,40.151254,-75.344473,559 W. Germantown Pk.,Montgomery,,,Pennsylvania
+Eugenia Hospital,Lafayette Hills,PA,40.098418,-75.237406,660 Thomas Rd.,Montgomery,Williams,hamlet,Pennsylvania
+Holy Redeemer Hospital & Medical Center,Meadowbrook,PA,40.109212,-75.0822456,1648 Huntingdon Pk.,Montgomery,Meadowbrook,hamlet,Pennsylvania
+Danville State Hospital,Danville,PA,40.95377,-76.59543,200 State Hospital Dr.,Montour,DANVILLE,unknown,PA
+Geisinger Encompass Health Rehabilitation Hospital,Danville,PA,40.9685,-76.60611,2 Rehab Ln.,Montour,,,
+Geisinger Medical Center,Danville,PA,40.96793,-76.60545,100 N. Academy Ave.,Montour,DANVILLE,unknown,PA
+Geisinger Medical Center-Transplant Center,Danville,PA,40.96795,-76.60668,100 N. Academy Ave.,Montour,,,
+Select Specialty Hospital-Danville,Danville,PA,40.96804,-76.60526,100 N. Academy Ave.,Montour,,,
+Coordinated Health Orthopedic Hospital LLC,Bethlehem,PA,40.67492,-75.36418,2310 Highland Ave.,Northampton,,,
+Easton Hospital,Easton,PA,40.686,-75.24252,250 S. 21st St.,Northampton,EASTON,unknown,PA
+Good Shepherd Specialty Hospital,Bethlehem,PA,40.64487,-75.40562,2545 Schoenersville Rd.,Northampton,,,
+Lehigh Valley-Muhlenberg,Bethlehem,PA,40.646352,-75.406647,2545 Schoenersville Rd.,Northampton,,,
+St. Luke's Hospital Anderson Campus,Easton,PA,40.648986,-75.287853,1872 St. Luke's Blvd.,Northampton,,,
+St. Lukes Hospital-Bethlehem,Bethlehem,PA,40.609548,-75.393508,801 Ostrum St.,Northampton,,,
+Triumph Hospital Easton,Easton,PA,40.68584,-75.24262,250 S. 21st St.,Northampton,,,
+Geisinger Shamokin Area Community Hospital,Coal Township,PA,40.805741,-76.570607,4200 Hospital Rd.,Northumberland,,,
+Albert Einstein Medical Center,Philadelphia,PA,40.035206,-75.144243,5501 Old York Rd.,Philadelphia,PHILADELPHIA,unknown,PA
+Jefferson - Frankford Hospital,Philadelphia,PA,40.02023,-75.08013,,Philadelphia,,,
+Jefferson - Torresdale Hospital,Philadelphia,PA,40.07161,-74.98071,Knights Rd. & Red Lion Rd.,Philadelphia,,,
+Belmont Behavioral Hosptial,Philadelphia,PA,40.002532,-75.214852,4200 Monument Rd.,Philadelphia,,,
+Cancer Treatment Centers of America,Philadelphia,PA,40.018476,-75.098803,1331 E. Wyoming Ave.,Philadelphia,PHILADELPHIA,unknown,PA
+Chestnut Hill Hospital,Philadelphia,PA,40.077916,-75.210445,8835 Germantown Ave.,Philadelphia,PHILADELPHIA,unknown,PA
+Children's Hospital of Philadelphia,Philadelphia,PA,39.949062,-75.193362,3401 Civic Center Blvd.,Philadelphia,PHILADELPHIA,unknown,PA
+Fairmount Behavioral Health System,Philadelphia,PA,40.04242,-75.22307,561 Fairthorn Ave.,Philadelphia,PHILADELPHIA,unknown,PA
+Fox Chase Cancer Center,Philadelphia,PA,40.066755,-75.092583,333 Cottman Ave.,Philadelphia,,,
+Friends Hospital,Philadelphia,PA,40.027834,-75.09989,4641 Roosevelt Blvd.,Philadelphia,PHILADELPHIA,unknown,PA
+Germantown Community Health Center,Philadelphia,PA,40.031683,-75.168888,1 Penn Blvd.,Philadelphia,,,
+Girard Medical Center,Philadelphia,PA,39.97131,-75.150193,Eighth St. & Girard Ave.,Philadelphia,,,
+Good Shepherd Penn Partners,Philadelphia,PA,39.94513,-75.17268,1800 Lombard St.,Philadelphia,,,
+Hahnemann University Hospital-Transplant Center,Philadelphia,PA,39.957533,-75.163038,Broad St. & Vine St.,Philadelphia,,,
+Hospital of the University of Pennsylvania,Philadelphia,PA,39.950084,-75.192525,3400 Spruce St.,Philadelphia,,,
+Hospital of the University of Pennsylvania-Transplant Cent,Philadelphia,PA,39.9501,-75.1933,3400 Spruce St.,Philadelphia,,,
+Jeanes Hospital,Philadelphia,PA,40.068649,-75.087036,7600 Central Ave.,Philadelphia,PHILADELPHIA,unknown,PA
+Kensington Hospital,Philadelphia,PA,39.982043,-75.1342361,136 W. Diamond St.,Philadelphia,PHILADELPHIA,unknown,PA
+Kindred Hospital-Philadelphia,Philadelphia,PA,40.045557,-75.097631,6129 Palmetto St.,Philadelphia,,,
+Kirkbride Center,Philadelphia,PA,39.962326,-75.21918,111 N. 49th St.,Philadelphia,,,
+Magee Rehabilitation Hospital,Philadelphia,PA,39.956406,-75.164025,1513 Race St. 6 Franklin Dr.,Philadelphia,,,
+Mercy Philadelphia Hospital,Philadelphia,PA,39.952407,-75.230267,501 S. 54th St.,Philadelphia,,,
+Methodist Hospital,Philadelphia,PA,39.921482,-75.169932,2301 S. Broad St.,Philadelphia,,,
+Moss Rehabilitation Hospital,Philadelphia,PA,40.03825,-75.14321,1200 W. Tabor Rd.,Philadelphia,,,
+Nazareth Hospital,Philadelphia,PA,40.058916,-75.043799,2601 Holme Ave.,Philadelphia,PHILADELPHIA,unknown,PA
+Penn Medicine At Rittenhouse,Philadelphia,PA,39.944981,-75.171509,1840 South St.,Philadelphia,,,
+Pennsylvania Hospital,Philadelphia,PA,39.945231,-75.155643,800 Spruce St.,Philadelphia,PHILADELPHIA,unknown,PA
+Presbyterian Med Center-Univ of Pa Hlth Sys,Philadelphia,PA,39.956898,-75.199212,39th & Market St.,Philadelphia,,,
+Shriners Hospital For Children Philadelphia,Philadelphia,PA,40.006776,-75.151195,3551 N. Broad St.,Philadelphia,,,
+Roxborough Memorial Hospital,Philadelphia,PA,40.02812,-75.210482,5800 Ridge Ave.,Philadelphia,PHILADELPHIA,unknown,PA
+St. Christophers Hospital for Children,Philadelphia,PA,40.007468,-75.125499,Erie Ave. & N. Front St.,Philadelphia,,,
+Temple East Northeastern Hospital,Philadelphia,PA,39.989605,-75.107001,2301 E. Allegheny Ave.,Philadelphia,,,
+Temple University Episcopal Campus,Philadelphia,PA,39.989682,-75.128184,100 E Lehigh Ave.,Philadelphia,,,
+Temple University Hospital,Philadelphia,,40.00472,-75.152172,3401 N Broad St.Jones Hall Room 1020,Philadelphia,PHILADELPHIA,unknown,PA
+Temple University Hospital Dialysis Unit,Philadelphia,PA,40.00497,-75.1518,Broad St. & Ontario St.,Philadelphia,,,
+Temple University Hospital-Transplant Center,Philadelphia,PA,40.004561,-75.151674,3401 N. Broad St.,Philadelphia,,,
+Thomas Jefferson University Hospital,Philadelphia,PA,39.949379,-75.158224,1020 Sansom St. 111 S. 11th St.,Philadelphia,PHILADELPHIA,unknown,PA
+Triumph Hospital of Philadelphia,Philadelphia,PA,39.92626,-75.16961,1900 S. Broad St.,Philadelphia,,,
+VA Medical Center Philadelphia,Philadelphia,PA,39.949507,-75.200335,University Ave. & Woodland Ave.,Philadelphia,,,
+Wills Eye Hospital,Philadelphia,PA,39.94813,-75.15625,840 Walnut Street,Philadelphia,PHILADELPHIA,unknown,PA
+Chestnut Hill Rehabilitation Hospital,Wyndmoor,PA,40.08096,-75.20269,8601 Stenton Ave.,Philadelphia,Erdenheim,hamlet,Pennsylvania
+Good Shepard Penn Partners Rittenhouse,,,39.944594,-75.173265,1840 South Street,Philadelphia,,,Pennsylvania
+Montgomery Rehabilitation Center,Wyndmoor,PA,40.08096,-75.20269,8601 Stenton Ave.,Philadelphia,Erdenheim,hamlet,Pennsylvania
+Lehigh Valley Hospital-Pocono (L),East Stroudsburg,PA,40.9922,-75.174817,206 E. Brown St.,Pike,,,
+Lehigh Valley Hospital-Pocono (L),East Stroudsburg,PA,40.9922,-75.174817,206 E. Brown St.,Pike,,,
+UPMC Cole Memorial Hospital,Coudersport,PA,41.771809,-77.980379,1001 E. Second St.,Potter,,,
+LVHN-Schuylkill Medical Center-East Norwegian,Pottsville,PA,40.6902,-76.1877,700 E. Norwegian St.,Schuylkill,,,
+LVHN-Schuylkill Medical Center-South Jackson,Pottsville,PA,40.683567318,-76.188950161,420 S. Jackson St.,Schuylkill,,,
+LVHN-Schuylkill Medical Center-East Norwegian,Pottsville,PA,40.6902,-76.1877,700 E. Norwegian St.,Schuylkill,,,
+LVHN-Schuylkill Medical Center-South Jackson,Pottsville,PA,40.683567318,-76.188950161,420 S. Jackson St.,Schuylkill,,,
+St. Lukes-Miners,Coaldale,PA,40.82189,-75.91386,360 W. Ruddle St.,Schuylkill,,,
+Meyersdale Community Hospital,Meyersdale,PA,39.809553,-79.02052,200 Hospital Dr.,Somerset,,,
+UPMC Somerset,Somerset,PA,40.007299,-79.078504,225 S. Center Ave.,Somerset,SOMERSET,unknown,PA
+Windber Hospital,Windber,PA,40.242334,-78.838277,600 Somerset Ave.,Somerset,,,
+Barnes Kasson County Hospital,Susquehanna,PA,41.946667,-75.593891,2872 Turnpike St.,Susquehanna,SUSQUEHANNA,unknown,PA
+Endless Mountain Health System,Montrose,PA,41.837164,-75.837431,100 Hospital Drive,Susquehanna,,,
+UPMC Susquehanna Wellsboro,Wellsboro,PA,41.745042,-77.300352,32 Central Ave.,Tioga,,,
+Evangelical Community Hospital,Lewisburg,PA,40.984223,-76.891241,1 Hospital Dr.,Union,LEWISBURG,unknown,PA
+UPMC-Northwest,Seneca,PA,41.361454,-79.700217,100 Fairfield Dr.,Venango,SENECA,unknown,PA
+Warren General Hospital,Warren,PA,41.843675,-79.153209,2 Crescent Dr.,Warren,WARREN,unknown,PA
+Warren State Hospital,Warren,PA,41.879284,-79.145906,33 Main Dr.,Warren,NORTH WARREN,unknown,PA
+AHN-Canonsburg Hospital,Canonsburg,PA,40.24885,-80.1905,100 Medical Blvd.,Washington,,,
+Monongahela Valley,Monongahela,PA,40.182039,-79.916302,1163 Country Club Rd.,Washington,,,
+Washington Hospital,Washington,PA,40.183044,-80.246854,155 Wilson Ave.,Washington,,,
+Wayne Memorial Hospital,Honesdale,PA,41.575804,-75.260653,601 Park St.,Wayne,HONESDALE,unknown,PA
+Frick Hospital,Mount Pleasant,PA,40.146303,-79.548263,508 S. Church St.,Westmoreland,,,
+Latrobe Hospital,Latrobe,PA,40.320575,-79.394213,1 Mellon Wy.,Westmoreland,,,
+Select Specialty Hospital Laurel Highlands Inc,Latrobe,PA,40.320575,-79.394213,1 Mellon Wy.,Westmoreland,,,
+Torrance State Hospital,Torrance,PA,40.41434,-79.24159,121 Longview Dr.PO Box 111,Westmoreland,TORRANCE,unknown,PA
+Westmoreland Hospital,Greensburg,PA,40.301095,-79.554916,532 W. Pittsburgh St.,Westmoreland,,,
+Tyler Memorial Hospital,Tunkhannock,PA,41.576766,-75.970014,State Route 6 WestPO Box 5950,Wyoming,TUNKHANNOCK,unknown,PA
+Encompass Health Rehabilitation Hosptial of York,York,PA,39.98115,-76.782143,1850 Normandie Dr.,York,,,
+UPMC-Pinnacle-Hanover,Hanover,PA,39.808703,-76.982824,300 Highland Ave.,York,HANOVER,unknown,PA
+UPMC Pinnacle Memorial,York,PA,39.967213,-76.692652,325 S. Belmont St.,York,,,
+Select Specialty Hospital-York,York,PA,39.946523,-76.720325,1701 Innovation Drive.5th Floor,York,,,
+UPMC Pinnacle Memorial,York,PA,39.967213,-76.692652,325 S. Belmont St.,York,,,
+UPMC-Pinnacle-Hanover,Hanover,PA,39.808703,-76.982824,300 Highland Ave.,York,HANOVER,unknown,PA
+WellSpan Surgery & Rehab Hospital,York,PA,39.92354,-76.71723,55 Monument Rd.,York,,,
+York Hospital,York,PA,39.946523,-76.720325,1001 S. George St.,York,YORK,unknown,PA

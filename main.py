@@ -13,6 +13,8 @@ from datetime import datetime
 from pprint import pprint
 import glob
 import argparse
+from geo_utils import HospitalLocations
+
 
 
 def load_credentials():
@@ -72,10 +74,11 @@ def get_files_from_sftp(creds, prefix="HOS_ResourceCapacity_", target_dir="/tmp"
             file_details.append({"target_dir": target_dir, "filename": f, "source_datetime": source_date})
     return (file_details, files)
 
+
 def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="processed_HOS_", columns_wanted=[]):
+    hl = HospitalLocations()
 
     output_file_details = []
-    
     for source_file_details in file_details:
         source_data_file = source_file_details["filename"]
         output_filename = output_prefix + source_data_file
@@ -100,6 +103,10 @@ def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="pro
                     else:
                         new_k = k
                     new_row[new_k] = v
+
+                # Add the county; future proof in case they add it later
+                if "HospitalCounty" not in new_row:
+                    new_row["HospitalCounty"] = hl.get_location_for_hospital(new_row["HospitalName"])["GeocodedHospitalCounty"]
                 rows.append(new_row)
         with open (output_path, 'w', newline='') as wf:
             writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
@@ -151,6 +158,7 @@ def upload_to_arcgis(gis, source_data_dir, source_data_file, original_data_file_
 
         original_dir = os.getcwd()
         os.chdir(tmpdirname)
+        print(f"Uploading to ArcGIS: {source_data_dir}/{source_data_file} as {original_data_file_name} to item id {arcgis_item_id_for_feature_layer}")
         result = fs.manager.overwrite(original_data_file_name)
         os.chdir(original_dir)
         #os.remove(os.path.join(source_data_dir, source_data_file))
@@ -175,6 +183,8 @@ def create_supplies_table(df):
         new_df = new_df.append(new_row, ignore_index=True)
 
     return new_df
+
+
 
 def create_summary_table_row(df, source_data_timestamp, source_filename):
     new_row = {}
@@ -296,6 +306,25 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
     print(status)
     print("Finished load of historical HOS table")
 
+def process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id, dry_run=False):
+    print("Starting load of county summary table...")
+    original_data_file_name = "county_summary_table.csv"
+    new_data_filename = "new_county_summary_table.csv"
+    df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
+    d2 = df.groupby(["HospitalCounty"])[hm.county_sum_columns].sum()
+
+    # don't use index=False here; HospitalCounty is the index
+    d2.to_csv(os.path.join(processed_dir, new_data_filename))
+
+    if dry_run:
+        print("Dry run set, not uploading county summary table to ArcGIS.")
+        status = "Dry run"
+    else:
+        status = upload_to_arcgis(gis, processed_dir, new_data_filename, 
+                            original_data_file_name, arcgis_item_id)
+    print(status)
+    print("Finished load of county summary data")
+
 
 def process_summaries(gis, processed_dir, processed_file_details, dry_run=False):
     print("Starting load of summary table...")
@@ -313,6 +342,7 @@ def process_summaries(gis, processed_dir, processed_file_details, dry_run=False)
             df = load_csv_to_df(os.path.join(processed_dir, fname))
             table_row = create_summary_table_row(df,f["source_datetime"], f["filename"])
             summary_df = summary_df.append(table_row, ignore_index = True)
+            print(table_row)
         else:
             print(f"{fname} has a filesize of {size}, not processing.")
 
@@ -364,17 +394,22 @@ def process_instantaneous(creds, gis, dry_run=False):
     # https://pema.maps.arcgis.com/home/item.html?id=b815071a19394023872f5dd88f273614
     # This would be the page with Source: Feature Service on it.
     arcgis_item_id_for_feature_layer = "38592574c8de4a02b180d6f65918e385"
+
     process_hospital(gis, processed_dir, processed_filename, arcgis_item_id_for_feature_layer, 
-            original_data_file_name, 
-    dry_run=dry_run)
+            original_data_file_name, dry_run=dry_run)
 
     # id for the public layer
     arcgis_item_id_for_public_feature_layer = "1affcef28be04f4f994c99dea72d1a0e"
     public_original_filename = "public_processed_HOS.csv"
+
     process_hospital(gis, public_processed_dir, public_processed_filename, 
-        arcgis_item_id_for_public_feature_layer, public_original_filename, dry_run=dry_run)
+         arcgis_item_id_for_public_feature_layer, public_original_filename, dry_run=dry_run)
 
     process_supplies(gis, processed_dir, processed_filename, dry_run=dry_run)
+
+
+    arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea"
+    process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
 def process_historical(creds, gis, dry_run=False):
