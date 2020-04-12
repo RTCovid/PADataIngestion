@@ -13,7 +13,7 @@ from datetime import datetime
 from pprint import pprint
 import glob
 import argparse
-from geo_utils import HospitalLocations
+from geo_utils import HospitalLocations, Counties
 
 
 
@@ -310,8 +310,18 @@ def process_county_summaries(gis, processed_dir, processed_filename, arcgis_item
     print("Starting load of county summary table...")
     original_data_file_name = "county_summary_table.csv"
     new_data_filename = "new_county_summary_table.csv"
+
     df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
     d2 = df.groupby(["HospitalCounty"])[hm.county_sum_columns].sum()
+
+    # PA wants to see 0.0 for any county that doesn't have a hospital, so:
+    existing_counties = set(df["HospitalCounty"].to_list())
+    c = Counties()
+    all_counties = c.counties
+    unused_counties = list(set(all_counties).difference(existing_counties))
+    a_row = [0.0] * 9
+    row_df = pd.DataFrame([a_row] * len(unused_counties), columns=d2.columns, index=unused_counties)
+    d2 = d2.append(row_df)
 
     # don't use index=False here; HospitalCounty is the index
     d2.to_csv(os.path.join(processed_dir, new_data_filename))
@@ -342,7 +352,6 @@ def process_summaries(gis, processed_dir, processed_file_details, dry_run=False)
             df = load_csv_to_df(os.path.join(processed_dir, fname))
             table_row = create_summary_table_row(df,f["source_datetime"], f["filename"])
             summary_df = summary_df.append(table_row, ignore_index = True)
-            print(table_row)
         else:
             print(f"{fname} has a filesize of {size}, not processing.")
 
