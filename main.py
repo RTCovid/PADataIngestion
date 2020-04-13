@@ -14,6 +14,7 @@ from pprint import pprint
 import glob
 import argparse
 from geo_utils import HospitalLocations, Counties
+from operators.process_csv import process_csv
 
 
 
@@ -71,49 +72,8 @@ def get_files_from_sftp(creds, prefix="HOS_ResourceCapacity_", target_dir="/tmp"
             source_date = source_date.replace(prefix,'')
             source_date = source_date + " UTC"
             source_date = datetime.strptime(source_date, "%Y-%m-%d_%H-%M %Z")
-            file_details.append({"target_dir": target_dir, "filename": f, "source_datetime": source_date})
+            file_details.append({"dir": target_dir, "filename": f, "source_datetime": source_date})
     return (file_details, files)
-
-
-def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="processed_HOS_", columns_wanted=[]):
-    hl = HospitalLocations()
-
-    output_file_details = []
-    for source_file_details in file_details:
-        source_data_file = source_file_details["filename"]
-        output_filename = output_prefix + source_data_file
-        source_file_details["processed_filename"] = output_filename
-        output_dir = tmpdir
-        output_path = os.path.join(output_dir, output_filename)
-        rows = []
-        with open (os.path.join(source_data_dir, source_data_file), newline='') as rf:
-            reader = csv.DictReader(rf)
-            # using dictreader, we don't need to read the header row in.
-            for row in reader:
-                new_row = {}
-                if len(columns_wanted) > 0:
-                    ks = list(row.keys())
-                    for k in ks:
-                        if k.strip() not in columns_wanted:
-                            del row[k]
-                for k, v in row.items():
-                    # ArcGIS can't handle ' in header column names.
-                    if "'" in k:
-                        new_k = k.replace("'", "")
-                    else:
-                        new_k = k
-                    new_row[new_k] = v
-
-                # Add the county; future proof in case they add it later
-                if "HospitalCounty" not in new_row:
-                    new_row["HospitalCounty"] = hl.get_location_for_hospital(new_row["HospitalName"])["GeocodedHospitalCounty"]
-                rows.append(new_row)
-        with open (output_path, 'w', newline='') as wf:
-            writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
-            writer.writeheader()
-            writer.writerows(rows)
-        output_file_details.append(source_file_details)
-    return (output_dir, output_file_details)
 
 
 def get_gis(creds):
@@ -388,19 +348,21 @@ def process_instantaneous(creds, gis, dry_run=False):
     print("Processing instantaneous tables...")
     print("Getting latest HOS file from SFTP...")
     file_details, all_filenames = get_files_from_sftp(creds)
-    data_dir = file_details[0]["target_dir"]
+    data_dir = file_details[0]["dir"]
     latest_filename = file_details[0]["filename"]
     source_datetime = file_details[0]["source_datetime"]
     print("Finished.")
 
     # Public-only data
-    public_processed_dir, public_processed_file_details = process_csv(data_dir, [file_details[0]],
+    public_processed_file_details = process_csv([file_details[0]],
                     output_prefix="public_processed_HOS_", columns_wanted=hm.columns_for_public_release)
     public_processed_filename = public_processed_file_details[0]["processed_filename"]
+    public_processed_dir = public_processed_file_details[0]["output_dir"]
 
     # Full data
-    processed_dir, processed_file_details = process_csv(data_dir, [file_details[0]])
+    processed_file_details = process_csv([file_details[0]])
     processed_filename = processed_file_details[0]["processed_filename"]
+    processed_dir = processed_file_details[0]["output_dir"]
 
     print(f"Finished processing {data_dir}/{latest_filename}, file is {processed_dir}/{processed_filename}")
     # The name of the file you created the layer service with.
@@ -442,9 +404,9 @@ def process_historical(creds, gis, dry_run=False):
     if len(file_details) == 0:
         print("No new files to process for historical summary table data.")
     else:
-        data_dir = file_details[0]["target_dir"]
-        processed_dir, processed_filenames = process_csv(data_dir, file_details)
-        process_summaries(gis, processed_dir, file_details, dry_run=dry_run)
+        processed_file_details = process_csv(file_details)
+        processed_dir = processed_file_details[0]["output_dir"]
+        process_summaries(gis, processed_dir, processed_file_details, dry_run=dry_run)
 
     # Full HOS historical table
     item_id = "46f25552405a4fef9a6658fb5c0c68bf"
@@ -456,9 +418,9 @@ def process_historical(creds, gis, dry_run=False):
     if len(file_details) == 0:
         print("No new files to process for historical data.")
     else:
-        data_dir = file_details[0]["target_dir"]
-        processed_dir, processed_filenames = process_csv(data_dir, file_details)
-        process_historical_hos(gis, processed_dir, file_details, dry_run=dry_run)
+        processed_file_details = process_csv(file_details)
+        processed_dir = processed_file_details[0]["output_dir"]
+        process_historical_hos(gis, processed_dir, processed_file_details, dry_run=dry_run)
 
     print("Finished processing historical tables.")
 
