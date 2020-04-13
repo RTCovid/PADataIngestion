@@ -159,7 +159,12 @@ def upload_to_arcgis(gis, source_data_dir, source_data_file, original_data_file_
         original_dir = os.getcwd()
         os.chdir(tmpdirname)
         print(f"Uploading to ArcGIS: {source_data_dir}/{source_data_file} as {original_data_file_name} to item id {arcgis_item_id_for_feature_layer}")
-        result = fs.manager.overwrite(original_data_file_name)
+        try:
+            result = fs.manager.overwrite(original_data_file_name)
+        except Exception as e:
+            print(f"Caught exception {e}, retrying")
+            result = fs.manager.overwrite(original_data_file_name)
+
         os.chdir(original_dir)
         #os.remove(os.path.join(source_data_dir, source_data_file))
     return result
@@ -312,19 +317,21 @@ def process_county_summaries(gis, processed_dir, processed_filename, arcgis_item
     new_data_filename = "new_county_summary_table.csv"
 
     df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
-    d2 = df.groupby(["HospitalCounty"])[hm.county_sum_columns].sum()
-
+    d2 = df.groupby(["HospitalCounty"])[hm.county_sum_columns].sum().reset_index()
+    
     # PA wants to see 0.0 for any county that doesn't have a hospital, so:
-    existing_counties = set(df["HospitalCounty"].to_list())
+    existing_counties = set(d2["HospitalCounty"].to_list())
     c = Counties()
     all_counties = c.counties
     unused_counties = list(set(all_counties).difference(existing_counties))
     a_row = [0.0] * 9
-    row_df = pd.DataFrame([a_row] * len(unused_counties), columns=d2.columns, index=unused_counties)
+    rows = []
+    for county in unused_counties:
+        rows.append([county] + a_row)
+    row_df = pd.DataFrame(rows, columns=d2.columns)
     d2 = d2.append(row_df)
 
-    # don't use index=False here; HospitalCounty is the index
-    d2.to_csv(os.path.join(processed_dir, new_data_filename))
+    d2.to_csv(os.path.join(processed_dir, new_data_filename), header=True, index=False)
 
     if dry_run:
         print("Dry run set, not uploading county summary table to ArcGIS.")
@@ -417,7 +424,9 @@ def process_instantaneous(creds, gis, dry_run=False):
     process_supplies(gis, processed_dir, processed_filename, dry_run=dry_run)
 
 
-    arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea"
+    # original that started failing:
+    # arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea"
+    arcgis_item_id_for_county_summaries = "c9f90ca7c83e40b8b6f4106dd3b0dfed"
     process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
