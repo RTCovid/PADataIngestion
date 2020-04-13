@@ -2,6 +2,20 @@ import geopy
 from geopy.geocoders import Nominatim
 import csv
 
+class Counties(object):
+    def __init__(self):
+        self.cache = {}
+        self.counties = self.load_counties()
+
+    def load_counties(self):
+        counties = []
+        with open("geo_data/pa_counties.csv", newline='') as csvfile:
+            reader = csv.reader(csvfile)
+            for row in reader:
+                counties.append(row[0].title())
+        return counties
+
+
 class HospitalLocations(object):
     def __init__(self):
         self.cache = {}
