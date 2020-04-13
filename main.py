@@ -14,8 +14,7 @@ from pprint import pprint
 import glob
 import argparse
 from geo_utils import HospitalLocations, Counties
-from operators.process_csv import process_csv
-
+from operators import process_csv, get_files_from_sftp, get_gis, get_arcgis_feature_collection_from_item_id, upload_to_arcgis, get_already_processed_files
 
 
 def load_credentials():
@@ -30,104 +29,6 @@ def load_credentials():
 
     return creds
 
-
-# On Google Cloud, only /tmp is writeable.
-def get_files_from_sftp(creds, prefix="HOS_ResourceCapacity_", target_dir="/tmp", 
-                               only_latest=True, filenames_to_ignore=[]):
-    cnopts = pysftp.CnOpts()
-    cnopts.hostkeys.load('copaftp.pub')
-    username = creds['sftp']['username']
-    password = creds['sftp']['password']
-    host = creds['sftp']['host']
-    latest_filename = ""
-    files = ""
-    file_details = []
-
-    existing_files = glob.glob(target_dir + "/" + prefix + "*")
-
-    with pysftp.Connection(host, username=username, password=password, cnopts=cnopts) as sftp:
-        files = sftp.listdir()
-        files = [f for f in files if f.startswith(prefix)]
-        # the files are sorted by the pysftp library, and the last element of the list is the latest file
-        # Filenames look like HOS_ResourceCapacity_2020-03-30_00-00.csv
-        # And timestamps are in UTC
-        files_to_get = []
-        if only_latest:
-            latest_filename = files[-1]
-            files_to_get = [latest_filename]
-        else:
-            files_to_get = files
-        for f in files_to_get:
-            if f in filenames_to_ignore:
-                print(f"Ignoring {f}")
-                continue
-            print(f"Getting: {f}")
-            if os.path.join(target_dir, f) not in existing_files:
-                sftp.get(f, f'{target_dir}/{f}')
-                print(f"Finished downloading {target_dir}/{f}")
-            else:
-                print(f"Didn't have to download {target_dir}/{f}; it already exists")
-
-            source_date = f.split('.')[0]
-            source_date = source_date.replace(prefix,'')
-            source_date = source_date + " UTC"
-            source_date = datetime.strptime(source_date, "%Y-%m-%d_%H-%M %Z")
-            file_details.append({"dir": target_dir, "filename": f, "source_datetime": source_date})
-    return (file_details, files)
-
-
-def get_gis(creds):
-    username = creds['arcgis']['username']
-    password = creds['arcgis']['password']
-    host = creds['arcgis']['host']
-
-    gis = GIS(host, username, password) 
-    return gis
-
-def get_arcgis_feature_collection_from_item_id(gis, arcgis_item_id):
-
-    # You might ask - why do you not just use the FeatureLayerCollection's URL?
-    # Because you get a 403 if you try that. Instead, if you grab the parent container
-    # from the published layer, you can use the FLC manager's overwrite() method successfully.
-
-    feature_item = gis.content.get(arcgis_item_id)
-    if "type:Table" in str(feature_item):
-        fs = feature_item.tables[0].container
-    else:
-        fs = feature_item.layers[0].container
-    return fs
-
-def upload_to_arcgis(gis, source_data_dir, source_data_file, original_data_file_name, 
-                    arcgis_item_id_for_feature_layer):
-
-    fs = get_arcgis_feature_collection_from_item_id(gis, arcgis_item_id_for_feature_layer)
-    # Overwrite docs:
-    # https://developers.arcgis.com/python/api-reference/arcgis.features.managers.html#featurelayercollectionmanager
-
-    # Note that the filename (not the path, just the filename) must match the filename of the data the feature layer
-    # was originally created from, because reasons. We rename here.
-
-    # Note that if you have a feature service you want to use overwrite() on, you must share that
-    # feature service with everyone (share->everyone). If you don't, you'll get a 403. You must also
-    # share the underlying CSV with everyone.
-    result = ""
-
-    with tempfile.TemporaryDirectory() as tmpdirname:
-        shutil.copyfile(os.path.join(source_data_dir, source_data_file), 
-                        os.path.join(tmpdirname, original_data_file_name))
-
-        original_dir = os.getcwd()
-        os.chdir(tmpdirname)
-        print(f"Uploading to ArcGIS: {source_data_dir}/{source_data_file} as {original_data_file_name} to item id {arcgis_item_id_for_feature_layer}")
-        try:
-            result = fs.manager.overwrite(original_data_file_name)
-        except Exception as e:
-            print(f"Caught exception {e}, retrying")
-            result = fs.manager.overwrite(original_data_file_name)
-
-        os.chdir(original_dir)
-        #os.remove(os.path.join(source_data_dir, source_data_file))
-    return result
 
 def load_csv_to_df(csv_file_path):
     df = pd.read_csv(csv_file_path)
@@ -197,21 +98,6 @@ def process_supplies(gis, processed_dir, processed_filename, dry_run=False):
     print(status)
     print("Finished load of supplies data")
 
-
-def get_files_to_not_sftp(gis, item_id):
-    fs = gis.content.get(item_id)
-
-    if "type:Table" in str(fs):
-        t = fs.tables[0]
-    else:
-        t = fs.layers[0]
-
-    qr = t.query(out_fields='Source_Filename')
-    filenames_to_not_sftp = []
-    for f in qr.features:
-        filenames_to_not_sftp.append(f.attributes['Source_Filename'])
-    filenames_to_not_sftp = list(set(filenames_to_not_sftp))
-    return filenames_to_not_sftp
 
 def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=False):
     print("Starting load of historical HOS table...")
@@ -398,7 +284,7 @@ def process_historical(creds, gis, dry_run=False):
 
     # Summary table
     item_id = "ab2820906d2c4b7fa68fcf47a5261916"
-    files_to_not_sftp = get_files_to_not_sftp(gis, item_id)
+    files_to_not_sftp = get_already_processed_files(gis, item_id)
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
 
     if len(file_details) == 0:
@@ -413,7 +299,7 @@ def process_historical(creds, gis, dry_run=False):
     files_to_not_sftp = []
     file_details = []
     all_filenames = []
-    files_to_not_sftp = get_files_to_not_sftp(gis, item_id)
+    files_to_not_sftp = get_already_processed_files(gis, item_id)
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:
         print("No new files to process for historical data.")
