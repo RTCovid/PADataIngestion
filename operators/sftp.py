@@ -3,6 +3,14 @@ import glob
 import os
 from datetime import datetime
 
+
+def get_datetime_from_filename(filename, prefix="HOS_ResourceCapacity_"):
+    source_date = filename.split('.')[0]
+    source_date = source_date.replace(prefix,'')
+    source_date = source_date + " UTC"
+    source_date = datetime.strptime(source_date, "%Y-%m-%d_%H-%M %Z")
+    return source_date
+
 # On Google Cloud, only /tmp is writeable.
 def get_files_from_sftp(creds, prefix="HOS_ResourceCapacity_", target_dir="/tmp", 
                                only_latest=True, filenames_to_ignore=[]):
@@ -40,10 +48,7 @@ def get_files_from_sftp(creds, prefix="HOS_ResourceCapacity_", target_dir="/tmp"
             else:
                 print(f"Didn't have to download {target_dir}/{f}; it already exists")
 
-            source_date = f.split('.')[0]
-            source_date = source_date.replace(prefix,'')
-            source_date = source_date + " UTC"
-            source_date = datetime.strptime(source_date, "%Y-%m-%d_%H-%M %Z")
+            source_date = get_datetime_from_filename(f, prefix=prefix)
             file_details.append({"dir": target_dir, "filename": f, "source_datetime": source_date})
     return (file_details, files)
 

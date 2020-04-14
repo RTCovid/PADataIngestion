@@ -15,6 +15,7 @@ import glob
 import argparse
 from geo_utils import HospitalLocations, Counties
 from operators import process_csv, get_files_from_sftp, get_gis, get_arcgis_feature_collection_from_item_id, upload_to_arcgis, get_already_processed_files
+from operators import get_datetime_from_filename
 
 
 def load_credentials():
@@ -49,8 +50,6 @@ def create_supplies_table(df):
         new_df = new_df.append(new_row, ignore_index=True)
 
     return new_df
-
-
 
 def create_summary_table_row(df, source_data_timestamp, source_filename):
     new_row = {}
@@ -230,8 +229,47 @@ def process_summaries(gis, processed_dir, processed_file_details, dry_run=False)
     print("Finished load of summary table")
 
 
-def process_instantaneous(creds, gis, dry_run=False):
+def process_daily_hospital_averages(gis, historical_gis_item_id, historical_already_processed_files,
+                                         daily_averages_item_id, daily_averages_already_processed_files, dry_run=False):
+    # see what days have been processed
+    # if not processed, 
+    # get the historical table
+    # turn it into a df
+    # per day, get the averages
+    # for new: days
+
+
+    days = []
+    for filename in sorted(historical_already_processed_files):
+        d = get_datetime_from_filename(filename)
+        days.append(d.date())
+
+    table = gis.content.get(historical_gis_item_id)
+    t = table.layers[0]
+    "Source_Data_Timestamp >= '4/13/2020' and Source_Data_Timestamp < '4/14/2020'"
+    df = t.query(where="Source_Data_Timestamp > CURRENT_TIMESTAMP - INTERVAL '1' DAY", as_df=True)
+    print(df)
+
+    new_col_names = {}
+    for name in t.properties.fields:
+        new_col_names[name["name"]]  = name["alias"]
+
+    df = df.rename(columns=new_col_names)
+    print(df)
+
+    df.to_csv("/tmp/one_day.csv", index=False, header=True)
+    os.exit()
+
+    pass
+    
+
+
+def process_instantaneous(dry_run=False):
     print("Processing instantaneous tables...")
+    creds = load_credentials()
+    print("Connecting to ArcGIS...")
+    gis = get_gis(creds)
+    print("Connected.")
     print("Getting latest HOS file from SFTP...")
     file_details, all_filenames = get_files_from_sftp(creds)
     data_dir = file_details[0]["dir"]
@@ -278,8 +316,12 @@ def process_instantaneous(creds, gis, dry_run=False):
     process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
-def process_historical(creds, gis, dry_run=False):
+def process_historical(dry_run=False):
     print("Processing historical tables...")
+    creds = load_credentials()
+    print("Connecting to ArcGIS...")
+    gis = get_gis(creds)
+    print("Connected.")
     # These processors manage their own SFTP's, since they may need to get many files.
 
     # Summary table
@@ -308,20 +350,37 @@ def process_historical(creds, gis, dry_run=False):
         processed_dir = processed_file_details[0]["output_dir"]
         process_historical_hos(gis, processed_dir, processed_file_details, dry_run=dry_run)
 
+
+    historical_gis_item_id = "46f25552405a4fef9a6658fb5c0c68bf"
+    historical_averages_item_id = ""
+    print(" XXX get the list of files already processed!")
+    #already_processed_files = get_already_processed_files(gis, historical_averages_item_id)
+    # 
+    already_processed_files = []
+    process_daily_hospital_averages(gis, historical_gis_item_id, files_to_not_sftp, 
+                                         historical_averages_item_id, already_processed_files, 
+                                         dry_run=dry_run)
     print("Finished processing historical tables.")
 
+
 def main(dry_run=False):
-    print("Started ingestion processing run")
-    creds = load_credentials()
-    print("Connecting to ArcGIS...")
-    gis = get_gis(creds)
-    print("Connected.")
-    process_instantaneous(creds, gis, dry_run=dry_run)
-    process_historical(creds, gis, dry_run=dry_run)
-    print("Finished ingestion processing run")
+    print("Started full ingestion processing run")
+    process_instantaneous(dry_run=dry_run)
+    process_historical(dry_run=dry_run)
+    print("Finished full ingestion processing run")
 
 def hello_pubsub(event, context):
     main()
+
+def instantaneous_pubsub(event, context):
+    print("Started instantaneous ingestion processing run")
+    process_instantaneous()
+    print("Finished instantaneous ingestion processing run")
+
+def historical_pubsub(event, context):
+    print("Started historical ingestion processing run")
+    process_historical()
+    print("Finished historical ingestion processing run")
 
 if __name__== "__main__":
     dry_run = False
