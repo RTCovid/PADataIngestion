@@ -36,6 +36,8 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                         new_k = k
                     new_row[new_k] = v
 
+                # Older files have bad names for hospitals.
+                new_row["HospitalName"] = hl.get_canonical_name(new_row["HospitalName"])
                 # Add the county; future proof in case they add it later
                 if "HospitalCounty" not in new_row:
                     new_row["HospitalCounty"] = hl.get_location_for_hospital(new_row["HospitalName"])["GeocodedHospitalCounty"]

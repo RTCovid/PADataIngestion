@@ -17,6 +17,14 @@ class Counties(object):
 
 
 class HospitalLocations(object):
+    # mapping of used names to normalized names
+    aliases = { "Ellwood City": "Ellwood City Medical Center",
+                "Lancaster General Health-Women & Babies Hospital": "Lancaster General Hospital",
+                "AHN-Suburban Hospital": "Lifecare Hospitals of Pittsburgh-North Campus",
+                "Hahnemann University Hospital-Transplant Center": "Hahnemann University Hospital",
+                "Belmont Center For Comprehensive Treatment": "Belmont Behavioral Hosptial",
+                "AHN- Grove City Hospital": "Grove City Medical Center",
+                }
     def __init__(self):
         self.cache = {}
         self.cache = self.load_cache()
@@ -28,6 +36,11 @@ class HospitalLocations(object):
         error["lat"] = lat
         error["lon"] = lon
         return error
+
+    def get_canonical_name(self, hos):
+        if hos in self.aliases:
+            hos = self.aliases[hos]
+        return hos
 
     def get_location_for_hospital(self, hos):
         if hos in self.cache:

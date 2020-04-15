@@ -98,11 +98,11 @@ def process_supplies(gis, processed_dir, processed_filename, dry_run=False):
     print("Finished load of supplies data")
 
 
-def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=False):
+def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_historical_item_id, 
+                            original_data_file_name="historical_hos_table_v2.csv", dry_run=False):
     print("Starting load of historical HOS table...")
-    original_data_file_name = "historical_hos_table.csv"
-    arcgis_historical_item_id = "46f25552405a4fef9a6658fb5c0c68bf"
-
+  #  original_data_file_name = "historical_hos_table.csv" # v1
+  #  arcgis_historical_item_id = "46f25552405a4fef9a6658fb5c0c68bf" # v1
 
     table = gis.content.get(arcgis_historical_item_id)
     t = table.layers[0]
@@ -113,6 +113,7 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
 
     header = {}
     features = []
+    new_rows = []
     for f in processed_file_details:
         fname = f["processed_filename"]
         size = os.path.getsize(os.path.join(processed_dir, fname))
@@ -127,23 +128,25 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
                     row["Processed At"] = processed_time
                     row["Source Filename"] = f["filename"]
                     header.update(row)
+                    
                     # rename the headers based on alias
                     for alias, name in new_col_names.items():
                         if alias in row:
                             new_row[name] = row[alias]
                     ft = Feature(attributes=new_row)
                     features.append(ft)
+                    new_rows.append(row)
         else:
             print(f"{fname} has a filesize of {size}, not processing.")
 
     # historical for generating a new source CSV
-    # you'll need to create a new_rows list above
     #if len(new_rows) > 0:
-    #    with open(original_data_file_name, "w") as csvfile:
+    #    with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
     #        writer = csv.DictWriter(csvfile, fieldnames=header)
     #        writer.writeheader()
     #        writer.writerows(new_rows)
     # Done CSV generation
+    
 
     # It's okay if features is empty; status will reflect arcgis telling us that,
     # but it won't stop the processing.
@@ -238,7 +241,8 @@ def process_daily_hospital_averages(gis, historical_gis_item_id, historical_alre
     # per day, get the averages
     # for new: days
 
-
+    print("XXX daily_hospital_averages stub, returning.")
+    return
     days = []
     for filename in sorted(historical_already_processed_files):
         d = get_datetime_from_filename(filename)
@@ -246,7 +250,7 @@ def process_daily_hospital_averages(gis, historical_gis_item_id, historical_alre
 
     table = gis.content.get(historical_gis_item_id)
     t = table.layers[0]
-    "Source_Data_Timestamp >= '4/13/2020' and Source_Data_Timestamp < '4/14/2020'"
+    #"Source_Data_Timestamp >= '4/13/2020' and Source_Data_Timestamp < '4/14/2020'"
     df = t.query(where="Source_Data_Timestamp > CURRENT_TIMESTAMP - INTERVAL '1' DAY", as_df=True)
     print(df)
 
@@ -338,32 +342,36 @@ def process_historical(dry_run=False):
 
     # Full HOS historical table
     item_id = "46f25552405a4fef9a6658fb5c0c68bf"
+    item_id = "bf24ecc40f294c1ba5ad16522f9be512" # v2
     files_to_not_sftp = []
     file_details = []
     all_filenames = []
     files_to_not_sftp = get_already_processed_files(gis, item_id)
+
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:
         print("No new files to process for historical data.")
     else:
         processed_file_details = process_csv(file_details)
         processed_dir = processed_file_details[0]["output_dir"]
-        process_historical_hos(gis, processed_dir, processed_file_details, dry_run=dry_run)
+        process_historical_hos(gis, processed_dir, processed_file_details, item_id, dry_run=dry_run)
 
 
-    historical_gis_item_id = "46f25552405a4fef9a6658fb5c0c68bf"
-    historical_averages_item_id = ""
-    print(" XXX get the list of files already processed!")
-    #already_processed_files = get_already_processed_files(gis, historical_averages_item_id)
-    # 
-    already_processed_files = []
-    process_daily_hospital_averages(gis, historical_gis_item_id, files_to_not_sftp, 
-                                         historical_averages_item_id, already_processed_files, 
-                                         dry_run=dry_run)
+    historical_gis_item_id = "bf24ecc40f294c1ba5ad16522f9be512" 
+
+    print("XXX not doing historical averages yet")
+    if False:
+        historical_averages_item_id = ""
+        already_processed_files = get_already_processed_files(gis, historical_averages_item_id)
+        
+        already_processed_files = []
+        process_daily_hospital_averages(gis, historical_gis_item_id, files_to_not_sftp, 
+                                            historical_averages_item_id, already_processed_files, 
+                                            dry_run=dry_run)
     print("Finished processing historical tables.")
 
 
-def main(dry_run=False):
+def main(dry_run=False, csv_to_process=None):
     print("Started full ingestion processing run")
     process_instantaneous(dry_run=dry_run)
     process_historical(dry_run=dry_run)

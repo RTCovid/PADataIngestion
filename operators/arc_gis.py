@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 from arcgis.gis import GIS
 from arcgis.features import FeatureLayerCollection, FeatureSet, Table, Feature
+import tempfile
+import shutil
+import os
 
 def get_gis(creds):
     username = creds['arcgis']['username']
@@ -68,5 +71,5 @@ def get_already_processed_files(gis, item_id):
     filenames_to_not_sftp = []
     for f in qr.features:
         filenames_to_not_sftp.append(f.attributes['Source_Filename'])
-    filenames_to_not_sftp = list(set(filenames_to_not_sftp))
+    filenames_to_not_sftp = sorted(list(set(filenames_to_not_sftp)))
     return filenames_to_not_sftp
