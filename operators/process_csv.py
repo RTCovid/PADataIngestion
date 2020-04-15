@@ -2,6 +2,38 @@ import os
 import csv
 from geo_utils import HospitalLocations
 
+def y_to_one(x): 
+    if x == "Y":
+        return 1
+    return x
+
+converters = {
+    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?": y_to_one ,
+    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-4-7 days Response ?": y_to_one ,
+    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-8-14 days Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-15-28 days Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-29 or more days Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-3 or less days Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-4-7 days Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?": y_to_one,
+
+    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-15-28 days Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-29 or more days Response ?": y_to_one,
+
+    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Solutions Response ?": y_to_one,
+    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Wipes Response ?": y_to_one,
+    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Gloves Response ?": y_to_one,
+    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Alcohol Based Hand Sanitizer Response ?": y_to_one,
+    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Hand Soap Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-4-7 days Response ?": y_to_one,
+    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-3 or less days Response ?": y_to_one,
+
+    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-8-14 days Response ?": y_to_one, 
+    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-15-28 days Response ?": y_to_one, 
+    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-29 or more days Response ?": y_to_one,
+    }
+
 # accepts a list of files to get (or latest if no list), prefix, column restrictions
 # returns a list of files 
 def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_", columns_wanted=[]):
@@ -29,18 +61,35 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                         if k.strip() not in columns_wanted:
                             del row[k]
                 for k, v in row.items():
+                    # Do any value processing here; it'd be nice if we could dataframe.apply() but we can't here.
+                    #if k in converters:
+                    #    print(k)
+                    #    row[k] = converters[k](v)
+                    #    v = converters[k](v)
+                    #    print(v, row[k])
+                        
                     # ArcGIS can't handle ' in header column names.
                     if "'" in k:
                         new_k = k.replace("'", "")
                     else:
                         new_k = k
+
                     new_row[new_k] = v
 
                 # Older files have bad names for hospitals.
-                new_row["HospitalName"] = hl.get_canonical_name(new_row["HospitalName"])
+                try:
+                    new_row["HospitalName"] = hl.get_canonical_name(new_row["HospitalName"])
+                except TypeError as e:
+                    print(f"{source_data_file}: " + new_row["HospitalName"] + " has no canonical information!")
+                    raise e
+
                 # Add the county; future proof in case they add it later
-                if "HospitalCounty" not in new_row:
-                    new_row["HospitalCounty"] = hl.get_location_for_hospital(new_row["HospitalName"])["GeocodedHospitalCounty"]
+                try:
+                    if "HospitalCounty" not in new_row:
+                        new_row["HospitalCounty"] = hl.get_location_for_hospital(new_row["HospitalName"])["GeocodedHospitalCounty"]
+                except TypeError as e:
+                    print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
+                    raise e
                 rows.append(new_row)
         with open (output_path, 'w', newline='') as wf:
             writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
