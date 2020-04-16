@@ -26,6 +26,8 @@ class HospitalLocations(object):
                 "AHN- Grove City Hospital": "Grove City Medical Center",
                 "Riddle Memorial Hopital": "Riddle Memorial Hospital",
                 "Riddle Memoial Hospital": "Riddle Memorial Hospital",
+                "Curahealth Hospital Heritage Valley": "Curahealth Hospital of Heritage Valley Beaver",
+                "CuraHealth Pittsburgh": "Kindred Hospital-Pittsburgh",
                 }
     def __init__(self):
         self.cache = {}
@@ -40,13 +42,13 @@ class HospitalLocations(object):
         return error
 
     def get_canonical_name(self, hos):
-        if hos in self.aliases:
-            hos = self.aliases[hos]
+        if hos.strip() in self.aliases:
+            hos = self.aliases[hos.strip()]
         return hos
 
     def get_location_for_hospital(self, hos):
-        if hos in self.cache:
-            return self.cache[hos]
+        if hos.strip() in self.cache:
+            return self.cache[hos.strip()]
         return None
 
     def load_cache(self):

@@ -9,7 +9,7 @@ import csv
 import base64
 import pandas as pd
 import header_mapping as hm
-from datetime import datetime
+from datetime import datetime, date, timedelta
 from pprint import pprint
 import glob
 import argparse
@@ -232,8 +232,7 @@ def process_summaries(gis, processed_dir, processed_file_details, dry_run=False)
     print("Finished load of summary table")
 
 
-def process_daily_hospital_averages(gis, historical_gis_item_id, historical_already_processed_files,
-                                         daily_averages_item_id, daily_averages_already_processed_files, dry_run=False):
+def process_daily_hospital_averages(gis, historical_gis_item_id, daily_averages_item_id, dry_run=False):
     # see what days have been processed
     # if not processed, 
     # get the historical table
@@ -242,29 +241,39 @@ def process_daily_hospital_averages(gis, historical_gis_item_id, historical_alre
     # for new: days
 
     print("XXX daily_hospital_averages stub, returning.")
-    return
-    days = []
-    for filename in sorted(historical_already_processed_files):
-        d = get_datetime_from_filename(filename)
-        days.append(d.date())
-
     table = gis.content.get(historical_gis_item_id)
     t = table.layers[0]
-    #"Source_Data_Timestamp >= '4/13/2020' and Source_Data_Timestamp < '4/14/2020'"
-    df = t.query(where="Source_Data_Timestamp > CURRENT_TIMESTAMP - INTERVAL '1' DAY", as_df=True)
-    print(df)
 
-    new_col_names = {}
-    for name in t.properties.fields:
-        new_col_names[name["name"]]  = name["alias"]
 
-    df = df.rename(columns=new_col_names)
-    print(df)
+    days = [date.fromisoformat('2020-04-14')]
+    #for filename in sorted(historical_already_processed_files):
+    #    d = get_datetime_from_filename(filename)
+    #    days.append(d.date())
+    dfs=[]
+    for day in days:
+        day_before=day - timedelta(days=1)
+        day_after=day + timedelta(days=1)
+        day_before = day_before.isoformat()
+        day_after = day_after.isoformat()
+        where=f"Source_Data_Timestamp >= '{day_before}' and Source_Data_Timestamp < '{day_after}'"
+        df = t.query(where=where, as_df=True)
+        # select the correct columns!
+        by_hospital_df = df.groupby(["HospitalName"]).mean().reset_index()
+        by_county_df = df.groupby(["HospitalCounty"]).mean().reset_index()
+        # and upload them
+#    print(df)
 
-    df.to_csv("/tmp/one_day.csv", index=False, header=True)
-    os.exit()
+#    new_col_names = {}
+#    for name in t.properties.fields:
+#        new_col_names[name["name"]]  = name["alias"]
+#
+#    df = df.rename(columns=new_col_names)
+#    print(df)
+#
+#    df.to_csv("/tmp/one_day.csv", index=False, header=True)
+#    os.exit()
 
-    pass
+#    pass
     
 
 
@@ -358,22 +367,26 @@ def process_historical(dry_run=False):
         process_historical_hos(gis, processed_dir, processed_file_details, item_id, dry_run=dry_run)
 
 
-    historical_gis_item_id = "bf24ecc40f294c1ba5ad16522f9be512" 
-
-    print("XXX not doing historical averages yet")
-    if False:
-        historical_averages_item_id = ""
-        already_processed_files = get_already_processed_files(gis, historical_averages_item_id)
-        
-        already_processed_files = []
-        process_daily_hospital_averages(gis, historical_gis_item_id, files_to_not_sftp, 
-                                            historical_averages_item_id, already_processed_files, 
-                                            dry_run=dry_run)
     print("Finished processing historical tables.")
 
+# When you are developing new features, or testing them, put them here first,
+# then when you are sure of them, promote them to the right place.
+def process_canary_features(dry_run=False):
+    print("Processing canary features...")
+    creds = load_credentials()
+    print("Connecting to ArcGIS...")
+    gis = get_gis(creds)
+    print("Connected.")
+
+    print("XXX not doing historical averages yet")
+    historical_gis_item_id = "bf24ecc40f294c1ba5ad16522f9be512" 
+    historical_averages_item_id = ""
+    process_daily_hospital_averages(gis, historical_gis_item_id, historical_averages_item_id, dry_run=dry_run)
+    print("Finished canary features.")
 
 def main(dry_run=False, csv_to_process=None):
     print("Started full ingestion processing run")
+    #process_canary_features(dry_run=dry_run)
     process_instantaneous(dry_run=dry_run)
     process_historical(dry_run=dry_run)
     print("Finished full ingestion processing run")
