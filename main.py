@@ -140,11 +140,11 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
             print(f"{fname} has a filesize of {size}, not processing.")
 
     # historical for generating a new source CSV
-    if len(new_rows) > 0:
-        with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
-            writer = csv.DictWriter(csvfile, fieldnames=header)
-            writer.writeheader()
-            writer.writerows(new_rows)
+#    if len(new_rows) > 0:
+#        with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
+#            writer = csv.DictWriter(csvfile, fieldnames=header)
+#            writer.writeheader()
+#            writer.writerows(new_rows)
     # Done CSV generation
     
 
@@ -161,7 +161,7 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
 
 def process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id, dry_run=False):
     print("Starting load of county summary table...")
-    original_data_file_name = "county_summary_table.csv"
+    original_data_file_name = "county_summary_table_v3.csv"
     new_data_filename = "new_county_summary_table.csv"
 
     df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
@@ -315,8 +315,9 @@ def process_instantaneous(dry_run=False):
 
 
     # original that started failing:
-    # arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea"
-    arcgis_item_id_for_county_summaries = "c9f90ca7c83e40b8b6f4106dd3b0dfed"
+    # arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea" #v1
+    #arcgis_item_id_for_county_summaries = "c9f90ca7c83e40b8b6f4106dd3b0dfed" # v2
+    arcgis_item_id_for_county_summaries = "a6b94769b5aa47e28790770826b55875" # v3
     process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
@@ -347,9 +348,6 @@ def process_historical(dry_run=False):
     file_details = []
     all_filenames = []
     files_to_not_sftp = get_already_processed_files(gis, item_id)
-
-    print("XXX remove me")
-    files_to_not_sftp = []
 
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:
