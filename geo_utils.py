@@ -24,6 +24,8 @@ class HospitalLocations(object):
                 "Hahnemann University Hospital-Transplant Center": "Hahnemann University Hospital",
                 "Belmont Center For Comprehensive Treatment": "Belmont Behavioral Hosptial",
                 "AHN- Grove City Hospital": "Grove City Medical Center",
+                "Riddle Memorial Hopital": "Riddle Memorial Hospital",
+                "Riddle Memoial Hospital": "Riddle Memorial Hospital",
                 }
     def __init__(self):
         self.cache = {}

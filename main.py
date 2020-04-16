@@ -140,11 +140,11 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
             print(f"{fname} has a filesize of {size}, not processing.")
 
     # historical for generating a new source CSV
-    #if len(new_rows) > 0:
-    #    with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
-    #        writer = csv.DictWriter(csvfile, fieldnames=header)
-    #        writer.writeheader()
-    #        writer.writerows(new_rows)
+    if len(new_rows) > 0:
+        with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=header)
+            writer.writeheader()
+            writer.writerows(new_rows)
     # Done CSV generation
     
 
@@ -347,6 +347,9 @@ def process_historical(dry_run=False):
     file_details = []
     all_filenames = []
     files_to_not_sftp = get_already_processed_files(gis, item_id)
+
+    print("XXX remove me")
+    files_to_not_sftp = []
 
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:

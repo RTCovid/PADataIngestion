@@ -62,11 +62,13 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                             del row[k]
                 for k, v in row.items():
                     # Do any value processing here; it'd be nice if we could dataframe.apply() but we can't here.
-                    #if k in converters:
-                    #    print(k)
-                    #    row[k] = converters[k](v)
-                    #    v = converters[k](v)
-                    #    print(v, row[k])
+                    # ArcGIS can't handle ' in header column names.
+                    if not k:
+                        print(source_data_file)
+                        print(row)
+                    if k in converters:
+                        row[k] = converters[k](v)
+                        v = converters[k](v)
                         
                     # ArcGIS can't handle ' in header column names.
                     if "'" in k:
@@ -86,7 +88,8 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                 # Add the county; future proof in case they add it later
                 try:
                     if "HospitalCounty" not in new_row:
-                        new_row["HospitalCounty"] = hl.get_location_for_hospital(new_row["HospitalName"])["GeocodedHospitalCounty"]
+                        loc = hl.get_location_for_hospital(new_row["HospitalName"])
+                        new_row["HospitalCounty"] = loc["GeocodedHospitalCounty"]
                 except TypeError as e:
                     print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
                     raise e
