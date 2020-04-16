@@ -14,7 +14,8 @@ from pprint import pprint
 import glob
 import argparse
 from geo_utils import HospitalLocations, Counties
-
+from operators import process_csv, get_files_from_sftp, get_gis, get_arcgis_feature_collection_from_item_id, upload_to_arcgis, get_already_processed_files
+from operators import get_datetime_from_filename
 
 
 def load_credentials():
@@ -29,145 +30,6 @@ def load_credentials():
 
     return creds
 
-
-# On Google Cloud, only /tmp is writeable.
-def get_files_from_sftp(creds, prefix="HOS_ResourceCapacity_", target_dir="/tmp", 
-                               only_latest=True, filenames_to_ignore=[]):
-    cnopts = pysftp.CnOpts()
-    cnopts.hostkeys.load('copaftp.pub')
-    username = creds['sftp']['username']
-    password = creds['sftp']['password']
-    host = creds['sftp']['host']
-    latest_filename = ""
-    files = ""
-    file_details = []
-
-    existing_files = glob.glob(target_dir + "/" + prefix + "*")
-
-    with pysftp.Connection(host, username=username, password=password, cnopts=cnopts) as sftp:
-        files = sftp.listdir()
-        files = [f for f in files if f.startswith(prefix)]
-        # the files are sorted by the pysftp library, and the last element of the list is the latest file
-        # Filenames look like HOS_ResourceCapacity_2020-03-30_00-00.csv
-        # And timestamps are in UTC
-        files_to_get = []
-        if only_latest:
-            latest_filename = files[-1]
-            files_to_get = [latest_filename]
-        else:
-            files_to_get = files
-        for f in files_to_get:
-            if f in filenames_to_ignore:
-                print(f"Ignoring {f}")
-                continue
-            print(f"Getting: {f}")
-            if os.path.join(target_dir, f) not in existing_files:
-                sftp.get(f, f'{target_dir}/{f}')
-                print(f"Finished downloading {target_dir}/{f}")
-            else:
-                print(f"Didn't have to download {target_dir}/{f}; it already exists")
-
-            source_date = f.split('.')[0]
-            source_date = source_date.replace(prefix,'')
-            source_date = source_date + " UTC"
-            source_date = datetime.strptime(source_date, "%Y-%m-%d_%H-%M %Z")
-            file_details.append({"target_dir": target_dir, "filename": f, "source_datetime": source_date})
-    return (file_details, files)
-
-
-def process_csv(source_data_dir, file_details, tmpdir="/tmp", output_prefix="processed_HOS_", columns_wanted=[]):
-    hl = HospitalLocations()
-
-    output_file_details = []
-    for source_file_details in file_details:
-        source_data_file = source_file_details["filename"]
-        output_filename = output_prefix + source_data_file
-        source_file_details["processed_filename"] = output_filename
-        output_dir = tmpdir
-        output_path = os.path.join(output_dir, output_filename)
-        rows = []
-        with open (os.path.join(source_data_dir, source_data_file), newline='') as rf:
-            reader = csv.DictReader(rf)
-            # using dictreader, we don't need to read the header row in.
-            for row in reader:
-                new_row = {}
-                if len(columns_wanted) > 0:
-                    ks = list(row.keys())
-                    for k in ks:
-                        if k.strip() not in columns_wanted:
-                            del row[k]
-                for k, v in row.items():
-                    # ArcGIS can't handle ' in header column names.
-                    if "'" in k:
-                        new_k = k.replace("'", "")
-                    else:
-                        new_k = k
-                    new_row[new_k] = v
-
-                # Add the county; future proof in case they add it later
-                if "HospitalCounty" not in new_row:
-                    new_row["HospitalCounty"] = hl.get_location_for_hospital(new_row["HospitalName"])["GeocodedHospitalCounty"]
-                rows.append(new_row)
-        with open (output_path, 'w', newline='') as wf:
-            writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
-            writer.writeheader()
-            writer.writerows(rows)
-        output_file_details.append(source_file_details)
-    return (output_dir, output_file_details)
-
-
-def get_gis(creds):
-    username = creds['arcgis']['username']
-    password = creds['arcgis']['password']
-    host = creds['arcgis']['host']
-
-    gis = GIS(host, username, password) 
-    return gis
-
-def get_arcgis_feature_collection_from_item_id(gis, arcgis_item_id):
-
-    # You might ask - why do you not just use the FeatureLayerCollection's URL?
-    # Because you get a 403 if you try that. Instead, if you grab the parent container
-    # from the published layer, you can use the FLC manager's overwrite() method successfully.
-
-    feature_item = gis.content.get(arcgis_item_id)
-    if "type:Table" in str(feature_item):
-        fs = feature_item.tables[0].container
-    else:
-        fs = feature_item.layers[0].container
-    return fs
-
-def upload_to_arcgis(gis, source_data_dir, source_data_file, original_data_file_name, 
-                    arcgis_item_id_for_feature_layer):
-
-    fs = get_arcgis_feature_collection_from_item_id(gis, arcgis_item_id_for_feature_layer)
-    # Overwrite docs:
-    # https://developers.arcgis.com/python/api-reference/arcgis.features.managers.html#featurelayercollectionmanager
-
-    # Note that the filename (not the path, just the filename) must match the filename of the data the feature layer
-    # was originally created from, because reasons. We rename here.
-
-    # Note that if you have a feature service you want to use overwrite() on, you must share that
-    # feature service with everyone (share->everyone). If you don't, you'll get a 403. You must also
-    # share the underlying CSV with everyone.
-    result = ""
-
-    with tempfile.TemporaryDirectory() as tmpdirname:
-        shutil.copyfile(os.path.join(source_data_dir, source_data_file), 
-                        os.path.join(tmpdirname, original_data_file_name))
-
-        original_dir = os.getcwd()
-        os.chdir(tmpdirname)
-        print(f"Uploading to ArcGIS: {source_data_dir}/{source_data_file} as {original_data_file_name} to item id {arcgis_item_id_for_feature_layer}")
-        try:
-            result = fs.manager.overwrite(original_data_file_name)
-        except Exception as e:
-            print(f"Caught exception {e}, retrying")
-            result = fs.manager.overwrite(original_data_file_name)
-
-        os.chdir(original_dir)
-        #os.remove(os.path.join(source_data_dir, source_data_file))
-    return result
 
 def load_csv_to_df(csv_file_path):
     df = pd.read_csv(csv_file_path)
@@ -188,8 +50,6 @@ def create_supplies_table(df):
         new_df = new_df.append(new_row, ignore_index=True)
 
     return new_df
-
-
 
 def create_summary_table_row(df, source_data_timestamp, source_filename):
     new_row = {}
@@ -238,26 +98,11 @@ def process_supplies(gis, processed_dir, processed_filename, dry_run=False):
     print("Finished load of supplies data")
 
 
-def get_files_to_not_sftp(gis, item_id):
-    fs = gis.content.get(item_id)
-
-    if "type:Table" in str(fs):
-        t = fs.tables[0]
-    else:
-        t = fs.layers[0]
-
-    qr = t.query(out_fields='Source_Filename')
-    filenames_to_not_sftp = []
-    for f in qr.features:
-        filenames_to_not_sftp.append(f.attributes['Source_Filename'])
-    filenames_to_not_sftp = list(set(filenames_to_not_sftp))
-    return filenames_to_not_sftp
-
-def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=False):
+def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_historical_item_id, 
+                            original_data_file_name="historical_hos_table_v2.csv", dry_run=False):
     print("Starting load of historical HOS table...")
-    original_data_file_name = "historical_hos_table.csv"
-    arcgis_historical_item_id = "46f25552405a4fef9a6658fb5c0c68bf"
-
+  #  original_data_file_name = "historical_hos_table.csv" # v1
+  #  arcgis_historical_item_id = "46f25552405a4fef9a6658fb5c0c68bf" # v1
 
     table = gis.content.get(arcgis_historical_item_id)
     t = table.layers[0]
@@ -268,6 +113,7 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
 
     header = {}
     features = []
+    new_rows = []
     for f in processed_file_details:
         fname = f["processed_filename"]
         size = os.path.getsize(os.path.join(processed_dir, fname))
@@ -282,23 +128,25 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
                     row["Processed At"] = processed_time
                     row["Source Filename"] = f["filename"]
                     header.update(row)
+                    
                     # rename the headers based on alias
                     for alias, name in new_col_names.items():
                         if alias in row:
                             new_row[name] = row[alias]
                     ft = Feature(attributes=new_row)
                     features.append(ft)
+                    new_rows.append(row)
         else:
             print(f"{fname} has a filesize of {size}, not processing.")
 
     # historical for generating a new source CSV
-    # you'll need to create a new_rows list above
-    #if len(new_rows) > 0:
-    #    with open(original_data_file_name, "w") as csvfile:
-    #        writer = csv.DictWriter(csvfile, fieldnames=header)
-    #        writer.writeheader()
-    #        writer.writerows(new_rows)
+#    if len(new_rows) > 0:
+#        with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
+#            writer = csv.DictWriter(csvfile, fieldnames=header)
+#            writer.writeheader()
+#            writer.writerows(new_rows)
     # Done CSV generation
+    
 
     # It's okay if features is empty; status will reflect arcgis telling us that,
     # but it won't stop the processing.
@@ -313,7 +161,7 @@ def process_historical_hos(gis, processed_dir, processed_file_details, dry_run=F
 
 def process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id, dry_run=False):
     print("Starting load of county summary table...")
-    original_data_file_name = "county_summary_table.csv"
+    original_data_file_name = "county_summary_table_v3.csv"
     new_data_filename = "new_county_summary_table.csv"
 
     df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
@@ -384,23 +232,65 @@ def process_summaries(gis, processed_dir, processed_file_details, dry_run=False)
     print("Finished load of summary table")
 
 
-def process_instantaneous(creds, gis, dry_run=False):
+def process_daily_hospital_averages(gis, historical_gis_item_id, historical_already_processed_files,
+                                         daily_averages_item_id, daily_averages_already_processed_files, dry_run=False):
+    # see what days have been processed
+    # if not processed, 
+    # get the historical table
+    # turn it into a df
+    # per day, get the averages
+    # for new: days
+
+    print("XXX daily_hospital_averages stub, returning.")
+    return
+    days = []
+    for filename in sorted(historical_already_processed_files):
+        d = get_datetime_from_filename(filename)
+        days.append(d.date())
+
+    table = gis.content.get(historical_gis_item_id)
+    t = table.layers[0]
+    #"Source_Data_Timestamp >= '4/13/2020' and Source_Data_Timestamp < '4/14/2020'"
+    df = t.query(where="Source_Data_Timestamp > CURRENT_TIMESTAMP - INTERVAL '1' DAY", as_df=True)
+    print(df)
+
+    new_col_names = {}
+    for name in t.properties.fields:
+        new_col_names[name["name"]]  = name["alias"]
+
+    df = df.rename(columns=new_col_names)
+    print(df)
+
+    df.to_csv("/tmp/one_day.csv", index=False, header=True)
+    os.exit()
+
+    pass
+    
+
+
+def process_instantaneous(dry_run=False):
     print("Processing instantaneous tables...")
+    creds = load_credentials()
+    print("Connecting to ArcGIS...")
+    gis = get_gis(creds)
+    print("Connected.")
     print("Getting latest HOS file from SFTP...")
     file_details, all_filenames = get_files_from_sftp(creds)
-    data_dir = file_details[0]["target_dir"]
+    data_dir = file_details[0]["dir"]
     latest_filename = file_details[0]["filename"]
     source_datetime = file_details[0]["source_datetime"]
     print("Finished.")
 
     # Public-only data
-    public_processed_dir, public_processed_file_details = process_csv(data_dir, [file_details[0]],
+    public_processed_file_details = process_csv([file_details[0]],
                     output_prefix="public_processed_HOS_", columns_wanted=hm.columns_for_public_release)
     public_processed_filename = public_processed_file_details[0]["processed_filename"]
+    public_processed_dir = public_processed_file_details[0]["output_dir"]
 
     # Full data
-    processed_dir, processed_file_details = process_csv(data_dir, [file_details[0]])
+    processed_file_details = process_csv([file_details[0]])
     processed_filename = processed_file_details[0]["processed_filename"]
+    processed_dir = processed_file_details[0]["output_dir"]
 
     print(f"Finished processing {data_dir}/{latest_filename}, file is {processed_dir}/{processed_filename}")
     # The name of the file you created the layer service with.
@@ -425,55 +315,81 @@ def process_instantaneous(creds, gis, dry_run=False):
 
 
     # original that started failing:
-    # arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea"
-    arcgis_item_id_for_county_summaries = "c9f90ca7c83e40b8b6f4106dd3b0dfed"
+    # arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea" #v1
+    #arcgis_item_id_for_county_summaries = "c9f90ca7c83e40b8b6f4106dd3b0dfed" # v2
+    arcgis_item_id_for_county_summaries = "a6b94769b5aa47e28790770826b55875" # v3
     process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
-def process_historical(creds, gis, dry_run=False):
+def process_historical(dry_run=False):
     print("Processing historical tables...")
+    creds = load_credentials()
+    print("Connecting to ArcGIS...")
+    gis = get_gis(creds)
+    print("Connected.")
     # These processors manage their own SFTP's, since they may need to get many files.
 
     # Summary table
     item_id = "ab2820906d2c4b7fa68fcf47a5261916"
-    files_to_not_sftp = get_files_to_not_sftp(gis, item_id)
+    files_to_not_sftp = get_already_processed_files(gis, item_id)
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
 
     if len(file_details) == 0:
         print("No new files to process for historical summary table data.")
     else:
-        data_dir = file_details[0]["target_dir"]
-        processed_dir, processed_filenames = process_csv(data_dir, file_details)
-        process_summaries(gis, processed_dir, file_details, dry_run=dry_run)
+        processed_file_details = process_csv(file_details)
+        processed_dir = processed_file_details[0]["output_dir"]
+        process_summaries(gis, processed_dir, processed_file_details, dry_run=dry_run)
 
     # Full HOS historical table
     item_id = "46f25552405a4fef9a6658fb5c0c68bf"
+    item_id = "bf24ecc40f294c1ba5ad16522f9be512" # v2
     files_to_not_sftp = []
     file_details = []
     all_filenames = []
-    files_to_not_sftp = get_files_to_not_sftp(gis, item_id)
+    files_to_not_sftp = get_already_processed_files(gis, item_id)
+
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:
         print("No new files to process for historical data.")
     else:
-        data_dir = file_details[0]["target_dir"]
-        processed_dir, processed_filenames = process_csv(data_dir, file_details)
-        process_historical_hos(gis, processed_dir, file_details, dry_run=dry_run)
+        processed_file_details = process_csv(file_details)
+        processed_dir = processed_file_details[0]["output_dir"]
+        process_historical_hos(gis, processed_dir, processed_file_details, item_id, dry_run=dry_run)
 
+
+    historical_gis_item_id = "bf24ecc40f294c1ba5ad16522f9be512" 
+
+    print("XXX not doing historical averages yet")
+    if False:
+        historical_averages_item_id = ""
+        already_processed_files = get_already_processed_files(gis, historical_averages_item_id)
+        
+        already_processed_files = []
+        process_daily_hospital_averages(gis, historical_gis_item_id, files_to_not_sftp, 
+                                            historical_averages_item_id, already_processed_files, 
+                                            dry_run=dry_run)
     print("Finished processing historical tables.")
 
-def main(dry_run=False):
-    print("Started ingestion processing run")
-    creds = load_credentials()
-    print("Connecting to ArcGIS...")
-    gis = get_gis(creds)
-    print("Connected.")
-    process_instantaneous(creds, gis, dry_run=dry_run)
-    process_historical(creds, gis, dry_run=dry_run)
-    print("Finished ingestion processing run")
+
+def main(dry_run=False, csv_to_process=None):
+    print("Started full ingestion processing run")
+    process_instantaneous(dry_run=dry_run)
+    process_historical(dry_run=dry_run)
+    print("Finished full ingestion processing run")
 
 def hello_pubsub(event, context):
     main()
+
+def instantaneous_pubsub(event, context):
+    print("Started instantaneous ingestion processing run")
+    process_instantaneous()
+    print("Finished instantaneous ingestion processing run")
+
+def historical_pubsub(event, context):
+    print("Started historical ingestion processing run")
+    process_historical()
+    print("Finished historical ingestion processing run")
 
 if __name__== "__main__":
     dry_run = False
