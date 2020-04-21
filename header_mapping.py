@@ -5,9 +5,15 @@ import pandas as pd
 county_sum_columns = [
         "HospitalCounty",
         "Available Beds-Adult Intensive Care Unit (ICU) Current Available",
+        "Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds",
         "Available Beds-Medical and Surgical (Med/Surg) Current Available",
+        "Available Beds-Medical and Surgical (Med/Surg) Staffed Beds",
         "Available Beds-Pediatric Intensive Care Current Available",
+        "Available Beds-Pediatric Intensive Care Staffed Beds",
+        "Available Beds-Pediatric Current Available",
+        "Available Beds-Pediatric Staffed Beds",
         "Other Beds-Airborne Infection Isolation Current Available",
+        "Other Beds-Airborne Infection Isolation Staffed Beds",
 	"COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ventilators: ",
 	"COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ECMO: ",
 	"COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19: ",
@@ -122,6 +128,22 @@ columns_for_public_release = [
 ]
 
 
+new_summary_columns = {
+    "N95 masks >7 days": [ 
+	"At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-8-14 days Response ?",
+        "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-15-28 days Response ?", 
+	"At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-29 or more days Response ?"],
+    "PPE >7 days": [ 
+	"At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?", 
+	"At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-15-28 days Response ?", 
+	"At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-29 or more days Response ?",
+     ],
+    "NP Specimen Collection Supplies >7 days": [ 
+	"At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-8-14 days Response ?",
+	"At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-15-28 days Response ?",
+	"At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-29 or more days Response ?",
+    ],
+}
 
 averages_per_day = {
     "COVID-19 Inpatients average per day": "COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19:",
@@ -135,28 +157,15 @@ averages_per_day = {
     "Employees absent child care issues average per day":"Employee Status-Call out reason: child care issues",
     "Employees absent COVID19 infection average per day":"Employee Status-Call out reason: sick with COVID-19",
     "Employees absent quarantine isolation average per day":"Employee Status-Call out reason: quarantine or isolation due to exposure",
-
     "N95 masks <3 days average count per day":"At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?",
     "N95 masks 4-7 days average count per day":"At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-4-7 days Response ?",
-    "N95 masks >7 days average count per day": [ 
-	"At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-8-14 days Response ?",
-        "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-15-28 days Response ?", 
-	"At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-29 or more days Response ?"],
+    "N95 masks >7 days average count per day": "N95 masks >7 days",
     "PPE <3 days average count per day":"At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-3 or less days Response ?",
     "PPE 4-7 days average count per day":"At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-4-7 days Response ?",
-    "PPE >7 days average count per day": [ 
-	"At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?", 
-	"At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-15-28 days Response ?", 
-	"At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-29 or more days Response ?",
-     ],
+    "PPE >7 days average count per day": "PPE >7 days",
     "NP Specimen Collection Supplies <3 days average count per day":"At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-3 or less days Response ?",
     "NP Specimen Collection Supplies 4-7 days average count per day": "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-4-7 days Response ?", 
-    "NP Specimen Collection Supplies >7 days average count per day": [ 
-	"At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-8-14 days Response ?",
-	"At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-15-28 days Response ?",
-	"At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-29 or more days Response ?",
-    ],
-
+    "NP Specimen Collection Supplies >7 days average count per day": "NP Specimen Collection Supplies >7 days",
     "Immediate need disinfection solution average count per day":"Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Solutions Response ?",
     "Immediate need disinfection wipes average count per day":"Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Wipes Response ?",
     "Immediate need gloves average count per day":"Is there an immediate need for hand hygiene/disinfection supplies listed below?-Gloves Response ?",

@@ -13,6 +13,7 @@ from datetime import datetime, date, timedelta
 from pprint import pprint
 import glob
 import argparse
+import math
 from geo_utils import HospitalLocations, Counties
 from operators import process_csv, get_files_from_sftp, get_gis, get_arcgis_feature_collection_from_item_id, upload_to_arcgis, get_already_processed_files
 from operators import get_datetime_from_filename
@@ -98,6 +99,11 @@ def process_supplies(gis, processed_dir, processed_filename, dry_run=False):
     print("Finished load of supplies data")
 
 
+
+def chunks(l, n):
+    for i in range(0, len(l), n):
+        yield l[i:i+n]
+
 def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_historical_item_id, 
                             original_data_file_name="historical_hos_table_v2.csv", dry_run=False):
     print("Starting load of historical HOS table...")
@@ -118,6 +124,7 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
         fname = f["processed_filename"]
         size = os.path.getsize(os.path.join(processed_dir, fname))
         if size > 0:
+            print(f"Adding columns and renaming existing columns for: {fname}")
             processed_time =  datetime.utcnow().isoformat()
             with open(os.path.join(processed_dir, fname), newline='') as csvfile:
                 reader = csv.DictReader(csvfile)
@@ -155,24 +162,32 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
         print("Dry run set, not editing features.")
         status = "Dry run"
     else:
-        status = t.edit_features(adds=features)
-    print(status)
+        fc = len(features)
+        chunksize = 1000.0
+        feature_batchs = chunks(features, math.ceil(fc / chunksize))
+        fbc = len(feature_batchs)
+        print(f"Adding {fc} features to the historical table in {fbc} batches.")
+        for batch in feature_batchs:
+            status = t.edit_features(adds=batch)
+            print(status)
     print("Finished load of historical HOS table")
 
 def process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id, dry_run=False):
     print("Starting load of county summary table...")
-    original_data_file_name = "county_summary_table_v3.csv"
+    original_data_file_name = "county_summary_table_v4.csv"
     new_data_filename = "new_county_summary_table.csv"
 
     df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
     d2 = df.groupby(["HospitalCounty"])[hm.county_sum_columns].sum().reset_index()
-    
+
+    for new_col_name, num_denom in hm.summary_table_header.items():
+        d2[new_col_name] = (d2[num_denom["n"]] / d2[num_denom["d"]]) * 100.0
     # PA wants to see 0.0 for any county that doesn't have a hospital, so:
     existing_counties = set(d2["HospitalCounty"].to_list())
     c = Counties()
     all_counties = c.counties
     unused_counties = list(set(all_counties).difference(existing_counties))
-    a_row = [0.0] * 9
+    a_row = [0.0] * (len(d2.columns) - 1)
     rows = []
     for county in unused_counties:
         rows.append([county] + a_row)
@@ -232,6 +247,7 @@ def process_summaries(gis, processed_dir, processed_file_details, dry_run=False)
     print("Finished load of summary table")
 
 
+
 def process_daily_hospital_averages(gis, historical_gis_item_id, daily_averages_item_id, dry_run=False):
     # see what days have been processed
     # if not processed, 
@@ -251,15 +267,48 @@ def process_daily_hospital_averages(gis, historical_gis_item_id, daily_averages_
     #    days.append(d.date())
     dfs=[]
     for day in days:
+
         day_before=day - timedelta(days=1)
         day_after=day + timedelta(days=1)
         day_before = day_before.isoformat()
         day_after = day_after.isoformat()
         where=f"Source_Data_Timestamp >= '{day_before}' and Source_Data_Timestamp < '{day_after}'"
         df = t.query(where=where, as_df=True)
-        # select the correct columns!
+        # rename the columns from the ArcGIS names
+        new_col_names = {}
+        for name in t.properties.fields:
+            new_col_names[name["name"]]  = name["alias"]
+        df = df.rename(columns=new_col_names)
+
+	# create a column for the summed tables
+        for new_column, cols_to_sum in hm.new_summary_columns.items():
+            df[new_column] = df[cols_to_sum].sum()
+        old_col_names = list(hm.averages_per_day.values())
+        new_col_names = hm.averages_per_day.keys()
+        old_col_names.append("HospitalName")
+        old_col_names.append("HospitalCounty")
+        df.to_csv("one_day_notselected.csv", index=False, header=True)
+        df = df[old_col_names]
+        df = df.rename(columns=hm.averages_per_day)
+        df.to_csv("one_day_selected.csv", index=False, header=True)
+        print(df)
+
+#    new_col_names = {}
+#    for name in t.properties.fields:
+#        new_col_names[name["name"]]  = name["alias"]
+#
+#    df = df.rename(columns=new_col_names)
+#    print(df)
+	
+	# cut the columns we want out.
         by_hospital_df = df.groupby(["HospitalName"]).mean().reset_index()
+        by_hospital_df["Date"] = day
         by_county_df = df.groupby(["HospitalCounty"]).mean().reset_index()
+        by_county_df["Date"] = day
+        print(by_county_df)
+        by_county_df.to_csv("one_day_by_county_avg.csv", index=False, header=True)
+        os.exit()
+
         # and upload them
 #    print(df)
 
@@ -327,6 +376,7 @@ def process_instantaneous(dry_run=False):
     # arcgis_item_id_for_county_summaries = "98469d4595a54faab84e73f5f6a473ea" #v1
     #arcgis_item_id_for_county_summaries = "c9f90ca7c83e40b8b6f4106dd3b0dfed" # v2
     arcgis_item_id_for_county_summaries = "a6b94769b5aa47e28790770826b55875" # v3
+    arcgis_item_id_for_county_summaries = "6d448594ed94473197ab8470a6e771f6" # v4
     process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
@@ -351,8 +401,9 @@ def process_historical(dry_run=False):
         process_summaries(gis, processed_dir, processed_file_details, dry_run=dry_run)
 
     # Full HOS historical table
-    item_id = "46f25552405a4fef9a6658fb5c0c68bf"
+    #item_id = "46f25552405a4fef9a6658fb5c0c68bf"
     item_id = "bf24ecc40f294c1ba5ad16522f9be512" # v2
+    #item_id = "5d8235be486243249196c29348141c21" # v3
     files_to_not_sftp = []
     file_details = []
     all_filenames = []
@@ -379,7 +430,7 @@ def process_canary_features(dry_run=False):
     print("Connected.")
 
     print("XXX not doing historical averages yet")
-    historical_gis_item_id = "bf24ecc40f294c1ba5ad16522f9be512" 
+    historical_gis_item_id = "5d8235be486243249196c29348141c21" # v3
     historical_averages_item_id = ""
     process_daily_hospital_averages(gis, historical_gis_item_id, historical_averages_item_id, dry_run=dry_run)
     print("Finished canary features.")
