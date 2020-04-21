@@ -43,13 +43,13 @@ Haven Behavioral Hospital Reading,Reading,PA,40.337594,-75.925768,145 N. Sixth S
 PSH-St. Joseph Medical Center,Reading,PA,40.376579,-75.977267,2500 Bernville Rd.,Berks,,,
 Surgical Institute of Reading,Wyomissing,PA,40.357876,-75.987868,2752 Century Blvd.,Berks,WYOMISSING,unknown,PA
 Wernersville State Hospital,Wernersville,PA,40.336642,-76.104738,Route 422 & Sportsman Rd,Berks,WERNERSVILLE,unknown,PA
-Tower Health System-Reading Hospital ,West Reading,PA,40.32999,-75.948293,420 S. 5th Ave,Berks,CP Leisey,hamlet,Pennsylvania
+Tower Health System-Reading Hospital,West Reading,PA,40.32999,-75.948293,420 S. 5th Ave,Berks,CP Leisey,hamlet,Pennsylvania
 UPMC-Altoona,Altoona,PA,40.52159,-78.39798,620 Howard Ave.,Blair,ALTOONA,unknown,PA
 Encompass Health of Altoona,Altoona,PA,40.49777,-78.39112,2005 Valley View Blvd.,Blair,,,
 James E. Van Zandt VA Medical Center,Altoona,PA,40.48959,-78.39849,2907 Pleasant Valley Blvd.,Blair,,,
 Conemaugh Nason Medical Center,Roaring Spring,PA,40.337844,-78.388927,105 Nason Dr.,Blair,ROARING SPRING,unknown,PA
 Tyrone Hospital,Tyrone,PA,40.675952,-78.252718,187 Hospital Dr.,Blair,,,
-Guthrie Towanda Memorial Hospital ,Towanda,PA,41.783739,-76.448885,91 Hospital Dr.,Bradford,,,
+Guthrie Towanda Memorial Hospital,Towanda,PA,41.783739,-76.448885,91 Hospital Dr.,Bradford,,,
 Guthrie Robert Packer Hospital,Sayre,PA,41.980913,-76.518735,1 Guthrie Sq.,Bradford,,,
 Guthrie Troy Community Hospital,Troy,PA,41.792777,-76.794608,275 Guthrie Drive,Bradford,,,
 Jefferson Bucks County Campus,Langhorne,PA,40.183046,-74.8675011,380 N. Oxford Valley Rd.,Bucks,,,
@@ -101,7 +101,7 @@ Geisinger-Holy Spirit Hospital,Camp Hill,PA,40.25377,-76.921997,503 N. 21st St.,
 Roxbury Treatment Center,Shippensburg,PA,40.05407,-77.538034,601 Roxbury Rd.,Cumberland,SHIPPENSBURG,unknown,PA
 Select Specialty Hospital-Camp Hill,Camp Hill,PA,40.25427,-76.92424,503 N. 21st St. Fifth Floor,Cumberland,,,
 2Memorial Child/Adolescent Partial Hospital Program,Harrisburg,PA,40.285755,-76.89852,2501 N. 3rd Street,Dauphin,,,
-Adult IP Service Lines ,Harrisburg,PA,40.285699,-76.898799,2501 N 3rd Street,Dauphin,,,
+Adult IP Service Lines,Harrisburg,PA,40.285699,-76.898799,2501 N 3rd Street,Dauphin,,,
 Child/Adolescent IP Service Lines,Harrisburg,PA,40.285699,-76.898799,2501 N 3rd Street,Dauphin,,,
 Edgewater Psychiatric Center,Harrisburg,PA,40.273998,-76.896975,1829 N. Front St.,Dauphin,,,
 Milton S Hershey Medical Center,Hershey,PA,40.265695,-76.674223,500 University Dr.PO Box 850 H142,Dauphin,HERSHEY,unknown,PA
@@ -173,7 +173,7 @@ Wilkes-Barre General Hospital,Wilkes-Barre,PA,41.258415,-75.868039,575 N. River 
 Kindred Hospital-Wyoming Valley,Wilkesbarre,PA,41.258415,-75.868039,575 N. River St.Seventh Floor,Luzerne,,,Pennsylvania
 VA Medical Center Wilkes-Barre,Wilkes-Barre,PA,41.247578,-75.841253,1111 E. End Blvd.,Luzerne,Wilkes-Barre Township,locality,Pennsylvania
 VA Medical Center-Philadelphia,Philadelphia,PA,39.949507,-75.200335,University Ave. & Woodland Ave.,Philadelphia,,unknown,PA
- Geisinger Jersey Shore Hospital,Jersey Shore,PA,41.201694,-77.26795,1020 Thompson St.,Lycoming,,,
+Geisinger Jersey Shore Hospital,Jersey Shore,PA,41.201694,-77.26795,1020 Thompson St.,Lycoming,,,
 UPMC Susquehanna Muncy Valley Hospital,Muncy,PA,41.209031,-76.775645,215 E. Water St.,Lycoming,,,
 UPMC Susquehanna Williamsport Hospital,Williamsport,PA,41.246999,-77.015411,700 High St.,Lycoming,,,
 Bradford Regional Medical Center,Bradford,PA,41.96051,-78.66024,116 Interstate Pkwy.,Mckean,,,
@@ -198,7 +198,7 @@ Suburban Community Hospital-Norristown,Norristown,PA,40.138363,-75.315629,2701 D
 Montgomery County MH/MR Emergency Services Inc.,Norristown,PA,40.151254,-75.344473,50 Beech Dr.Gate #4 Building 50,Montgomery,,,
 Norristown State Hospital,Norristown,PA,40.135104,-75.345489,1001 Sterigere St.,Montgomery,NORRISTOWN,unknown,PA
 Northwestern Institute of Psychiatry,Fort Washington,PA,40.134684,-75.213644,450 Bethlehem Pk.,Montgomery,,,
-Physicians Care Surgical Hospital ,Royersford,PA,40.217136,-75.555039,454 Enterprise Dr,Montgomery,,,
+Physicians Care Surgical Hospital,Royersford,PA,40.217136,-75.555039,454 Enterprise Dr,Montgomery,,,
 Pottstown Memorial Medical Center,Pottstown,PA,40.242726,-75.612056,1600 E. High St.,Montgomery,,,
 Valley Forge Medical Center & Hospital,Norristown,PA,40.156621,-75.369207,1033 W. Germantown Pk.,Montgomery,,,
 Einstein Medical Center-Montgomery Hospital,East Norriton,PA,40.151254,-75.344473,559 W. Germantown Pk.,Montgomery,,,Pennsylvania
