@@ -60,9 +60,44 @@ def process_instantaneous(dry_run=False, datadir=None):
     ingester.process_county_summaries(processed_dir, processed_filename)
     print("Finished processing instantaneous tables.")
 
+def process_historical(dry_run=False, datadir=None):
+
+    if datadir is None:
+        datadir = "/tmp"
+
+    ingester = Ingester(dry_run)
+    agol_connection = AGOLConnection()
+    ingester.set_gis(agol_connection)
+
+    files_to_not_sftp = ingester.gis.get_already_processed_files("summary_table")
+    file_details, all_filenames = ingester.get_files_from_sftp(target_dir=datadir, only_latest=False, filenames_to_ignore=files_to_not_sftp)
+
+    if len(file_details) == 0:
+        print("No new files to process for historical summary table data.")
+    else:
+        processed_file_details = process_csv(file_details, output_dir=datadir)
+        processed_dir = processed_file_details[0]["output_dir"]
+        ingester.process_summaries(processed_dir, processed_file_details)
+
+    files_to_not_sftp = ingester.gis.get_already_processed_files("full_historical_table")
+
+    file_details, all_filenames = ingester.get_files_from_sftp(target_dir=datadir, only_latest=False, filenames_to_ignore=files_to_not_sftp)
+    if len(file_details) == 0:
+        print("No new files to process for historical data.")
+    else:
+        processed_file_details = process_csv(file_details, output_dir=datadir)
+        processed_dir = processed_file_details[0]["output_dir"]
+        ingester.process_historical_hos(processed_dir, processed_file_details)
+
+
+    print("Finished processing historical tables.")
+
 
 def main(dry_run, datadir=None):
+
     process_instantaneous(dry_run, datadir=datadir)
+
+    process_historical(dry_run, datadir=datadir)
 
 
 if __name__== "__main__":
