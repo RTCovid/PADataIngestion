@@ -33,7 +33,10 @@ def load_credentials():
 
 
 def load_csv_to_df(csv_file_path):
-    df = pd.read_csv(csv_file_path)
+    try:
+        df = pd.read_csv(csv_file_path)
+    except UnicodeDecodeError:
+        df = pd.read_csv(csv_file_path, encoding='cp1252')
     return df
 
 def create_supplies_table(df):
