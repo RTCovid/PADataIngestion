@@ -101,7 +101,6 @@ def main(dry_run, datadir=None):
 
 
 if __name__== "__main__":
-    dry_run = False
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry_run")
     parser.add_argument("--dir")
