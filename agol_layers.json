@@ -14,10 +14,12 @@
     "id": "5d8235be486243249196c29348141c21"
   },
   "summary_table": {
-    "id": "ab2820906d2c4b7fa68fcf47a5261916"
+    "id": "ab2820906d2c4b7fa68fcf47a5261916",
+    "original_file_name": "summary_table.csv"
   },
   "full_historical_table": {
-    "id": "bf24ecc40f294c1ba5ad16522f9be512"
+    "id": "bf24ecc40f294c1ba5ad16522f9be512",
+    "original_file_name": "historical_hos_table_v2.csv"
   },
   "supplies": {
     "id": "8fad710d5df6434f8567373979dd9dbe",
