@@ -62,7 +62,7 @@ class AGOLConnection(object):
             fs = feature_item.layers[0].container
         return fs
 
-    def upload_to_arcgis(self, dataset_name, source_data_dir, source_data_file):
+    def overwrite_arcgis_layer(self, dataset_name, source_data_dir, source_data_file):
 
         try:
             layer_config = self.layers[dataset_name]

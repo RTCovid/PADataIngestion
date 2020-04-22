@@ -145,7 +145,7 @@ class Ingester(object):
             print("Dry run set, not uploading HOS table to ArcGIS.")
             status = "Dry run"
         else:
-            status = self.gis.upload_to_arcgis(dataset_name, processed_dir, processed_filename)
+            status = self.gis.overwrite_arcgis_layer(dataset_name, processed_dir, processed_filename)
 
         print(status)
         print("Finished load of hospital data")
@@ -199,7 +199,7 @@ class Ingester(object):
             print("Dry run set, not uploading county summary table to ArcGIS.")
             status = "Dry run"
         else:
-            status = self.gis.upload_to_arcgis("county_summaries", processed_dir, new_data_filename)
+            status = self.gis.overwrite_arcgis_layer("county_summaries", processed_dir, new_data_filename)
         print(status)
         print("Finished load of county summary data")
 
