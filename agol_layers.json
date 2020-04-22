@@ -8,7 +8,8 @@
     "original_file_name": "public_processed_HOS.csv"
   },
   "county_summaries": {
-    "id": "6d448594ed94473197ab8470a6e771f6"
+    "id": "6d448594ed94473197ab8470a6e771f6",
+    "original_file_name": "county_summary_table_v4.csv"
   },
   "historical_averages": {
     "id": "5d8235be486243249196c29348141c21"
