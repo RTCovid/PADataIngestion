@@ -1,18 +1,19 @@
-# eventually all of these functions should be migrated into Ingester methods...
+# eventually these functions should be migrated into Ingester methods...
 from main import process_hospital as process_hospital_old
-from main import process_historical_hos as process_historical_hos_old
 from main import process_county_summaries as process_county_summaries_old
-from main import process_summaries as process_summaries_old
-from main import process_daily_hospital_averages as process_daily_hospital_averages_old
 
 import os
 import csv
 import glob
+import math
 import pysftp
 import pandas as pd
+from datetime import datetime, date, timedelta
+
 import header_mapping as hm
 from operators import process_csv
 from operators import get_datetime_from_filename
+from arcgis.features import FeatureLayerCollection, FeatureSet, Table, Feature
 
 
 def load_csv_to_df(csv_file_path):
@@ -21,6 +22,11 @@ def load_csv_to_df(csv_file_path):
     except UnicodeDecodeError:
         df = pd.read_csv(csv_file_path, encoding='cp1252')
     return df
+
+
+def chunks(l, n):
+    for i in range(0, len(l), n):
+        yield l[i:i+n]
 
 
 def create_supplies_table(df):
@@ -39,9 +45,25 @@ def create_supplies_table(df):
 
     return new_df
 
+
+def create_summary_table_row(df, source_data_timestamp, source_filename):
+    new_row = {}
+    new_row["Source Data Timestamp"] = source_data_timestamp.isoformat()
+    new_row["Processed At"] = datetime.utcnow().isoformat()
+    new_row["Source Filename"] = source_filename
+
+    for pct_col_name, value in hm.summary_table_header.items():
+        pct = (df[value["n"]].sum() / df[value["d"]].sum()) * 100
+
+        new_row[value["d"]] = df[value["d"]].sum()
+        new_row[value["n"]] = df[value["n"]].sum()
+        new_row[pct_col_name] = pct
+    return new_row
+
+
 class Ingester(object):
 
-    def __init__ (self, dry_run=False):
+    def __init__(self, dry_run=False):
 
         creds = self._load_credentials()
         if creds is None:
@@ -158,3 +180,113 @@ class Ingester(object):
             self.gis.layers['county_summaries']['id'],
             dry_run=self.dry_run
         )
+
+    def process_summaries(self, processed_dir, processed_file_details):
+        print("Starting load of summary table...")
+
+        layer_conf = self.gis.layers['summary_table']
+
+        # this self.gis.gis.content pattern is evidence that the first pass at
+        # a refactored structure should not be the last...
+        table = self.gis.gis.content.get(layer_conf['id'])
+        t = table.tables[0]
+
+        summary_df = pd.DataFrame()
+        for f in processed_file_details:
+            fname = f["processed_filename"]
+            size = os.path.getsize(os.path.join(processed_dir, fname))
+            if size > 0:
+                df = load_csv_to_df(os.path.join(processed_dir, fname))
+                table_row = create_summary_table_row(df, f["source_datetime"], f["filename"])
+                summary_df = summary_df.append(table_row, ignore_index=True)
+            else:
+                print(f"{fname} has a filesize of {size}, not processing.")
+
+        new_col_names = {}
+        for name in t.properties.fields:
+            new_col_names[name["alias"]] = name["name"]
+        summary_df = summary_df.rename(columns=new_col_names)
+        df_as_dict = summary_df.to_dict(orient='records')
+
+        features = []
+        for r in df_as_dict:
+            ft = Feature(attributes=r)
+            features.append(ft)
+        # It's okay if features is empty; status will reflect arcgis telling us that,
+        # but it won't stop the processing.
+        fs = FeatureSet(features)
+        if self.dry_run:
+            print("Dry run set, not editing features.")
+            status = "Dry run"
+        else:
+            status = t.edit_features(adds=features)
+        print(status)
+        print("Finished load of summary table")
+
+    def process_historical_hos(self, processed_dir, processed_file_details):
+
+        print("Starting load of historical HOS table...")
+
+        layer_conf = self.gis.layers['full_historical_table']
+
+        table = self.gis.gis.content.get(layer_conf['id'])
+        t = table.layers[0]
+
+        new_col_names = {}
+        for name in t.properties.fields:
+            new_col_names[name["alias"]]  = name["name"]
+
+        header = {}
+        features = []
+        new_rows = []
+        for f in processed_file_details:
+            fname = f["processed_filename"]
+            size = os.path.getsize(os.path.join(processed_dir, fname))
+            if size > 0:
+                print(f"Adding columns and renaming existing columns for: {fname}")
+                processed_time =  datetime.utcnow().isoformat()
+                with open(os.path.join(processed_dir, fname), newline='') as csvfile:
+                    reader = csv.DictReader(csvfile)
+                    for row in reader:
+                        # add our rows
+                        new_row ={}
+                        row["Source Data Timestamp"] = f["source_datetime"].isoformat()
+                        row["Processed At"] = processed_time
+                        row["Source Filename"] = f["filename"]
+                        header.update(row)
+
+                        # rename the headers based on alias
+                        for alias, name in new_col_names.items():
+                            if alias in row:
+                                new_row[name] = row[alias]
+                        ft = Feature(attributes=new_row)
+                        features.append(ft)
+                        new_rows.append(row)
+            else:
+                print(f"{fname} has a filesize of {size}, not processing.")
+
+        # historical for generating a new source CSV
+    #    if len(new_rows) > 0:
+    #        with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
+    #            writer = csv.DictWriter(csvfile, fieldnames=header)
+    #            writer.writeheader()
+    #            writer.writerows(new_rows)
+        # Done CSV generation
+
+
+        # It's okay if features is empty; status will reflect arcgis telling us that,
+        # but it won't stop the processing.
+        fs = FeatureSet(features)
+        if self.dry_run:
+            print("Dry run set, not editing features.")
+            status = "Dry run"
+        else:
+            fc = len(features)
+            chunksize = 1000.0
+            feature_batchs = chunks(features, math.ceil(fc / chunksize))
+            fbc = len(list(feature_batchs))
+            print(f"Adding {fc} features to the historical table in {fbc} batches.")
+            for batch in feature_batchs:
+                status = t.edit_features(adds=batch)
+                print(status)
+        print("Finished load of historical HOS table")
