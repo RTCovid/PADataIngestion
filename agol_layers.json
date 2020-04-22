@@ -1,0 +1,26 @@
+{
+  "feature_layer": {
+    "id": "38592574c8de4a02b180d6f65918e385",
+    "original_file_name": "processed_HOS.csv"
+  },
+  "public_feature_layer": {
+    "id": "1affcef28be04f4f994c99dea72d1a0e",
+    "original_file_name": "public_processed_HOS.csv"
+  },
+  "county_summaries": {
+    "id": "6d448594ed94473197ab8470a6e771f6"
+  },
+  "historical_averages": {
+    "id": "5d8235be486243249196c29348141c21"
+  },
+  "summary_table": {
+    "id": "ab2820906d2c4b7fa68fcf47a5261916"
+  },
+  "full_historical_table": {
+    "id": "bf24ecc40f294c1ba5ad16522f9be512"
+  },
+  "supplies": {
+    "id": "8fad710d5df6434f8567373979dd9dbe",
+    "original_file_name": "supplies.csv"
+  }
+}
