@@ -1,9 +1,9 @@
 {
-  "feature_layer": {
+  "hospital_layer": {
     "id": "38592574c8de4a02b180d6f65918e385",
     "original_file_name": "processed_HOS.csv"
   },
-  "public_feature_layer": {
+  "public_hospital_layer": {
     "id": "1affcef28be04f4f994c99dea72d1a0e",
     "original_file_name": "public_processed_HOS.csv"
   },

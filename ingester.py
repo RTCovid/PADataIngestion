@@ -139,9 +139,9 @@ class Ingester(object):
 
         # public vs. non-public means different ArcGIS online items
         if public is True:
-            layer_conf = self.gis.layers['public_feature_layer']
+            layer_conf = self.gis.layers['public_hospital_layer']
         else:
-            layer_conf = self.gis.layers['feature_layer']
+            layer_conf = self.gis.layers['hospital_layer']
 
         return process_hospital_old(
             self.gis,
