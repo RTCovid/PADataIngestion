@@ -1,7 +1,3 @@
-# eventually these functions should be migrated into Ingester methods...
-from main import process_hospital as process_hospital_old
-from main import process_county_summaries as process_county_summaries_old
-
 import os
 import csv
 import glob
@@ -11,6 +7,7 @@ import pandas as pd
 from datetime import datetime, date, timedelta
 
 import header_mapping as hm
+from geo_utils import Counties
 from operators import process_csv
 from operators import get_datetime_from_filename
 from arcgis.features import FeatureLayerCollection, FeatureSet, Table, Feature
@@ -139,18 +136,20 @@ class Ingester(object):
 
         # public vs. non-public means different ArcGIS online items
         if public is True:
-            layer_conf = self.gis.layers['public_hospital_layer']
+            dataset_name = "public_hospital_layer"
         else:
-            layer_conf = self.gis.layers['hospital_layer']
+            dataset_name = "hospital_layer"
 
-        return process_hospital_old(
-            self.gis,
-            processed_dir,
-            processed_filename,
-            layer_conf['id'],
-            layer_conf['original_file_name'],
-            dry_run=self.dry_run
-        )
+        print("Starting load of hospital data")
+        if self.dry_run:
+            print("Dry run set, not uploading HOS table to ArcGIS.")
+            status = "Dry run"
+        else:
+            status = self.gis.upload_to_arcgis(dataset_name, processed_dir, processed_filename)
+
+        print(status)
+        print("Finished load of hospital data")
+        return processed_dir, processed_filename
 
     def process_supplies(self, processed_dir, processed_filename):
         print("Starting load of supplies data")
@@ -167,19 +166,42 @@ class Ingester(object):
             print("Dry run set, not uploading summary table to ArcGIS.")
             status = "Dry run"
         else:
-            status = self.gis.upload_to_arcgis("supplies", processed_dir, processed_filename)
+            status = self.gis.overwrite_arcgis_layer("supplies", processed_dir, processed_filename)
         print(status)
         print("Finished load of supplies data")
 
     def process_county_summaries(self, processed_dir, processed_filename):
 
-        return process_county_summaries_old(
-            self.gis,
-            processed_dir,
-            processed_filename,
-            self.gis.layers['county_summaries']['id'],
-            dry_run=self.dry_run
-        )
+        print("Starting load of county summary table...")
+
+        new_data_filename = "new_county_summary_table.csv"
+
+        df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
+        d2 = df.groupby(["HospitalCounty"])[hm.county_sum_columns].sum().reset_index()
+
+        for new_col_name, num_denom in hm.summary_table_header.items():
+            d2[new_col_name] = (d2[num_denom["n"]] / d2[num_denom["d"]]) * 100.0
+        # PA wants to see 0.0 for any county that doesn't have a hospital, so:
+        existing_counties = set(d2["HospitalCounty"].to_list())
+        c = Counties()
+        all_counties = c.counties
+        unused_counties = list(set(all_counties).difference(existing_counties))
+        a_row = [0.0] * (len(d2.columns) - 1)
+        rows = []
+        for county in unused_counties:
+            rows.append([county] + a_row)
+        row_df = pd.DataFrame(rows, columns=d2.columns)
+        d2 = d2.append(row_df)
+
+        d2.to_csv(os.path.join(processed_dir, new_data_filename), header=True, index=False)
+
+        if self.dry_run:
+            print("Dry run set, not uploading county summary table to ArcGIS.")
+            status = "Dry run"
+        else:
+            status = self.gis.upload_to_arcgis("county_summaries", processed_dir, new_data_filename)
+        print(status)
+        print("Finished load of county summary data")
 
     def process_summaries(self, processed_dir, processed_file_details):
         print("Starting load of summary table...")
