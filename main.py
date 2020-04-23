@@ -165,9 +165,10 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
         fc = len(features)
         chunksize = 1000.0
         feature_batchs = chunks(features, math.ceil(fc / chunksize))
-        fbc = len(list(feature_batchs))
+        fb_list = list(feature_batchs)
+        fbc = len(fb_list)
         print(f"Adding {fc} features to the historical table in {fbc} batches.")
-        for batch in feature_batchs:
+        for batch in fb_list:
             status = t.edit_features(adds=batch)
             print(status)
     print("Finished load of historical HOS table")
