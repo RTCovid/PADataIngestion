@@ -5,7 +5,9 @@ from geo_utils import HospitalLocations
 def y_to_one(x): 
     if x == "Y":
         return 1
-    return x
+    if x == "N":
+        return 0
+    return None 
 
 converters = {
     "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?": y_to_one ,
@@ -84,6 +86,23 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                 except TypeError as e:
                     print(f"{source_data_file}: " + new_row["HospitalName"] + " has no canonical information!")
                     raise e
+
+                # fix bad lat/long if we get it:
+                try:
+                    hos_name = new_row["HospitalName"]
+                    if new_row["HospitalLatitude"] == '' or new_row["HospitalLongitude"] == '' or new_row["HospitalLatitude"] == "0" or new_row["HospitalLongitude"] == "0":
+                        print(f"lat/lon bad for {hos_name} in {source_data_file}")
+                        loc = hl.get_location_for_hospital(new_row["HospitalName"])
+                        print("got long:", new_row["HospitalLongitude"], "replacing with:", loc["HospitalLongitude"])
+                        new_row["HospitalLatitude"] = loc["HospitalLatitude"]
+                        new_row["HospitalLongitude"] = loc["HospitalLongitude"]
+                        print("new long:", new_row["HospitalLongitude"])
+
+                except TypeError as e:
+                    print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
+                    raise e
+
+
 
                 # Add the county; future proof in case they add it later
                 try:
