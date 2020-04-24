@@ -17,6 +17,7 @@ import math
 from geo_utils import HospitalLocations, Counties
 from operators import process_csv, get_files_from_sftp, get_gis, get_arcgis_feature_collection_from_item_id, upload_to_arcgis, get_already_processed_files
 from operators import get_datetime_from_filename
+from collections import Counter
 
 
 def load_credentials():
@@ -117,7 +118,7 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
 
     header = {}
     features = []
-    new_rows = []
+    hist_csv_rows = []
     for f in processed_file_details:
         fname = f["processed_filename"]
         size = os.path.getsize(os.path.join(processed_dir, fname))
@@ -128,29 +129,33 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     # add our rows
+                    hist_csv_row = {}
                     new_row ={}
                     row["Source Data Timestamp"] = f["source_datetime"].isoformat()
                     row["Processed At"] = processed_time
                     row["Source Filename"] = f["filename"]
+
                     header.update(row)
                     
+                    # XXX is this a bug? What happens to headers not in the alias?
                     # rename the headers based on alias
                     for alias, name in new_col_names.items():
                         if alias in row:
                             new_row[name] = row[alias]
                     ft = Feature(attributes=new_row)
                     features.append(ft)
-                    new_rows.append(row)
+                    hist_csv_rows.append(row)
         else:
             print(f"{fname} has a filesize of {size}, not processing.")
 
     # historical for generating a new source CSV
     if make_historical_csv:
-        if len(new_rows) > 0:
+        if len(hist_csv_rows) > 0:
             with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
-                writer = csv.DictWriter(csvfile, fieldnames=header)
+                pprint(list(header.keys()), width=1000)
+                writer = csv.DictWriter(csvfile, fieldnames=set(header.keys()))
                 writer.writeheader()
-                writer.writerows(new_rows)
+                writer.writerows(hist_csv_rows)
     # Done CSV generation
     
 

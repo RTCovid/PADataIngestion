@@ -1,6 +1,7 @@
 import os
 import csv
 from geo_utils import HospitalLocations
+import header_mapping as hm
 
 def y_to_one(x): 
     if x == "Y":
@@ -71,6 +72,7 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                     if k in converters:
                         row[k] = converters[k](v)
                         v = converters[k](v)
+
                         
                     # ArcGIS can't handle ' in header column names.
                     if "'" in k:
@@ -78,7 +80,13 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                     else:
                         new_k = k
 
+                    # fix any misspelled headers
+                    if new_k in hm.canonical_headers:
+                        print(f"Found bad key in {source_data_file}: {new_k}")
+                        new_k = hm.canonical_headers[k]
+
                     new_row[new_k] = v
+                    
 
                 # Older files have bad names for hospitals.
                 try:
@@ -87,16 +95,12 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                     print(f"{source_data_file}: " + new_row["HospitalName"] + " has no canonical information!")
                     raise e
 
-                # fix bad lat/long if we get it:
+                # fix bad lat/longs
                 try:
                     hos_name = new_row["HospitalName"]
-                    if new_row["HospitalLatitude"] == '' or new_row["HospitalLongitude"] == '' or new_row["HospitalLatitude"] == "0" or new_row["HospitalLongitude"] == "0":
-                        print(f"lat/lon bad for {hos_name} in {source_data_file}")
-                        loc = hl.get_location_for_hospital(new_row["HospitalName"])
-                        print("got long:", new_row["HospitalLongitude"], "replacing with:", loc["HospitalLongitude"])
-                        new_row["HospitalLatitude"] = loc["HospitalLatitude"]
-                        new_row["HospitalLongitude"] = loc["HospitalLongitude"]
-                        print("new long:", new_row["HospitalLongitude"])
+                    loc = hl.get_location_for_hospital(new_row["HospitalName"])
+                    new_row["HospitalLatitude"] = loc["HospitalLatitude"]
+                    new_row["HospitalLongitude"] = loc["HospitalLongitude"]
 
                 except TypeError as e:
                     print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
@@ -112,6 +116,8 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                 except TypeError as e:
                     print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
                     raise e
+
+
                 rows.append(new_row)
         with open (output_path, 'w', newline='') as wf:
             writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
