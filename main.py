@@ -17,6 +17,7 @@ import math
 from geo_utils import HospitalLocations, Counties
 from operators import process_csv, get_files_from_sftp, get_gis, get_arcgis_feature_collection_from_item_id, upload_to_arcgis, get_already_processed_files
 from operators import get_datetime_from_filename
+from collections import Counter
 
 
 def load_credentials():
@@ -105,10 +106,8 @@ def chunks(l, n):
         yield l[i:i+n]
 
 def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_historical_item_id, 
-                            original_data_file_name="historical_hos_table_v2.csv", dry_run=False):
+                            original_data_file_name="historical_hos_table_v2.csv", make_historical_csv=False, dry_run=False):
     print("Starting load of historical HOS table...")
-  #  original_data_file_name = "historical_hos_table.csv" # v1
-  #  arcgis_historical_item_id = "46f25552405a4fef9a6658fb5c0c68bf" # v1
 
     table = gis.content.get(arcgis_historical_item_id)
     t = table.layers[0]
@@ -119,7 +118,7 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
 
     header = {}
     features = []
-    new_rows = []
+    hist_csv_rows = []
     for f in processed_file_details:
         fname = f["processed_filename"]
         size = os.path.getsize(os.path.join(processed_dir, fname))
@@ -130,28 +129,33 @@ def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_hi
                 reader = csv.DictReader(csvfile)
                 for row in reader:
                     # add our rows
+                    hist_csv_row = {}
                     new_row ={}
                     row["Source Data Timestamp"] = f["source_datetime"].isoformat()
                     row["Processed At"] = processed_time
                     row["Source Filename"] = f["filename"]
+
                     header.update(row)
                     
+                    # XXX is this a bug? What happens to headers not in the alias?
                     # rename the headers based on alias
                     for alias, name in new_col_names.items():
                         if alias in row:
                             new_row[name] = row[alias]
                     ft = Feature(attributes=new_row)
                     features.append(ft)
-                    new_rows.append(row)
+                    hist_csv_rows.append(row)
         else:
             print(f"{fname} has a filesize of {size}, not processing.")
 
     # historical for generating a new source CSV
-#    if len(new_rows) > 0:
-#        with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
-#            writer = csv.DictWriter(csvfile, fieldnames=header)
-#            writer.writeheader()
-#            writer.writerows(new_rows)
+    if make_historical_csv:
+        if len(hist_csv_rows) > 0:
+            with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
+                pprint(list(header.keys()), width=1000)
+                writer = csv.DictWriter(csvfile, fieldnames=set(header.keys()))
+                writer.writeheader()
+                writer.writerows(hist_csv_rows)
     # Done CSV generation
     
 
@@ -381,7 +385,7 @@ def process_instantaneous(dry_run=False):
     process_county_summaries(gis, processed_dir, processed_filename, arcgis_item_id_for_county_summaries, dry_run=dry_run)
     print("Finished processing instantaneous tables.")
 
-def process_historical(dry_run=False):
+def process_historical(dry_run=False, make_historical_csv=False):
     print("Processing historical tables...")
     creds = load_credentials()
     print("Connecting to ArcGIS...")
@@ -410,13 +414,17 @@ def process_historical(dry_run=False):
     all_filenames = []
     files_to_not_sftp = get_already_processed_files(gis, item_id)
 
+    if make_historical_csv:
+        print ("Make historical CSV set, generating new historical HOS CSV; getting all historical files and setting dry_run=True")
+        files_to_not_sftp = []
+        dry_run=True
     file_details, all_filenames = get_files_from_sftp(creds, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:
         print("No new files to process for historical data.")
     else:
         processed_file_details = process_csv(file_details)
         processed_dir = processed_file_details[0]["output_dir"]
-        process_historical_hos(gis, processed_dir, processed_file_details, item_id, dry_run=dry_run)
+        process_historical_hos(gis, processed_dir, processed_file_details, item_id, make_historical_csv=make_historical_csv, dry_run=dry_run)
 
 
     print("Finished processing historical tables.")
@@ -436,11 +444,11 @@ def process_canary_features(dry_run=False):
     process_daily_hospital_averages(gis, historical_gis_item_id, historical_averages_item_id, dry_run=dry_run)
     print("Finished canary features.")
 
-def main(dry_run=False, csv_to_process=None):
+def main(dry_run=False, make_historical_csv=False):
     print("Started full ingestion processing run")
     #process_canary_features(dry_run=dry_run)
     process_instantaneous(dry_run=dry_run)
-    process_historical(dry_run=dry_run)
+    process_historical(dry_run=dry_run, make_historical_csv=make_historical_csv)
     print("Finished full ingestion processing run")
 
 def hello_pubsub(event, context):
@@ -458,9 +466,13 @@ def historical_pubsub(event, context):
 
 if __name__== "__main__":
     dry_run = False
+    make_historical_csv = False
     parser = argparse.ArgumentParser()
     parser.add_argument("--dry_run")
+    parser.add_argument("--make_historical_csv")
     args = parser.parse_args()
     if args.dry_run is not None:
         dry_run = True
-    main(dry_run)
+    if args.make_historical_csv is not None:
+        make_historical_csv = True
+    main(dry_run=dry_run, make_historical_csv=make_historical_csv)

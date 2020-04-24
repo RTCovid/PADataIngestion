@@ -1,11 +1,14 @@
 import os
 import csv
 from geo_utils import HospitalLocations
+import header_mapping as hm
 
 def y_to_one(x): 
     if x == "Y":
         return 1
-    return x
+    if x == "N":
+        return 0
+    return None 
 
 converters = {
     "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?": y_to_one ,
@@ -69,6 +72,7 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                     if k in converters:
                         row[k] = converters[k](v)
                         v = converters[k](v)
+
                         
                     # ArcGIS can't handle ' in header column names.
                     if "'" in k:
@@ -76,7 +80,13 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                     else:
                         new_k = k
 
+                    # fix any misspelled headers
+                    if new_k in hm.canonical_headers:
+                        print(f"Found bad key in {source_data_file}: {new_k}")
+                        new_k = hm.canonical_headers[k]
+
                     new_row[new_k] = v
+                    
 
                 # Older files have bad names for hospitals.
                 try:
@@ -84,6 +94,19 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                 except TypeError as e:
                     print(f"{source_data_file}: " + new_row["HospitalName"] + " has no canonical information!")
                     raise e
+
+                # fix bad lat/longs
+                try:
+                    hos_name = new_row["HospitalName"]
+                    loc = hl.get_location_for_hospital(new_row["HospitalName"])
+                    new_row["HospitalLatitude"] = loc["HospitalLatitude"]
+                    new_row["HospitalLongitude"] = loc["HospitalLongitude"]
+
+                except TypeError as e:
+                    print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
+                    raise e
+
+
 
                 # Add the county; future proof in case they add it later
                 try:
@@ -93,6 +116,8 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                 except TypeError as e:
                     print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
                     raise e
+
+
                 rows.append(new_row)
         with open (output_path, 'w', newline='') as wf:
             writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
