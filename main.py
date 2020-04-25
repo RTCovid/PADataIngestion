@@ -106,7 +106,7 @@ def chunks(l, n):
         yield l[i:i+n]
 
 def process_historical_hos(gis, processed_dir, processed_file_details, arcgis_historical_item_id, 
-                            original_data_file_name="historical_hos_table_v2.csv", make_historical_csv=False, dry_run=False):
+                            original_data_file_name="historical_hos_table_v4.csv", make_historical_csv=False, dry_run=False):
     print("Starting load of historical HOS table...")
 
     table = gis.content.get(arcgis_historical_item_id)
@@ -407,8 +407,9 @@ def process_historical(dry_run=False, make_historical_csv=False):
 
     # Full HOS historical table
     #item_id = "46f25552405a4fef9a6658fb5c0c68bf"
-    item_id = "bf24ecc40f294c1ba5ad16522f9be512" # v2
+    #item_id = "bf24ecc40f294c1ba5ad16522f9be512" # v2
     #item_id = "5d8235be486243249196c29348141c21" # v3
+    item_id = "3b39827f6f804c33b9b1114b5aa1d6b6" # v4
     files_to_not_sftp = []
     file_details = []
     all_filenames = []
@@ -439,7 +440,7 @@ def process_canary_features(dry_run=False):
     print("Connected.")
 
     print("XXX not doing historical averages yet")
-    historical_gis_item_id = "5d8235be486243249196c29348141c21" # v3
+    historical_gis_item_id = "3b39827f6f804c33b9b1114b5aa1d6b6" # v4
     historical_averages_item_id = ""
     process_daily_hospital_averages(gis, historical_gis_item_id, historical_averages_item_id, dry_run=dry_run)
     print("Finished canary features.")
