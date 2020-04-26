@@ -245,7 +245,8 @@ class Ingester(object):
         print(status)
         print("Finished load of summary table")
 
-    def process_historical_hos(self, processed_dir, processed_file_details):
+
+    def process_historical_hos(self, processed_dir, processed_file_details,  make_historical_csv=False):
 
         print("Starting load of historical HOS table...")
 
@@ -260,7 +261,7 @@ class Ingester(object):
 
         header = {}
         features = []
-        new_rows = []
+        hist_csv_rows = []
         for f in processed_file_details:
             fname = f["processed_filename"]
             size = os.path.getsize(os.path.join(processed_dir, fname))
@@ -271,30 +272,34 @@ class Ingester(object):
                     reader = csv.DictReader(csvfile)
                     for row in reader:
                         # add our rows
+                        hist_csv_row = {}
                         new_row ={}
                         row["Source Data Timestamp"] = f["source_datetime"].isoformat()
                         row["Processed At"] = processed_time
                         row["Source Filename"] = f["filename"]
+
                         header.update(row)
 
+                        # XXX is this a bug? What happens to headers not in the alias?
                         # rename the headers based on alias
                         for alias, name in new_col_names.items():
                             if alias in row:
                                 new_row[name] = row[alias]
                         ft = Feature(attributes=new_row)
                         features.append(ft)
-                        new_rows.append(row)
+                        hist_csv_rows.append(row)
             else:
                 print(f"{fname} has a filesize of {size}, not processing.")
 
         # historical for generating a new source CSV
-    #    if len(new_rows) > 0:
-    #        with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
-    #            writer = csv.DictWriter(csvfile, fieldnames=header)
-    #            writer.writeheader()
-    #            writer.writerows(new_rows)
+        if make_historical_csv:
+            if len(hist_csv_rows) > 0:
+                with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
+                    pprint(list(header.keys()), width=1000)
+                    writer = csv.DictWriter(csvfile, fieldnames=set(header.keys()))
+                    writer.writeheader()
+                    writer.writerows(hist_csv_rows)
         # Done CSV generation
-
 
         # It's okay if features is empty; status will reflect arcgis telling us that,
         # but it won't stop the processing.
@@ -306,9 +311,85 @@ class Ingester(object):
             fc = len(features)
             chunksize = 1000.0
             feature_batchs = chunks(features, math.ceil(fc / chunksize))
-            fbc = len(list(feature_batchs))
+            fb_list = list(feature_batchs)
+            fbc = len(fb_list)
             print(f"Adding {fc} features to the historical table in {fbc} batches.")
-            for batch in feature_batchs:
+            for batch in fb_list:
                 status = t.edit_features(adds=batch)
                 print(status)
         print("Finished load of historical HOS table")
+
+    def process_daily_hospital_averages(self, historical_gis_item_id, daily_averages_item_id):
+        # see what days have been processed
+        # if not processed, 
+        # get the historical table
+        # turn it into a df
+        # per day, get the averages
+        # for new: days
+        print("XXX daily_hospital_averages stub, returning.")
+        table = self.gis.content.get(historical_gis_item_id)
+        t = table.layers[0]
+
+
+        days = [date.fromisoformat('2020-04-14')]
+        #for filename in sorted(historical_already_processed_files):
+        #    d = get_datetime_from_filename(filename)
+        #    days.append(d.date())
+        dfs=[]
+        for day in days:
+
+            day_before=day - timedelta(days=1)
+            day_after=day + timedelta(days=1)
+            day_before = day_before.isoformat()
+            day_after = day_after.isoformat()
+            where=f"Source_Data_Timestamp >= '{day_before}' and Source_Data_Timestamp < '{day_after}'"
+            df = t.query(where=where, as_df=True)
+            # rename the columns from the ArcGIS names
+            new_col_names = {}
+            for name in t.properties.fields:
+                new_col_names[name["name"]]  = name["alias"]
+            df = df.rename(columns=new_col_names)
+
+            # create a column for the summed tables
+            for new_column, cols_to_sum in hm.new_summary_columns.items():
+                df[new_column] = df[cols_to_sum].sum()
+            old_col_names = list(hm.averages_per_day.values())
+            new_col_names = hm.averages_per_day.keys()
+            old_col_names.append("HospitalName")
+            old_col_names.append("HospitalCounty")
+            df.to_csv("one_day_notselected.csv", index=False, header=True)
+            df = df[old_col_names]
+            df = df.rename(columns=hm.averages_per_day)
+            df.to_csv("one_day_selected.csv", index=False, header=True)
+            print(df)
+
+    #    new_col_names = {}
+    #    for name in t.properties.fields:
+    #        new_col_names[name["name"]]  = name["alias"]
+    #
+    #    df = df.rename(columns=new_col_names)
+    #    print(df)
+            
+            # cut the columns we want out.
+            by_hospital_df = df.groupby(["HospitalName"]).mean().reset_index()
+            by_hospital_df["Date"] = day
+            by_county_df = df.groupby(["HospitalCounty"]).mean().reset_index()
+            by_county_df["Date"] = day
+            print(by_county_df)
+            by_county_df.to_csv("one_day_by_county_avg.csv", index=False, header=True)
+            os.exit()
+
+            # and upload them
+    #    print(df)
+
+    #    new_col_names = {}
+    #    for name in t.properties.fields:
+    #        new_col_names[name["name"]]  = name["alias"]
+    #
+    #    df = df.rename(columns=new_col_names)
+    #    print(df)
+    #
+    #    df.to_csv("/tmp/one_day.csv", index=False, header=True)
+    #    os.exit()
+
+    #    pass
