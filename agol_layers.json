@@ -1,0 +1,29 @@
+{
+  "hospital_layer": {
+    "id": "38592574c8de4a02b180d6f65918e385",
+    "original_file_name": "processed_HOS.csv"
+  },
+  "public_hospital_layer": {
+    "id": "1affcef28be04f4f994c99dea72d1a0e",
+    "original_file_name": "public_processed_HOS.csv"
+  },
+  "county_summaries": {
+    "id": "6d448594ed94473197ab8470a6e771f6",
+    "original_file_name": "county_summary_table_v4.csv"
+  },
+  "historical_averages": {
+    "id": "5d8235be486243249196c29348141c21"
+  },
+  "summary_table": {
+    "id": "ab2820906d2c4b7fa68fcf47a5261916",
+    "original_file_name": "summary_table.csv"
+  },
+  "full_historical_table": {
+    "id": "3b39827f6f804c33b9b1114b5aa1d6b6",
+    "original_file_name": "historical_hos_table_v4.csv"
+  },
+  "supplies": {
+    "id": "8fad710d5df6434f8567373979dd9dbe",
+    "original_file_name": "supplies.csv"
+  }
+}
