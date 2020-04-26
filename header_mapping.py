@@ -178,3 +178,11 @@ avg_to_do = [
     "% Med/Surg Beds Current Available average per day (Available/staffed)*100",
     "% Other Beds – Airborne Isolation Infection Room Beds Current Available average per day (Available/staffed)*100",
 ]
+
+
+# map bad/mispelled headers to the correct headers.
+canonical_headers  = {
+ 'Admission Data-Number of Patients awaiting admission for Confirmed or PUI COVID 19 on ventilator Response ?': 'Admission Data-Number of Patients awaiting admission for Confirmed or PUI COVID-19 on ventilator Response ?',
+ 'Admission Data-Number of Patients awaiting admission with Confirmed or PUI COVID19 non-ventilated Response ?': 'Admission Data-Number of Patients awaiting admission with Confirmed or PUI COVID-19 non-ventilated Response ?',
+ 'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID 19 in last 24 hours: ': 'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID-19 in last 24 hours: '
+}
