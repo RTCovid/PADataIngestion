@@ -70,9 +70,7 @@ def process_historical(dry_run=False, datadir=None, make_historical_csv=False):
     agol_connection = AGOLConnection()
     ingester.set_gis(agol_connection)
 
-    files_to_not_sftp = []
-    # XXX remove!
-    # files_to_not_sftp = ingester.gis.get_already_processed_files("summary_table")
+    files_to_not_sftp = ingester.gis.get_already_processed_files("summary_table")
     file_details, all_filenames = ingester.get_files_from_sftp(target_dir=datadir, only_latest=False, filenames_to_ignore=files_to_not_sftp)
 
     if len(file_details) == 0:
