@@ -4,6 +4,7 @@ import glob
 import math
 import pysftp
 import pandas as pd
+from pprint import pprint
 from datetime import datetime, date, timedelta
 
 import header_mapping as hm
@@ -140,7 +141,7 @@ class Ingester(object):
         else:
             dataset_name = "hospital_layer"
 
-        print("Starting load of hospital data")
+        print(f"Starting load of hospital data: {dataset_name}")
         if self.dry_run:
             print("Dry run set, not uploading HOS table to ArcGIS.")
             status = "Dry run"
@@ -148,7 +149,7 @@ class Ingester(object):
             status = self.gis.overwrite_arcgis_layer(dataset_name, processed_dir, processed_filename)
 
         print(status)
-        print("Finished load of hospital data")
+        print(f"Finished load of hospital data: {dataset_name}")
         return processed_dir, processed_filename
 
     def process_supplies(self, processed_dir, processed_filename):
@@ -203,15 +204,10 @@ class Ingester(object):
         print(status)
         print("Finished load of county summary data")
 
-    def process_summaries(self, processed_dir, processed_file_details):
+    def process_summaries(self, processed_dir, processed_file_details, make_historical_csv=False):
         print("Starting load of summary table...")
 
-        layer_conf = self.gis.layers['summary_table']
-
-        # this self.gis.gis.content pattern is evidence that the first pass at
-        # a refactored structure should not be the last...
-        table = self.gis.gis.content.get(layer_conf['id'])
-        t = table.tables[0]
+        summary_filename = self.gis.layers['summary_table']['original_file_name']
 
         summary_df = pd.DataFrame()
         for f in processed_file_details:
@@ -223,6 +219,18 @@ class Ingester(object):
                 summary_df = summary_df.append(table_row, ignore_index=True)
             else:
                 print(f"{fname} has a filesize of {size}, not processing.")
+
+        if make_historical_csv:
+            summary_df.to_csv(summary_filename, index=False, header=True)
+            print("Finished creation of historical summary table CSV, returning.")
+            return
+
+        layer_conf = self.gis.layers['summary_table']
+
+        # this self.gis.gis.content pattern is evidence that the first pass at
+        # a refactored structure should not be the last...
+        table = self.gis.gis.content.get(layer_conf['id'])
+        t = table.tables[0]
 
         new_col_names = {}
         for name in t.properties.fields:
@@ -251,6 +259,7 @@ class Ingester(object):
         print("Starting load of historical HOS table...")
 
         layer_conf = self.gis.layers['full_historical_table']
+        original_data_file_name = self.gis.layers['full_historical_table']['original_file_name']
 
         table = self.gis.gis.content.get(layer_conf['id'])
         t = table.layers[0]
