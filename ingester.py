@@ -167,7 +167,7 @@ class Ingester(object):
             print("Dry run set, not uploading summary table to ArcGIS.")
             status = "Dry run"
         else:
-            status = self.gis.overwrite_arcgis_layer("supplies", processed_dir, processed_filename)
+            status = self.gis.overwrite_arcgis_layer("supplies", processed_dir, supplies_filename)
         print(status)
         print("Finished load of supplies data")
 
