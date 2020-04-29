@@ -43,6 +43,7 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
     hl = HospitalLocations()
 
     output_file_details = []
+    processing_errors = []
     for source_file_details in file_details:
         source_data_file = source_file_details["filename"]
         source_data_dir = source_file_details["dir"]
@@ -82,7 +83,10 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
 
                     # fix any misspelled headers
                     if new_k in hm.canonical_headers:
-                        print(f"Found bad key in {source_data_file}: {new_k}")
+                        msg = f"Found bad key in {source_data_file}: {new_k}"
+                        print(msg)
+                        processing_errors.append(msg)
+
                         new_k = hm.canonical_headers[k]
 
                     new_row[new_k] = v
@@ -92,8 +96,9 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                 try:
                     new_row["HospitalName"] = hl.get_canonical_name(new_row["HospitalName"])
                 except TypeError as e:
-                    print(f"{source_data_file}: " + new_row["HospitalName"] + " has no canonical information!")
-                    raise e
+                    msg = f"{source_data_file}: " + new_row["HospitalName"] + " has no canonical information!"
+                    print(msg)
+                    processing_errors.append(msg)
 
                 # fix bad lat/longs
                 try:
@@ -103,10 +108,9 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                     new_row["HospitalLongitude"] = loc["HospitalLongitude"]
 
                 except TypeError as e:
-                    print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
-                    raise e
-
-
+                    msg = f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!"
+                    print(msg)
+                    processing_errors.append(msg)
 
                 # Add the county; future proof in case they add it later
                 try:
@@ -114,9 +118,9 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                         loc = hl.get_location_for_hospital(new_row["HospitalName"])
                         new_row["HospitalCounty"] = loc["GeocodedHospitalCounty"]
                 except TypeError as e:
-                    print(f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!")
-                    raise e
-
+                    msg = f"{source_data_file}: " + new_row["HospitalName"] + " has no location information!"
+                    print(msg)
+                    processing_errors.append(msg)
 
                 rows.append(new_row)
         with open (output_path, 'w', newline='') as wf:
@@ -124,5 +128,4 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
             writer.writeheader()
             writer.writerows(rows)
         output_file_details.append(source_file_details)
-    return output_file_details
-
+    return {'file_details': output_file_details, "errors": processing_errors}

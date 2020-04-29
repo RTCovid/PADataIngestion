@@ -71,6 +71,7 @@ class Ingester(object):
         self.dry_run = dry_run
         self.gis = None
         self.available_files = []
+        self.errors = []
 
     def _load_credentials(self):
 
@@ -402,3 +403,6 @@ class Ingester(object):
     #    os.exit()
 
     #    pass
+
+    def report_errors(self):
+        return self.errors

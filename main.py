@@ -10,6 +10,7 @@ from ingester import Ingester
 def process_instantaneous(dry_run=False, datadir=None):
     print("Processing instantaneous tables...")
 
+    errors = []
     if datadir is None:
         datadir = "/tmp"
 
@@ -28,17 +29,24 @@ def process_instantaneous(dry_run=False, datadir=None):
     print("Finished.")
 
     # Public-only data
-    public_processed_file_details = process_csv(
+    public_processing_details = process_csv(
         [file_details[0]],
         output_prefix="public_processed_HOS_",
         columns_wanted=hm.columns_for_public_release,
         output_dir=datadir,
     )
+    errors += public_processing_details['errors']
+    public_processed_file_details = public_processing_details['file_details']
     public_processed_filename = public_processed_file_details[0]["processed_filename"]
     public_processed_dir = public_processed_file_details[0]["output_dir"]
 
     # Full data
-    processed_file_details = process_csv([file_details[0]], output_dir=datadir)
+    processing_details = process_csv(
+        [file_details[0]],
+        output_dir=datadir
+    )
+    errors += processing_details['errors']
+    processed_file_details = processing_details['file_details']
     processed_filename = processed_file_details[0]["processed_filename"]
     processed_dir = processed_file_details[0]["output_dir"]
 
@@ -61,8 +69,12 @@ def process_instantaneous(dry_run=False, datadir=None):
     ingester.process_county_summaries(processed_dir, processed_filename)
     print("Finished processing instantaneous tables.")
 
+    errors += ingester.report_errors()
+    return errors
+
 def process_historical(dry_run=False, datadir=None, make_historical_csv=False):
 
+    errors = []
     if datadir is None:
         datadir = "/tmp"
 
@@ -76,7 +88,9 @@ def process_historical(dry_run=False, datadir=None, make_historical_csv=False):
     if len(file_details) == 0:
         print("No new files to process for historical summary table data.")
     else:
-        processed_file_details = process_csv(file_details, output_dir=datadir)
+        processing_details = process_csv(file_details, output_dir=datadir)
+        errors += processing_details['errors']
+        processed_file_details = processing_details['file_details']
         processed_dir = processed_file_details[0]["output_dir"]
         ingester.process_summaries(processed_dir, processed_file_details, make_historical_csv=make_historical_csv)
 
@@ -86,12 +100,16 @@ def process_historical(dry_run=False, datadir=None, make_historical_csv=False):
     if len(file_details) == 0:
         print("No new files to process for historical data.")
     else:
-        processed_file_details = process_csv(file_details, output_dir=datadir)
+        processing_details = process_csv(file_details, output_dir=datadir)
+        errors += processing_details['errors']
+        processed_file_details = processing_details['file_details']
         processed_dir = processed_file_details[0]["output_dir"]
         ingester.process_historical_hos(processed_dir, processed_file_details, make_historical_csv=make_historical_csv)
 
 
     print("Finished processing historical tables.")
+    errors += ingester.report_errors()
+    return errors
 
 
 def process_canary_features(dry_run=False, datadir=None):
@@ -109,20 +127,40 @@ def process_canary_features(dry_run=False, datadir=None):
     ingester.process_daily_hospital_averages(historical_gis_item_id, historical_averages_item_id)
     print("Finished canary features.")
 
+    # returning an empty list to maintain error reporting patterns
+    return []
+
 def main(dry_run, datadir=None, make_historical_csv=False):
-    #process_canary_features(dry_run=dry_run, datadir=datadir)
-    process_instantaneous(dry_run=dry_run, datadir=datadir)
-    process_historical(dry_run=dry_run, datadir=datadir, make_historical_csv=make_historical_csv)
+
+    all_errors = []
+
+    # all_errors += process_canary_features(dry_run=dry_run, datadir=datadir)
+    all_errors += process_instantaneous(dry_run=dry_run, datadir=datadir)
+    all_errors += process_historical(dry_run=dry_run, datadir=datadir, make_historical_csv=make_historical_csv)
+
+    # at the very end of all processes, raise an exception if any errors have
+    # been returned along the way. this will trigger the google cloud reporting.
+    if len(all_errors) > 0:
+        errors_str = "\n".join(list(set(all_errors)))
+        raise Exception(errors_str)
 
 def instantaneous_pubsub(event, context):
     print("Started instantaneous ingestion processing run")
-    process_instantaneous()
+    errors = process_instantaneous()
     print("Finished instantaneous ingestion processing run")
+
+    if len(errors) > 0:
+        errors_str = "\n".join(list(set(errors)))
+        raise Exception(errors)
 
 def historical_pubsub(event, context):
     print("Started historical ingestion processing run")
-    process_historical()
+    errors = process_historical()
     print("Finished historical ingestion processing run")
+
+    if len(errors) > 0:
+        errors_str = "\n".join(list(set(errors)))
+        raise Exception(errors)
 
 if __name__== "__main__":
     make_historical_csv = False
