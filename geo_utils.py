@@ -28,6 +28,7 @@ class HospitalLocations(object):
                 "Riddle Memoial Hospital": "Riddle Memorial Hospital",
                 "Curahealth Hospital Heritage Valley": "Curahealth Hospital of Heritage Valley Beaver",
                 "CuraHealth Pittsburgh": "Kindred Hospital-Pittsburgh",
+                "UPMC Bedford": "UPMC-Bedford Memorial",
                 }
     def __init__(self):
         self.cache = {}
