@@ -90,7 +90,9 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                         new_k = hm.canonical_headers[k]
 
                     new_row[new_k] = v
-                    
+
+                # record the number of errors before this row is tested.
+                num_errors_before = len(processing_errors)
 
                 # Older files have bad names for hospitals.
                 try:
@@ -122,7 +124,10 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                     print(msg)
                     processing_errors.append(msg)
 
-                rows.append(new_row)
+                # only append the row if it didn't cause a new error report
+                if len(processing_errors) == num_errors_before:
+                    rows.append(new_row)
+
         with open (output_path, 'w', newline='') as wf:
             writer = csv.DictWriter(wf, fieldnames=rows[0].keys())
             writer.writeheader()
