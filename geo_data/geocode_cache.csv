@@ -1,6 +1,6 @@
 HospitalName,HospitalCity,HospitalState,HospitalLatitude,HospitalLongitude,HospitalStreetAddress,GeocodedHospitalCounty,GeocodedHospitalLocality,GeocodedHospitalLocalityType,GeocodedHospitalState
 Grove City Medical Center,Grove City,PA,41.170724,-80.083227,631 N. Broad St. Ext,Mercer,,unknown,PA
-Ellwood City Medical Center,Ellwood City,PA,40.86856,40.86856,724 Pershing St.,Lawrence,,unknown,PA
+Ellwood City Medical Center,Ellwood City,PA,40.86856,-80.2776136,724 Pershing St.,Lawrence,,unknown,PA
 Gettysburg Hospital,Gettysburg,PA,39.82335,-77.23375,147 Gettys St.,Adams,GETTYSBURG,unknown,PA
 AHN-Allegheny General Hospital,Pittsburgh,PA,40.45662,-80.00348,320 E. North Ave.,Allegheny,,,
 AHN-Allegheny Valley Hospital,Natrona Heights,PA,40.61761,-79.73705,1301 Carlisle St.,Allegheny,,,
