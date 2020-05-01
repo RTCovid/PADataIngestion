@@ -16,7 +16,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "631 N. Broad St. Ext",
     "HospitalCounty": "Mercer",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "AHN- Grove City Hospital"
    },
    "geometry": {
     "type": "Point",
@@ -34,7 +34,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "724 Pershing St.",
     "HospitalCounty": "Lawrence",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "Ellwood City"
    },
    "geometry": {
     "type": "Point",
@@ -304,7 +304,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "7777 Steubansville Pk.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "CuraHealth Pittsburgh"
    },
    "geometry": {
     "type": "Point",
@@ -322,7 +322,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 S. Jackson Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "AHN-Suburban Hospital"
    },
    "geometry": {
     "type": "Point",
@@ -682,7 +682,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1000 Durch Ridge Rd.",
     "HospitalCounty": "Beaver",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "Curahealth Hospital Heritage Valley"
    },
    "geometry": {
     "type": "Point",
@@ -2212,7 +2212,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1068 W. Baltimore Pk.",
     "HospitalCounty": "Delaware",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "Riddle Memorial Hopital|Riddle Memoial Hospital"
    },
    "geometry": {
     "type": "Point",
@@ -2788,7 +2788,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "555 N. Duke St.",
     "HospitalCounty": "Lancaster",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "Lancaster General Health-Women & Babies Hospital"
    },
    "geometry": {
     "type": "Point",
@@ -4120,7 +4120,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4200 Monument Rd.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "Belmont Center For Comprehensive Treatment"
    },
    "geometry": {
     "type": "Point",
@@ -4300,7 +4300,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "Broad St. & Vine St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAliases": null
+    "HospitalNameAliases": "Hahnemann University Hospital-Transplant Center"
    },
    "geometry": {
     "type": "Point",
