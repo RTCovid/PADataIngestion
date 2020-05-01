@@ -73,7 +73,7 @@
     "LTCCity": "Scranton",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Allied Services Skilled Nursing Center",
     "LTCCounty": "Lackawanna"
    },
    "geometry": {
@@ -415,7 +415,7 @@
     "LTCCity": "Lititz",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Gardens at Lititz",
     "LTCCounty": "Lancaster"
    },
    "geometry": {
@@ -491,7 +491,7 @@
     "LTCCity": "Bloomsburg",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Balanced Care Bloomsburg",
     "LTCCounty": "Columbia"
    },
    "geometry": {
@@ -3189,7 +3189,7 @@
     "LTCCity": "Forest City",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Forest City Nursing & Rehab Center (L)",
     "LTCCounty": "Susquehanna"
    },
    "geometry": {
@@ -3550,7 +3550,7 @@
     "LTCCity": "Bloomsburg",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Geisinger-Bloomsburg Health Care Center",
     "LTCCounty": "Columbia"
    },
    "geometry": {
@@ -3702,7 +3702,7 @@
     "LTCCity": "New Castle",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Allison Heather",
     "LTCCounty": "Lawrence"
    },
    "geometry": {
@@ -4006,7 +4006,7 @@
     "LTCCity": "Johnstown",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Golden Livingcenter-Richland",
     "LTCCounty": "Cambria"
    },
    "geometry": {
@@ -5279,7 +5279,7 @@
     "LTCCity": "Huntingdon",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Huntingdon Hills Nursing & Rehabilitation Center",
     "LTCCounty": "Huntingdon"
    },
    "geometry": {
@@ -6039,7 +6039,7 @@
     "LTCCity": "Wynnewood",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Lankenau Hospital Transitional Care Center",
     "LTCCounty": "Montgomery"
    },
    "geometry": {
@@ -6818,7 +6818,7 @@
     "LTCCity": "Millersburg",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Manor at Susquehanna Village",
     "LTCCounty": "Dauphin"
    },
    "geometry": {
@@ -10105,7 +10105,7 @@
     "LTCCity": "Taylor",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "Riverside Rehabilitation & Nursing Center",
     "LTCCounty": "Lackawanna"
    },
    "geometry": {
@@ -11967,7 +11967,7 @@
     "LTCCity": "Palmyra",
     "LTCState": "PA",
     "LTCZip": null,
-    "LTCNameAliases": null,
+    "LTCNameAliases": "The Gardens at Palmyra",
     "LTCCounty": "Lebanon"
    },
    "geometry": {
@@ -12005,7 +12005,7 @@
     "LTCCity": "Wellsboro",
     "LTCState": "PA",
     "LTCZip": "16901",
-    "LTCNameAliases": null,
+    "LTCNameAliases": "The Laurels (L)",
     "LTCCounty": "Tioga"
    },
    "geometry": {
