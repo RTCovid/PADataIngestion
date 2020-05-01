@@ -29,7 +29,7 @@ Brookview Health at Menno Haven|<blank>|this is the blank address mentioned abov
 
 Most importantly, in the csv all of these facilities have a distinct set of numbers attached to them, meaning none of them is an inadvertent duplicate of another. So, there are three Menno facilities, and one of them is brand new (2055 Scotland) and one was just missing an address (2011 Scotland).
 
-### notes on Berwick Retirement Village 2 - Luzerne Co.
+#### notes on Berwick Retirement Village 2 - Luzerne Co.
 
 A separate entry in the csv is
 
