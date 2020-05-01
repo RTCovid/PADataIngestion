@@ -16,7 +16,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "631 N. Broad St. Ext",
     "HospitalCounty": "Mercer",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -34,7 +34,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "724 Pershing St.",
     "HospitalCounty": "Lawrence",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -52,7 +52,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "147 Gettys St.",
     "HospitalCounty": "Adams",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -70,7 +70,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "320 E. North Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -88,7 +88,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1301 Carlisle St.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -106,7 +106,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "5324 Penn Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -124,7 +124,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4401 Penn Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -142,7 +142,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4401 Penn Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -160,7 +160,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "3705 Fifth Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -178,7 +178,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1405 Shady Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -196,7 +196,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "320 Guys Run Road",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -214,7 +214,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "351 Camp Meeting Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -232,7 +232,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2570 Haymaker Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -250,7 +250,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2380 McGinley Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -268,7 +268,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2380 McGinley Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -286,7 +286,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "720 Blackburn Rd",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -304,7 +304,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "7777 Steubansville Pk.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -322,7 +322,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 S. Jackson Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -340,7 +340,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "300 Halket St.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -358,7 +358,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1004 Arch St.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -376,7 +376,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1500 Fifth Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -394,7 +394,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2575 Boyce Plaza Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -412,7 +412,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1000 Bower Hill Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -430,7 +430,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2775 Mosside Blvd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -448,7 +448,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1500 Fifth Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -466,7 +466,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1400 Locust St.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -484,7 +484,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "9100 Babcock Blvd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -502,7 +502,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "200 Lothrop St.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -520,7 +520,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "5200 Centre Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -538,7 +538,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "815 Freeport Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -556,7 +556,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "3811 O'Hara St.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -574,7 +574,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "University Drive C",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -592,7 +592,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4800 Friendship Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -610,7 +610,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "565 Coal Valley Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -628,7 +628,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "225 Penn Ave.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -646,7 +646,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "25 Heckel Rd.",
     "HospitalCounty": "Allegheny",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -664,7 +664,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Nolte Dr.",
     "HospitalCounty": "Armstrong",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -682,7 +682,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1000 Durch Ridge Rd.",
     "HospitalCounty": "Beaver",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -700,7 +700,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1000 Dutch Ridge Rd.",
     "HospitalCounty": "Beaver",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -718,7 +718,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "10455 Lincoln Hwy.",
     "HospitalCounty": "Bedford",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -736,7 +736,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "10455 Lincoln Hwy.",
     "HospitalCounty": "Bedford",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -754,7 +754,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1623 Morgantown Rd.",
     "HospitalCounty": "Berks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -772,7 +772,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "145 N. Sixth St.",
     "HospitalCounty": "Berks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -790,7 +790,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2500 Bernville Rd.",
     "HospitalCounty": "Berks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -808,7 +808,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2752 Century Blvd.",
     "HospitalCounty": "Berks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -826,7 +826,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "Route 422 & Sportsman Rd",
     "HospitalCounty": "Berks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -844,7 +844,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "420 S. 5th Ave",
     "HospitalCounty": "Berks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -862,7 +862,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "620 Howard Ave.",
     "HospitalCounty": "Blair",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -880,7 +880,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2005 Valley View Blvd.",
     "HospitalCounty": "Blair",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -898,7 +898,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2907 Pleasant Valley Blvd.",
     "HospitalCounty": "Blair",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -916,7 +916,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "105 Nason Dr.",
     "HospitalCounty": "Blair",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -934,7 +934,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "187 Hospital Dr.",
     "HospitalCounty": "Blair",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -952,7 +952,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "91 Hospital Dr.",
     "HospitalCounty": "Bradford",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -970,7 +970,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Guthrie Sq.",
     "HospitalCounty": "Bradford",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -988,7 +988,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "275 Guthrie Drive",
     "HospitalCounty": "Bradford",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1006,7 +1006,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "380 N. Oxford Valley Rd.",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1024,7 +1024,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "280 Middletown Blvd.",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1042,7 +1042,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "595 W. State St.",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1060,7 +1060,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "833 E. Butler Ave.",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1078,7 +1078,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "700 Lawn Ave.",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1096,7 +1096,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "501 Bath Rd.",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1114,7 +1114,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "3300 Tillman Dr.",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1132,7 +1132,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1021 Park Ave.",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1150,7 +1150,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "232 W. Route 25 1201 LANGHORNE NEWTOWN RD",
     "HospitalCounty": "Bucks",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1168,7 +1168,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Hospital Wy.",
     "HospitalCounty": "Butler",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1186,7 +1186,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "325 New Castle Rd.",
     "HospitalCounty": "Butler",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1204,7 +1204,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 St. Francis Way",
     "HospitalCounty": "Butler",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1222,7 +1222,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1086 Franklin St.",
     "HospitalCounty": "Cambria",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1240,7 +1240,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "320 Main St.",
     "HospitalCounty": "Cambria",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1258,7 +1258,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "320 Main St.",
     "HospitalCounty": "Cambria",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1276,7 +1276,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "290 Haida Ave.",
     "HospitalCounty": "Cambria",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1294,7 +1294,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "320 Main St.",
     "HospitalCounty": "Cambria",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1312,7 +1312,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "211 N. 12th St.",
     "HospitalCounty": "Carbon",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1330,7 +1330,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "211 N. 12th St.",
     "HospitalCounty": "Carbon",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1348,7 +1348,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "135 Lafayette Ave.",
     "HospitalCounty": "Carbon",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1366,7 +1366,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "132 The Meadows Dr.",
     "HospitalCounty": "Centre",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1384,7 +1384,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1800 E. Park Ave.",
     "HospitalCounty": "Centre",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1402,7 +1402,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "550 W. College Ave.",
     "HospitalCounty": "Centre",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1420,7 +1420,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "201 Reeceville Rd.",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1438,7 +1438,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "414 Paoli Pike",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1456,7 +1456,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "701 E. Marshall St.",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1474,7 +1474,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "655 Sugartown Rd.Building 150 PO Box 275",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1492,7 +1492,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1015 W. Baltimore Pike",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1510,7 +1510,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "400 E. Marshall St.",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1528,7 +1528,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "255 W. Lancaster Ave.",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1546,7 +1546,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "140 Nutt Rd.",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1564,7 +1564,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "151 Woodbine Rd.",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1582,7 +1582,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1400 Black Horse Rd.",
     "HospitalCounty": "Chester",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1600,7 +1600,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Hospital Dr.",
     "HospitalCounty": "Clarion",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1618,7 +1618,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2 Hospital Dr",
     "HospitalCounty": "Clarion",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1636,7 +1636,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "809 Turnpike Ave.",
     "HospitalCounty": "Clearfield",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1654,7 +1654,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 Hospital Ave.",
     "HospitalCounty": "Clearfield",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1672,7 +1672,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1001 Pine St.",
     "HospitalCounty": "Clinton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1690,7 +1690,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "24 Cree Dr.",
     "HospitalCounty": "Clinton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1708,7 +1708,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "-76.778481",
     "HospitalCounty": "Northumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1726,7 +1726,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "701 E. 16th St.",
     "HospitalCounty": "Columbia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1744,7 +1744,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "549 E. Fair St.",
     "HospitalCounty": "Columbia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1762,7 +1762,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "751 Liberty St.",
     "HospitalCounty": "Crawford",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1780,7 +1780,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "406 W. Oak St.",
     "HospitalCounty": "Crawford",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1798,7 +1798,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "361 Alexander Spring Rd.",
     "HospitalCounty": "Cumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1816,7 +1816,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "175 Lancaster Blvd.",
     "HospitalCounty": "Cumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1834,7 +1834,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4950 Wilson Ln.",
     "HospitalCounty": "Cumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1852,7 +1852,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "503 N. 21st St.",
     "HospitalCounty": "Cumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1870,7 +1870,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "601 Roxbury Rd.",
     "HospitalCounty": "Cumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1888,7 +1888,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "503 N. 21st St. Fifth Floor",
     "HospitalCounty": "Cumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1906,7 +1906,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2501 N. 3rd Street",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1924,7 +1924,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2501 N 3rd Street",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1942,7 +1942,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2501 N 3rd Street",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1960,7 +1960,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1829 N. Front St.",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1978,7 +1978,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "500 University Dr.PO Box 850 H142",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -1996,7 +1996,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "500 University Dr.PO Box 850",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2014,7 +2014,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2501 N. Third St.",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2032,7 +2032,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2501 North 3rd Street",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2050,7 +2050,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "111 N. Front St.",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2068,7 +2068,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "111 South Front Street",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2086,7 +2086,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "409 S. Second St.",
     "HospitalCounty": "Dauphin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2104,7 +2104,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Medical Center Blvd.",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2122,7 +2122,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "501 N. Lansdowne Ave.",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2140,7 +2140,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2000 Old W. Chester Pike",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2158,7 +2158,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1500 N. Lansdowne Ave.6th Floor",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2176,7 +2176,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "130 S. Bryn Mawr Ave.",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2194,7 +2194,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1500 Lansdowne Ave.",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2212,7 +2212,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1068 W. Baltimore Pk.",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2230,7 +2230,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "190 W. Sproul Rd.",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2248,7 +2248,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "175 E. Chester Pk.",
     "HospitalCounty": "Delaware",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2266,7 +2266,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "763 Johnsonburg Rd.",
     "HospitalCounty": "Elk",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2284,7 +2284,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "965 Shamrock Lane",
     "HospitalCounty": "Erie",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2302,7 +2302,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "143 E. Second St.",
     "HospitalCounty": "Erie",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2320,7 +2320,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "5515 Peach St.",
     "HospitalCounty": "Erie",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2338,7 +2338,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "232 W. 25th St.",
     "HospitalCounty": "Erie",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2356,7 +2356,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "252 W. 11th St.",
     "HospitalCounty": "Erie",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2374,7 +2374,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1645 W. Eighth St.",
     "HospitalCounty": "Erie",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2392,7 +2392,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "201 State St.",
     "HospitalCounty": "Erie",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2410,7 +2410,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "135 E. 38th St.",
     "HospitalCounty": "Erie",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2428,7 +2428,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "401 E. Murphy Ave.",
     "HospitalCounty": "Fayette",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2446,7 +2446,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "500 W. Berkeley St.",
     "HospitalCounty": "Fayette",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2464,7 +2464,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "112 N. Seventh St.",
     "HospitalCounty": "Franklin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2482,7 +2482,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "501 E. Main St.",
     "HospitalCounty": "Franklin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2500,7 +2500,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "214 Peach Orchard Rd.",
     "HospitalCounty": "Fulton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2518,7 +2518,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "350 Bonar Ave.",
     "HospitalCounty": "Greene",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2536,7 +2536,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1225 Warm Springs Ave.",
     "HospitalCounty": "Huntingdon",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2554,7 +2554,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "841 Hospital Rd.",
     "HospitalCounty": "Indiana",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2572,7 +2572,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "835 Hospital Rd.PO Box 788",
     "HospitalCounty": "Indiana",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2590,7 +2590,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 Hospital Rd.",
     "HospitalCounty": "Jefferson",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2608,7 +2608,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "81 Hillcrest Dr.",
     "HospitalCounty": "Jefferson",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2626,7 +2626,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "475 Morgan Hwy.",
     "HospitalCounty": "Lackawanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2644,7 +2644,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "475 Morgan Hwy.",
     "HospitalCounty": "Lackawanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2662,7 +2662,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1451 HIillside Dr.",
     "HospitalCounty": "Lackawanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2680,7 +2680,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1822 Mulberry St.",
     "HospitalCounty": "Lackawanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2698,7 +2698,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1822 Mulberry St.",
     "HospitalCounty": "Lackawanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2716,7 +2716,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "700 Quincy Ave.",
     "HospitalCounty": "Lackawanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2734,7 +2734,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "746 Jefferson Ave.PO Box 994",
     "HospitalCounty": "Lackawanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2752,7 +2752,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "169 Martin Ave.",
     "HospitalCounty": "Lancaster",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2770,7 +2770,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1500 Highland Dr.",
     "HospitalCounty": "Lancaster",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2788,7 +2788,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "555 N. Duke St.",
     "HospitalCounty": "Lancaster",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2806,7 +2806,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "675 Good Dr.",
     "HospitalCounty": "Lancaster",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2824,7 +2824,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1211 Wilmington Ave.",
     "HospitalCounty": "Lawrence",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2842,7 +2842,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4th & Walnut St. S",
     "HospitalCounty": "Lebanon",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2860,7 +2860,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1700 S. Lincoln Ave.",
     "HospitalCounty": "Lebanon",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2878,7 +2878,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "283 S. Butler Road",
     "HospitalCounty": "Lebanon",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2896,7 +2896,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1600 Hanover Ave.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2914,7 +2914,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1503 Cedar Crest Blvd.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2932,7 +2932,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "850 S. 5th St.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2950,7 +2950,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "5300 Kids Peace Dr.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2968,7 +2968,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "17th St. & Chew St.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -2986,7 +2986,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1200 S. Cedar Crest Blvd.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3004,7 +3004,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4815 Tilghman St.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3022,7 +3022,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "421 Chew St.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3040,7 +3040,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1736 Hamilton St.",
     "HospitalCounty": "Lehigh",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3058,7 +3058,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "562 Wyoming Ave.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3076,7 +3076,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1000 E. Mountain Dr.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3094,7 +3094,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1000 E. Mountain Dr.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3112,7 +3112,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "700 E. Broad St.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3130,7 +3130,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "150 Mundy St.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3148,7 +3148,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "700 E. Broad St.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3166,7 +3166,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "128 W. Washington St.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3184,7 +3184,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "575 N. River St.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3202,7 +3202,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "575 N. River St.Seventh Floor",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3220,7 +3220,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1111 E. End Blvd.",
     "HospitalCounty": "Luzerne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3238,7 +3238,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "University Ave. & Woodland Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3256,7 +3256,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1020 Thompson St.",
     "HospitalCounty": "Lycoming",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3274,7 +3274,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "215 E. Water St.",
     "HospitalCounty": "Lycoming",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3292,7 +3292,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "700 High St.",
     "HospitalCounty": "Lycoming",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3310,7 +3310,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "116 Interstate Pkwy.",
     "HospitalCounty": "Mckean",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3328,7 +3328,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4372 Route 6",
     "HospitalCounty": "Mckean",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3346,7 +3346,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1995 Technology Parkway",
     "HospitalCounty": "Cumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3364,7 +3364,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "239 Edgewood Dr. Ext",
     "HospitalCounty": "Mercer",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3382,7 +3382,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "631 N. Broad St. Ext",
     "HospitalCounty": "Mercer",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3400,7 +3400,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "740 E. State St.",
     "HospitalCounty": "Mercer",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3418,7 +3418,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "110 N. Main St.",
     "HospitalCounty": "Mercer",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3436,7 +3436,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2200 Memorial Dr.",
     "HospitalCounty": "Mercer",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3454,7 +3454,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "400 Highland Ave.",
     "HospitalCounty": "Mifflin",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3472,7 +3472,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 St. Luke's Lane",
     "HospitalCounty": "Monroe",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3490,7 +3490,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1200 Old York Rd.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3508,7 +3508,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "60 E. Township Line Rd.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3526,7 +3526,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "7170 Lafayette Ave.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3544,7 +3544,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 Eagleville Rd.P.O. Box 45",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3562,7 +3562,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "722 E. Butler Pk.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3580,7 +3580,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 Medical Campus Dr.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3598,7 +3598,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 E Lancaster Ave.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3616,7 +3616,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 E Lancaster Ave.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3634,7 +3634,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2701 Dekalb Pike",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3652,7 +3652,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "50 Beech Dr.Gate #4 Building 50",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3670,7 +3670,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1001 Sterigere St.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3688,7 +3688,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "450 Bethlehem Pk.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3706,7 +3706,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "454 Enterprise Dr",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3724,7 +3724,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1600 E. High St.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3742,7 +3742,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1033 W. Germantown Pk.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3760,7 +3760,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "559 W. Germantown Pk.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3778,7 +3778,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "660 Thomas Rd.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3796,7 +3796,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1648 Huntingdon Pk.",
     "HospitalCounty": "Montgomery",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3814,7 +3814,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "200 State Hospital Dr.",
     "HospitalCounty": "Montour",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3832,7 +3832,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2 Rehab Ln.",
     "HospitalCounty": "Montour",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3850,7 +3850,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 N. Academy Ave.",
     "HospitalCounty": "Montour",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3868,7 +3868,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 N. Academy Ave.",
     "HospitalCounty": "Montour",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3886,7 +3886,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 N. Academy Ave.",
     "HospitalCounty": "Montour",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3904,7 +3904,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2310 Highland Ave.",
     "HospitalCounty": "Northampton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3922,7 +3922,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "250 S. 21st St.",
     "HospitalCounty": "Northampton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3940,7 +3940,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2545 Schoenersville Rd.",
     "HospitalCounty": "Northampton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3958,7 +3958,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2545 Schoenersville Rd.",
     "HospitalCounty": "Northampton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3976,7 +3976,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1872 St. Luke's Blvd.",
     "HospitalCounty": "Northampton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -3994,7 +3994,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "801 Ostrum St.",
     "HospitalCounty": "Northampton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4012,7 +4012,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "250 S. 21st St.",
     "HospitalCounty": "Northampton",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4030,7 +4030,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4200 Hospital Rd.",
     "HospitalCounty": "Northumberland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4048,7 +4048,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "5501 Old York Rd.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4066,7 +4066,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": null,
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4084,7 +4084,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": null,
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4102,7 +4102,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "Knights Rd. & Red Lion Rd.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4120,7 +4120,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4200 Monument Rd.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4138,7 +4138,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1331 E. Wyoming Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4156,7 +4156,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "8835 Germantown Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4174,7 +4174,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "3401 Civic Center Blvd.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4192,7 +4192,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "561 Fairthorn Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4210,7 +4210,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "333 Cottman Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4228,7 +4228,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "4641 Roosevelt Blvd.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4246,7 +4246,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Penn Blvd.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4264,7 +4264,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "Eighth St. & Girard Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4282,7 +4282,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1800 Lombard St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4300,7 +4300,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "Broad St. & Vine St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4318,7 +4318,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "3400 Spruce St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4336,7 +4336,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "3400 Spruce St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4354,7 +4354,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "7600 Central Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4372,7 +4372,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "136 W. Diamond St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4390,7 +4390,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "6129 Palmetto St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4408,7 +4408,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "111 N. 49th St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4426,7 +4426,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1513 Race St. 6 Franklin Dr.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4444,7 +4444,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "501 S. 54th St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4462,7 +4462,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2301 S. Broad St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4480,7 +4480,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1200 W. Tabor Rd.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4498,7 +4498,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2601 Holme Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4516,7 +4516,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1840 South St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4534,7 +4534,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "800 Spruce St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4552,7 +4552,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "39th & Market St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4570,7 +4570,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "3551 N. Broad St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4588,7 +4588,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "5800 Ridge Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4606,7 +4606,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "Erie Ave. & N. Front St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4624,7 +4624,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2301 E. Allegheny Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4642,7 +4642,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 E Lehigh Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4660,7 +4660,7 @@
     "HospitalState": null,
     "HospitalStreetAddress": "3401 N Broad St.Jones Hall Room 1020",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4678,7 +4678,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "Broad St. & Ontario St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4696,7 +4696,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "3401 N. Broad St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4714,7 +4714,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1020 Sansom St. 111 S. 11th St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4732,7 +4732,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1900 S. Broad St.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4750,7 +4750,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "University Ave. & Woodland Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4768,7 +4768,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "840 Walnut Street",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4786,7 +4786,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "8601 Stenton Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4804,7 +4804,7 @@
     "HospitalState": null,
     "HospitalStreetAddress": "1840 South Street",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4822,7 +4822,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "8601 Stenton Ave.",
     "HospitalCounty": "Philadelphia",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4840,7 +4840,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "206 E. Brown St.",
     "HospitalCounty": "Pike",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4858,7 +4858,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "206 E. Brown St.",
     "HospitalCounty": "Pike",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4876,7 +4876,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1001 E. Second St.",
     "HospitalCounty": "Potter",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4894,7 +4894,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "700 E. Norwegian St.",
     "HospitalCounty": "Schuylkill",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4912,7 +4912,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "420 S. Jackson St.",
     "HospitalCounty": "Schuylkill",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4930,7 +4930,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "700 E. Norwegian St.",
     "HospitalCounty": "Schuylkill",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4948,7 +4948,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "420 S. Jackson St.",
     "HospitalCounty": "Schuylkill",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4966,7 +4966,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "360 W. Ruddle St.",
     "HospitalCounty": "Schuylkill",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -4984,7 +4984,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "200 Hospital Dr.",
     "HospitalCounty": "Somerset",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5002,7 +5002,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "225 S. Center Ave.",
     "HospitalCounty": "Somerset",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5020,7 +5020,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "600 Somerset Ave.",
     "HospitalCounty": "Somerset",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5038,7 +5038,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2872 Turnpike St.",
     "HospitalCounty": "Susquehanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5056,7 +5056,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 Hospital Drive",
     "HospitalCounty": "Susquehanna",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5074,7 +5074,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "32 Central Ave.",
     "HospitalCounty": "Tioga",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5092,7 +5092,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Hospital Dr.",
     "HospitalCounty": "Union",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5110,7 +5110,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 Fairfield Dr.",
     "HospitalCounty": "Venango",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5128,7 +5128,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "2 Crescent Dr.",
     "HospitalCounty": "Warren",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5146,7 +5146,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "33 Main Dr.",
     "HospitalCounty": "Warren",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5164,7 +5164,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 Medical Blvd.",
     "HospitalCounty": "Washington",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5182,7 +5182,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1163 Country Club Rd.",
     "HospitalCounty": "Washington",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5200,7 +5200,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "155 Wilson Ave.",
     "HospitalCounty": "Washington",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5218,7 +5218,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "601 Park St.",
     "HospitalCounty": "Wayne",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5236,7 +5236,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "508 S. Church St.",
     "HospitalCounty": "Westmoreland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5254,7 +5254,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Mellon Wy.",
     "HospitalCounty": "Westmoreland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5272,7 +5272,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1 Mellon Wy.",
     "HospitalCounty": "Westmoreland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5290,7 +5290,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "121 Longview Dr.PO Box 111",
     "HospitalCounty": "Westmoreland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5308,7 +5308,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "532 W. Pittsburgh St.",
     "HospitalCounty": "Westmoreland",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5326,7 +5326,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "State Route 6 WestPO Box 5950",
     "HospitalCounty": "Wyoming",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5344,7 +5344,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1850 Normandie Dr.",
     "HospitalCounty": "York",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5362,7 +5362,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "300 Highland Ave.",
     "HospitalCounty": "York",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5380,7 +5380,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "325 S. Belmont St.",
     "HospitalCounty": "York",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5398,7 +5398,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1701 Innovation Drive.5th Floor",
     "HospitalCounty": "York",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5416,7 +5416,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "325 S. Belmont St.",
     "HospitalCounty": "York",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5434,7 +5434,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "300 Highland Ave.",
     "HospitalCounty": "York",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5452,7 +5452,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "55 Monument Rd.",
     "HospitalCounty": "York",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5470,7 +5470,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "1001 S. George St.",
     "HospitalCounty": "York",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
@@ -5488,7 +5488,7 @@
     "HospitalState": "PA",
     "HospitalStreetAddress": "100 Paramount Blvd",
     "HospitalCounty": "Schuylkill",
-    "HospitalNameAlias": null
+    "HospitalNameAliases": null
    },
    "geometry": {
     "type": "Point",
