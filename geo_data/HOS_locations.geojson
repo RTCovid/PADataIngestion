@@ -1,0 +1,5502 @@
+{
+ "type": "FeatureCollection",
+ "name": "HOS_locations",
+ "crs": {
+  "type": "name",
+  "properties": {
+   "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+  }
+ },
+ "features": [
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Grove City Medical Center",
+    "HospitalCity": "Grove City",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "631 N. Broad St. Ext",
+    "HospitalCounty": "Mercer",
+    "HospitalNameAliases": "AHN- Grove City Hospital"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.083227,
+     41.170724
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Ellwood City Medical Center",
+    "HospitalCity": "Ellwood City",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "724 Pershing St.",
+    "HospitalCounty": "Lawrence",
+    "HospitalNameAliases": "Ellwood City"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.2776136,
+     40.86856
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Gettysburg Hospital",
+    "HospitalCity": "Gettysburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "147 Gettys St.",
+    "HospitalCounty": "Adams",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.23375,
+     39.82335
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "AHN-Allegheny General Hospital",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "320 E. North Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.00348,
+     40.45662
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "AHN-Allegheny Valley Hospital",
+    "HospitalCity": "Natrona Heights",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1301 Carlisle St.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.73705,
+     40.61761
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Childrens Home of Pittsburgh",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "5324 Penn Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.93785,
+     40.46147
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Children's Hospital of Pittsburgh of UPMC",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4401 Penn Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.95304,
+     40.46587
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Children's Hospital of Pittsburgh",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4401 Penn Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.95304,
+     40.46587
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Children's Hospital of Pittsburgh-Transplant Center",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "3705 Fifth Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.95795,
+     40.442224
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Children's Institute of Pittsburgh",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1405 Shady Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.919514,
+     40.443102
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Encompass Harmarville Rehab",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "320 Guys Run Road",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.877403,
+     40.552004
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Encompass Health Rehabiltation Hosp of Sewickley",
+    "HospitalCity": "Sewickley",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "351 Camp Meeting Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.201313,
+     40.572152
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "AHN-Forbes Hospital",
+    "HospitalCity": "Monroeville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2570 Haymaker Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.751161,
+     40.428477
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Healthsouth Monroeville",
+    "HospitalCity": "Monroeville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2380 McGinley Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.744608,
+     40.424156
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Healthsouth of Pittsburgh LLC",
+    "HospitalCity": "Monroeville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2380 McGinley Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.744608,
+     40.424156
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Heritage Valley Med Cntr Sewickley",
+    "HospitalCity": "Sewickley",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "720 Blackburn Rd",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.179065,
+     40.543284
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Kindred Hospital-Pittsburgh",
+    "HospitalCity": "Oakdale",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "7777 Steubansville Pk.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": "CuraHealth Pittsburgh"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.008375,
+     40.454353
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lifecare Hospitals of Pittsburgh-North Campus",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 S. Jackson Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": "AHN-Suburban Hospital"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.060548,
+     40.494915
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Magee-Womens Hospital UPMC",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "300 Halket St.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.95938,
+     40.43676
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Mercy North Shore Psych",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1004 Arch St.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.00814,
+     40.45472
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Select Specialty Hospital-Mckeesport",
+    "HospitalCity": "McKeesport",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1500 Fifth Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.960693,
+     40.441883
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Southwood Psychiatric Hospital",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2575 Boyce Plaza Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.11522,
+     40.31997
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Clair Memorial",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1000 Bower Hill Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.066416,
+     40.37718
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-East",
+    "HospitalCity": "Monroeville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2775 Mosside Blvd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.758393,
+     40.436878
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-McKeesport",
+    "HospitalCity": "Mckeesport",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1500 Fifth Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.850907,
+     40.352052
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Mercy",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1400 Locust St.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.98548,
+     40.4366
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Passavant-McCandless",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "9100 Babcock Blvd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.01578,
+     40.57331
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Presbyterian",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "200 Lothrop St.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.9604,
+     40.44238
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Shadyside",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "5200 Centre Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.94095,
+     40.45478
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-St Margaret",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "815 Freeport Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.896028,
+     40.489344
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Western Psych",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "3811 O'Hara St.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.95986,
+     40.4436
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "VA Pittsburgh Healthcare System",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "University Drive C",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.96111,
+     40.44634
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "AHN-West Penn Hospital",
+    "HospitalCity": "Pittsburgh",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4800 Friendship Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.94638,
+     40.46216
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "AHN-Jefferson Hospital",
+    "HospitalCity": "Jefferson Hills",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "565 Coal Valley Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.934557,
+     40.319101
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lifecare Behavioral Health Pittsburgh",
+    "HospitalCity": "Wilkinsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "225 Penn Ave.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.892359,
+     40.446291
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Ohio Valley",
+    "HospitalCity": "Mckees Rocks",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "25 Heckel Rd.",
+    "HospitalCounty": "Allegheny",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.093904,
+     40.473089
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Armstrong County Memorial",
+    "HospitalCity": "Kittanning",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Nolte Dr.",
+    "HospitalCounty": "Armstrong",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.566418,
+     40.815233
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Curahealth Hospital of Heritage Valley Beaver",
+    "HospitalCity": "Beaver",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1000 Durch Ridge Rd.",
+    "HospitalCounty": "Beaver",
+    "HospitalNameAliases": "Curahealth Hospital Heritage Valley"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.32414,
+     40.7096
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Valley Medical Center Beaver",
+    "HospitalCity": "Beaver",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1000 Dutch Ridge Rd.",
+    "HospitalCounty": "Beaver",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.32389,
+     40.70931
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Bedford Memorial",
+    "HospitalCity": "Everett",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "10455 Lincoln Hwy.",
+    "HospitalCounty": "Bedford",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.428834,
+     40.023686
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Bedford",
+    "HospitalCity": "Everett",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "10455 Lincoln Hwy.",
+    "HospitalCounty": "Bedford",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.428834,
+     40.023686
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Encompass Health Rehabilitation Hospital of Reading",
+    "HospitalCity": "Reading",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1623 Morgantown Rd.",
+    "HospitalCounty": "Berks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.924081,
+     40.291181
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Haven Behavioral Hospital Reading",
+    "HospitalCity": "Reading",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "145 N. Sixth St.",
+    "HospitalCounty": "Berks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.925768,
+     40.337594
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "PSH-St. Joseph Medical Center",
+    "HospitalCity": "Reading",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2500 Bernville Rd.",
+    "HospitalCounty": "Berks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.977267,
+     40.376579
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Surgical Institute of Reading",
+    "HospitalCity": "Wyomissing",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2752 Century Blvd.",
+    "HospitalCounty": "Berks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.987868,
+     40.357876
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Wernersville State Hospital",
+    "HospitalCity": "Wernersville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "Route 422 & Sportsman Rd",
+    "HospitalCounty": "Berks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.104738,
+     40.336642
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Tower Health System-Reading Hospital",
+    "HospitalCity": "West Reading",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "420 S. 5th Ave",
+    "HospitalCounty": "Berks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.948293,
+     40.32999
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Altoona",
+    "HospitalCity": "Altoona",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "620 Howard Ave.",
+    "HospitalCounty": "Blair",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.39798,
+     40.52159
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Encompass Health of Altoona",
+    "HospitalCity": "Altoona",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2005 Valley View Blvd.",
+    "HospitalCounty": "Blair",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.39112,
+     40.49777
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "James E. Van Zandt VA Medical Center",
+    "HospitalCity": "Altoona",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2907 Pleasant Valley Blvd.",
+    "HospitalCounty": "Blair",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.39849,
+     40.48959
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Conemaugh Nason Medical Center",
+    "HospitalCity": "Roaring Spring",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "105 Nason Dr.",
+    "HospitalCounty": "Blair",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.388927,
+     40.337844
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Tyrone Hospital",
+    "HospitalCity": "Tyrone",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "187 Hospital Dr.",
+    "HospitalCounty": "Blair",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.252718,
+     40.675952
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Guthrie Towanda Memorial Hospital",
+    "HospitalCity": "Towanda",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "91 Hospital Dr.",
+    "HospitalCounty": "Bradford",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.448885,
+     41.783739
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Guthrie Robert Packer Hospital",
+    "HospitalCity": "Sayre",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Guthrie Sq.",
+    "HospitalCounty": "Bradford",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.518735,
+     41.980913
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Guthrie Troy Community Hospital",
+    "HospitalCity": "Troy",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "275 Guthrie Drive",
+    "HospitalCounty": "Bradford",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.794608,
+     41.792777
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Jefferson Bucks County Campus",
+    "HospitalCity": "Langhorne",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "380 N. Oxford Valley Rd.",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -74.8675011,
+     40.183046
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Barix Clinics of Pennsylvania",
+    "HospitalCity": "Langhorne",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "280 Middletown Blvd.",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -74.884581,
+     40.181795
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Doylestown Hospital",
+    "HospitalCity": "Doylestown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "595 W. State St.",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.142189,
+     40.305419
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Foundations Behavioral Health",
+    "HospitalCity": "Doylestown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "833 E. Butler Ave.",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.15527,
+     40.300101
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Grand View Hospital",
+    "HospitalCity": "Sellersville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "700 Lawn Ave.",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.324099,
+     40.362516
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lower Bucks Hospital",
+    "HospitalCity": "Bristol",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "501 Bath Rd.",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -74.862875,
+     40.102288
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Rothman Specialty Hospital",
+    "HospitalCity": "Bensalem",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "3300 Tillman Dr.",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -74.96104,
+     40.11679
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Luke's Quakertown Campus",
+    "HospitalCity": "Quakertown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1021 Park Ave.",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.348395,
+     40.437884
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Mary Medical Center",
+    "HospitalCity": "Langhorne",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "232 W. Route 25 1201 LANGHORNE NEWTOWN RD",
+    "HospitalCounty": "Bucks",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -74.929197,
+     40.202785
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Butler Memorial Hospital",
+    "HospitalCity": "Butler",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Hospital Wy.",
+    "HospitalCounty": "Butler",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.88159,
+     40.8668
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "VA Medical Center Butler",
+    "HospitalCity": "Butler",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "325 New Castle Rd.",
+    "HospitalCounty": "Butler",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.94527,
+     40.87493
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Passavant Cranberry",
+    "HospitalCity": "Cranberry Twp.",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 St. Francis Way",
+    "HospitalCounty": "Butler",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.09926,
+     40.68275
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Conemaugh Memorial Medical Center",
+    "HospitalCity": "Johnstown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1086 Franklin St.",
+    "HospitalCounty": "Cambria",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.92006,
+     40.304319
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Conemaugh Memorial Medical Center Transitional Care Unit",
+    "HospitalCity": "Johnstown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "320 Main St.",
+    "HospitalCounty": "Cambria",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.921367,
+     40.326581
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Crichton Rehabilitation Center",
+    "HospitalCity": "Johnstown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "320 Main St.",
+    "HospitalCounty": "Cambria",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.921367,
+     40.326581
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Miners Hospital",
+    "HospitalCity": "Hastings",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "290 Haida Ave.",
+    "HospitalCounty": "Cambria",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.705976,
+     40.65889
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Select Specialty Hospital-Johnstown",
+    "HospitalCity": "Johnstown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "320 Main St.",
+    "HospitalCounty": "Cambria",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.921367,
+     40.326581
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Blue Mountain Hospital-Gnaden Huetten Campus",
+    "HospitalCity": "Lehighton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "211 N. 12th St.",
+    "HospitalCounty": "Carbon",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.725928,
+     40.833269
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Blue Mountain Hospital-Gnaden Huetten Campus (L)",
+    "HospitalCity": "Lehighton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "211 N. 12th St.",
+    "HospitalCounty": "Carbon",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.725928,
+     40.833269
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Blue Mountain Hospital-Palmerton Campus",
+    "HospitalCity": "Palmerton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "135 Lafayette Ave.",
+    "HospitalCounty": "Carbon",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.61502,
+     40.803005
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Meadows Psychiatric Center",
+    "HospitalCity": "Centre Hall",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "132 The Meadows Dr.",
+    "HospitalCounty": "Centre",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.21796,
+     40.18611
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Mount Nittany Medical Center",
+    "HospitalCity": "State College",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1800 E. Park Ave.",
+    "HospitalCounty": "Centre",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.843547,
+     40.819113
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Encompass Health Nittany Valley Rehabilitation Hospital",
+    "HospitalCity": "Pleasant Gap",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "550 W. College Ave.",
+    "HospitalCounty": "Centre",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.759092,
+     40.859701
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Brandywine Hospital Coatesville",
+    "HospitalCity": "Coatesville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "201 Reeceville Rd.",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.790617,
+     40.012562
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Bryn Mawr Rehabilitation Hospital",
+    "HospitalCity": "Malvern",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "414 Paoli Pike",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.5286336,
+     40.010422
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Chester County Hospital",
+    "HospitalCity": "West Chester",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "701 E. Marshall St.",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.600719,
+     39.972079
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Devereux Children's Behavioral Health Institute",
+    "HospitalCity": "Malvern",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "655 Sugartown Rd.Building 150 PO Box 275",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.51445,
+     40.008162
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Jennersville Hospital West Grove",
+    "HospitalCity": "West Grove",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1015 W. Baltimore Pike",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.888518,
+     39.82261
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lifecare Hospitals of Chester County",
+    "HospitalCity": "West Chester",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "400 E. Marshall St.",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.602371,
+     39.968871
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Main Line-Paoli Memorial Hospital",
+    "HospitalCity": "Paoli",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "255 W. Lancaster Ave.",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.499586,
+     40.042043
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Phoenixville Hospital",
+    "HospitalCity": "Phoenixville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "140 Nutt Rd.",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.513517,
+     40.123412
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. John Vianney Hospital",
+    "HospitalCity": "Downingtown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "151 Woodbine Rd.",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.6854,
+     40.01426
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "VA Medical Center Coatesville",
+    "HospitalCity": "Coatesville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1400 Black Horse Rd.",
+    "HospitalCounty": "Chester",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.800325,
+     39.998724
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Clarion Hospital",
+    "HospitalCity": "Clarion",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Hospital Dr.",
+    "HospitalCounty": "Clarion",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.3974,
+     41.19128
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Clarion Psychiatric Center",
+    "HospitalCity": "Clarion",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2 Hospital Dr",
+    "HospitalCounty": "Clarion",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.396586,
+     41.19385
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Pennhighlands Clearfield",
+    "HospitalCity": "Clearfield",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "809 Turnpike Ave.",
+    "HospitalCounty": "Clearfield",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.449147,
+     41.033007
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Pennhighlands Dubois",
+    "HospitalCity": "DuBois",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 Hospital Ave.",
+    "HospitalCounty": "Clearfield",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.775151,
+     41.11492
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Bucktail Medical Center",
+    "HospitalCity": "Renovo",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1001 Pine St.",
+    "HospitalCounty": "Clinton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.738064,
+     41.32683
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Susquehanna Lock Haven Hospital",
+    "HospitalCity": "Lock Haven",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "24 Cree Dr.",
+    "HospitalCounty": "Clinton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.467996,
+     41.133214
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Susquehanna Sunbury",
+    "HospitalCity": "Sunbury",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "-76.778481",
+    "HospitalCounty": "Northumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.778481,
+     40.862064
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Berwick Hospital Center",
+    "HospitalCity": "Berwick",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "701 E. 16th St.",
+    "HospitalCounty": "Columbia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.23104,
+     41.07048
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Bloomsburg Hospital",
+    "HospitalCity": "Bloomsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "549 E. Fair St.",
+    "HospitalCounty": "Columbia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.45326,
+     41.00871
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Meadville Medical Center",
+    "HospitalCity": "Meadville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "751 Liberty St.",
+    "HospitalCounty": "Crawford",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.145617,
+     41.641447
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Titusville Area Hospital",
+    "HospitalCity": "Titusville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "406 W. Oak St.",
+    "HospitalCounty": "Crawford",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.679286,
+     41.633218
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Pinnacle Carlisle",
+    "HospitalCity": "Carlisle",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "361 Alexander Spring Rd.",
+    "HospitalCounty": "Cumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.223103,
+     40.183434
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Encompass Health Rehabilitation Hospital of Mechanicsburg",
+    "HospitalCity": "Mechanicsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "175 Lancaster Blvd.",
+    "HospitalCounty": "Cumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.974637,
+     40.210847
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Healthsouth Regional Specialty Hospital",
+    "HospitalCity": "Mechanicsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4950 Wilson Ln.",
+    "HospitalCounty": "Cumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.971793,
+     40.209092
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger-Holy Spirit Hospital",
+    "HospitalCity": "Camp Hill",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "503 N. 21st St.",
+    "HospitalCounty": "Cumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.921997,
+     40.25377
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Roxbury Treatment Center",
+    "HospitalCity": "Shippensburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "601 Roxbury Rd.",
+    "HospitalCounty": "Cumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.538034,
+     40.05407
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Select Specialty Hospital-Camp Hill",
+    "HospitalCity": "Camp Hill",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "503 N. 21st St. Fifth Floor",
+    "HospitalCounty": "Cumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.92424,
+     40.25427
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "2Memorial Child/Adolescent Partial Hospital Program",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2501 N. 3rd Street",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.89852,
+     40.285755
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Adult IP Service Lines",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2501 N 3rd Street",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.898799,
+     40.285699
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Child/Adolescent IP Service Lines",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2501 N 3rd Street",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.898799,
+     40.285699
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Edgewater Psychiatric Center",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1829 N. Front St.",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.896975,
+     40.273998
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Milton S Hershey Medical Center",
+    "HospitalCity": "Hershey",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "500 University Dr.PO Box 850 H142",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.674223,
+     40.265695
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Milton S Hershey Medical Center-Transplant Center",
+    "HospitalCity": "Hershey",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "500 University Dr.PO Box 850",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.674223,
+     40.265695
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Penn State Hershey Rehabilitation LLC",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2501 N. Third St.",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.898698,
+     40.285582
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Pennsylvania Psychiatric Institute",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2501 North 3rd Street",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.89852,
+     40.285755
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Pinnacle Harrisburg",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "111 N. Front St.",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.884314,
+     40.259531
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Select Medical Harrisburg",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "111 South Front Street",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.898698,
+     40.285582
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Pinnacle-Transplant Center",
+    "HospitalCity": "Harrisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "409 S. Second St.",
+    "HospitalCounty": "Dauphin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.874999,
+     40.25647
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Crozer-Chester Medical Center",
+    "HospitalCity": "Upland",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Medical Center Blvd.",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.366162,
+     39.857076
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Delaware County Memorial Hospital",
+    "HospitalCity": "Drexel Hill",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "501 N. Lansdowne Ave.",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.283583,
+     39.953489
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Kindred Hospital Philadelphia Havertown",
+    "HospitalCity": "Havertown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2000 Old W. Chester Pike",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.333777,
+     39.975373
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Kindred Hospital-Delaware County",
+    "HospitalCity": "Darby",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1500 N. Lansdowne Ave.6th Floor",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.26736,
+     39.92545
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Main Line-Bryn Mawr Hospital",
+    "HospitalCity": "Bryn Mawr",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "130 S. Bryn Mawr Ave.",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.321288,
+     40.019103
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Mercy Fitzgerald Hospital",
+    "HospitalCity": "Darby",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1500 Lansdowne Ave.",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.267953,
+     39.926591
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Riddle Memorial Hospital",
+    "HospitalCity": "Media",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1068 W. Baltimore Pk.",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": "Riddle Memorial Hopital|Riddle Memoial Hospital"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.428202,
+     39.914268
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Springfield Hospital",
+    "HospitalCity": "Springfield",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "190 W. Sproul Rd.",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.348518,
+     39.92208
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Taylor Hospital",
+    "HospitalCity": "Ridley Park",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "175 E. Chester Pk.",
+    "HospitalCounty": "Delaware",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.319798,
+     39.87673
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Pennhighlands Elk",
+    "HospitalCity": "St. Marys",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "763 Johnsonburg Rd.",
+    "HospitalCounty": "Elk",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.578108,
+     41.426325
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Corry Memorial Hospital",
+    "HospitalCity": "Corry",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "965 Shamrock Lane",
+    "HospitalCounty": "Erie",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.612053,
+     41.936202
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Encompass Rehab Hospital of Erie",
+    "HospitalCity": "Erie",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "143 E. Second St.",
+    "HospitalCounty": "Erie",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.08584,
+     42.1337
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Millcreek Community Hospital",
+    "HospitalCity": "Erie",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "5515 Peach St.",
+    "HospitalCounty": "Erie",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.09298,
+     42.074
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "AHN-Saint Vincent Hospital",
+    "HospitalCity": "Erie",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "232 W. 25th St.",
+    "HospitalCounty": "Erie",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.07916,
+     42.11143
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Select Specialty Hospital-Erie",
+    "HospitalCity": "Erie",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "252 W. 11th St.",
+    "HospitalCounty": "Erie",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.0868,
+     42.1225
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Shriners Hospital For Children Erie",
+    "HospitalCity": "Erie",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1645 W. Eighth St.",
+    "HospitalCounty": "Erie",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.11927,
+     42.11399
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Hamot",
+    "HospitalCity": "Erie",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "201 State St.",
+    "HospitalCounty": "Erie",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.08792,
+     42.13289
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "VA Medical Center Erie",
+    "HospitalCity": "Erie",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "135 E. 38th St.",
+    "HospitalCounty": "Erie",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.06449,
+     42.10271
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Highlands Hospital",
+    "HospitalCity": "Connellsville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "401 E. Murphy Ave.",
+    "HospitalCounty": "Fayette",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.58814,
+     40.0229
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Uniontown",
+    "HospitalCity": "Uniontown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "500 W. Berkeley St.",
+    "HospitalCounty": "Fayette",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.737862,
+     39.902348
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Chambersburg Hospital",
+    "HospitalCity": "Chambersburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "112 N. Seventh St.",
+    "HospitalCounty": "Franklin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.64741,
+     39.93474
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Waynesboro Hospital",
+    "HospitalCity": "Waynesboro",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "501 E. Main St.",
+    "HospitalCounty": "Franklin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.569276,
+     39.751432
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Fulton County Medical Center",
+    "HospitalCity": "McConnellsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "214 Peach Orchard Rd.",
+    "HospitalCounty": "Fulton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.008928,
+     39.937386
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Washington Health System - Greene",
+    "HospitalCity": "Waynesburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "350 Bonar Ave.",
+    "HospitalCounty": "Greene",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.173861,
+     39.900261
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "JC Blair Memorial Hospital",
+    "HospitalCity": "Huntingdon",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1225 Warm Springs Ave.",
+    "HospitalCounty": "Huntingdon",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.013898,
+     40.493578
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Indiana Ambulatory Surgical Associates",
+    "HospitalCity": "Indiana",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "841 Hospital Rd.",
+    "HospitalCounty": "Indiana",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.158841,
+     40.608465
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Indiana Hospital",
+    "HospitalCity": "Indiana",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "835 Hospital Rd.PO Box 788",
+    "HospitalCounty": "Indiana",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.158834,
+     40.608514
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Pennhighlands Brookville",
+    "HospitalCity": "Brookville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 Hospital Rd.",
+    "HospitalCounty": "Jefferson",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.091571,
+     41.157135
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Punxsutawney Area Hospital Inc",
+    "HospitalCity": "Punxsutawney",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "81 Hillcrest Dr.",
+    "HospitalCounty": "Jefferson",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.998758,
+     40.960228
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Allied Services Institute of Rehabilitation",
+    "HospitalCity": "Scranton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "475 Morgan Hwy.",
+    "HospitalCounty": "Lackawanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.678543,
+     41.454369
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Allied Services Rehabilitation Hospital - Scranton",
+    "HospitalCity": "Scranton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "475 Morgan Hwy.",
+    "HospitalCounty": "Lackawanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.678543,
+     41.454369
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Clarks Summit State Hospital",
+    "HospitalCity": "Clarks Summit",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1451 HIillside Dr.",
+    "HospitalCounty": "Lackawanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.73873,
+     41.47968
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Community Medical Center",
+    "HospitalCity": "Scranton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1822 Mulberry St.",
+    "HospitalCounty": "Lackawanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.645978,
+     41.400186
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Community Medical Center (L)",
+    "HospitalCity": "Scranton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1822 Mulberry St.",
+    "HospitalCounty": "Lackawanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.645978,
+     41.400186
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Moses Taylor Hospital",
+    "HospitalCity": "Scranton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "700 Quincy Ave.",
+    "HospitalCounty": "Lackawanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.651241,
+     41.410212
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Regional Hospital of Scranton",
+    "HospitalCity": "Scranton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "746 Jefferson Ave.PO Box 994",
+    "HospitalCounty": "Lackawanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.653986,
+     41.412823
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Wellspan Ephrata Hospital",
+    "HospitalCity": "Ephrata",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "169 Martin Ave.",
+    "HospitalCounty": "Lancaster",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.182459,
+     40.187164
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Pinnacle Lititz",
+    "HospitalCity": "Lititz",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1500 Highland Dr.",
+    "HospitalCounty": "Lancaster",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.311773,
+     40.132207
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lancaster General Hospital",
+    "HospitalCity": "Lancaster",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "555 N. Duke St.",
+    "HospitalCounty": "Lancaster",
+    "HospitalNameAliases": "Lancaster General Health-Women & Babies Hospital"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.305338,
+     40.047167
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lancaster Rehabilitation Hospital",
+    "HospitalCity": "Lancaster",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "675 Good Dr.",
+    "HospitalCounty": "Lancaster",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.349055,
+     40.064563
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Jameson",
+    "HospitalCity": "New Castle",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1211 Wilmington Ave.",
+    "HospitalCounty": "Lawrence",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.35095,
+     41.013052
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Wellspan Good Samaritan Hospital",
+    "HospitalCity": "Lebanon",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4th & Walnut St. S",
+    "HospitalCounty": "Lebanon",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.417499,
+     40.337144
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "VA Medical Center Lebanon",
+    "HospitalCity": "Lebanon",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1700 S. Lincoln Ave.",
+    "HospitalCounty": "Lebanon",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.407755,
+     40.313796
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Philhaven Psychiatric Hospital",
+    "HospitalCity": "Mt Gretna",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "283 S. Butler Road",
+    "HospitalCounty": "Lebanon",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.461294,
+     40.265927
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Allentown State Hospital",
+    "HospitalCity": "Allentown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1600 Hanover Ave.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.431838,
+     40.61909
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Coordinated Health Hosp of Allentown",
+    "HospitalCity": "Allentown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1503 Cedar Crest Blvd.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.5337,
+     40.6126
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Good Shepherd Rehabilitation Hospital",
+    "HospitalCity": "Allentown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "850 S. 5th St.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.463689,
+     40.593347
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Kidspeace Orchard Hills Campus",
+    "HospitalCity": "Orefield",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "5300 Kids Peace Dr.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.611905,
+     40.649389
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lehigh Valley Hospital 17th & Chew",
+    "HospitalCity": "Allentown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "17th St. & Chew St.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.494054,
+     40.600521
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lehigh Valley Hospital-Cedar Crest",
+    "HospitalCity": "Allentown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1200 S. Cedar Crest Blvd.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.529246,
+     40.568463
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lehigh Valley Hospital-Tilghman",
+    "HospitalCity": "Allentown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4815 Tilghman St.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.56341,
+     40.58927
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Sacred Heart Hospital",
+    "HospitalCity": "Allentown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "421 Chew St.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.46819,
+     40.60813
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Lukes Hospital-Allentown",
+    "HospitalCity": "Allentown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1736 Hamilton St.",
+    "HospitalCounty": "Lehigh",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.493437,
+     40.596194
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "First Hospital of Wyoming Valley",
+    "HospitalCity": "Kingston",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "562 Wyoming Ave.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.888776,
+     41.269552
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Wyoming Valley Med Center-Kidney Transplant Unit",
+    "HospitalCity": "Wilkes Barre",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1000 E. Mountain Dr.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.811703,
+     41.256879
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Wyoming Valley Medical Center",
+    "HospitalCity": "Wilkes-Barre",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1000 E. Mountain Dr.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.811703,
+     41.256879
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lehigh Valley Hospital - Hazleton",
+    "HospitalCity": "Hazleton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "700 E. Broad St.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.963288,
+     40.950076
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "John Heinz Institute of Rehabilitation",
+    "HospitalCity": "Wilkes Barre",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "150 Mundy St.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.854376,
+     41.244375
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lehigh Valley Hospital - Hazleton",
+    "HospitalCity": "Hazleton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "700 E. Broad St.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.963288,
+     40.950076
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Special Care Hospital",
+    "HospitalCity": "Nanticoke",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "128 W. Washington St.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.002955,
+     41.195725
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Wilkes-Barre General Hospital",
+    "HospitalCity": "Wilkes-Barre",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "575 N. River St.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.868039,
+     41.258415
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Kindred Hospital-Wyoming Valley",
+    "HospitalCity": "Wilkesbarre",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "575 N. River St.Seventh Floor",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.868039,
+     41.258415
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "VA Medical Center Wilkes-Barre",
+    "HospitalCity": "Wilkes-Barre",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1111 E. End Blvd.",
+    "HospitalCounty": "Luzerne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.841253,
+     41.247578
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "VA Medical Center-Philadelphia",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "University Ave. & Woodland Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.200335,
+     39.949507
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Jersey Shore Hospital",
+    "HospitalCity": "Jersey Shore",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1020 Thompson St.",
+    "HospitalCounty": "Lycoming",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.26795,
+     41.201694
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Susquehanna Muncy Valley Hospital",
+    "HospitalCity": "Muncy",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "215 E. Water St.",
+    "HospitalCounty": "Lycoming",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.775645,
+     41.209031
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Susquehanna Williamsport Hospital",
+    "HospitalCity": "Williamsport",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "700 High St.",
+    "HospitalCounty": "Lycoming",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.015411,
+     41.246999
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Bradford Regional Medical Center",
+    "HospitalCity": "Bradford",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "116 Interstate Pkwy.",
+    "HospitalCounty": "Mckean",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.66024,
+     41.96051
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Kane",
+    "HospitalCity": "Kane",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4372 Route 6",
+    "HospitalCounty": "Mckean",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.817067,
+     41.671959
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Pinnacle West Shore",
+    "HospitalCity": "Mechanicsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1995 Technology Parkway",
+    "HospitalCounty": "Cumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.978275,
+     40.281624
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Edgewood Surgical Hospital",
+    "HospitalCity": "Transfer",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "239 Edgewood Dr. Ext",
+    "HospitalCounty": "Mercer",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.419485,
+     41.330082
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "AHN-Grove City Hospital",
+    "HospitalCity": "Grove City",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "631 N. Broad St. Ext",
+    "HospitalCounty": "Mercer",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.083227,
+     41.170724
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Sharon Regional Medical Center",
+    "HospitalCity": "Sharon",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "740 E. State St.",
+    "HospitalCounty": "Mercer",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.495933,
+     41.232958
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Horizon Greenville",
+    "HospitalCity": "Greenville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "110 N. Main St.",
+    "HospitalCounty": "Mercer",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.47103,
+     41.209479
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Horizon Shenango Valley",
+    "HospitalCity": "Farrell",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2200 Memorial Dr.",
+    "HospitalCounty": "Mercer",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.372198,
+     41.411219
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger-Lewistown Hospital",
+    "HospitalCity": "Lewistown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "400 Highland Ave.",
+    "HospitalCounty": "Mifflin",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.566943,
+     40.618036
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Luke's - Monroe Campus",
+    "HospitalCity": "Stroudsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 St. Luke's Lane",
+    "HospitalCounty": "Monroe",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.259464,
+     40.997772
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Abington Memorial Hospital",
+    "HospitalCity": "Abington",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1200 Old York Rd.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.120499,
+     40.117134
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Albert Einstein at Elkins Park",
+    "HospitalCity": "Elkins Park",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "60 E. Township Line Rd.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.100553,
+     40.071166
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Brooke Glen Behavioral Hospital",
+    "HospitalCity": "Fort Washington",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "7170 Lafayette Ave.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.215932,
+     40.135091
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Eagleville Hospital",
+    "HospitalCity": "Eagleville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 Eagleville Rd.P.O. Box 45",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.4126169,
+     40.15576
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Horsham Clinic",
+    "HospitalCity": "Ambler",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "722 E. Butler Pk.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.18631,
+     40.18468
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lansdale Hospital",
+    "HospitalCity": "Lansdale",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 Medical Campus Dr.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.269428,
+     40.251464
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Main Line-Lankenau Hospital",
+    "HospitalCity": "Wynnewood",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 E Lancaster Ave.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.262387,
+     39.98833
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Main Line-Lankenau Hospital-Transplant Center",
+    "HospitalCity": "Wynnewood",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 E Lancaster Ave.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.262387,
+     39.98833
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Suburban Community Hospital-Norristown",
+    "HospitalCity": "Norristown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2701 Dekalb Pike",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.315629,
+     40.138363
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Montgomery County MH/MR Emergency Services Inc.",
+    "HospitalCity": "Norristown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "50 Beech Dr.Gate #4 Building 50",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.344473,
+     40.151254
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Norristown State Hospital",
+    "HospitalCity": "Norristown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1001 Sterigere St.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.345489,
+     40.135104
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Northwestern Institute of Psychiatry",
+    "HospitalCity": "Fort Washington",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "450 Bethlehem Pk.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.213644,
+     40.134684
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Physicians Care Surgical Hospital",
+    "HospitalCity": "Royersford",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "454 Enterprise Dr",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.555039,
+     40.217136
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Pottstown Memorial Medical Center",
+    "HospitalCity": "Pottstown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1600 E. High St.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.612056,
+     40.242726
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Valley Forge Medical Center & Hospital",
+    "HospitalCity": "Norristown",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1033 W. Germantown Pk.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.369207,
+     40.156621
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Einstein Medical Center-Montgomery Hospital",
+    "HospitalCity": "East Norriton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "559 W. Germantown Pk.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.344473,
+     40.151254
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Eugenia Hospital",
+    "HospitalCity": "Lafayette Hills",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "660 Thomas Rd.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.237406,
+     40.098418
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Holy Redeemer Hospital & Medical Center",
+    "HospitalCity": "Meadowbrook",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1648 Huntingdon Pk.",
+    "HospitalCounty": "Montgomery",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.0822456,
+     40.109212
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Danville State Hospital",
+    "HospitalCity": "Danville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "200 State Hospital Dr.",
+    "HospitalCounty": "Montour",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.59543,
+     40.95377
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Encompass Health Rehabilitation Hospital",
+    "HospitalCity": "Danville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2 Rehab Ln.",
+    "HospitalCounty": "Montour",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.60611,
+     40.9685
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Medical Center",
+    "HospitalCity": "Danville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 N. Academy Ave.",
+    "HospitalCounty": "Montour",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.60545,
+     40.96793
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Medical Center-Transplant Center",
+    "HospitalCity": "Danville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 N. Academy Ave.",
+    "HospitalCounty": "Montour",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.60668,
+     40.96795
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Select Specialty Hospital-Danville",
+    "HospitalCity": "Danville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 N. Academy Ave.",
+    "HospitalCounty": "Montour",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.60526,
+     40.96804
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Coordinated Health Orthopedic Hospital LLC",
+    "HospitalCity": "Bethlehem",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2310 Highland Ave.",
+    "HospitalCounty": "Northampton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.36418,
+     40.67492
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Easton Hospital",
+    "HospitalCity": "Easton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "250 S. 21st St.",
+    "HospitalCounty": "Northampton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.24252,
+     40.686
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Good Shepherd Specialty Hospital",
+    "HospitalCity": "Bethlehem",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2545 Schoenersville Rd.",
+    "HospitalCounty": "Northampton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.40562,
+     40.64487
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lehigh Valley-Muhlenberg",
+    "HospitalCity": "Bethlehem",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2545 Schoenersville Rd.",
+    "HospitalCounty": "Northampton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.406647,
+     40.646352
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Luke's Hospital Anderson Campus",
+    "HospitalCity": "Easton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1872 St. Luke's Blvd.",
+    "HospitalCounty": "Northampton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.287853,
+     40.648986
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Lukes Hospital-Bethlehem",
+    "HospitalCity": "Bethlehem",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "801 Ostrum St.",
+    "HospitalCounty": "Northampton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.393508,
+     40.609548
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Triumph Hospital Easton",
+    "HospitalCity": "Easton",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "250 S. 21st St.",
+    "HospitalCounty": "Northampton",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.24262,
+     40.68584
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger Shamokin Area Community Hospital",
+    "HospitalCity": "Coal Township",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4200 Hospital Rd.",
+    "HospitalCounty": "Northumberland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.570607,
+     40.805741
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Albert Einstein Medical Center",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "5501 Old York Rd.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.144243,
+     40.035206
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "North Philadelphia St Josephs Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": null,
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.163105,
+     39.971496
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Jefferson - Frankford Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": null,
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.08013,
+     40.02023
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Jefferson - Torresdale Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "Knights Rd. & Red Lion Rd.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -74.98071,
+     40.07161
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Belmont Behavioral Hosptial",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4200 Monument Rd.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": "Belmont Center For Comprehensive Treatment"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.214852,
+     40.002532
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Cancer Treatment Centers of America",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1331 E. Wyoming Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.098803,
+     40.018476
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Chestnut Hill Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "8835 Germantown Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.210445,
+     40.077916
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Children's Hospital of Philadelphia",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "3401 Civic Center Blvd.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.193362,
+     39.949062
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Fairmount Behavioral Health System",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "561 Fairthorn Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.22307,
+     40.04242
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Fox Chase Cancer Center",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "333 Cottman Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.092583,
+     40.066755
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Friends Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "4641 Roosevelt Blvd.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.09989,
+     40.027834
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Germantown Community Health Center",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Penn Blvd.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.168888,
+     40.031683
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Girard Medical Center",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "Eighth St. & Girard Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.150193,
+     39.97131
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Good Shepherd Penn Partners",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1800 Lombard St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.17268,
+     39.94513
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Hahnemann University Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "Broad St. & Vine St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": "Hahnemann University Hospital-Transplant Center"
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.163038,
+     39.957533
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Hospital of the University of Pennsylvania",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "3400 Spruce St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.192525,
+     39.950084
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Hospital of the University of Pennsylvania-Transplant Cent",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "3400 Spruce St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.1933,
+     39.9501
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Jeanes Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "7600 Central Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.087036,
+     40.068649
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Kensington Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "136 W. Diamond St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.1342361,
+     39.982043
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Kindred Hospital-Philadelphia",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "6129 Palmetto St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.097631,
+     40.045557
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Kirkbride Center",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "111 N. 49th St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.21918,
+     39.962326
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Magee Rehabilitation Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1513 Race St. 6 Franklin Dr.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.164025,
+     39.956406
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Mercy Philadelphia Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "501 S. 54th St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.230267,
+     39.952407
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Methodist Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2301 S. Broad St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.169932,
+     39.921482
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Moss Rehabilitation Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1200 W. Tabor Rd.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.14321,
+     40.03825
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Nazareth Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2601 Holme Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.043799,
+     40.058916
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Penn Medicine At Rittenhouse",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1840 South St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.171509,
+     39.944981
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Pennsylvania Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "800 Spruce St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.155643,
+     39.945231
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Presbyterian Med Center-Univ of Pa Hlth Sys",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "39th & Market St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.199212,
+     39.956898
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Shriners Hospital For Children Philadelphia",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "3551 N. Broad St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.151195,
+     40.006776
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Roxborough Memorial Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "5800 Ridge Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.210482,
+     40.02812
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Christophers Hospital for Children",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "Erie Ave. & N. Front St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.125499,
+     40.007468
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Temple East Northeastern Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2301 E. Allegheny Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.107001,
+     39.989605
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Temple University Episcopal Campus",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 E Lehigh Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.128184,
+     39.989682
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Temple University Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": null,
+    "HospitalStreetAddress": "3401 N Broad St.Jones Hall Room 1020",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.152172,
+     40.00472
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Temple University Hospital Dialysis Unit",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "Broad St. & Ontario St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.1518,
+     40.00497
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Temple University Hospital-Transplant Center",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "3401 N. Broad St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.151674,
+     40.004561
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Thomas Jefferson University Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1020 Sansom St. 111 S. 11th St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.158224,
+     39.949379
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Triumph Hospital of Philadelphia",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1900 S. Broad St.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.16961,
+     39.92626
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "VA Medical Center Philadelphia",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "University Ave. & Woodland Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.200335,
+     39.949507
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Wills Eye Hospital",
+    "HospitalCity": "Philadelphia",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "840 Walnut Street",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.15625,
+     39.94813
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Chestnut Hill Rehabilitation Hospital",
+    "HospitalCity": "Wyndmoor",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "8601 Stenton Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.20269,
+     40.08096
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Good Shepard Penn Partners Rittenhouse",
+    "HospitalCity": null,
+    "HospitalState": null,
+    "HospitalStreetAddress": "1840 South Street",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.173265,
+     39.944594
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Montgomery Rehabilitation Center",
+    "HospitalCity": "Wyndmoor",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "8601 Stenton Ave.",
+    "HospitalCounty": "Philadelphia",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.20269,
+     40.08096
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lehigh Valley Hospital-Pocono",
+    "HospitalCity": "East Stroudsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "206 E. Brown St.",
+    "HospitalCounty": "Pike",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.174817,
+     40.9922
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Lehigh Valley Hospital-Pocono (L)",
+    "HospitalCity": "East Stroudsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "206 E. Brown St.",
+    "HospitalCounty": "Pike",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.174817,
+     40.9922
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Cole Memorial Hospital",
+    "HospitalCity": "Coudersport",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1001 E. Second St.",
+    "HospitalCounty": "Potter",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.980379,
+     41.771809
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "LVHN-Schuylkill Medical Center-East Norwegian",
+    "HospitalCity": "Pottsville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "700 E. Norwegian St.",
+    "HospitalCounty": "Schuylkill",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.1877,
+     40.6902
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "LVHN-Schuylkill Medical Center-South Jackson",
+    "HospitalCity": "Pottsville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "420 S. Jackson St.",
+    "HospitalCounty": "Schuylkill",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.188950161,
+     40.683567318
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "LVHN-Schuylkill Medical Center-East Norwegian",
+    "HospitalCity": "Pottsville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "700 E. Norwegian St.",
+    "HospitalCounty": "Schuylkill",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.1877,
+     40.6902
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "LVHN-Schuylkill Medical Center-South Jackson",
+    "HospitalCity": "Pottsville",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "420 S. Jackson St.",
+    "HospitalCounty": "Schuylkill",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.188950161,
+     40.683567318
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "St. Lukes-Miners",
+    "HospitalCity": "Coaldale",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "360 W. Ruddle St.",
+    "HospitalCounty": "Schuylkill",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.91386,
+     40.82189
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Meyersdale Community Hospital",
+    "HospitalCity": "Meyersdale",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "200 Hospital Dr.",
+    "HospitalCounty": "Somerset",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.02052,
+     39.809553
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Somerset",
+    "HospitalCity": "Somerset",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "225 S. Center Ave.",
+    "HospitalCounty": "Somerset",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.078504,
+     40.007299
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Windber Hospital",
+    "HospitalCity": "Windber",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "600 Somerset Ave.",
+    "HospitalCounty": "Somerset",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -78.838277,
+     40.242334
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Barnes Kasson County Hospital",
+    "HospitalCity": "Susquehanna",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2872 Turnpike St.",
+    "HospitalCounty": "Susquehanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.593891,
+     41.946667
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Endless Mountain Health System",
+    "HospitalCity": "Montrose",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 Hospital Drive",
+    "HospitalCounty": "Susquehanna",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.837431,
+     41.837164
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Susquehanna Wellsboro",
+    "HospitalCity": "Wellsboro",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "32 Central Ave.",
+    "HospitalCounty": "Tioga",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -77.300352,
+     41.745042
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Evangelical Community Hospital",
+    "HospitalCity": "Lewisburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Hospital Dr.",
+    "HospitalCounty": "Union",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.891241,
+     40.984223
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Northwest",
+    "HospitalCity": "Seneca",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 Fairfield Dr.",
+    "HospitalCounty": "Venango",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.700217,
+     41.361454
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Warren General Hospital",
+    "HospitalCity": "Warren",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "2 Crescent Dr.",
+    "HospitalCounty": "Warren",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.153209,
+     41.843675
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Warren State Hospital",
+    "HospitalCity": "Warren",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "33 Main Dr.",
+    "HospitalCounty": "Warren",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.145906,
+     41.879284
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "AHN-Canonsburg Hospital",
+    "HospitalCity": "Canonsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 Medical Blvd.",
+    "HospitalCounty": "Washington",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.1905,
+     40.24885
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Monongahela Valley",
+    "HospitalCity": "Monongahela",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1163 Country Club Rd.",
+    "HospitalCounty": "Washington",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.916302,
+     40.182039
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Washington Hospital",
+    "HospitalCity": "Washington",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "155 Wilson Ave.",
+    "HospitalCounty": "Washington",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -80.246854,
+     40.183044
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Wayne Memorial Hospital",
+    "HospitalCity": "Honesdale",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "601 Park St.",
+    "HospitalCounty": "Wayne",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.260653,
+     41.575804
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Frick Hospital",
+    "HospitalCity": "Mount Pleasant",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "508 S. Church St.",
+    "HospitalCounty": "Westmoreland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.548263,
+     40.146303
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Latrobe Hospital",
+    "HospitalCity": "Latrobe",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Mellon Wy.",
+    "HospitalCounty": "Westmoreland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.394213,
+     40.320575
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Select Specialty Hospital Laurel Highlands Inc",
+    "HospitalCity": "Latrobe",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1 Mellon Wy.",
+    "HospitalCounty": "Westmoreland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.394213,
+     40.320575
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Torrance State Hospital",
+    "HospitalCity": "Torrance",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "121 Longview Dr.PO Box 111",
+    "HospitalCounty": "Westmoreland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.24159,
+     40.41434
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Westmoreland Hospital",
+    "HospitalCity": "Greensburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "532 W. Pittsburgh St.",
+    "HospitalCounty": "Westmoreland",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -79.554916,
+     40.301095
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Tyler Memorial Hospital",
+    "HospitalCity": "Tunkhannock",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "State Route 6 WestPO Box 5950",
+    "HospitalCounty": "Wyoming",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -75.970014,
+     41.576766
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Encompass Health Rehabilitation Hosptial of York",
+    "HospitalCity": "York",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1850 Normandie Dr.",
+    "HospitalCounty": "York",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.782143,
+     39.98115
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Pinnacle-Hanover",
+    "HospitalCity": "Hanover",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "300 Highland Ave.",
+    "HospitalCounty": "York",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.982824,
+     39.808703
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Pinnacle Memorial",
+    "HospitalCity": "York",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "325 S. Belmont St.",
+    "HospitalCounty": "York",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.692652,
+     39.967213
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Select Specialty Hospital-York",
+    "HospitalCity": "York",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1701 Innovation Drive.5th Floor",
+    "HospitalCounty": "York",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.720325,
+     39.946523
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC Pinnacle Memorial",
+    "HospitalCity": "York",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "325 S. Belmont St.",
+    "HospitalCounty": "York",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.692652,
+     39.967213
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "UPMC-Pinnacle-Hanover",
+    "HospitalCity": "Hanover",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "300 Highland Ave.",
+    "HospitalCounty": "York",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.982824,
+     39.808703
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "WellSpan Surgery & Rehab Hospital",
+    "HospitalCity": "York",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "55 Monument Rd.",
+    "HospitalCounty": "York",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.71723,
+     39.92354
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "York Hospital",
+    "HospitalCity": "York",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "1001 S. George St.",
+    "HospitalCounty": "York",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.720325,
+     39.946523
+    ]
+   }
+  },
+  {
+   "type": "Feature",
+   "properties": {
+    "HospitalName": "Geisinger St. Luke's Hospital - Orwigsburg",
+    "HospitalCity": "Orwigsburg",
+    "HospitalState": "PA",
+    "HospitalStreetAddress": "100 Paramount Blvd",
+    "HospitalCounty": "Schuylkill",
+    "HospitalNameAliases": null
+   },
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -76.0917104,
+     40.6409477
+    ]
+   }
+  }
+ ]
+}
