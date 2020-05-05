@@ -210,7 +210,8 @@ class Ingester(object):
                 print(f"{fname} has a filesize of {size}, not processing.")
 
         if make_historical_csv:
-            summary_df.to_csv(summary_filename, index=False, header=True)
+            out_csv_file = os.path.join(processed_dir, summary_filename)
+            summary_df.to_csv(out_csv_file, index=False, header=True)
             print("Finished creation of historical summary table CSV, returning.")
             return
 
