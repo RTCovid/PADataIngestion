@@ -142,11 +142,8 @@ class Ingester(object):
             dataset_name = "hospital_layer"
 
         print(f"Starting load of hospital data: {dataset_name}")
-        if self.dry_run:
-            print("Dry run set, not uploading HOS table to ArcGIS.")
-            status = "Dry run"
-        else:
-            status = self.gis.overwrite_arcgis_layer(dataset_name, processed_dir, processed_filename)
+
+        status = self.gis.overwrite_arcgis_layer(dataset_name, processed_dir, processed_filename, dry_run=self.dry_run)
 
         print(status)
         print(f"Finished load of hospital data: {dataset_name}")
@@ -163,11 +160,7 @@ class Ingester(object):
 
         supplies.to_csv(os.path.join(processed_dir, supplies_filename), index=False)
 
-        if self.dry_run:
-            print("Dry run set, not uploading summary table to ArcGIS.")
-            status = "Dry run"
-        else:
-            status = self.gis.overwrite_arcgis_layer("supplies", processed_dir, supplies_filename)
+        status = self.gis.overwrite_arcgis_layer("supplies", processed_dir, supplies_filename, dry_run=self.dry_run)
         print(status)
         print("Finished load of supplies data")
 
@@ -196,11 +189,7 @@ class Ingester(object):
 
         d2.to_csv(os.path.join(processed_dir, new_data_filename), header=True, index=False)
 
-        if self.dry_run:
-            print("Dry run set, not uploading county summary table to ArcGIS.")
-            status = "Dry run"
-        else:
-            status = self.gis.overwrite_arcgis_layer("county_summaries", processed_dir, new_data_filename)
+        status = self.gis.overwrite_arcgis_layer("county_summaries", processed_dir, new_data_filename, dry_run=self.dry_run)
         print(status)
         print("Finished load of county summary data")
 

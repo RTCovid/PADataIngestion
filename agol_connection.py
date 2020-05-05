@@ -62,7 +62,11 @@ class AGOLConnection(object):
             fs = feature_item.layers[0].container
         return fs
 
-    def overwrite_arcgis_layer(self, dataset_name, source_data_dir, source_data_file):
+    def overwrite_arcgis_layer(self, dataset_name, source_data_dir, source_data_file, dry_run=False):
+
+        print(f"Begin upload to ArcGIS Online")
+        if dry_run is True:
+            print("** DRY RUN -- NO UPLOAD WILL HAPPEN **")
 
         try:
             layer_config = self.layers[dataset_name]
@@ -72,6 +76,9 @@ class AGOLConnection(object):
 
         original_file_name = layer_config['original_file_name']
         item_id = layer_config['id']
+
+        print(f"   ArcGIS Online item id: {layer_config['id']}")
+        print(f"   CSV name used for upload: {layer_config['original_file_name']}")
 
         fs = self.get_arcgis_feature_collection_from_item_id(item_id)
         # Overwrite docs:
@@ -89,15 +96,19 @@ class AGOLConnection(object):
             shutil.copyfile(os.path.join(source_data_dir, source_data_file),
                             os.path.join(tmpdirname, original_file_name))
 
+            print(f"   local CSV file name: {source_data_dir}/{source_data_file}")
             original_dir = os.getcwd()
             os.chdir(tmpdirname)
-            try:
-                print(f"Uploading to ArcGIS: {source_data_dir}/{source_data_file} as {original_file_name} to item id {item_id}")
-                result = fs.manager.overwrite(original_file_name)
-            except Exception as e:
-                print(f"Caught exception {e}, retrying")
-                result = fs.manager.overwrite(original_file_name)
-
+            if dry_run is False:
+                try:
+                    print("    starting upload...")
+                    result = fs.manager.overwrite(original_file_name)
+                except Exception as e:
+                    print(f"Caught exception {e} during upload, retrying")
+                    result = fs.manager.overwrite(original_file_name)
+                print("        finished.")
+            else:
+                result = "Dry run complete"
             os.chdir(original_dir)
         return result
 
