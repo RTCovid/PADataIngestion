@@ -122,9 +122,12 @@ class AGOLConnection(object):
         else:
             t = fs.layers[0]
 
-        qr = t.query(out_fields='Source_Filename')
-        filenames_to_not_sftp = []
-        for f in qr.features:
-            filenames_to_not_sftp.append(f.attributes['Source_Filename'])
-        filenames_to_not_sftp = sorted(list(set(filenames_to_not_sftp)))
+        qr = t.query(
+            out_fields='Source_Filename',
+            return_geometry=False,  # we don't need the geometries
+            return_distinct_values=True,  # get distinct values based on out_fields
+            order_by_fields="Source_Filename ASC",  # sort for good measure
+        )
+
+        filenames_to_not_sftp = [f.attributes["Source_Filename"] for f in qr.features]
         return filenames_to_not_sftp
