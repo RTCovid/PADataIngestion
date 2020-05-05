@@ -254,13 +254,11 @@ class Ingester(object):
         table = self.gis.gis.content.get(layer_conf['id'])
         t = table.layers[0]
 
-        new_col_names = {}
-        for name in t.properties.fields:
-            new_col_names[name["alias"]]  = name["name"]
+        agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
 
-        header = {}
         features = []
         hist_csv_rows = []
+        missing_aliases = []
         for f in processed_file_details:
             fname = f["processed_filename"]
             size = os.path.getsize(os.path.join(processed_dir, fname))
@@ -270,35 +268,44 @@ class Ingester(object):
                 with open(os.path.join(processed_dir, fname), newline='') as csvfile:
                     reader = csv.DictReader(csvfile)
                     for row in reader:
-                        # add our rows
-                        hist_csv_row = {}
-                        new_row ={}
-                        row["Source Data Timestamp"] = f["source_datetime"].isoformat()
-                        row["Processed At"] = processed_time
-                        row["Source Filename"] = f["filename"]
 
-                        header.update(row)
+                        # clean the keys (column names) of the input row
+                        clean_row = {k.strip(): v for k, v in row.items()}
+                        clean_row["Source Data Timestamp"] = f["source_datetime"].isoformat()
+                        clean_row["Processed At"] = processed_time
+                        clean_row["Source Filename"] = f["filename"]
 
-                        # XXX is this a bug? What happens to headers not in the alias?
-                        # rename the headers based on alias
-                        for alias, name in new_col_names.items():
-                            if alias in row:
-                                new_row[name] = row[alias]
-                        ft = Feature(attributes=new_row)
-                        features.append(ft)
-                        hist_csv_rows.append(row)
+                        # now iterate the rows and map the headers to field names
+                        # in the ArcGIS Online layer. The matching is done against
+                        # the AGOL field aliases, and basic sanitation is performed.
+                        out_row = {}
+                        for alias, name in agol_fields.items():
+                            if alias == "ObjectId":
+                                continue
+                            if alias.strip() in clean_row:
+                                out_row[name] = clean_row[alias.strip()]
+                            else:
+                                missing_aliases.append(alias)
+
+                        features.append(Feature(attributes=out_row))
+                        hist_csv_rows.append(clean_row)
             else:
                 print(f"{fname} has a filesize of {size}, not processing.")
 
+        if len(missing_aliases) > 0:
+            print("These CSV field names do not match ArcGIS Online aliases:")
+            for mia in set(missing_aliases):
+                print(f" - {mia}   (length: {len(mia)})")
+
         # historical for generating a new source CSV
+        # I don't understand what this is for, but it should work as it did -AC
         if make_historical_csv:
             if len(hist_csv_rows) > 0:
-                with open(os.path.join(processed_dir, original_data_file_name), "w") as csvfile:
-                    pprint(list(header.keys()), width=1000)
-                    writer = csv.DictWriter(csvfile, fieldnames=set(header.keys()))
+                with open(os.path.join(processed_dir, original_data_file_name), "w", newline="") as csvfile:
+                    pprint(list(agol_fields.keys()), width=1000)
+                    writer = csv.DictWriter(csvfile, fieldnames=set(agol_fields.keys()))
                     writer.writeheader()
                     writer.writerows(hist_csv_rows)
-        # Done CSV generation
 
         # It's okay if features is empty; status will reflect arcgis telling us that,
         # but it won't stop the processing.
