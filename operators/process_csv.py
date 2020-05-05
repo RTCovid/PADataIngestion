@@ -53,7 +53,7 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
 
         output_path = os.path.join(output_dir, output_filename)
         rows = []
-        with open (os.path.join(source_data_dir, source_data_file), newline='') as rf:
+        with open (os.path.join(source_data_dir, source_data_file), newline='', encoding="utf8") as rf:
             reader = csv.DictReader(rf)
             # using dictreader, we don't need to read the header row in.
             for row in reader:
