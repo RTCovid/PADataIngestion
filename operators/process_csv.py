@@ -73,6 +73,10 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                         row[k] = converters[k](v)
                         v = converters[k](v)
 
+                    # convert any short names to long names until we know what PA wants from us
+                    # adamf May 6, 2020
+                    if k in hm.short_long_column_header_map_HOS:
+                        k = hm.short_long_column_header_map_HOS[k]
                         
                     # ArcGIS can't handle ' in header column names.
                     if "'" in k:
