@@ -1,26 +1,26 @@
 {
   "hospital_layer": {
-    "id": "38592574c8de4a02b180d6f65918e385",
-    "original_file_name": "processed_HOS.csv"
+    "id": "70186bddb24441049d7c243e7f7ee66c",
+    "original_file_name": "processed_HOS_v2.csv"
   },
   "public_hospital_layer": {
-    "id": "1affcef28be04f4f994c99dea72d1a0e",
-    "original_file_name": "public_processed_HOS.csv"
+    "id": "8f5e87c4998a4f9dab636d64c5db8ed8",
+    "original_file_name": "public_processed_HOS_v2.csv"
   },
   "county_summaries": {
-    "id": "6d448594ed94473197ab8470a6e771f6",
-    "original_file_name": "county_summary_table_v4.csv"
+    "id": "6378805a05c8449ea1b4168448646305",
+    "original_file_name": "county_summary_table_v5.csv"
   },
   "historical_averages": {
     "id": "5d8235be486243249196c29348141c21"
   },
   "summary_table": {
-    "id": "bf99dbcac3a44eebb39410267f1f117a",
-    "original_file_name": "summary_table.csv"
+    "id": "c58fbcb1a3c24052afbf0ba3ac593ee6",
+    "original_file_name": "summary_table_v2.csv"
   },
   "full_historical_table": {
-    "id": "3b39827f6f804c33b9b1114b5aa1d6b6",
-    "original_file_name": "historical_hos_table_v4.csv"
+    "id": "014192ba697643d080eb5ba3e74ba4e7",
+    "original_file_name": "historical_hos_table_v5.csv"
   },
   "supplies": {
     "id": "8fad710d5df6434f8567373979dd9dbe",
