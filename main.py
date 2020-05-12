@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+import os
 import argparse
 
 import header_mapping as hm
 from operators import process_csv
 from agol_connection import AGOLConnection
+from validator import CSVValidator
 from ingester import Ingester
 
 
@@ -22,14 +24,22 @@ def process_instantaneous(dry_run=False, datadir=None):
     # the only difference is that now Ingester().get_files_from_sftp() is used.
     print("Getting latest HOS file from SFTP...")
     file_details, all_filenames = ingester.get_files_from_sftp(target_dir=datadir)
-    data_dir = file_details[0]["dir"]
-    latest_filename = file_details[0]["filename"]
-    source_datetime = file_details[0]["source_datetime"]
     print("Finished.")
+
+    latest_file_details = file_details[0]
+
+    # run a validation on the latest file (the one that will be used for instantaneous)
+    # validate_csv() will raise an exception if it fails. use raise_exception=False
+    # to run it quietly.
+    v = CSVValidator("HOS")
+    fpath = os.path.join(latest_file_details['dir'], latest_file_details['filename'])
+    v.validate_csv(fpath)
+
+    # validation passed on downloaded file, now do all processing
 
     # Public-only data
     public_processed_file_details = process_csv(
-        [file_details[0]],
+        [latest_file_details],
         output_prefix="public_processed_HOS_",
         columns_wanted=hm.columns_for_public_release,
         output_dir=datadir,
@@ -38,16 +48,15 @@ def process_instantaneous(dry_run=False, datadir=None):
     public_processed_dir = public_processed_file_details[0]["output_dir"]
 
     # Full data
-    processed_file_details = process_csv([file_details[0]], output_dir=datadir)
+    processed_file_details = process_csv(
+        [latest_file_details],
+        output_dir=datadir
+    )
+
     processed_filename = processed_file_details[0]["processed_filename"]
     processed_dir = processed_file_details[0]["output_dir"]
 
-    print(f"Finished processing {data_dir}/{latest_filename}, file is {processed_dir}/{processed_filename}")
-
-    # Use the new ingester methods, which are currently little more than wrappers
-    # around the old methods. However, much less information must be passed to
-    # them, as most info comes along with ingester. Future work can completely
-    # migrate these functions from the old main file to the Ingester class.
+    print(f"Finished processing {datadir}/{latest_file_details['filename']}, file is {processed_dir}/{processed_filename}")
 
     # process csv to update the non-public hospital table
     ingester.process_hospital(processed_dir, processed_filename, public=False)
@@ -81,6 +90,10 @@ def process_historical(dry_run=False, datadir=None, make_historical_csv=False):
         ingester.process_summaries(processed_dir, processed_file_details, make_historical_csv=make_historical_csv)
 
     files_to_not_sftp = ingester.gis.get_already_processed_files("full_historical_table")
+
+    if make_historical_csv:
+        # setting files_to_not_sftp to an empty list ensures we rebuild the full historical table
+        files_to_not_sftp = []
 
     file_details, all_filenames = ingester.get_files_from_sftp(target_dir=datadir, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:

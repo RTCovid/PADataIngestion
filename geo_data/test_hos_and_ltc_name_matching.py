@@ -9,9 +9,11 @@ ltc_file = "LTC_locations.geojson"
 
 full_csv_dir = os.path.join("..", "..", "pa-csv-examples", "all-csvs")
 
+## this is now in operators.utils and should be removed from here once the
+## location matching is upgraded all around
 def load_geojson(filename, idfield):
-    
-    
+
+
     with open(filename, "r") as f:
         geojson = json.loads(f.read())
 
@@ -32,7 +34,7 @@ def gather_lat_longs():
     latlongs_lookup = []
     ltc_lookup = load_geojson(ltc_file, "LTCName")
     ltc_csvs = glob.glob(os.path.join("pa-csv-examples", "all-csvs", "LTC*.csv"))
-    
+
     startdate = datetime.strptime("2020-01-01", "%Y-%m-%d")
     for f in ltc_csvs:
 
@@ -61,11 +63,14 @@ def gather_lat_longs():
         writer.writerow(("LTCName","LTCLatitude","LTCLongitude"))
         [writer.writerow(i) for i in latlongs_unique]
 
+## please note that the following two functions should not be used long term,
+## they serve as models for what is currently in the CSVValidator class
+
 def test_ltc_files():
 
     ltc_lookup = load_geojson(ltc_file, "LTCName")
     ltc_csvs = glob.glob(os.path.join("pa-csv-examples", "all-csvs", "LTC*.csv"))
-    
+
     startdate = datetime.strptime("2020-01-01", "%Y-%m-%d")
     for f in ltc_csvs:
 
@@ -122,7 +127,7 @@ def test_hos_files():
     refactor to one function """
     ltc_lookup = load_geojson(hos_file, "HospitalName")
     ltc_csvs = glob.glob(os.path.join(full_csv_dir, "HOS*.csv"))
-    
+
     startdate = datetime.strptime("2020-01-01", "%Y-%m-%d")
     for f in ltc_csvs:
 
@@ -171,6 +176,6 @@ def test_hos_files():
                     # print(ltc_name)
                     missing_matches.append(f"{ltc_name}: {row['HospitalStreetAddress']}")
         print(f"{filename} - unmatched names: {len(missing_matches)}")
-            
-            
+
+
 test_hos_files()
