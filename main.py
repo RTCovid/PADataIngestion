@@ -91,6 +91,10 @@ def process_historical(dry_run=False, datadir=None, make_historical_csv=False):
 
     files_to_not_sftp = ingester.gis.get_already_processed_files("full_historical_table")
 
+    if make_historical_csv:
+        # setting files_to_not_sftp to an empty list ensures we rebuild the full historical table
+        files_to_not_sftp = []
+
     file_details, all_filenames = ingester.get_files_from_sftp(target_dir=datadir, only_latest=False, filenames_to_ignore=files_to_not_sftp)
     if len(file_details) == 0:
         print("No new files to process for historical data.")
