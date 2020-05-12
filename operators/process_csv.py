@@ -10,33 +10,27 @@ def y_to_one(x):
         return 0
     return None 
 
-converters = {
-    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?": y_to_one ,
-    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-4-7 days Response ?": y_to_one ,
-    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-8-14 days Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-15-28 days Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-29 or more days Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-3 or less days Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-4-7 days Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?": y_to_one,
 
-    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-15-28 days Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-29 or more days Response ?": y_to_one,
-
-    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Solutions Response ?": y_to_one,
-    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Wipes Response ?": y_to_one,
-    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Gloves Response ?": y_to_one,
-    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Alcohol Based Hand Sanitizer Response ?": y_to_one,
-    "Is there an immediate need for hand hygiene/disinfection supplies listed below?-Hand Soap Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-4-7 days Response ?": y_to_one,
-    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-3 or less days Response ?": y_to_one,
-
-    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-8-14 days Response ?": y_to_one, 
-    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-15-28 days Response ?": y_to_one, 
-    "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-29 or more days Response ?": y_to_one,
-    }
-
+converters = {'n95util1528': y_to_one,
+ 'n95util29more': y_to_one,
+ 'n95util814': y_to_one,
+ 'n95utli3less': y_to_one,
+ 'n95utli47': y_to_one,
+ 'needgloves': y_to_one,
+ 'needhandsoap': y_to_one,
+ 'needsanitizer': y_to_one,
+ 'needsolution': y_to_one,
+ 'needwipes': y_to_one,
+ 'nputil1528': y_to_one,
+ 'nputil29more': y_to_one,
+ 'nputil814': y_to_one,
+ 'nputli3less': y_to_one,
+ 'nputli47': y_to_one,
+ 'ppeutil1528': y_to_one,
+ 'ppeutil29more': y_to_one,
+ 'ppeutil814': y_to_one,
+ 'ppeutli3less': y_to_one,
+ 'ppeutli47': y_to_one}
 
 def normalize_row_keys(row, long_to_short_header):
     # we want to always work with the canonical long names, since that's what Carrie

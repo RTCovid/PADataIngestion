@@ -1302,27 +1302,27 @@ county_sum_columns = [
 summary_table_header = {
     "Percent Available Adult ICU Beds":
     {
-        "n": "Available Beds-Adult Intensive Care Unit (ICU) Current Available",
-        "d": "Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds" ,
+        "n": "icuavail",
+        "d": "numicubeds" ,
     },
     "Percent Available Med/Surg Beds":
     {
-        "n": "Available Beds-Medical and Surgical (Med/Surg) Current Available",
-        "d": "Available Beds-Medical and Surgical (Med/Surg) Staffed Beds",
+        "n": "medsurgavail",
+        "d": "medsurgstaff",
     },
     "Percent Available Beds Pediatric Intensive Care":
     {
-        "n": "Available Beds-Pediatric Intensive Care Current Available",
-        "d": "Available Beds-Pediatric Intensive Care Staffed Beds",
+        "n": "picavail",
+        "d": "picstaff",
     },
     "Percent Available Pediatric Beds": {
-        "n": "Available Beds-Pediatric Current Available",
-        "d": "Available Beds-Pediatric Staffed Beds",
+        "n": "pedavail",
+        "d": "pedstaff",
     },
     "Percent Available Airborne Isolation Bed":
     {
-        "n": "Other Beds-Airborne Infection Isolation Current Available",
-        "d": "Other Beds-Airborne Infection Isolation Staffed Beds",
+        "n": "aiiavail",
+        "d": "aiistaff",
     }
 }
 
