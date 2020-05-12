@@ -52,8 +52,8 @@ def normalize_row_keys(row, long_to_short_header):
     return new_row
 
 # accepts a list of files to get (or latest if no list), prefix, column restrictions
-# returns a list of files 
-def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_", columns_wanted=[]):
+# returns a list of files
+def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_", columns_wanted=[], overwrite=True):
     hl = HospitalLocations()
     HM = header_mapping.HeaderMapping("HOS")
     # shortnames to a list of the "canonical" long names
@@ -71,8 +71,12 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
 
         source_file_details["processed_filename"] = output_filename
         source_file_details["output_dir"] = output_dir
-
         output_path = os.path.join(output_dir, output_filename)
+
+        if os.path.exists(output_path) and overwrite is False:
+            output_file_details.append(source_file_details)
+            continue
+
         rows = []
         with open (os.path.join(source_data_dir, source_data_file), newline='', encoding="utf8") as rf:
             reader = csv.DictReader(rf)
