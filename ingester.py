@@ -259,6 +259,7 @@ class Ingester(object):
         features = []
         hist_csv_rows = []
         missing_aliases = []
+        all_headers = []
         for f in processed_file_details:
             fname = f["processed_filename"]
             size = os.path.getsize(os.path.join(processed_dir, fname))
@@ -268,12 +269,13 @@ class Ingester(object):
                 with open(os.path.join(processed_dir, fname), newline='') as csvfile:
                     reader = csv.DictReader(csvfile)
                     for row in reader:
-
                         # clean the keys (column names) of the input row
                         clean_row = {k.strip(): v for k, v in row.items()}
+
                         clean_row["Source Data Timestamp"] = f["source_datetime"].isoformat()
                         clean_row["Processed At"] = processed_time
                         clean_row["Source Filename"] = f["filename"]
+                        all_headers = set(list(all_headers) + list(clean_row.keys()))
 
                         # now iterate the rows and map the headers to field names
                         # in the ArcGIS Online layer. The matching is done against
@@ -300,10 +302,11 @@ class Ingester(object):
         # historical for generating a new source CSV
         # I don't understand what this is for, but it should work as it did -AC
         if make_historical_csv:
+            HM = hm.HeaderMapping("HOS")
+            headers = set(list(HM.get_fieldnames() + list(all_headers)))
             if len(hist_csv_rows) > 0:
                 with open(os.path.join(processed_dir, original_data_file_name), "w", newline="") as csvfile:
-                    pprint(list(agol_fields.keys()), width=1000)
-                    writer = csv.DictWriter(csvfile, fieldnames=set(agol_fields.keys()))
+                    writer = csv.DictWriter(csvfile, fieldnames=headers)
                     writer.writeheader()
                     writer.writerows(hist_csv_rows)
 
