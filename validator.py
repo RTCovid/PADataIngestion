@@ -90,12 +90,12 @@ class CSVValidator():
     def validate_csv(self, input_csv):
 
         header_result = self.validate_headers(input_csv)
-        # location_result = self.validate_locations(input_csv)
+        location_result = self.validate_locations(input_csv)
 
         result = {
-            "pass": header_result['pass'],# and location_result['pass'],
+            "pass": header_result['pass'] and location_result['pass'],
             "header_errors": header_result['errors'],
-            # "location_errors": location_result['errors'],
+            "location_errors": location_result['errors'],
         }
 
         return result
