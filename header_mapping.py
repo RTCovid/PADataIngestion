@@ -19,7 +19,7 @@ class HeaderMapping(object):
         lookup = {}
         for k, v in self.mapping.items():
             for alias in v:
-                lookup[v] = k
+                lookup[alias] = k
 
         return lookup
 
@@ -54,6 +54,44 @@ class HeaderMapping(object):
 
 ltc_mapping = {}
 
+columns_for_public_release = ['hospitalname',
+ 'hospitalstreetaddress',
+ 'hospitalcity',
+ 'hospitalstate',
+ 'hospitalzip',
+ 'hospitallatitude',
+ 'hospitallongitude',
+ 'numicubeds',
+ 'icuavail',
+ 'icu24h',
+ 'icu72h',
+ 'medsurgstaff',
+ 'medsurgavail',
+ 'medsurg24h',
+ 'medsurg72h',
+ 'picstaff',
+ 'picavail',
+ 'pic24h',
+ 'pic72h',
+ 'pedstaff',
+ 'pedavail',
+ 'ped24h',
+ 'ped72h',
+ 'aiistaff',
+ 'aiiavail',
+ 'aii24h',
+ 'aii72h',
+ 'numc19hosppats',
+ 'ttlcvd19pui',
+ 'numc19mechventpats',
+ 'ttlcvd19ptntecmo',
+ 'ttlaiied',
+ 'ttlaiiicu',
+ 'ttlaiinonicu',
+ 'numvent',
+ 'numventuse',
+ 'numanesthesia',
+ 'numanesthesiaconvert']
 hos_mapping = {
     'hospitalname': [
         'HospitalName',
@@ -441,37 +479,47 @@ hos_mapping = {
     ],
     'numc19hosppats': [
         'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19: ',
+        'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19:',
     ],
     'ttlcvd19pui': [
         'COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI): ',
+        'COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI):',
     ],
     'ttlnumicubedscvd19': [
         'COVID-19 Patient Counts - Total number of ICU beds occupied by a diagnosed COVID-19 patient:',
         'COVID-19 Patient Counts-Total number of ICU beds occupied by a diagnosed COVID-19 patient: ',
+        'COVID-19 Patient Counts-Total number of ICU beds occupied by a diagnosed COVID-19 patient:',
     ],
     'cvdnumc19hopats': [
         'COVID-19 Patient Counts-Total number of inpatients admitted 14+ days for other conditions now PUI or confirmed COVID-19?: ',
+        'COVID-19 Patient Counts-Total number of inpatients admitted 14+ days for other conditions now PUI or confirmed COVID-19?:',
     ],
     'numc19mechventpats': [
         'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ventilators: ',
         'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators: ',
+        'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators:',
     ],
     'ttlcvd19ptntecmo': [
         'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ECMO: ',
         'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO: ',
+        'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO:',
     ],
     'ttlaiied': [
         'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED? ',
+        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED?',
     ],
     'ttlaiiicu': [
         'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU? ',
+        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU?',
     ],
     'ttlaiinonicu': [
         'COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU? ',
+        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU?',
     ],
     'cvdnumc19died': [
         'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID-19 in last 24 hours: ',
         'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID 19 in last 24 hours: ',
+        'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID 19 in last 24 hours:',
     ],
     'conspperesp': [
         'Are you currently implementing conservation strategies to preserve PPE:-Extended use of respirators Response ?',
@@ -1315,47 +1363,6 @@ columns_to_sum_for_supplies_on_hand = {
     }
 }
 
-
-columns_for_public_release = [
-    "HospitalName",
-    "HospitalStreetAddress",
-    "HospitalCity",
-    "HospitalState",
-    "HospitalZip",
-    "HospitalLatitude",
-    "HospitalLongitude",
-    "Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds",
-    "Available Beds-Adult Intensive Care Unit (ICU) Current Available",
-    "Available Beds-Adult Intensive Care Unit (ICU) 24hr Beds",
-    "Available Beds-Adult Intensive Care Unit (ICU) 72hr Beds",
-    "Available Beds-Medical and Surgical (Med/Surg) Staffed Beds",
-    "Available Beds-Medical and Surgical (Med/Surg) Current Available",
-    "Available Beds-Medical and Surgical (Med/Surg) 24hr Beds",
-    "Available Beds-Medical and Surgical (Med/Surg) 72hr Beds",
-    "Available Beds-Pediatric Intensive Care Staffed Beds",
-    "Available Beds-Pediatric Intensive Care Current Available",
-    "Available Beds-Pediatric Intensive Care 24hr Beds",
-    "Available Beds-Pediatric Intensive Care 72hr Beds",
-    "Available Beds-Pediatric Staffed Beds",
-    "Available Beds-Pediatric Current Available",
-    "Available Beds-Pediatric 24hr Beds",
-    "Available Beds-Pediatric 72hr Beds",
-    "Other Beds-Airborne Infection Isolation Staffed Beds",
-    "Other Beds-Airborne Infection Isolation Current Available",
-    "Other Beds-Airborne Infection Isolation 24hr Beds",
-    "Other Beds-Airborne Infection Isolation 72hr Beds",
-    "COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19:",
-    "COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI):",
-    "COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators:",
-    "COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO:",
-    "COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED?",
-    "COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU?",
-    "COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU?",
-    "Ventilator Counts-Ventilators Number of ventilators",
-    "Ventilator Counts-Ventilators Number of ventilators in use",
-    "Ventilator Counts-Ventilators Number of Anestesia Machines",
-    "Ventilator Counts-Ventilators Number of Anestesia Machines that are converted to be used as a Vent",
-]
 
 
 new_summary_columns = {
