@@ -12,6 +12,7 @@ from geo_utils import Counties
 from operators import process_csv
 from operators import get_datetime_from_filename
 from arcgis.features import FeatureLayerCollection, FeatureSet, Table, Feature
+from validator import ValidationError
 
 
 def load_csv_to_df(csv_file_path):
@@ -249,73 +250,69 @@ class Ingester(object):
         print("Starting load of historical HOS table...")
 
         layer_conf = self.gis.layers['full_historical_table']
-        original_data_file_name = self.gis.layers['full_historical_table']['original_file_name']
+        original_data_file_name = layer_conf['original_file_name']
 
         table = self.gis.gis.content.get(layer_conf['id'])
         t = table.layers[0]
 
+        # get short field names that are in use online to test the input csv headers
         agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
 
-        features = []
+        # iterate all csvs and collect the information from each one.
+        # normalize header names at the same time
         hist_csv_rows = []
-        missing_aliases = []
-        all_headers = []
+        mapping = hm.HeaderMapping("HOS")
+        alias_lookup = mapping.get_alias_lookup()  # used to convert historical names (pre-5/12)
+        valid_fieldnames = mapping.get_fieldnames()  # valid short names (post-5/12)
         for f in processed_file_details:
             fname = f["processed_filename"]
             size = os.path.getsize(os.path.join(processed_dir, fname))
             if size > 0:
-                print(f"Adding columns and renaming existing columns for: {fname}")
                 processed_time =  datetime.utcnow().isoformat()
                 with open(os.path.join(processed_dir, fname), newline='') as csvfile:
                     reader = csv.DictReader(csvfile)
                     for row in reader:
-                        # clean the keys (column names) of the input row
-                        clean_row = {k.strip(): v for k, v in row.items()}
 
-                        clean_row["Source Data Timestamp"] = f["source_datetime"].isoformat()
-                        clean_row["Processed At"] = processed_time
-                        clean_row["Source Filename"] = f["filename"]
-                        all_headers = set(list(all_headers) + list(clean_row.keys()))
-
-                        # now iterate the rows and map the headers to field names
-                        # in the ArcGIS Online layer. The matching is done against
-                        # the AGOL field aliases, and basic sanitation is performed.
                         out_row = {}
-                        for alias, name in agol_fields.items():
-                            if alias == "ObjectId":
-                                continue
-                            if alias.strip() in clean_row:
-                                out_row[name] = clean_row[alias.strip()]
-                            else:
-                                missing_aliases.append(alias)
 
-                        features.append(Feature(attributes=out_row))
-                        hist_csv_rows.append(clean_row)
+                        for col_name, value in row.items():
+                            # first test if col_name in new valid headers
+                            # if so, use the col_name and value directly
+                            if col_name in valid_fieldnames:
+                                out_row[col_name] = value
+                            # next test if col_name in lookup of old aliases
+                            # if so, convert the col_name
+                            elif col_name in alias_lookup:
+                                out_row[alias_lookup[col_name]] = value
+                            # finally, raise exception if the field can't be matched
+                            else:
+                                msg = f"{fname}: Can't match field '{col_name}'"
+                                raise ValidationError(msg)
+
+                        out_row["Source Data Timestamp"] = f["source_datetime"].isoformat()
+                        out_row["Processed At"] = processed_time
+                        out_row["Source Filename"] = f["filename"]
+
+                        hist_csv_rows.append(out_row)
+
             else:
                 print(f"{fname} has a filesize of {size}, not processing.")
 
-        if len(missing_aliases) > 0:
-            print("These CSV field names do not match ArcGIS Online aliases:")
-            for mia in set(missing_aliases):
-                print(f" - {mia}   (length: {len(mia)})")
-
         # historical for generating a new source CSV
-        # I don't understand what this is for, but it should work as it did -AC
-        if make_historical_csv:
-            HM = hm.HeaderMapping("HOS")
-            headers = set(list(HM.get_fieldnames() + list(all_headers)))
-            if len(hist_csv_rows) > 0:
-                with open(os.path.join(processed_dir, original_data_file_name), "w", newline="") as csvfile:
-                    writer = csv.DictWriter(csvfile, fieldnames=headers)
-                    writer.writeheader()
-                    writer.writerows(hist_csv_rows)
+        if make_historical_csv and len(hist_csv_rows) > 0:
+            # get header names from the first row of the list of row dicts
+            headers = list(hist_csv_rows[0].keys())
+            with open(os.path.join(processed_dir, original_data_file_name), "w", newline="") as csvfile:
+                writer = csv.DictWriter(csvfile, fieldnames=headers)
+                writer.writeheader()
+                writer.writerows(hist_csv_rows)
 
         # It's okay if features is empty; status will reflect arcgis telling us that,
         # but it won't stop the processing.
+        features = [Feature(attributes=row) for row in hist_csv_rows]
         fs = FeatureSet(features)
         if self.dry_run:
             print("Dry run set, not editing features.")
-            status = "Dry run"
         else:
             fc = len(features)
             chunksize = 1000.0
