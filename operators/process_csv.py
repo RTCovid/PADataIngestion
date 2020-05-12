@@ -39,17 +39,10 @@ def normalize_row_keys(row, long_to_short_header, short_header_names):
     unknown_keys = []
     for k, v in row.items():
         if k not in short_header_names:
-            # ArcGIS can't handle ' in header column names.
-            if "'" in k:
-                k = k.replace("'", "")
-            else:
-                k = k
-
             if k in long_to_short_header:
                 k = long_to_short_header[k]
             else:
                 unknown_keys.append(k)
-
         new_row[k] = v
 
     if unknown_keys:
