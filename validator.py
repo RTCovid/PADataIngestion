@@ -4,6 +4,10 @@ from header_mapping import HeaderMapping
 from operators.utils import load_geojson
 
 
+class ValidationError(Exception):
+    pass
+
+
 class CSVValidator():
 
     def __init__(self, validation_type):
