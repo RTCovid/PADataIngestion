@@ -23,14 +23,18 @@ class CSVValidator():
 
         if self.type == "HOS":
             gj = os.path.join("geo_data", "HOS_locations.geojson")
-            self.loc_name_field = "HospitalName"
-            self.loc_alias_field = "HospitalNameAliases"
+            self.loc_name_field = "hospitalName"  # in the csv
+            self.loc_name_field_historical = "HospitalName"  # in the csv
+            self.loc_name_prop = "HospitalName"  # in the geojson
+            self.loc_alias_prop = "HospitalNameAliases"   # in the geojson
         if self.type == "LTC":
             gj = os.path.join("geo_data", "LTC_locations.geojson")
             self.loc_name_field = "LTCName"
-            self.loc_alias_field = "LTCNameAliases"
+            self.loc_name_field_historical = "LTCName" # Just in case it's needed
+            self.loc_name_prop = "LTCName"  # in the geojson
+            self.loc_alias_prop = "LTCNameAliases"
 
-        self.loc_lookup = load_geojson(gj, self.loc_name_field)
+        self.loc_lookup = load_geojson(gj, self.loc_name_prop)
 
     def validate_locations(self, input_csv):
 
@@ -40,7 +44,10 @@ class CSVValidator():
 
             for row in reader:
                 geomatch = None
-                name = row[self.loc_name_field].strip()
+                try:
+                    name = row[self.loc_name_field].strip()
+                except KeyError:
+                    name = row[self.loc_name_field_historical].strip()
 
                 # match attempt 1: does the name match?
                 if name in self.loc_lookup:
@@ -49,7 +56,7 @@ class CSVValidator():
                 # match attempt 2: iterate all possible aliases in lookup
                 else:
                     for k, v in self.loc_lookup.items():
-                        aliases = v[self.loc_alias_field]
+                        aliases = v[self.loc_alias_prop]
                         if aliases is None:
                             continue
                         if name in aliases.split("|"):
