@@ -1342,24 +1342,25 @@ supplies_types = [
 
 columns_to_sum_for_supplies_on_hand = {
     "N95": {
-        "3": "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?",
-        "7": "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-4-7 days Response ?",
-        "14": "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-8-14 days Response ?",
-        "28":  "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-15-28 days Response ?",
-        "29":  "At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-29 or more days Response ?"
+        "3": "n95utli3less",
+        "7": "n95utli47",
+        "14": "n95util814",
+        "28":  "n95util1528",
+        "29":  "n95util29more"
     },
     "PPE": {
-        "3": "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-3 or less days Response ?",
-        "7": "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-4-7 days Response ?",
-        "14": "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?",
-        "28": "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-15-28 days Response ?",
-        "29": "At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-29 or more days Response ?"
+        "3": "ppeutli3less",
+        "7": "ppeutli47",
+        "14": "ppeutil814",
+        "28": "ppeutil1528",
+        "29": "ppeutil29more"
     },
-    "NP Specimen Collection Supplies": {"3": "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-3 or less days Response ?",
-        "7": "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-4-7 days Response ?",
-        "14": "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-8-14 days Response ?",
-        "28": "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-15-28 days Response ?",
-        "29": "At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-29 or more days Response ?"
+    "NP Specimen Collection Supplies": {
+        "3": "nputli3less",
+        "7": "nputli47",
+        "14": "nputil814",
+        "28": "nputil1528",
+        "29": "nputil29more"
     }
 }
 
