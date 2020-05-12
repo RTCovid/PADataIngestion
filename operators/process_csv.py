@@ -32,23 +32,28 @@ converters = {'n95util1528': y_to_one,
  'ppeutli3less': y_to_one,
  'ppeutli47': y_to_one}
 
-def normalize_row_keys(row, long_to_short_header):
+def normalize_row_keys(row, long_to_short_header, short_header_names):
     # we want to always work with the canonical long names, since that's what Carrie
     # wants. So, we get a row
     new_row = {}
+    unknown_keys = []
     for k, v in row.items():
-        # ArcGIS can't handle ' in header column names.
-        if "'" in k:
-            k = k.replace("'", "")
-        else:
-            k = k
+        if k not in short_header_names:
+            # ArcGIS can't handle ' in header column names.
+            if "'" in k:
+                k = k.replace("'", "")
+            else:
+                k = k
 
-        if k in long_to_short_header:
-            old_k = k
-            k = long_to_short_header[k]
+            if k in long_to_short_header:
+                k = long_to_short_header[k]
+            else:
+                unknown_keys.append(k)
 
         new_row[k] = v
 
+    if unknown_keys:
+        print("During normalize row, I couldn't find these headers in our mapping tools:", unknown_keys)
     return new_row
 
 # accepts a list of files to get (or latest if no list), prefix, column restrictions
@@ -62,6 +67,8 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
     long_to_short_header = HM.get_fieldname_lookup()
     # all aliases
     short_to_all_aliases = HM.get_aliases()
+    # just the short names
+    short_header_names = HM.get_fieldnames()
 
     output_file_details = []
     for source_file_details in file_details:
@@ -83,7 +90,7 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
             # using dictreader, we don't need to read the header row in.
             for row in reader:
                 # strip out "'" and also convert to short keys.
-                new_row = normalize_row_keys(row, long_to_short_header)
+                new_row = normalize_row_keys(row, long_to_short_header, short_header_names)
                 if len(columns_wanted) > 0:
                     ks = list(new_row.keys())
                     for k in ks:
