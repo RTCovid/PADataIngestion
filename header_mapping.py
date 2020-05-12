@@ -1281,22 +1281,22 @@ long_short_column_header_map_LTC = {
 }
 
 county_sum_columns = [
-        "HospitalCounty",
-        "Available Beds-Adult Intensive Care Unit (ICU) Current Available",
-        "Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds",
-        "Available Beds-Medical and Surgical (Med/Surg) Current Available",
-        "Available Beds-Medical and Surgical (Med/Surg) Staffed Beds",
-        "Available Beds-Pediatric Intensive Care Current Available",
-        "Available Beds-Pediatric Intensive Care Staffed Beds",
-        "Available Beds-Pediatric Current Available",
-        "Available Beds-Pediatric Staffed Beds",
-        "Other Beds-Airborne Infection Isolation Current Available",
-        "Other Beds-Airborne Infection Isolation Staffed Beds",
-	"COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ventilators: ",
-	"COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ECMO: ",
-	"COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19: ",
-	"Ventilator Counts-Ventilators Number of ventilators",
-	"Ventilator Counts-Ventilators Number of ventilators in use",
+    "HospitalCounty",
+    'icuavail',
+    'numicubeds',
+    'medsurgavail',
+    'medsurgstaff',
+    'picavail',
+    'picstaff',
+    'pedavail',
+    'pedstaff',
+    'aiiavail',
+    'aiistaff',
+    'numc19mechventpats',
+    'ttlcvd19ptntecmo',
+    'numc19hosppats',
+    'numvent',
+    'numventuse'
 ]
 
 summary_table_header = {
