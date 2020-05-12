@@ -284,6 +284,7 @@ class Ingester(object):
                             # if so, convert the col_name
                             elif col_name in alias_lookup:
                                 out_row[alias_lookup[col_name]] = value
+                                print(f"Found a long name in {fname}: {col_name}")
                             # finally, raise exception if the field can't be matched
                             else:
                                 msg = f"{fname}: Can't match field '{col_name}'"
@@ -300,8 +301,7 @@ class Ingester(object):
 
         # historical for generating a new source CSV
         if make_historical_csv and len(hist_csv_rows) > 0:
-            # get header names from the first row of the list of row dicts
-            headers = list(hist_csv_rows[0].keys())
+            headers = set(list(valid_fieldnames) + list(out_row.keys()))
             with open(os.path.join(processed_dir, original_data_file_name), "w", newline="") as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=headers)
                 writer.writeheader()
