@@ -9,7 +9,7 @@ import os
 
 class AGOLConnection(object):
 
-    def __init__(self):
+    def __init__(self, verbose=False):
 
         creds = self._load_credentials()
         if creds is None:
@@ -17,7 +17,8 @@ class AGOLConnection(object):
 
         self.creds = creds
         self.layers = self._get_layers()
-        self.gis = self._get_gis()
+        self.gis = self._make_connection()
+        self.verbose = verbose
 
     def _load_credentials(self):
 
@@ -42,7 +43,7 @@ class AGOLConnection(object):
 
         return configs
 
-    def _get_gis(self):
+    def _make_connection(self):
         username = self.creds['username']
         password = self.creds['password']
         host = self.creds['host']
@@ -64,21 +65,25 @@ class AGOLConnection(object):
 
     def overwrite_arcgis_layer(self, dataset_name, source_data_dir, source_data_file, dry_run=False):
 
-        print(f"Begin upload to ArcGIS Online")
-        if dry_run is True:
-            print("** DRY RUN -- NO UPLOAD WILL HAPPEN **")
+        if self.verbose:
+            print(f"Begin upload to ArcGIS Online")
+            if dry_run is True:
+                print("** DRY RUN -- NO UPLOAD WILL HAPPEN **")
 
         try:
             layer_config = self.layers[dataset_name]
         except KeyError:
-            print(f"Invalid dataset name: {dataset_name}. Valid options are {list(self.layers.keys())}. Alter agol_layers.json to add more.")
+            if self.verbose:
+                print(f"Invalid dataset name: {dataset_name}. Valid options are"
+                      " {list(self.layers.keys())}. Alter agol_layers.json to add more.")
             return False
 
         original_file_name = layer_config['original_file_name']
         item_id = layer_config['id']
 
-        print(f"   ArcGIS Online item id: {layer_config['id']}")
-        print(f"   CSV name used for upload: {layer_config['original_file_name']}")
+        if self.verbose:
+            print(f"   ArcGIS Online item id: {layer_config['id']}")
+            print(f"   CSV name used for upload: {layer_config['original_file_name']}")
 
         fs = self.get_arcgis_feature_collection_from_item_id(item_id)
         # Overwrite docs:
@@ -96,19 +101,24 @@ class AGOLConnection(object):
             shutil.copyfile(os.path.join(source_data_dir, source_data_file),
                             os.path.join(tmpdirname, original_file_name))
 
-            print(f"   local CSV file name: {source_data_dir}/{source_data_file}")
+            if self.verbose:
+                print(f"   local CSV file name: {source_data_dir}/{source_data_file}")
             original_dir = os.getcwd()
             os.chdir(tmpdirname)
             if dry_run is False:
                 try:
-                    print("    starting upload...")
+                    if self.verbose:
+                        print("    starting upload...")
                     result = fs.manager.overwrite(original_file_name)
                 except Exception as e:
-                    print(f"Caught exception {e} during upload, retrying")
+                    if self.verbose:
+                        print(f"Caught exception {e} during upload, retrying")
                     result = fs.manager.overwrite(original_file_name)
-                print("        finished.")
+                if self.verbose:
+                    print("        finished.")
             else:
-                result = "Dry run complete"
+                if self.verbose:
+                    result = "Dry run complete"
             os.chdir(original_dir)
         return result
 

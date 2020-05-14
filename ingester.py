@@ -13,6 +13,7 @@ from operators import process_csv
 from operators import get_datetime_from_filename
 from arcgis.features import FeatureLayerCollection, FeatureSet, Table, Feature
 from validator import ValidationError
+from agol_connection import AGOLConnection
 
 
 def load_csv_to_df(csv_file_path):
@@ -62,7 +63,7 @@ def create_summary_table_row(df, source_data_timestamp, source_filename):
 
 class Ingester(object):
 
-    def __init__(self, dry_run=False):
+    def __init__(self, dry_run=False, verbose=False):
 
         creds = self._load_credentials()
         if creds is None:
@@ -70,8 +71,10 @@ class Ingester(object):
 
         self.creds = creds
         self.dry_run = dry_run
-        self.gis = None
+        agol_connection = AGOLConnection()
+        self.agol = agol_connection
         self.available_files = []
+        self.verbose = verbose
 
     def _load_credentials(self):
 
@@ -89,12 +92,8 @@ class Ingester(object):
                     creds['host'] = row['host']
         return creds
 
-    def set_gis(self, gis_object):
-
-        self.gis = gis_object
-
     def get_files_from_sftp(self, prefix="HOS_ResourceCapacity_", target_dir="/tmp",
-                                   only_latest=True, filenames_to_ignore=[]):
+                                   only_latest=True, filenames_to_ignore=[], verbose=False):
 
         cnopts = pysftp.CnOpts()
         cnopts.hostkeys.load('copaftp.pub')
@@ -121,18 +120,26 @@ class Ingester(object):
                 files_to_get = files
             for f in files_to_get:
                 if f in filenames_to_ignore:
-                    print(f"Ignoring {f}")
+                    if self.verbose:
+                        print(f"Ignoring {f}")
                     continue
-                print(f"Getting: {f}")
+                if self.verbose:
+                    print(f"Getting: {f}")
                 if os.path.join(target_dir, f) not in existing_files:
                     sftp.get(f, f'{target_dir}/{f}')
-                    print(f"Finished downloading {target_dir}/{f}")
+                    if self.verbose:
+                        print(f"Finished downloading {target_dir}/{f}")
                 else:
-                    print(f"Didn't have to download {target_dir}/{f}; it already exists")
+                    if self.verbose:
+                        print(f"Didn't have to download {target_dir}/{f}; it already exists")
 
                 source_date = get_datetime_from_filename(f, prefix=prefix)
                 file_details.append({"dir": target_dir, "filename": f, "source_datetime": source_date})
         return (file_details, files)
+
+    def get_already_processed_files(self, dataset_name):
+
+        return self.agol.get_already_processed_files(dataset_name)
 
     def process_hospital(self, processed_dir, processed_filename, public=True):
 
@@ -142,32 +149,38 @@ class Ingester(object):
         else:
             dataset_name = "hospital_layer"
 
-        print(f"Starting load of hospital data: {dataset_name}")
+        if self.verbose:
+            print(f"Starting load of hospital data: {dataset_name}")
 
-        status = self.gis.overwrite_arcgis_layer(dataset_name, processed_dir, processed_filename, dry_run=self.dry_run)
+        status = self.agol.overwrite_arcgis_layer(dataset_name, processed_dir, processed_filename, dry_run=self.dry_run)
 
-        print(status)
-        print(f"Finished load of hospital data: {dataset_name}")
+        if self.verbose:
+            print(status)
+            print(f"Finished load of hospital data: {dataset_name}")
         return processed_dir, processed_filename
 
     def process_supplies(self, processed_dir, processed_filename):
-        print("Starting load of supplies data")
+        if self.verbose:
+            print("Starting load of supplies data")
 
         # set the new file name using the original file name in the layers conf
-        supplies_filename = self.gis.layers['supplies']['original_file_name']
+        supplies_filename = self.agol.layers['supplies']['original_file_name']
 
         df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
         supplies = create_supplies_table(df)
 
         supplies.to_csv(os.path.join(processed_dir, supplies_filename), index=False)
 
-        status = self.gis.overwrite_arcgis_layer("supplies", processed_dir, supplies_filename, dry_run=self.dry_run)
-        print(status)
-        print("Finished load of supplies data")
+        status = self.agol.overwrite_arcgis_layer("supplies", processed_dir, supplies_filename, dry_run=self.dry_run)
+
+        if self.verbose:
+            print(status)
+            print("Finished load of supplies data")
 
     def process_county_summaries(self, processed_dir, processed_filename):
 
-        print("Starting load of county summary table...")
+        if self.verbose:
+            print("Starting load of county summary table...")
 
         new_data_filename = "new_county_summary_table.csv"
 
@@ -190,14 +203,18 @@ class Ingester(object):
 
         d2.to_csv(os.path.join(processed_dir, new_data_filename), header=True, index=False)
 
-        status = self.gis.overwrite_arcgis_layer("county_summaries", processed_dir, new_data_filename, dry_run=self.dry_run)
-        print(status)
-        print("Finished load of county summary data")
+        status = self.agol.overwrite_arcgis_layer("county_summaries", processed_dir, new_data_filename, dry_run=self.dry_run)
+
+        if self.verbose:
+            print(status)
+            print("Finished load of county summary data")
 
     def process_summaries(self, processed_dir, processed_file_details, make_historical_csv=False):
-        print("Starting load of summary table...")
 
-        summary_filename = self.gis.layers['summary_table']['original_file_name']
+        if self.verbose:
+            print("Starting load of summary table...")
+
+        summary_filename = self.agol.layers['summary_table']['original_file_name']
 
         summary_df = pd.DataFrame()
         for f in processed_file_details:
@@ -213,14 +230,15 @@ class Ingester(object):
         if make_historical_csv:
             out_csv_file = os.path.join(processed_dir, summary_filename)
             summary_df.to_csv(out_csv_file, index=False, header=True)
-            print("Finished creation of historical summary table CSV, returning.")
+            if self.verbose:
+                print("Finished creation of historical summary table CSV, returning.")
             return
 
-        layer_conf = self.gis.layers['summary_table']
+        layer_conf = self.agol.layers['summary_table']
 
         # this self.gis.gis.content pattern is evidence that the first pass at
         # a refactored structure should not be the last...
-        table = self.gis.gis.content.get(layer_conf['id'])
+        table = self.agol.gis.content.get(layer_conf['id'])
         t = table.tables[0]
 
         new_col_names = {}
@@ -237,64 +255,47 @@ class Ingester(object):
         # but it won't stop the processing.
         fs = FeatureSet(features)
         if self.dry_run:
-            print("Dry run set, not editing features.")
-            status = "Dry run"
+            if self.verbose:
+                print("Dry run set, not editing features.")
         else:
             status = t.edit_features(adds=features)
-        print(status)
-        print("Finished load of summary table")
+            if self.verbose:
+                print(status)
+        if self.verbose:
+            print("Finished load of summary table")
 
 
     def process_historical_hos(self, processed_dir, processed_file_details,  make_historical_csv=False):
 
-        print("Starting load of historical HOS table...")
+        if self.verbose:
+            print("Starting load of historical HOS table...")
 
-        layer_conf = self.gis.layers['full_historical_table']
+        layer_conf = self.agol.layers['full_historical_table']
         original_data_file_name = layer_conf['original_file_name']
 
-        table = self.gis.gis.content.get(layer_conf['id'])
+        table = self.agol.gis.content.get(layer_conf['id'])
         t = table.layers[0]
 
         # get short field names that are in use online to test the input csv headers
-        agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
+        # not used now but retained in case of future needs
+        # agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
 
         # iterate all csvs and collect the information from each one.
         # normalize header names at the same time
         hist_csv_rows = []
-        mapping = hm.HeaderMapping("HOS")
-        alias_lookup = mapping.get_alias_lookup()  # used to convert historical names (pre-5/12)
-        valid_fieldnames = mapping.get_fieldnames()  # valid short names (post-5/12)
         for f in processed_file_details:
             fname = f["processed_filename"]
             size = os.path.getsize(os.path.join(processed_dir, fname))
             if size > 0:
-                processed_time =  datetime.utcnow().isoformat()
+                processed_time = datetime.utcnow().isoformat()
                 with open(os.path.join(processed_dir, fname), newline='') as csvfile:
                     reader = csv.DictReader(csvfile)
                     for row in reader:
 
-                        out_row = {}
-
-                        for col_name, value in row.items():
-                            # first test if col_name in new valid headers
-                            # if so, use the col_name and value directly
-                            if col_name in valid_fieldnames:
-                                out_row[col_name] = value
-                            # next test if col_name in lookup of old aliases
-                            # if so, convert the col_name
-                            elif col_name in alias_lookup:
-                                out_row[alias_lookup[col_name]] = value
-                                print(f"Found a long name in {fname}: {col_name}")
-                            # finally, raise exception if the field can't be matched
-                            else:
-                                msg = f"{fname}: Can't match field '{col_name}'"
-                                raise ValidationError(msg)
-
-                        out_row["Source Data Timestamp"] = f["source_datetime"].isoformat()
-                        out_row["Processed At"] = processed_time
-                        out_row["Source Filename"] = f["filename"]
-
-                        hist_csv_rows.append(out_row)
+                        row["Source Data Timestamp"] = f["source_datetime"].isoformat()
+                        row["Processed At"] = processed_time
+                        row["Source Filename"] = f["filename"]
+                        hist_csv_rows.append(row)
 
             else:
                 print(f"{fname} has a filesize of {size}, not processing.")
@@ -312,28 +313,31 @@ class Ingester(object):
         features = [Feature(attributes=row) for row in hist_csv_rows]
         fs = FeatureSet(features)
         if self.dry_run:
-            print("Dry run set, not editing features.")
+            if self.verbose:
+                print("Dry run set, not editing features.")
         else:
             fc = len(features)
             chunksize = 1000.0
             feature_batchs = chunks(features, math.ceil(fc / chunksize))
             fb_list = list(feature_batchs)
             fbc = len(fb_list)
-            print(f"Adding {fc} features to the historical table in {fbc} batches.")
+            if self.verbose:
+                print(f"Adding {fc} features to the historical table in {fbc} batches.")
             for batch in fb_list:
                 status = t.edit_features(adds=batch)
                 print(status)
-        print("Finished load of historical HOS table")
+        if self.verbose:
+            print("Finished load of historical HOS table")
 
     def process_daily_hospital_averages(self, historical_gis_item_id, daily_averages_item_id):
         # see what days have been processed
-        # if not processed, 
+        # if not processed,
         # get the historical table
         # turn it into a df
         # per day, get the averages
         # for new: days
         print("XXX daily_hospital_averages stub, returning.")
-        table = self.gis.content.get(historical_gis_item_id)
+        table = self.agol.gis.content.get(historical_gis_item_id)
         t = table.layers[0]
 
 
