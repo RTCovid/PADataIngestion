@@ -17,7 +17,8 @@ class AGOLConnection(object):
 
         self.creds = creds
         self.layers = self._get_layers()
-        self.gis = self._get_gis()
+        self.gis = self._make_connection()
+        self.verbose = verbose
 
     def _load_credentials(self):
 
@@ -42,7 +43,7 @@ class AGOLConnection(object):
 
         return configs
 
-    def _get_gis(self):
+    def _make_connection(self):
         username = self.creds['username']
         password = self.creds['password']
         host = self.creds['host']
