@@ -32,19 +32,18 @@ converters = {'n95util1528': y_to_one,
  'ppeutli3less': y_to_one,
  'ppeutli47': y_to_one}
 
-def normalize_row_keys(row, long_to_short_header, short_header_names):
-    # we want to always work with the canonical long names, since that's what Carrie
-    # wants. So, we get a row
+def normalize_row_keys(row, master_lookup):
+    """transforms the input row's headers to the normalized set, based on the
+    input lookup dictionary."""
+
     new_row = {}
     unknown_keys = []
-    for k, v in row.items():
-        if k not in short_header_names:
-            if k in long_to_short_header:
-                k = long_to_short_header[k]
-            else:
-                unknown_keys.append(k)
-        new_row[k] = v
 
+    for k, v in row.items():
+        if k in master_lookup:
+            new_row[master_lookup[k]] = v
+        else:
+            unknown_keys.append(k)
     if unknown_keys:
         print("During normalize row, I couldn't find these headers in our mapping tools:", unknown_keys)
     return new_row
@@ -55,13 +54,15 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
     hl = HospitalLocations()
     HM = header_mapping.HeaderMapping("HOS")
     # shortnames to a list of the "canonical" long names
-    short_to_canonical_long = HM.get_alias_lookup()
+    # short_to_canonical_long = HM.get_alias_lookup()
     # longnames to the alias
-    long_to_short_header = HM.get_fieldname_lookup()
+    # long_to_short_header = HM.get_fieldname_lookup()
     # all aliases
-    short_to_all_aliases = HM.get_aliases()
+    # short_to_all_aliases = HM.get_aliases()
     # just the short names
-    short_header_names = HM.get_fieldnames()
+    # short_header_names = HM.get_fieldnames()
+
+    master_lookup = HM.get_master_lookup()
 
     output_file_details = []
     for source_file_details in file_details:
@@ -80,10 +81,10 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
         rows = []
         with open (os.path.join(source_data_dir, source_data_file), newline='', encoding="utf8") as rf:
             reader = csv.DictReader(rf)
-            # using dictreader, we don't need to read the header row in.
+
             for row in reader:
-                # strip out "'" and also convert to short keys.
-                new_row = normalize_row_keys(row, long_to_short_header, short_header_names)
+                new_row = normalize_row_keys(row, master_lookup)
+
                 if len(columns_wanted) > 0:
                     ks = list(new_row.keys())
                     for k in ks:
@@ -100,9 +101,9 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                         new_row[k] = converters[k](v)
                         v = converters[k](v)
 
-                hos_name_key = long_to_short_header["HospitalName"]
-                hos_lat_key = long_to_short_header["HospitalLatitude"]
-                hos_long_key = long_to_short_header["HospitalLongitude"]
+                hos_name_key = master_lookup["HospitalName"]
+                hos_lat_key = master_lookup["HospitalLatitude"]
+                hos_long_key = master_lookup["HospitalLongitude"]
                 hos_county_key = "HospitalCounty"
 
                 # Older files have bad names for hospitals.
