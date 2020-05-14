@@ -63,7 +63,7 @@ def create_summary_table_row(df, source_data_timestamp, source_filename):
 
 class Ingester(object):
 
-    def __init__(self, dry_run=False):
+    def __init__(self, dry_run=False, verbose=False):
 
         creds = self._load_credentials()
         if creds is None:
@@ -74,6 +74,7 @@ class Ingester(object):
         agol_connection = AGOLConnection()
         self.agol = agol_connection
         self.available_files = []
+        self.verbose = verbose
 
     def _load_credentials(self):
 
@@ -92,7 +93,7 @@ class Ingester(object):
         return creds
 
     def get_files_from_sftp(self, prefix="HOS_ResourceCapacity_", target_dir="/tmp",
-                                   only_latest=True, filenames_to_ignore=[]):
+                                   only_latest=True, filenames_to_ignore=[], verbose=False):
 
         cnopts = pysftp.CnOpts()
         cnopts.hostkeys.load('copaftp.pub')
@@ -119,14 +120,18 @@ class Ingester(object):
                 files_to_get = files
             for f in files_to_get:
                 if f in filenames_to_ignore:
-                    print(f"Ignoring {f}")
+                    if self.verbose:
+                        print(f"Ignoring {f}")
                     continue
-                print(f"Getting: {f}")
+                if self.verbose:
+                    print(f"Getting: {f}")
                 if os.path.join(target_dir, f) not in existing_files:
                     sftp.get(f, f'{target_dir}/{f}')
-                    print(f"Finished downloading {target_dir}/{f}")
+                    if self.verbose:
+                        print(f"Finished downloading {target_dir}/{f}")
                 else:
-                    print(f"Didn't have to download {target_dir}/{f}; it already exists")
+                    if self.verbose:
+                        print(f"Didn't have to download {target_dir}/{f}; it already exists")
 
                 source_date = get_datetime_from_filename(f, prefix=prefix)
                 file_details.append({"dir": target_dir, "filename": f, "source_datetime": source_date})

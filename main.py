@@ -9,15 +9,13 @@ from validator import CSVValidator
 from ingester import Ingester
 
 
-def process_instantaneous(dry_run=False, datadir=None):
     print("Processing instantaneous tables...")
+def process_instantaneous(dry_run=False, datadir=None, verbose=False):
 
     if datadir is None:
         datadir = "/tmp"
 
-    ingester = Ingester(dry_run)
-    agol_connection = AGOLConnection()
-    ingester.set_gis(agol_connection)
+    ingester = Ingester(dry_run, verbose=verbose)
 
     # for now this part basically follows the same pattern as before, but work
     # should be done to consolidate the sftp and file management process.
@@ -70,14 +68,12 @@ def process_instantaneous(dry_run=False, datadir=None):
     ingester.process_county_summaries(processed_dir, processed_filename)
     print("Finished processing instantaneous tables.")
 
-def process_historical(dry_run=False, datadir=None, make_historical_csv=False):
+def process_historical(dry_run=False, datadir=None, make_historical_csv=False, verbose=False):
 
     if datadir is None:
         datadir = "/tmp"
 
-    ingester = Ingester(dry_run)
-    agol_connection = AGOLConnection()
-    ingester.set_gis(agol_connection)
+    ingester = Ingester(dry_run, verbose=verbose)
 
     files_to_not_sftp = ingester.gis.get_already_processed_files("summary_table")
     file_details, all_filenames = ingester.get_files_from_sftp(target_dir=datadir, only_latest=False, filenames_to_ignore=files_to_not_sftp)
@@ -107,12 +103,12 @@ def process_historical(dry_run=False, datadir=None, make_historical_csv=False):
     print("Finished processing historical tables.")
 
 
-def process_canary_features(dry_run=False, datadir=None):
+def process_canary_features(dry_run=False, datadir=None, verbose=False):
     print("Processing canary features...")
     if datadir is None:
         datadir = "/tmp"
 
-    ingester = Ingester(dry_run)
+    ingester = Ingester(dry_run, verbose=verbose)
     agol_connection = AGOLConnection()
     ingester.set_gis(agol_connection)
 
@@ -122,10 +118,10 @@ def process_canary_features(dry_run=False, datadir=None):
     ingester.process_daily_hospital_averages(historical_gis_item_id, historical_averages_item_id)
     print("Finished canary features.")
 
-def main(dry_run, datadir=None, make_historical_csv=False):
-    #process_canary_features(dry_run=dry_run, datadir=datadir)
-    process_instantaneous(dry_run=dry_run, datadir=datadir)
-    process_historical(dry_run=dry_run, datadir=datadir, make_historical_csv=make_historical_csv)
+def main(dry_run, datadir=None, make_historical_csv=False, verbose=False):
+    #process_canary_features(dry_run=dry_run, datadir=datadir, verbose=verbose)
+    process_instantaneous(dry_run=dry_run, datadir=datadir, verbose=verbose)
+    process_historical(dry_run=dry_run, datadir=datadir, make_historical_csv=make_historical_csv, verbose=verbose)
 
 def instantaneous_pubsub(event, context):
     print("Started instantaneous ingestion processing run")
@@ -141,9 +137,10 @@ if __name__== "__main__":
     make_historical_csv = False
     dry_run = False
     parser = argparse.ArgumentParser()
-    parser.add_argument("--dry_run")
+    parser.add_argument("--dry_run", action="store_true")
     parser.add_argument("--dir")
-    parser.add_argument("--make_historical_csv")
+    parser.add_argument("--make_historical_csv", action="store_true")
+    parser.add_argument("--quiet", action="store_true")
     args = parser.parse_args()
     if args.dry_run is not None:
         dry_run = True
@@ -151,3 +148,6 @@ if __name__== "__main__":
         make_historical_csv = True
     print(f"dry_run: {dry_run}")
     main(dry_run, datadir=args.dir, make_historical_csv=make_historical_csv)
+    # note that the cli argument is --quiet but from here on the argument passed around is "verbose"
+    verbose = not args.quiet
+    main(args.dry_run, datadir=args.dir, make_historical_csv=args.make_historical_csv, verbose=verbose)
