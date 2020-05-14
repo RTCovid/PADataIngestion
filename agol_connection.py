@@ -65,9 +65,10 @@ class AGOLConnection(object):
 
     def overwrite_arcgis_layer(self, dataset_name, source_data_dir, source_data_file, dry_run=False):
 
-        print(f"Begin upload to ArcGIS Online")
-        if dry_run is True and self.verbose:
-            print("** DRY RUN -- NO UPLOAD WILL HAPPEN **")
+        if self.verbose:
+            print(f"Begin upload to ArcGIS Online")
+            if dry_run is True:
+                print("** DRY RUN -- NO UPLOAD WILL HAPPEN **")
 
         try:
             layer_config = self.layers[dataset_name]
@@ -116,7 +117,8 @@ class AGOLConnection(object):
                 if self.verbose:
                     print("        finished.")
             else:
-                result = "Dry run complete"
+                if self.verbose:
+                    result = "Dry run complete"
             os.chdir(original_dir)
         return result
 

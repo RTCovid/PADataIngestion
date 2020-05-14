@@ -149,16 +149,19 @@ class Ingester(object):
         else:
             dataset_name = "hospital_layer"
 
-        print(f"Starting load of hospital data: {dataset_name}")
+        if self.verbose:
+            print(f"Starting load of hospital data: {dataset_name}")
 
         status = self.agol.overwrite_arcgis_layer(dataset_name, processed_dir, processed_filename, dry_run=self.dry_run)
 
-        print(status)
-        print(f"Finished load of hospital data: {dataset_name}")
+        if self.verbose:
+            print(status)
+            print(f"Finished load of hospital data: {dataset_name}")
         return processed_dir, processed_filename
 
     def process_supplies(self, processed_dir, processed_filename):
-        print("Starting load of supplies data")
+        if self.verbose:
+            print("Starting load of supplies data")
 
         # set the new file name using the original file name in the layers conf
         supplies_filename = self.agol.layers['supplies']['original_file_name']
@@ -169,12 +172,15 @@ class Ingester(object):
         supplies.to_csv(os.path.join(processed_dir, supplies_filename), index=False)
 
         status = self.agol.overwrite_arcgis_layer("supplies", processed_dir, supplies_filename, dry_run=self.dry_run)
-        print(status)
-        print("Finished load of supplies data")
+
+        if self.verbose:
+            print(status)
+            print("Finished load of supplies data")
 
     def process_county_summaries(self, processed_dir, processed_filename):
 
-        print("Starting load of county summary table...")
+        if self.verbose:
+            print("Starting load of county summary table...")
 
         new_data_filename = "new_county_summary_table.csv"
 
@@ -198,11 +204,15 @@ class Ingester(object):
         d2.to_csv(os.path.join(processed_dir, new_data_filename), header=True, index=False)
 
         status = self.agol.overwrite_arcgis_layer("county_summaries", processed_dir, new_data_filename, dry_run=self.dry_run)
-        print(status)
-        print("Finished load of county summary data")
+
+        if self.verbose:
+            print(status)
+            print("Finished load of county summary data")
 
     def process_summaries(self, processed_dir, processed_file_details, make_historical_csv=False):
-        print("Starting load of summary table...")
+
+        if self.verbose:
+            print("Starting load of summary table...")
 
         summary_filename = self.agol.layers['summary_table']['original_file_name']
 
@@ -220,7 +230,8 @@ class Ingester(object):
         if make_historical_csv:
             out_csv_file = os.path.join(processed_dir, summary_filename)
             summary_df.to_csv(out_csv_file, index=False, header=True)
-            print("Finished creation of historical summary table CSV, returning.")
+            if self.verbose:
+                print("Finished creation of historical summary table CSV, returning.")
             return
 
         layer_conf = self.agol.layers['summary_table']
@@ -244,17 +255,20 @@ class Ingester(object):
         # but it won't stop the processing.
         fs = FeatureSet(features)
         if self.dry_run:
-            print("Dry run set, not editing features.")
-            status = "Dry run"
+            if self.verbose:
+                print("Dry run set, not editing features.")
         else:
             status = t.edit_features(adds=features)
-        print(status)
-        print("Finished load of summary table")
+            if self.verbose:
+                print(status)
+        if self.verbose:
+            print("Finished load of summary table")
 
 
     def process_historical_hos(self, processed_dir, processed_file_details,  make_historical_csv=False):
 
-        print("Starting load of historical HOS table...")
+        if self.verbose:
+            print("Starting load of historical HOS table...")
 
         layer_conf = self.agol.layers['full_historical_table']
         original_data_file_name = layer_conf['original_file_name']
@@ -319,18 +333,21 @@ class Ingester(object):
         features = [Feature(attributes=row) for row in hist_csv_rows]
         fs = FeatureSet(features)
         if self.dry_run:
-            print("Dry run set, not editing features.")
+            if self.verbose:
+                print("Dry run set, not editing features.")
         else:
             fc = len(features)
             chunksize = 1000.0
             feature_batchs = chunks(features, math.ceil(fc / chunksize))
             fb_list = list(feature_batchs)
             fbc = len(fb_list)
-            print(f"Adding {fc} features to the historical table in {fbc} batches.")
+            if self.verbose:
+                print(f"Adding {fc} features to the historical table in {fbc} batches.")
             for batch in fb_list:
                 status = t.edit_features(adds=batch)
                 print(status)
-        print("Finished load of historical HOS table")
+        if self.verbose:
+            print("Finished load of historical HOS table")
 
     def process_daily_hospital_averages(self, historical_gis_item_id, daily_averages_item_id):
         # see what days have been processed
