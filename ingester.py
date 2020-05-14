@@ -303,7 +303,8 @@ class Ingester(object):
 
         # historical for generating a new source CSV
         if make_historical_csv and len(hist_csv_rows) > 0:
-            headers = set(list(valid_fieldnames) + list(out_row.keys()))
+            agol_fieldnames = [n["name"] for n in t.properties.fields]
+            headers = set(agol_fieldnames + list(hist_csv_rows[0].keys()))
             with open(os.path.join(processed_dir, original_data_file_name), "w", newline="") as csvfile:
                 writer = csv.DictWriter(csvfile, fieldnames=headers)
                 writer.writeheader()
