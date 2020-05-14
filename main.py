@@ -118,7 +118,6 @@ def process_historical(dry_run=False, datadir=None, make_historical_csv=False, v
     files_to_not_sftp = ingester.get_already_processed_files("full_historical_table")
     print(f"determined already processed files (full_historical_table): {datetime.now() - a}")
 
-
     if make_historical_csv:
         # setting files_to_not_sftp to an empty list ensures we rebuild the full historical table
         files_to_not_sftp = []
@@ -130,6 +129,8 @@ def process_historical(dry_run=False, datadir=None, make_historical_csv=False, v
     if len(file_details) == 0:
         print("  No new files to process for historical data.")
     else:
+        lf = len(file_details)
+        print(f"  {lf} new files to process for historical data.")
         a = datetime.now()
         processed_file_details = process_csv(file_details, output_dir=datadir)
         print(f"process_csv(): {datetime.now() - a}")

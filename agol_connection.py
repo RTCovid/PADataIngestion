@@ -123,6 +123,7 @@ class AGOLConnection(object):
         return result
 
     def get_already_processed_files(self, dataset_name):
+        print(f"Getting already processed files for {dataset_name}")
 
         item_id = self.layers[dataset_name]['id']
         fs = self.gis.content.get(item_id)

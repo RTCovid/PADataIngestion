@@ -285,6 +285,7 @@ class Ingester(object):
         hist_csv_rows = []
         for f in processed_file_details:
             fname = f["processed_filename"]
+            print(f"    working on {fname}..")
             size = os.path.getsize(os.path.join(processed_dir, fname))
             if size > 0:
                 processed_time = datetime.utcnow().isoformat()
@@ -317,15 +318,23 @@ class Ingester(object):
                 print("Dry run set, not editing features.")
         else:
             fc = len(features)
-            chunksize = 1000.0
-            feature_batchs = chunks(features, math.ceil(fc / chunksize))
+            chunksize = 1000
+            feature_batchs = chunks(features, chunksize)
             fb_list = list(feature_batchs)
             fbc = len(fb_list)
             if self.verbose:
                 print(f"Adding {fc} features to the historical table in {fbc} batches.")
             for batch in fb_list:
                 status = t.edit_features(adds=batch)
-                print(status)
+                b_len = len(batch)
+                num_success = len([x["success"] for x in status["addResults"] if x["success"] == True])
+                fails = b_len - num_success
+                if fails != 0:
+                    print(f"Not all updates succeeded; {fails} failures")
+                    print("XXX do something about this failure!")
+                else:
+                    print(f"All {num_success} features successfull updated in this batch.")
+
         if self.verbose:
             print("Finished load of historical HOS table")
 
