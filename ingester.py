@@ -277,45 +277,25 @@ class Ingester(object):
         t = table.layers[0]
 
         # get short field names that are in use online to test the input csv headers
-        agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
+        # not used now but retained in case of future needs
+        # agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
 
         # iterate all csvs and collect the information from each one.
         # normalize header names at the same time
         hist_csv_rows = []
-        mapping = hm.HeaderMapping("HOS")
-        alias_lookup = mapping.get_alias_lookup()  # used to convert historical names (pre-5/12)
-        valid_fieldnames = mapping.get_fieldnames()  # valid short names (post-5/12)
         for f in processed_file_details:
             fname = f["processed_filename"]
             size = os.path.getsize(os.path.join(processed_dir, fname))
             if size > 0:
-                processed_time =  datetime.utcnow().isoformat()
+                processed_time = datetime.utcnow().isoformat()
                 with open(os.path.join(processed_dir, fname), newline='') as csvfile:
                     reader = csv.DictReader(csvfile)
                     for row in reader:
 
-                        out_row = {}
-
-                        for col_name, value in row.items():
-                            # first test if col_name in new valid headers
-                            # if so, use the col_name and value directly
-                            if col_name in valid_fieldnames:
-                                out_row[col_name] = value
-                            # next test if col_name in lookup of old aliases
-                            # if so, convert the col_name
-                            elif col_name in alias_lookup:
-                                out_row[alias_lookup[col_name]] = value
-                                print(f"Found a long name in {fname}: {col_name}")
-                            # finally, raise exception if the field can't be matched
-                            else:
-                                msg = f"{fname}: Can't match field '{col_name}'"
-                                raise ValidationError(msg)
-
-                        out_row["Source Data Timestamp"] = f["source_datetime"].isoformat()
-                        out_row["Processed At"] = processed_time
-                        out_row["Source Filename"] = f["filename"]
-
-                        hist_csv_rows.append(out_row)
+                        row["Source Data Timestamp"] = f["source_datetime"].isoformat()
+                        row["Processed At"] = processed_time
+                        row["Source Filename"] = f["filename"]
+                        hist_csv_rows.append(row)
 
             else:
                 print(f"{fname} has a filesize of {size}, not processing.")
