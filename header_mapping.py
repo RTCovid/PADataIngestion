@@ -51,6 +51,19 @@ class HeaderMapping(object):
 
         return self.get_fieldnames() + self.get_aliases()
 
+    def get_master_lookup(self):
+        """This lookup has keys for all long names AND all short names. Each key
+        corresponds to the proper short name. Allows a single point of entry for
+        any header name."""
+
+        lookup = {}
+        for k, v in self.mapping.items():
+            lookup[k] = k
+            for alias in v:
+                lookup[alias] = k
+
+        return lookup
+
 
 ltc_mapping = {}
 
