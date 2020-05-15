@@ -275,10 +275,11 @@ class Ingester(object):
 
         table = self.agol.gis.content.get(layer_conf['id'])
         t = table.layers[0]
+        #pprint(t.properties.fields)
 
         # get short field names that are in use online to test the input csv headers
         # not used now but retained in case of future needs
-        # agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
+        #agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
 
         # iterate all csvs and collect the information from each one.
         # normalize header names at the same time
@@ -293,9 +294,9 @@ class Ingester(object):
                     reader = csv.DictReader(csvfile)
                     for row in reader:
 
-                        row["Source Data Timestamp"] = f["source_datetime"].isoformat()
-                        row["Processed At"] = processed_time
-                        row["Source Filename"] = f["filename"]
+                        row["Source_Data_Timestamp"] = f["source_datetime"].isoformat()
+                        row["Processed_At"] = processed_time
+                        row["Source_Filename"] = f["filename"]
                         hist_csv_rows.append(row)
 
             else:
@@ -313,7 +314,6 @@ class Ingester(object):
         # It's okay if features is empty; status will reflect arcgis telling us that,
         # but it won't stop the processing.
         features = [Feature(attributes=row) for row in hist_csv_rows]
-        fs = FeatureSet(features)
         if self.dry_run:
             if self.verbose:
                 print("Dry run set, not editing features.")
