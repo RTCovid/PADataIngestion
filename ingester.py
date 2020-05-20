@@ -177,6 +177,72 @@ class Ingester(object):
             print(status)
             print("Finished load of supplies data")
 
+
+    def process_DHS_feeding_needs_county_summaries(self, output_dir):
+        if self.verbose:
+            print("Starting load of DHS feeding needs county summary table...")
+
+        new_data_filename = "Alex_DHS_Feeding_Needs_County_Summary_Table.csv"
+
+        DHS_feeding_needs_source_collection = self.agol.get_arcgis_feature_collection_from_item_id(
+            self.agol.layers["DHS_feeding_needs_summary_table"]["id"])
+
+        # TODO: Make this a helper function in agol_connection.py ?
+        # source_table = arcgis.features.FeatureLayer(item_id=self.agol.layers["DHS_feeding_needs_summary_table"]["id"],
+        #                                             source_table_name=self.agol.layers["DHS_feeding_needs_summary_table"]["original_file_name"])
+
+        # print('FeatureLayerCollection properties:', DHS_feeding_needs_source_collection.properties)
+        # print('FeatureLayerCollection layers:', DHS_feeding_needs_source_collection.layers)
+        # print('Layer 0 properties:', DHS_feeding_needs_source_collection.layers[0].properties)
+        # print(DHS_feeding_needs_source_collection.url)
+
+        # safe to assume it's the only (and thus 0th) layer in the FeatureLayerCollection (DHS_feeding_needs_source_collection)?
+        df_source = DHS_feeding_needs_source_collection.layers[0].query(as_df=True)
+        df_source.to_csv(os.path.join(output_dir, "Alex_DHS_Source_For_Validation.csv"), header=True, index=False)
+
+        cols = ['hardship', 'children', 'elderly']
+        summary_dfs = []
+        for c in cols:
+            df_reduced = df_source[['county', c]]
+            df_grouped = df_reduced.groupby(['county', c]).size().reset_index(name=f"{c}_yes_count")
+            # TODO: Refactoring to eliminate nested loops?
+
+            # Error handling in case of 0 'yes' rows
+            for county in df_source['county'].unique().tolist():
+                df_county_col_yes = df_grouped[(df_grouped['county'] == county) & (df_grouped[c] == 'yes')]
+                if df_county_col_yes.empty:
+                    df_grouped = pd.concat([df_grouped, pd.DataFrame.from_dict({'county': [county],
+                                                                                c: ['yes'],
+                                                                                f"{c}_yes_count": [0]})], axis=0)
+                    df_grouped = df_grouped.reset_index(drop=True)
+            df_grouped_yes = df_grouped[df_grouped[c] == 'yes'][['county', f"{c}_yes_count"]]
+            summary_dfs.append(df_grouped_yes)
+
+        summary_df_joined = pd.concat(summary_dfs, axis=1, join='outer', sort=False)
+        summary_df_drop_dupecols = summary_df_joined.loc[:, ~summary_df_joined.columns.duplicated()].reset_index(drop=True)
+
+        # Some rows are coming from ArcGIS which contain no county (==None), but contain data in other columns -- these should be dropped
+        summary_df_dropna_county = summary_df_drop_dupecols.dropna(subset=['county'])
+
+        # Seeing some issues with Sullivan County, with 0 'yes' responses for Hardship
+        # print('---- SULLIVAN COUNTY ----')
+        # print(summary_df_dropna_county[summary_df_dropna_county['county'] == 'Sullivan'])
+        #
+        # print("============= NAs =============")
+        # print(summary_df_dropna_county[summary_df_dropna_county.isna().any(axis=1)])
+
+        # Fill any other NaN/Nones with 0
+        summary_df_fillna = summary_df_dropna_county.fillna(0)
+        # Cast datatypes
+        summary_df_final = summary_df_fillna.astype({'county': str,
+                                                     'hardship_yes_count': int,
+                                                     'children_yes_count': int,
+                                                     'elderly_yes_count': int})
+        # print(summary_df_final.tail(15))
+        # print(summary_df_final.shape)
+        summary_df_final.to_csv(os.path.join(output_dir, new_data_filename), header=True, index=False)
+
+
     def process_county_summaries(self, processed_dir, processed_filename):
 
         if self.verbose:

@@ -81,6 +81,11 @@ def process_instantaneous(dry_run=False, datadir=None, verbose=False):
     ingester.process_supplies(processed_dir, processed_filename)
     print(f"process supplies: {datetime.now() - a}")
 
+    # process DHS feeding needs county summaries
+    a = datetime.now()
+    ingester.process_DHS_feeding_needs_county_summaries(datadir)
+    print(f"process DHS feeding needs county summaries: {datetime.now() - a}")
+
     a = datetime.now()
     ingester.process_county_summaries(processed_dir, processed_filename)
     print(f"process county summaries: {datetime.now() - a}")

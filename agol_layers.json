@@ -25,5 +25,8 @@
   "supplies": {
     "id": "8fad710d5df6434f8567373979dd9dbe",
     "original_file_name": "supplies.csv"
+  },
+  "DHS_feeding_needs_summary_table": {
+    "id": "66c40d11e4d44773b82b7242fcba8141"
   }
 }
