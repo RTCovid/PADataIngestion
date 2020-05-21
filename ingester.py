@@ -185,7 +185,7 @@ class Ingester(object):
         new_data_filename = "Alex_DHS_Feeding_Needs_County_Summary_Table.csv"
 
         DHS_feeding_needs_source_collection = self.agol.get_arcgis_feature_collection_from_item_id(
-            self.agol.layers["DHS_feeding_needs_summary_table"]["id"])
+            self.agol.layers["DHS_feeding_needs_source_table"]["id"])
 
         # TODO: Make this a helper function in agol_connection.py ?
         # source_table = arcgis.features.FeatureLayer(item_id=self.agol.layers["DHS_feeding_needs_summary_table"]["id"],
@@ -208,7 +208,7 @@ class Ingester(object):
             # TODO: Refactoring to eliminate nested loops?
 
             # Error handling in case of 0 'yes' rows
-            for county in df_source['county'].unique().tolist():
+            for county in df_source['county'].unique().tolist():  # TODO: Use Counties().counties instead?
                 df_county_col_yes = df_grouped[(df_grouped['county'] == county) & (df_grouped[c] == 'yes')]
                 if df_county_col_yes.empty:
                     df_grouped = pd.concat([df_grouped, pd.DataFrame.from_dict({'county': [county],
@@ -241,6 +241,12 @@ class Ingester(object):
         # print(summary_df_final.tail(15))
         # print(summary_df_final.shape)
         summary_df_final.to_csv(os.path.join(output_dir, new_data_filename), header=True, index=False)
+
+        status = self.agol.overwrite_arcgis_layer("DHS_feeding_needs_summary", output_dir, new_data_filename, dry_run=self.dry_run)
+
+        if self.verbose:
+            print(status)
+            print("Finished load of DHS feeding needs county summary table")
 
 
     def process_county_summaries(self, processed_dir, processed_filename):

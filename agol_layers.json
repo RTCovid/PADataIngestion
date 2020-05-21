@@ -26,7 +26,11 @@
     "id": "8fad710d5df6434f8567373979dd9dbe",
     "original_file_name": "supplies.csv"
   },
-  "DHS_feeding_needs_summary_table": {
+  "DHS_feeding_needs_source_table": {
     "id": "66c40d11e4d44773b82b7242fcba8141"
+  },
+  "DHS_feeding_needs_summary": {
+    "id": "af7f4afce03f4c479bd3375648a1cc13",
+    "original_file_name": "Alex_DHS_Feeding_Needs_County_Summary_Table.csv"
   }
 }
