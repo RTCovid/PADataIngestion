@@ -3,7 +3,7 @@ import os
 import argparse
 from datetime import datetime
 
-import header_mapping as hm
+from header_mapping import HeaderMapping
 from operators import process_csv
 from agol_connection import AGOLConnection
 from validator import CSVValidator
@@ -11,6 +11,8 @@ from ingester import Ingester
 
 
 def process_instantaneous(dry_run=False, datadir=None, verbose=False):
+
+    hm_hos = HeaderMapping("HOS")
 
     start = datetime.now()
     print("\nSTARTING process_instantaneous()")
@@ -46,7 +48,7 @@ def process_instantaneous(dry_run=False, datadir=None, verbose=False):
     public_processed_file_details = process_csv(
         [latest_file_details],
         output_prefix="public_processed_HOS_",
-        columns_wanted=hm.columns_for_public_release,
+        columns_wanted=hm_hos.get_public_column_names(),
         output_dir=datadir,
     )
     public_processed_filename = public_processed_file_details[0]["processed_filename"]

@@ -64,47 +64,19 @@ class HeaderMapping(object):
 
         return lookup
 
+    def get_public_column_names(self):
+        """returns the names of all columns in the mapping that have been marked
+        'public' = True"""
+
+        cols = list()
+        for k, v in self.mapping.items():
+            if v.get("public", False) is True:
+                cols.append(k)
+
+        return cols
+
 
 ltc_mapping = {}
-
-columns_for_public_release = ['hospitalname',
- 'hospitalstreetaddress',
- 'hospitalcity',
- 'hospitalstate',
- 'hospitalzip',
- 'hospitallatitude',
- 'hospitallongitude',
- 'numicubeds',
- 'icuavail',
- 'icu24h',
- 'icu72h',
- 'medsurgstaff',
- 'medsurgavail',
- 'medsurg24h',
- 'medsurg72h',
- 'picstaff',
- 'picavail',
- 'pic24h',
- 'pic72h',
- 'pedstaff',
- 'pedavail',
- 'ped24h',
- 'ped72h',
- 'aiistaff',
- 'aiiavail',
- 'aii24h',
- 'aii72h',
- 'numc19hosppats',
- 'ttlcvd19pui',
- 'numc19mechventpats',
- 'ttlcvd19ptntecmo',
- 'ttlaiied',
- 'ttlaiiicu',
- 'ttlaiinonicu',
- 'numvent',
- 'numventuse',
- 'numanesthesia',
- 'numanesthesiaconvert']
 
 hos_mapping = {
     'hospitalname': {
@@ -112,82 +84,97 @@ hos_mapping = {
             'HospitalName',
             'hospitalName',
         ],
+        'public': True,
     },
     'hospitalstreetaddress': {
         'aliases': [
             'HospitalStreetAddress',
             'hospitalStreetAddress',
         ],
+        'public': True,
     },
     'hospitalcity': {
         'aliases': [
             'HospitalCity',
             'hospitalCity',
         ],
+        'public': True,
     },
     'hospitalstate': {
         'aliases': [
             'HospitalState',
             'hospitalState',
         ],
+        'public': True,
     },
     'hospitalzip': {
         'aliases': [
             'HospitalZip',
             'hospitalZip',
         ],
+        'public': True,
     },
     'hospitallatitude': {
         'aliases': [
             'HospitalLatitude',
             'hospitalLatitude',
         ],
+        'public': True,
     },
     'hospitallongitude': {
         'aliases': [
             'HospitalLongitude',
             'hospitalLongitude',
         ],
+        'public': True,
     },
     'numicubeds': {
         'aliases': [
             'Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds',
         ],
+        'public': True,
     },
     'icuavail': {
         'aliases': [
             'Available Beds-Adult Intensive Care Unit (ICU) Current Available',
         ],
+        'public': True,
     },
     'icu24h': {
         'aliases': [
             'Available Beds-Adult Intensive Care Unit (ICU) 24hr Beds',
         ],
+        'public': True,
     },
     'icu72h': {
         'aliases': [
             'Available Beds-Adult Intensive Care Unit (ICU) 72hr Beds',
         ],
+        'public': True,
     },
     'medsurgstaff': {
         'aliases': [
             'Available Beds-Medical and Surgical (Med/Surg) Staffed Beds',
         ],
+        'public': True,
     },
     'medsurgavail': {
         'aliases': [
             'Available Beds-Medical and Surgical (Med/Surg) Current Available',
         ],
+        'public': True,
     },
     'medsurg24h': {
         'aliases': [
             'Available Beds-Medical and Surgical (Med/Surg) 24hr Beds',
         ],
+        'public': True,
     },
     'medsurg72h': {
         'aliases': [
             'Available Beds-Medical and Surgical (Med/Surg) 72hr Beds',
         ],
+        'public': True,
     },
     'burnstaff': {
         'aliases': [
@@ -213,41 +200,49 @@ hos_mapping = {
         'aliases': [
             'Available Beds-Pediatric Intensive Care Staffed Beds',
         ],
+        'public': True,
     },
     'picavail': {
         'aliases': [
             'Available Beds-Pediatric Intensive Care Current Available',
         ],
+        'public': True,
     },
     'pic24h': {
         'aliases': [
             'Available Beds-Pediatric Intensive Care 24hr Beds',
         ],
+        'public': True,
     },
     'pic72h': {
         'aliases': [
             'Available Beds-Pediatric Intensive Care 72hr Beds',
         ],
+        'public': True,
     },
     'pedstaff': {
         'aliases': [
             'Available Beds-Pediatric Staffed Beds',
         ],
+        'public': True,
     },
     'pedavail': {
         'aliases': [
             'Available Beds-Pediatric Current Available',
         ],
+        'public': True,
     },
     'ped24h': {
         'aliases': [
             'Available Beds-Pediatric 24hr Beds',
         ],
+        'public': True,
     },
     'ped72h': {
         'aliases': [
             'Available Beds-Pediatric 72hr Beds',
         ],
+        'public': True,
     },
     'nicustaff': {
         'aliases': [
@@ -453,21 +448,25 @@ hos_mapping = {
         'aliases': [
             'Other Beds-Airborne Infection Isolation Staffed Beds',
         ],
+        'public': True,
     },
     'aiiavail': {
         'aliases': [
             'Other Beds-Airborne Infection Isolation Current Available',
         ],
+        'public': True,
     },
     'aii24h': {
         'aliases': [
             'Other Beds-Airborne Infection Isolation 24hr Beds',
         ],
+        'public': True,
     },
     'aii72h': {
         'aliases': [
             'Other Beds-Airborne Infection Isolation 72hr Beds',
         ],
+        'public': True,
     },
     'edimmediate': {
         'aliases': [
@@ -744,12 +743,14 @@ hos_mapping = {
             'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19: ',
             'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19:',
         ],
+        'public': True,
     },
     'ttlcvd19pui': {
         'aliases': [
             'COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI): ',
             'COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI):',
         ],
+        'public': True,
     },
     'ttlnumicubedscvd19': {
         'aliases': [
@@ -770,6 +771,7 @@ hos_mapping = {
             'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators: ',
             'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators:',
         ],
+        'public': True,
     },
     'ttlcvd19ptntecmo': {
         'aliases': [
@@ -777,24 +779,28 @@ hos_mapping = {
             'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO: ',
             'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO:',
         ],
+        'public': True,
     },
     'ttlaiied': {
         'aliases': [
             'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED? ',
             'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED?',
         ],
+        'public': True,
     },
     'ttlaiiicu': {
         'aliases': [
             'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU? ',
             'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU?',
         ],
+        'public': True,
     },
     'ttlaiinonicu': {
         'aliases': [
             'COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU? ',
             'COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU?',
         ],
+        'public': True,
     },
     'cvdnumc19died': {
         'aliases': [
@@ -1052,23 +1058,27 @@ hos_mapping = {
         'aliases': [
             'Ventilator Counts-Ventilators Number of ventilators',
         ],
+        'public': True,
     },
     'numventuse': {
         'aliases': [
             'Ventilator Counts-Ventilators Number of ventilators in use',
         ],
+        'public': True,
     },
     'numanesthesia': {
         'aliases': [
             'Ventilator Counts-Ventilators Number of Anesthesia Machines',
             'Ventilator Counts-Ventilators Number of Anestesia Machines',
         ],
+        'public': True,
     },
     'numanesthesiaconvert': {
         'aliases': [
             'Ventilator Counts-Ventilators Number of Anesthesia Machines that are converted to be used as a Vent',
             'Ventilator Counts-Ventilators Number of Anestesia Machines that are converted to be used as a Vent',
         ],
+        'public': True,
     },
     'numcvd19onvent': {
         'aliases': [
