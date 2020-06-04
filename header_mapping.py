@@ -1357,12 +1357,6 @@ supplies_on_hand_headers = {
     "29": "Greater than 29 Days",
 }
 
-supplies_types = [
-    "N95",
-    "PPE",
-    "NP Specimen Collection Supplies"
-]
-
 columns_to_sum_for_supplies_on_hand = {
     "N95": {
         "3": "n95utli3less",
@@ -1432,18 +1426,4 @@ averages_per_day = {
     "Immediate need gloves average count per day":"Is there an immediate need for hand hygiene/disinfection supplies listed below?-Gloves Response ?",
     "Immediate need hand sanitizer average count per day":"Is there an immediate need for hand hygiene/disinfection supplies listed below?-Alcohol Based Hand Sanitizer Response ?",
     "Immediate need hand soap average count per day":"Is there an immediate need for hand hygiene/disinfection supplies listed below?-Hand Soap Response ?",
-}
-
-avg_to_do = [
-    "% Adult ICU Beds Current Available average per day (Available/staffed)*100",
-    "% Med/Surg Beds Current Available average per day (Available/staffed)*100",
-    "% Other Beds – Airborne Isolation Infection Room Beds Current Available average per day (Available/staffed)*100",
-]
-
-
-# map bad/mispelled headers to the correct headers.
-canonical_headers  = {
- 'Admission Data-Number of Patients awaiting admission for Confirmed or PUI COVID 19 on ventilator Response ?': 'Admission Data-Number of Patients awaiting admission for Confirmed or PUI COVID-19 on ventilator Response ?',
- 'Admission Data-Number of Patients awaiting admission with Confirmed or PUI COVID19 non-ventilated Response ?': 'Admission Data-Number of Patients awaiting admission with Confirmed or PUI COVID-19 non-ventilated Response ?',
- 'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID 19 in last 24 hours: ': 'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID-19 in last 24 hours: '
 }
