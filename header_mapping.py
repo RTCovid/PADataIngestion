@@ -38,7 +38,7 @@ class HeaderMapping(object):
 
         values = []
         for v in self.mapping.values():
-            values += v
+            values += v['aliases']
         return values
 
     def get_fieldnames(self):
@@ -59,7 +59,7 @@ class HeaderMapping(object):
         lookup = {}
         for k, v in self.mapping.items():
             lookup[k] = k
-            for alias in v:
+            for alias in v['aliases']:
                 lookup[alias] = k
 
         return lookup
@@ -105,655 +105,1058 @@ columns_for_public_release = ['hospitalname',
  'numventuse',
  'numanesthesia',
  'numanesthesiaconvert']
+
 hos_mapping = {
-    'hospitalname': [
-        'HospitalName',
-        'hospitalName',
-    ],
-    'hospitalstreetaddress': [
-        'HospitalStreetAddress',
-        'hospitalStreetAddress',
-    ],
-    'hospitalcity': [
-        'HospitalCity',
-        'hospitalCity',
-    ],
-    'hospitalstate': [
-        'HospitalState',
-        'hospitalState',
-    ],
-    'hospitalzip': [
-        'HospitalZip',
-        'hospitalZip',
-    ],
-    'hospitallatitude': [
-        'HospitalLatitude',
-        'hospitalLatitude',
-    ],
-    'hospitallongitude': [
-        'HospitalLongitude',
-        'hospitalLongitude',
-    ],
-    'numicubeds': [
-        'Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds',
-    ],
-    'icuavail': [
-        'Available Beds-Adult Intensive Care Unit (ICU) Current Available',
-    ],
-    'icu24h': [
-        'Available Beds-Adult Intensive Care Unit (ICU) 24hr Beds',
-    ],
-    'icu72h': [
-        'Available Beds-Adult Intensive Care Unit (ICU) 72hr Beds',
-    ],
-    'medsurgstaff': [
-        'Available Beds-Medical and Surgical (Med/Surg) Staffed Beds',
-    ],
-    'medsurgavail': [
-        'Available Beds-Medical and Surgical (Med/Surg) Current Available',
-    ],
-    'medsurg24h': [
-        'Available Beds-Medical and Surgical (Med/Surg) 24hr Beds',
-    ],
-    'medsurg72h': [
-        'Available Beds-Medical and Surgical (Med/Surg) 72hr Beds',
-    ],
-    'burnstaff': [
-        'Available Beds-Burn Staffed Beds',
-    ],
-    'burnavail': [
-        'Available Beds-Burn Current Available',
-    ],
-    'burn24h': [
-        'Available Beds-Burn 24hr Beds',
-    ],
-    'burn72h': [
-        'Available Beds-Burn 72hr Beds',
-    ],
-    'picstaff': [
-        'Available Beds-Pediatric Intensive Care Staffed Beds',
-    ],
-    'picavail': [
-        'Available Beds-Pediatric Intensive Care Current Available',
-    ],
-    'pic24h': [
-        'Available Beds-Pediatric Intensive Care 24hr Beds',
-    ],
-    'pic72h': [
-        'Available Beds-Pediatric Intensive Care 72hr Beds',
-    ],
-    'pedstaff': [
-        'Available Beds-Pediatric Staffed Beds',
-    ],
-    'pedavail': [
-        'Available Beds-Pediatric Current Available',
-    ],
-    'ped24h': [
-        'Available Beds-Pediatric 24hr Beds',
-    ],
-    'ped72h': [
-        'Available Beds-Pediatric 72hr Beds',
-    ],
-    'nicustaff': [
-        'Available Beds-Neonatal Staffed Beds',
-    ],
-    'nicuavail': [
-        'Available Beds-Neonatal Current Available',
-    ],
-    'nicu24h': [
-        'Available Beds-Neonatal 24hr Beds',
-    ],
-    'nicu72h': [
-        'Available Beds-Neonatal 72hr Beds',
-    ],
-    'rehabstaff': [
-        'Available Beds-Inpatient Rehab Staffed Beds',
-    ],
-    'rehabavail': [
-        'Available Beds-Inpatient Rehab Current Available',
-    ],
-    'rehab24h': [
-        'Available Beds-Inpatient Rehab 24hr Beds',
-    ],
-    'rehab72h': [
-        'Available Beds-Inpatient Rehab 72hr Beds',
-    ],
-    'psychstaff': [
-        'Psych Beds-Psychiatric Staffed Beds',
-    ],
-    'psychavail': [
-        'Psych Beds-Psychiatric Current Available',
-    ],
-    'psych24h': [
-        'Psych Beds-Psychiatric 24hr Beds',
-    ],
-    'psych72h': [
-        'Psych Beds-Psychiatric 72hr Beds',
-    ],
-    'psychadultstaff': [
-        'Psych Beds-Adult Staffed Beds',
-    ],
-    'psychadultavail': [
-        'Psych Beds-Adult Current Available',
-    ],
-    'psychadult24h': [
-        'Psych Beds-Adult 24hr Beds',
-    ],
-    'psychadult72h': [
-        'Psych Beds-Adult 72hr Beds',
-    ],
-    'psychadolstaff': [
-        'Psych Beds-Adolescent Staffed Beds',
-    ],
-    'psychadolavail': [
-        'Psych Beds-Adolescent Current Available',
-    ],
-    'psychadol24h': [
-        'Psych Beds-Adolescent 24hr Beds',
-    ],
-    'psychadol72h': [
-        'Psych Beds-Adolescent 72hr Beds',
-    ],
-    'psychgeristaff': [
-        'Psych Beds-Geriatric Staffed Beds',
-    ],
-    'psychgeriavail': [
-        'Psych Beds-Geriatric Current Available',
-    ],
-    'psychgeri24h': [
-        'Psych Beds-Geriatric 24hr Beds',
-    ],
-    'psychgeri72h': [
-        'Psych Beds-Geriatric 72hr Beds',
-    ],
-    'psychmeddetoxstaff': [
-        'Psych Beds-Medical Detox Staffed Beds',
-    ],
-    'psychmeddetoxavail': [
-        'Psych Beds-Medical Detox Current Available',
-    ],
-    'psychmeddetox24h': [
-        'Psych Beds-Medical Detox 24hr Beds',
-    ],
-    'psychmeddetox72h': [
-        'Psych Beds-Medical Detox 72hr Beds',
-    ],
-    'psychsaddstaff': [
-        'Psych Beds-Substance Abuse (Dual Diagnosis) Staffed Beds',
-    ],
-    'psychsaddavail': [
-        'Psych Beds-Substance Abuse (Dual Diagnosis) Current Available',
-    ],
-    'psychsadd24h': [
-        'Psych Beds-Substance Abuse (Dual Diagnosis) 24hr Beds',
-    ],
-    'psychsadd72h': [
-        'Psych Beds-Substance Abuse (Dual Diagnosis) 72hr Beds',
-    ],
-    'labordelivstaff': [
-        'Other Beds-Labor / Delivery Staffed Beds',
-    ],
-    'labordelivavail': [
-        'Other Beds-Labor / Delivery Current Available',
-    ],
-    'labordeliv24h': [
-        'Other Beds-Labor / Delivery 24hr Beds',
-    ],
-    'labordeliv72h': [
-        'Other Beds-Labor / Delivery 72hr Beds',
-    ],
-    'maternitystaff': [
-        'Other Beds-Maternity / Newborn Nursery Staffed Beds',
-    ],
-    'maternityavail': [
-        'Other Beds-Maternity / Newborn Nursery Current Available',
-    ],
-    'maternity24h': [
-        'Other Beds-Maternity / Newborn Nursery 24hr Beds',
-    ],
-    'maternity72h': [
-        'Other Beds-Maternity / Newborn Nursery 72hr Beds',
-    ],
-    'aiistaff': [
-        'Other Beds-Airborne Infection Isolation Staffed Beds',
-    ],
-    'aiiavail': [
-        'Other Beds-Airborne Infection Isolation Current Available',
-    ],
-    'aii24h': [
-        'Other Beds-Airborne Infection Isolation 24hr Beds',
-    ],
-    'aii72h': [
-        'Other Beds-Airborne Infection Isolation 72hr Beds',
-    ],
-    'edimmediate': [
-        'Emergency Department-ED Available Capacity Immediate',
-    ],
-    'eddelayed': [
-        'Emergency Department-ED Available Capacity Delayed',
-    ],
-    'edminor': [
-        'Emergency Department-ED Available Capacity Minor',
-    ],
-    'eddeceased': [
-        'Emergency Department-ED Available Capacity Deceased',
-    ],
-    'noncvd19pntadmit': [
-        'Admission Data-Number of Patients awaiting admission Non COVID-19 Response ?',
-        'Admission Data-Number of Patients awaiting admission Response ?',
-    ],
-    'cvd19pntadmitnonvent': [
-        'Admission Data-Number of Patients awaiting admission with Confirmed or PUI COVID-19 non-ventilated Response ?',
-        'Admission Data-Number of Patients awaiting admission with Confirmed or PUI COVID19 non-ventilated Response ?',
-    ],
-    'cvd19pntadmitnvent': [
-        'Admission Data-Number of Patients awaiting admission for Confirmed or PUI COVID-19 on ventilator Response ?',
-        'Admission Data-Number of Patients awaiting admission for Confirmed or PUI COVID 19 on ventilator Response ?',
-    ],
-    'pntadmiticu': [
-        'Admission Data-Number of Patients awaiting ICU Bed Response ?',
-    ],
-    'pntdischrg': [
-        'Admission Data-Number of Patients awaiting discharge placement Response ?',
-    ],
-    'facrespplan': [
-        'EEIs-Does your facility have an established respiratory protection plan? Response ?',
-    ],
-    'n95fittested': [
-        'EEIs-Is your facility planning to use N95 masks. If so is your staff fit-tested to wear N95 masks? Response ?',
-    ],
-    'modelsfittested': [
-        'EEIs-What mask brands and models are staff fit tested to use? Response ?',
-    ],
-    'paprtrained': [
-        'EEIs-Is your facility planning to use PAPRs. If so is your staff trained to use PAPRs? Response ?',
-    ],
-    'ppedondoff': [
-        'EEIs-Is your staff adequately trained in correctly donning and doffing of PPE? Response ?',
-    ],
-    'needsanitizer': [
-        'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Alcohol Based Hand Sanitizer Response ?',
-    ],
-    'needhandsoap': [
-        'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Hand Soap Response ?',
-    ],
-    'needsolution': [
-        'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Solutions Response ?',
-    ],
-    'needwipes': [
-        'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Wipes Response ?',
-    ],
-    'needgloves': [
-        'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Gloves Response ?',
-    ],
-    'needother1': [
-        'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Other (please specify) Response ?',
-    ],
-    'needn95': [
-        "Does your facility anticipate material/supply shortages of the following?-N95's Response ?",
-    ],
-    'needpapr': [
-        "Does your facility anticipate material/supply shortages of the following?-PAPR's Response ?",
-    ],
-    'needpaprhoods': [
-        "Does your facility anticipate material/supply shortages of the following?-PAPR's Hoods Response ?",
-    ],
-    'needpaprfilters': [
-        "Does your facility anticipate material/supply shortages of the following?-PAPR's Filters Response ?",
-    ],
-    'needmasks': [
-        'Does your facility anticipate material/supply shortages of the following?-Facial Masks (Procedural/Surgical) Response ?',
-    ],
-    'needgown': [
-        'Does your facility anticipate material/supply shortages of the following?-Gown/Apron Response ?',
-    ],
-    'needeyepro': [
-        'Does your facility anticipate material/supply shortages of the following?-Eye Protection (Goggles Face shield) Response ?',
-    ],
-    'needcleaning': [
-        'Does your facility anticipate material/supply shortages of the following?-Cleaning/Disinfection Supplies Response ?',
-    ],
-    'needother2': [
-        'Does your facility anticipate material/supply shortages of the following?-Other (please specify) Response ?',
-    ],
-    'shortn95': [
-        "If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-N95's Response ?",
-    ],
-    'shortpapr': [
-        "If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-PAPR's Response ?",
-    ],
-    'shortpaprhoods': [
-        "If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-PAPR's Hoods Response ?",
-    ],
-    'shortpaprfilters': [
-        "If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-PAPR's Filters Response ?",
-    ],
-    'shortmasks': [
-        'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Facial Masks (Procedural/Surgical) Response ?',
-    ],
-    'shortgowns': [
-        'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Gowns Response ?',
-    ],
-    'shorteyepro': [
-        'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Eye Protection (Goggles Face shield) Response ?',
-    ],
-    'shortsoap': [
-        'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Hand Soap Response ?',
-    ],
-    'shortsanitizer': [
-        'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Hand Sanitizer Response ?',
-    ],
-    'shortcleaning': [
-        'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Cleaning/Disinfection Supplies Response ?',
-    ],
-    'shortother1': [
-        'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Other (please specify) Response ?',
-    ],
-    'burnn95': [
-        "Current Burn Rates per day for the following PPE (Single Units):-N95's Response ?",
-    ],
-    'burnpapr': [
-        "Current Burn Rates per day for the following PPE (Single Units):-PAPR's Response ?",
-    ],
-    'burnpaprhoods': [
-        "Current Burn Rates per day for the following PPE (Single Units):-PAPR's Hoods Response ?",
-    ],
-    'burnpaprfilter': [
-        "Current Burn Rates per day for the following PPE (Single Units):-PAPR's Filters Response ?",
-    ],
-    'burnmask': [
-        'Current Burn Rates per day for the following PPE (Single Units):-Facial Masks (Procedural/Surgical) Response ?',
-    ],
-    'burngowns': [
-        'Current Burn Rates per day for the following PPE (Single Units):-Gowns Response ?',
-    ],
-    'burneyepro': [
-        'Current Burn Rates per day for the following PPE (Single Units):-Eye Protection (Goggles Face shield) Response ?',
-    ],
-    'shortcollection': [
-        'Testing Supplies-What diagnostic testing or specimen collection supplies do you anticipate a shortage of? ',
-    ],
-    'shortother2': [
-        'Testing Supplies-Other (please specify) ',
-    ],
-    'testlocal': [
-        'Local Testing-Do you have a commercial or inhouse platform for performing local testing of COVID-19? ',
-    ],
-    'date': [
-        'Local Testing-Real or future go-live date: ',
-    ],
-    'cvd19tstrun': [
-        'Local Testing-How many COVID-19 tests were run at your inhouse lab today? ',
-        'How many COVID-19 tests were run at your inhouse lab today? ',
-    ],
-    'cvd19tstpostve': [
-        'Local Testing-How many of those inhouse tests were positive? ',
-        'How many of those inhouse tests were positive? ',
-    ],
-    'numc19hosppats': [
-        'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19: ',
-        'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19:',
-    ],
-    'ttlcvd19pui': [
-        'COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI): ',
-        'COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI):',
-    ],
-    'ttlnumicubedscvd19': [
-        'COVID-19 Patient Counts - Total number of ICU beds occupied by a diagnosed COVID-19 patient:',
-        'COVID-19 Patient Counts-Total number of ICU beds occupied by a diagnosed COVID-19 patient: ',
-        'COVID-19 Patient Counts-Total number of ICU beds occupied by a diagnosed COVID-19 patient:',
-    ],
-    'cvdnumc19hopats': [
-        'COVID-19 Patient Counts-Total number of inpatients admitted 14+ days for other conditions now PUI or confirmed COVID-19?: ',
-        'COVID-19 Patient Counts-Total number of inpatients admitted 14+ days for other conditions now PUI or confirmed COVID-19?:',
-    ],
-    'numc19mechventpats': [
-        'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ventilators: ',
-        'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators: ',
-        'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators:',
-    ],
-    'ttlcvd19ptntecmo': [
-        'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ECMO: ',
-        'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO: ',
-        'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO:',
-    ],
-    'ttlaiied': [
-        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED? ',
-        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED?',
-    ],
-    'ttlaiiicu': [
-        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU? ',
-        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU?',
-    ],
-    'ttlaiinonicu': [
-        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU? ',
-        'COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU?',
-    ],
-    'cvdnumc19died': [
-        'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID-19 in last 24 hours: ',
-        'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID 19 in last 24 hours: ',
-        'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID 19 in last 24 hours:',
-    ],
-    'conspperesp': [
-        'Are you currently implementing conservation strategies to preserve PPE:-Extended use of respirators Response ?',
-    ],
-    'consppereuseresp': [
-        'Are you currently implementing conservation strategies to preserve PPE:-Use of reusable respirators in place of disposable N95s (i.e. PAPRs elastomeric N95s etc.) Response ?',
-    ],
-    'consppedispon95': [
-        'Are you currently implementing conservation strategies to preserve PPE:-Reuse of disposable N95 respirators Response ?',
-    ],
-    'consppestaffhours': [
-        'Are you currently implementing conservation strategies to preserve PPE:-Extended staff hours/shifts Response ?',
-    ],
-    'consppecohortwodestaff': [
-        'Are you currently implementing conservation strategies to preserve PPE:-Cohorting patients without dedicated staff Response ?',
-    ],
-    'consppecohortwdestaff': [
-        'Are you currently implementing conservation strategies to preserve PPE:-Cohorting patients with dedicated staff Response ?',
-    ],
-    'n95utli3less': [
-        'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?',
-    ],
-    'n95utli47': [
-        'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-4-7 days Response ?',
-    ],
-    'n95util814': [
-        'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-8-14 days Response ?',
-    ],
-    'n95util1528': [
-        'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-15-28 days Response ?',
-    ],
-    'n95util29more': [
-        'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-29 or more days Response ?',
-    ],
-    'ppeutli3less': [
-        'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-3 or less days Response ?',
-    ],
-    'ppeutli47': [
-        'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-4-7 days Response ?',
-    ],
-    'ppeutil814': [
-        'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?',
-    ],
-    'ppeutil1528': [
-        'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-15-28 days Response ?',
-    ],
-    'ppeutil29more': [
-        'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-29 or more days Response ?',
-    ],
-    'nputli3less': [
-        'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-3 or less days Response ?',
-    ],
-    'nputli47': [
-        'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-4-7 days Response ?',
-    ],
-    'nputil814': [
-        'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-8-14 days Response ?',
-    ],
-    'nputil1528': [
-        'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-15-28 days Response ?',
-    ],
-    'nputil29more': [
-        'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-29 or more days Response ?',
-    ],
-    'ttlempcall': [
-        'Employee Status-Total Employee Call Outs/Absenteeism ',
-    ],
-    'ttlempcvd19': [
-        'Employee Status-Call out reason: sick with COVID-19 ',
-    ],
-    'ttlcalloutphys': [
-        'Employee Status-Number of Call Outs that are Physicians ',
-    ],
-    'ttlcalloutnurse': [
-        'Employee Status-Number of Call Outs that are Nurses ',
-    ],
-    'ttlcalloutisolation': [
-        'Employee Status-Call out reason: quarantine or isolation due to exposure ',
-    ],
-    'ttlcalloutchildcare': [
-        'Employee Status-Call out reason: child care issues ',
-    ],
-    'envrnmntlsrvcsday': [
-        'Critical Staffing Shortages Today?-Environmental Services Response ?',
-        'Todays Critical Staffing Shortages - Environmental Services',
-    ],
-    'rnlpnday': [
-        'Critical Staffing Shortages Today?-Nurses: RN and LPNs Response ?',
-        'Todays Critical Staffing Shortages -Nurses: RN and LPNs',
-    ],
-    'rsprtrythrpstday': [
-        'Critical Staffing Shortages Today?-Respritory Therapists Response ?',
-        'Todays Critical Staffing Shortages -Respritory Therapists',
-    ],
-    'phtmcstday': [
-        'Critical Staffing Shortages Today?-Pharmacists and Pharmacy Techs Response ?',
-        'Todays Critical Staffing Shortages -Pharmacists and Pharmacy Techs',
-    ],
-    'physcnstday': [
-        'Critical Staffing Shortages Today?-Physicans: Attending Fellows Response ?',
-        'Todays Critical Staffing Shortages -Physicans: Attending, Fellows',
-    ],
-    'otherindpendtday': [
-        'Critical Staffing Shortages Today?-Other licensed independent practitioners: Advanced Practice Nurses Physician Assistances Response ?',
-        'Todays Critical Staffing Shortages -Other licensed independent practitioners: Advanced Practice Nurses, Physician Assistances',
-    ],
-    'tempday': [
-        'Critical Staffing Shortages Today?-Temporary physicians nurse etc (per diems travelers retired seasonal) Response ?',
-        'Todays Critical Staffing Shortages -Temporary physicians, nurse, etc (per diems, travelers, retired, seasonal)',
-    ],
-    'otherhcpday': [
-        'Critical Staffing Shortages Today?-Other HCP Personnel (Other persons who work in the facilities not detailed above Response ?',
-        'Todays Critical Staffing Shortages -Other HCP Personnel (Other persons who work in the facilities not detailed above',
-    ],
-    'otherhcpdaylist': [
-        'Critical Staffing Shortages Today?-What other HCP Personnel not listed above do you have a critical staff shortage of? Response ?',
-        'Todays Critical Staffing Shortages -What other HCP Personnel not listed above do you have a critical staff shortage of? ',
-    ],
-    'envrnmntlsrvcsweek': [
-        'Critical Staffing Shortages within a week?-Environmental Services Response ?',
-        'Forecasted Critical Staffing Shortages - Environmental Services',
-    ],
-    'rnlpnweek': [
-        'Critical Staffing Shortages within a week?-Nurses: RN and LPNs Response ?',
-        'Forecasted Critical Staffing Shortages -Nurses: RN and LPNs',
-    ],
-    'rsprtrythrpstweek': [
-        'Critical Staffing Shortages within a week?-Respritory Therapists Response ?',
-        'Forecasted Critical Staffing Shortages -Respritory Therapists',
-    ],
-    'phtmcstweek': [
-        'Critical Staffing Shortages within a week?-Pharmacists and Pharmacy Techs Response ?',
-        'Forecasted Critical Staffing Shortages -Pharmacists and Pharmacy Techs',
-    ],
-    'physcnstweek': [
-        'Critical Staffing Shortages within a week?-Physicans: Attending Fellows Response ?',
-        'Forecasted Critical Staffing Shortages -Physicans: Attending, Fellows',
-    ],
-    'otherindpendtweek': [
-        'Critical Staffing Shortages within a week?-Other licensed independent practitioners: Advanced Practice Nurses Physician Assistances Response ?',
-        'Forecasted Critical Staffing Shortages -Other licensed independent practitioners: Advanced Practice Nurses, Physician Assistances',
-    ],
-    'tempweek': [
-        'Critical Staffing Shortages within a week?-Temporary physicians nurse etc (per diems travelers retired seasonal) Response ?',
-        'Forecasted Critical Staffing Shortages -Temporary physicians, nurse, etc (per diems, travelers, retired, seasonal)',
-    ],
-    'otherhcpweek': [
-        'Critical Staffing Shortages within a week?-Other HCP Personnel (Other persons who work in the facilities not detailed above Response ?',
-        'Forecasted Critical Staffing Shortages -Other HCP Personnel (Other persons who work in the facilities not detailed above',
-    ],
-    'otherhcpweeklist': [
-        'Critical Staffing Shortages within a week?-What other HCP Personnel not listed above do you have a critical staff shortage of? Response ?',
-        'Forecasted Critical Staffing Shortages -What other HCP Personnel not listed above do you have a critical staff shortage of? ',
-    ],
-    'numvent': [
-        'Ventilator Counts-Ventilators Number of ventilators',
-    ],
-    'numventuse': [
-        'Ventilator Counts-Ventilators Number of ventilators in use',
-    ],
-    'numanesthesia': [
-        'Ventilator Counts-Ventilators Number of Anesthesia Machines',
-        'Ventilator Counts-Ventilators Number of Anestesia Machines',
-    ],
-    'numanesthesiaconvert': [
-        'Ventilator Counts-Ventilators Number of Anesthesia Machines that are converted to be used as a Vent',
-        'Ventilator Counts-Ventilators Number of Anestesia Machines that are converted to be used as a Vent',
-    ],
-    'numcvd19onvent': [
-        'Ventilator Usage-Ventilators Number of ventilators used for COVID-19 patients (confirmed)',
-    ],
-    'numecmo': [
-        'Ventilator Usage-Ventilators ECMO units',
-    ],
-    'numecmouse': [
-        'Ventilator Usage-Ventilators ECMO units in use',
-    ],
-    'numecmocvd19': [
-        'Ventilator Usage-Ventilators ECMO units in use for COVID-19 patients',
-    ],
-    'aiiedtotal': [
-        'Airborne Isolation Rooms-ED Total',
-    ],
-    'aiiedavailable': [
-        'Airborne Isolation Rooms-ED Available',
-    ],
-    'aiiedoccupied': [
-        'Airborne Isolation Rooms-ED Occupied requiring airborne isolation',
-    ],
-    'aiiedoccupiedcvd19': [
-        'Airborne Isolation Rooms-ED Occupied by COVID-19 patient',
-    ],
-    'aiinonicutotal': [
-        'Airborne Isolation Rooms-Inpatient non-ICU Total',
-    ],
-    'aiinonicuavail': [
-        'Airborne Isolation Rooms-Inpatient non-ICU Available',
-    ],
-    'aiinonicuoccupied': [
-        'Airborne Isolation Rooms-Inpatient non-ICU Occupied requiring airborne isolation',
-    ],
-    'aiinonicuoccupiedcvd19': [
-        'Airborne Isolation Rooms-Inpatient non-ICU Occupied by COVID-19 patient',
-    ],
-    'aiiicutotal': [
-        'Airborne Isolation Rooms-ICU Total',
-    ],
-    'aiiicuavail': [
-        'Airborne Isolation Rooms-ICU Available',
-    ],
-    'aiiicuoccupied': [
-        'Airborne Isolation Rooms-ICU Occupied requiring airborne isolation',
-    ],
-    'aiiicuoccupiedcvd19': [
-        'Airborne Isolation Rooms-ICU Occupied by COVID-19 patient',
-    ],
+    'hospitalname': {
+        'aliases': [
+            'HospitalName',
+            'hospitalName',
+        ],
+    },
+    'hospitalstreetaddress': {
+        'aliases': [
+            'HospitalStreetAddress',
+            'hospitalStreetAddress',
+        ],
+    },
+    'hospitalcity': {
+        'aliases': [
+            'HospitalCity',
+            'hospitalCity',
+        ],
+    },
+    'hospitalstate': {
+        'aliases': [
+            'HospitalState',
+            'hospitalState',
+        ],
+    },
+    'hospitalzip': {
+        'aliases': [
+            'HospitalZip',
+            'hospitalZip',
+        ],
+    },
+    'hospitallatitude': {
+        'aliases': [
+            'HospitalLatitude',
+            'hospitalLatitude',
+        ],
+    },
+    'hospitallongitude': {
+        'aliases': [
+            'HospitalLongitude',
+            'hospitalLongitude',
+        ],
+    },
+    'numicubeds': {
+        'aliases': [
+            'Available Beds-Adult Intensive Care Unit (ICU) Staffed Beds',
+        ],
+    },
+    'icuavail': {
+        'aliases': [
+            'Available Beds-Adult Intensive Care Unit (ICU) Current Available',
+        ],
+    },
+    'icu24h': {
+        'aliases': [
+            'Available Beds-Adult Intensive Care Unit (ICU) 24hr Beds',
+        ],
+    },
+    'icu72h': {
+        'aliases': [
+            'Available Beds-Adult Intensive Care Unit (ICU) 72hr Beds',
+        ],
+    },
+    'medsurgstaff': {
+        'aliases': [
+            'Available Beds-Medical and Surgical (Med/Surg) Staffed Beds',
+        ],
+    },
+    'medsurgavail': {
+        'aliases': [
+            'Available Beds-Medical and Surgical (Med/Surg) Current Available',
+        ],
+    },
+    'medsurg24h': {
+        'aliases': [
+            'Available Beds-Medical and Surgical (Med/Surg) 24hr Beds',
+        ],
+    },
+    'medsurg72h': {
+        'aliases': [
+            'Available Beds-Medical and Surgical (Med/Surg) 72hr Beds',
+        ],
+    },
+    'burnstaff': {
+        'aliases': [
+            'Available Beds-Burn Staffed Beds',
+        ],
+    },
+    'burnavail': {
+        'aliases': [
+            'Available Beds-Burn Current Available',
+        ],
+    },
+    'burn24h': {
+        'aliases': [
+            'Available Beds-Burn 24hr Beds',
+        ],
+    },
+    'burn72h': {
+        'aliases': [
+            'Available Beds-Burn 72hr Beds',
+        ],
+    },
+    'picstaff': {
+        'aliases': [
+            'Available Beds-Pediatric Intensive Care Staffed Beds',
+        ],
+    },
+    'picavail': {
+        'aliases': [
+            'Available Beds-Pediatric Intensive Care Current Available',
+        ],
+    },
+    'pic24h': {
+        'aliases': [
+            'Available Beds-Pediatric Intensive Care 24hr Beds',
+        ],
+    },
+    'pic72h': {
+        'aliases': [
+            'Available Beds-Pediatric Intensive Care 72hr Beds',
+        ],
+    },
+    'pedstaff': {
+        'aliases': [
+            'Available Beds-Pediatric Staffed Beds',
+        ],
+    },
+    'pedavail': {
+        'aliases': [
+            'Available Beds-Pediatric Current Available',
+        ],
+    },
+    'ped24h': {
+        'aliases': [
+            'Available Beds-Pediatric 24hr Beds',
+        ],
+    },
+    'ped72h': {
+        'aliases': [
+            'Available Beds-Pediatric 72hr Beds',
+        ],
+    },
+    'nicustaff': {
+        'aliases': [
+            'Available Beds-Neonatal Staffed Beds',
+        ],
+    },
+    'nicuavail': {
+        'aliases': [
+            'Available Beds-Neonatal Current Available',
+        ],
+    },
+    'nicu24h': {
+        'aliases': [
+            'Available Beds-Neonatal 24hr Beds',
+        ],
+    },
+    'nicu72h': {
+        'aliases': [
+            'Available Beds-Neonatal 72hr Beds',
+        ],
+    },
+    'rehabstaff': {
+        'aliases': [
+            'Available Beds-Inpatient Rehab Staffed Beds',
+        ],
+    },
+    'rehabavail': {
+        'aliases': [
+            'Available Beds-Inpatient Rehab Current Available',
+        ],
+    },
+    'rehab24h': {
+        'aliases': [
+            'Available Beds-Inpatient Rehab 24hr Beds',
+        ],
+    },
+    'rehab72h': {
+        'aliases': [
+            'Available Beds-Inpatient Rehab 72hr Beds',
+        ],
+    },
+    'psychstaff': {
+        'aliases': [
+            'Psych Beds-Psychiatric Staffed Beds',
+        ],
+    },
+    'psychavail': {
+        'aliases': [
+            'Psych Beds-Psychiatric Current Available',
+        ],
+    },
+    'psych24h': {
+        'aliases': [
+            'Psych Beds-Psychiatric 24hr Beds',
+        ],
+    },
+    'psych72h': {
+        'aliases': [
+            'Psych Beds-Psychiatric 72hr Beds',
+        ],
+    },
+    'psychadultstaff': {
+        'aliases': [
+            'Psych Beds-Adult Staffed Beds',
+        ],
+    },
+    'psychadultavail': {
+        'aliases': [
+            'Psych Beds-Adult Current Available',
+        ],
+    },
+    'psychadult24h': {
+        'aliases': [
+            'Psych Beds-Adult 24hr Beds',
+        ],
+    },
+    'psychadult72h': {
+        'aliases': [
+            'Psych Beds-Adult 72hr Beds',
+        ],
+    },
+    'psychadolstaff': {
+        'aliases': [
+            'Psych Beds-Adolescent Staffed Beds',
+        ],
+    },
+    'psychadolavail': {
+        'aliases': [
+            'Psych Beds-Adolescent Current Available',
+        ],
+    },
+    'psychadol24h': {
+        'aliases': [
+            'Psych Beds-Adolescent 24hr Beds',
+        ],
+    },
+    'psychadol72h': {
+        'aliases': [
+            'Psych Beds-Adolescent 72hr Beds',
+        ],
+    },
+    'psychgeristaff': {
+        'aliases': [
+            'Psych Beds-Geriatric Staffed Beds',
+        ],
+    },
+    'psychgeriavail': {
+        'aliases': [
+            'Psych Beds-Geriatric Current Available',
+        ],
+    },
+    'psychgeri24h': {
+        'aliases': [
+            'Psych Beds-Geriatric 24hr Beds',
+        ],
+    },
+    'psychgeri72h': {
+        'aliases': [
+            'Psych Beds-Geriatric 72hr Beds',
+        ],
+    },
+    'psychmeddetoxstaff': {
+        'aliases': [
+            'Psych Beds-Medical Detox Staffed Beds',
+        ],
+    },
+    'psychmeddetoxavail': {
+        'aliases': [
+            'Psych Beds-Medical Detox Current Available',
+        ],
+    },
+    'psychmeddetox24h': {
+        'aliases': [
+            'Psych Beds-Medical Detox 24hr Beds',
+        ],
+    },
+    'psychmeddetox72h': {
+        'aliases': [
+            'Psych Beds-Medical Detox 72hr Beds',
+        ],
+    },
+    'psychsaddstaff': {
+        'aliases': [
+            'Psych Beds-Substance Abuse (Dual Diagnosis) Staffed Beds',
+        ],
+    },
+    'psychsaddavail': {
+        'aliases': [
+            'Psych Beds-Substance Abuse (Dual Diagnosis) Current Available',
+        ],
+    },
+    'psychsadd24h': {
+        'aliases': [
+            'Psych Beds-Substance Abuse (Dual Diagnosis) 24hr Beds',
+        ],
+    },
+    'psychsadd72h': {
+        'aliases': [
+            'Psych Beds-Substance Abuse (Dual Diagnosis) 72hr Beds',
+        ],
+    },
+    'labordelivstaff': {
+        'aliases': [
+            'Other Beds-Labor / Delivery Staffed Beds',
+        ],
+    },
+    'labordelivavail': {
+        'aliases': [
+            'Other Beds-Labor / Delivery Current Available',
+        ],
+    },
+    'labordeliv24h': {
+        'aliases': [
+            'Other Beds-Labor / Delivery 24hr Beds',
+        ],
+    },
+    'labordeliv72h': {
+        'aliases': [
+            'Other Beds-Labor / Delivery 72hr Beds',
+        ],
+    },
+    'maternitystaff': {
+        'aliases': [
+            'Other Beds-Maternity / Newborn Nursery Staffed Beds',
+        ],
+    },
+    'maternityavail': {
+        'aliases': [
+            'Other Beds-Maternity / Newborn Nursery Current Available',
+        ],
+    },
+    'maternity24h': {
+        'aliases': [
+            'Other Beds-Maternity / Newborn Nursery 24hr Beds',
+        ],
+    },
+    'maternity72h': {
+        'aliases': [
+            'Other Beds-Maternity / Newborn Nursery 72hr Beds',
+        ],
+    },
+    'aiistaff': {
+        'aliases': [
+            'Other Beds-Airborne Infection Isolation Staffed Beds',
+        ],
+    },
+    'aiiavail': {
+        'aliases': [
+            'Other Beds-Airborne Infection Isolation Current Available',
+        ],
+    },
+    'aii24h': {
+        'aliases': [
+            'Other Beds-Airborne Infection Isolation 24hr Beds',
+        ],
+    },
+    'aii72h': {
+        'aliases': [
+            'Other Beds-Airborne Infection Isolation 72hr Beds',
+        ],
+    },
+    'edimmediate': {
+        'aliases': [
+            'Emergency Department-ED Available Capacity Immediate',
+        ],
+    },
+    'eddelayed': {
+        'aliases': [
+            'Emergency Department-ED Available Capacity Delayed',
+        ],
+    },
+    'edminor': {
+        'aliases': [
+            'Emergency Department-ED Available Capacity Minor',
+        ],
+    },
+    'eddeceased': {
+        'aliases': [
+            'Emergency Department-ED Available Capacity Deceased',
+        ],
+    },
+    'noncvd19pntadmit': {
+        'aliases': [
+            'Admission Data-Number of Patients awaiting admission Non COVID-19 Response ?',
+            'Admission Data-Number of Patients awaiting admission Response ?',
+        ],
+    },
+    'cvd19pntadmitnonvent': {
+        'aliases': [
+            'Admission Data-Number of Patients awaiting admission with Confirmed or PUI COVID-19 non-ventilated Response ?',
+            'Admission Data-Number of Patients awaiting admission with Confirmed or PUI COVID19 non-ventilated Response ?',
+        ],
+    },
+    'cvd19pntadmitnvent': {
+        'aliases': [
+            'Admission Data-Number of Patients awaiting admission for Confirmed or PUI COVID-19 on ventilator Response ?',
+            'Admission Data-Number of Patients awaiting admission for Confirmed or PUI COVID 19 on ventilator Response ?',
+        ],
+    },
+    'pntadmiticu': {
+        'aliases': [
+            'Admission Data-Number of Patients awaiting ICU Bed Response ?',
+        ],
+    },
+    'pntdischrg': {
+        'aliases': [
+            'Admission Data-Number of Patients awaiting discharge placement Response ?',
+        ],
+    },
+    'facrespplan': {
+        'aliases': [
+            'EEIs-Does your facility have an established respiratory protection plan? Response ?',
+        ],
+    },
+    'n95fittested': {
+        'aliases': [
+            'EEIs-Is your facility planning to use N95 masks. If so is your staff fit-tested to wear N95 masks? Response ?',
+        ],
+    },
+    'modelsfittested': {
+        'aliases': [
+            'EEIs-What mask brands and models are staff fit tested to use? Response ?',
+        ],
+    },
+    'paprtrained': {
+        'aliases': [
+            'EEIs-Is your facility planning to use PAPRs. If so is your staff trained to use PAPRs? Response ?',
+        ],
+    },
+    'ppedondoff': {
+        'aliases': [
+            'EEIs-Is your staff adequately trained in correctly donning and doffing of PPE? Response ?',
+        ],
+    },
+    'needsanitizer': {
+        'aliases': [
+            'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Alcohol Based Hand Sanitizer Response ?',
+        ],
+    },
+    'needhandsoap': {
+        'aliases': [
+            'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Hand Soap Response ?',
+        ],
+    },
+    'needsolution': {
+        'aliases': [
+            'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Solutions Response ?',
+        ],
+    },
+    'needwipes': {
+        'aliases': [
+            'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Disinfection Wipes Response ?',
+        ],
+    },
+    'needgloves': {
+        'aliases': [
+            'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Gloves Response ?',
+        ],
+    },
+    'needother1': {
+        'aliases': [
+            'Is there an immediate need for hand hygiene/disinfection supplies listed below?-Other (please specify) Response ?',
+        ],
+    },
+    'needn95': {
+        'aliases': [
+            "Does your facility anticipate material/supply shortages of the following?-N95's Response ?",
+        ],
+    },
+    'needpapr': {
+        'aliases': [
+            "Does your facility anticipate material/supply shortages of the following?-PAPR's Response ?",
+        ],
+    },
+    'needpaprhoods': {
+        'aliases': [
+            "Does your facility anticipate material/supply shortages of the following?-PAPR's Hoods Response ?",
+        ],
+    },
+    'needpaprfilters': {
+        'aliases': [
+            "Does your facility anticipate material/supply shortages of the following?-PAPR's Filters Response ?",
+        ],
+    },
+    'needmasks': {
+        'aliases': [
+            'Does your facility anticipate material/supply shortages of the following?-Facial Masks (Procedural/Surgical) Response ?',
+        ],
+    },
+    'needgown': {
+        'aliases': [
+            'Does your facility anticipate material/supply shortages of the following?-Gown/Apron Response ?',
+        ],
+    },
+    'needeyepro': {
+        'aliases': [
+            'Does your facility anticipate material/supply shortages of the following?-Eye Protection (Goggles Face shield) Response ?',
+        ],
+    },
+    'needcleaning': {
+        'aliases': [
+            'Does your facility anticipate material/supply shortages of the following?-Cleaning/Disinfection Supplies Response ?',
+        ],
+    },
+    'needother2': {
+        'aliases': [
+            'Does your facility anticipate material/supply shortages of the following?-Other (please specify) Response ?',
+        ],
+    },
+    'shortn95': {
+        'aliases': [
+            "If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-N95's Response ?",
+        ],
+    },
+    'shortpapr': {
+        'aliases': [
+            "If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-PAPR's Response ?",
+        ],
+    },
+    'shortpaprhoods': {
+        'aliases': [
+            "If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-PAPR's Hoods Response ?",
+        ],
+    },
+    'shortpaprfilters': {
+        'aliases': [
+            "If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-PAPR's Filters Response ?",
+        ],
+    },
+    'shortmasks': {
+        'aliases': [
+            'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Facial Masks (Procedural/Surgical) Response ?',
+        ],
+    },
+    'shortgowns': {
+        'aliases': [
+            'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Gowns Response ?',
+        ],
+    },
+    'shorteyepro': {
+        'aliases': [
+            'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Eye Protection (Goggles Face shield) Response ?',
+        ],
+    },
+    'shortsoap': {
+        'aliases': [
+            'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Hand Soap Response ?',
+        ],
+    },
+    'shortsanitizer': {
+        'aliases': [
+            'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Hand Sanitizer Response ?',
+        ],
+    },
+    'shortcleaning': {
+        'aliases': [
+            'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Cleaning/Disinfection Supplies Response ?',
+        ],
+    },
+    'shortother1': {
+        'aliases': [
+            'If you have a COVID-19 resident(s) Do you anticipate shortages of the below:-Other (please specify) Response ?',
+        ],
+    },
+    'burnn95': {
+        'aliases': [
+            "Current Burn Rates per day for the following PPE (Single Units):-N95's Response ?",
+        ],
+    },
+    'burnpapr': {
+        'aliases': [
+            "Current Burn Rates per day for the following PPE (Single Units):-PAPR's Response ?",
+        ],
+    },
+    'burnpaprhoods': {
+        'aliases': [
+            "Current Burn Rates per day for the following PPE (Single Units):-PAPR's Hoods Response ?",
+        ],
+    },
+    'burnpaprfilter': {
+        'aliases': [
+            "Current Burn Rates per day for the following PPE (Single Units):-PAPR's Filters Response ?",
+        ],
+    },
+    'burnmask': {
+        'aliases': [
+            'Current Burn Rates per day for the following PPE (Single Units):-Facial Masks (Procedural/Surgical) Response ?',
+        ],
+    },
+    'burngowns': {
+        'aliases': [
+            'Current Burn Rates per day for the following PPE (Single Units):-Gowns Response ?',
+        ],
+    },
+    'burneyepro': {
+        'aliases': [
+            'Current Burn Rates per day for the following PPE (Single Units):-Eye Protection (Goggles Face shield) Response ?',
+        ],
+    },
+    'shortcollection': {
+        'aliases': [
+            'Testing Supplies-What diagnostic testing or specimen collection supplies do you anticipate a shortage of? ',
+        ],
+    },
+    'shortother2': {
+        'aliases': [
+            'Testing Supplies-Other (please specify) ',
+        ],
+    },
+    'testlocal': {
+        'aliases': [
+            'Local Testing-Do you have a commercial or inhouse platform for performing local testing of COVID-19? ',
+        ],
+    },
+    'date': {
+        'aliases': [
+            'Local Testing-Real or future go-live date: ',
+        ],
+    },
+    'cvd19tstrun': {
+        'aliases': [
+            'Local Testing-How many COVID-19 tests were run at your inhouse lab today? ',
+            'How many COVID-19 tests were run at your inhouse lab today? ',
+        ],
+    },
+    'cvd19tstpostve': {
+        'aliases': [
+            'Local Testing-How many of those inhouse tests were positive? ',
+            'How many of those inhouse tests were positive? ',
+        ],
+    },
+    'numc19hosppats': {
+        'aliases': [
+            'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19: ',
+            'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19:',
+        ],
+    },
+    'ttlcvd19pui': {
+        'aliases': [
+            'COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI): ',
+            'COVID-19 Patient Counts-Total number of inpatients under suspicion for COVID-19 (PUI):',
+        ],
+    },
+    'ttlnumicubedscvd19': {
+        'aliases': [
+            'COVID-19 Patient Counts - Total number of ICU beds occupied by a diagnosed COVID-19 patient:',
+            'COVID-19 Patient Counts-Total number of ICU beds occupied by a diagnosed COVID-19 patient: ',
+            'COVID-19 Patient Counts-Total number of ICU beds occupied by a diagnosed COVID-19 patient:',
+        ],
+    },
+    'cvdnumc19hopats': {
+        'aliases': [
+            'COVID-19 Patient Counts-Total number of inpatients admitted 14+ days for other conditions now PUI or confirmed COVID-19?: ',
+            'COVID-19 Patient Counts-Total number of inpatients admitted 14+ days for other conditions now PUI or confirmed COVID-19?:',
+        ],
+    },
+    'numc19mechventpats': {
+        'aliases': [
+            'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ventilators: ',
+            'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators: ',
+            'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ventilators:',
+        ],
+    },
+    'ttlcvd19ptntecmo': {
+        'aliases': [
+            'COVID-19 Patient Counts-Total number of inpatients diagnosed with COVID-19 on ECMO: ',
+            'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO: ',
+            'COVID-19 Patient Counts-Total number of patients diagnosed with COVID-19 on ECMO:',
+        ],
+    },
+    'ttlaiied': {
+        'aliases': [
+            'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED? ',
+            'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ED?',
+        ],
+    },
+    'ttlaiiicu': {
+        'aliases': [
+            'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU? ',
+            'COVID-19 Patient Counts-How many airborne infection isolation rooms are in your ICU?',
+        ],
+    },
+    'ttlaiinonicu': {
+        'aliases': [
+            'COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU? ',
+            'COVID-19 Patient Counts-How many airborne infection isolation rooms are in non-ICU?',
+        ],
+    },
+    'cvdnumc19died': {
+        'aliases': [
+            'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID-19 in last 24 hours: ',
+            'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID 19 in last 24 hours: ',
+            'COVID-19 Patient Counts-Number of patient deaths with Confirmed or PUI for COVID 19 in last 24 hours:',
+        ],
+    },
+    'conspperesp': {
+        'aliases': [
+            'Are you currently implementing conservation strategies to preserve PPE:-Extended use of respirators Response ?',
+        ],
+    },
+    'consppereuseresp': {
+        'aliases': [
+            'Are you currently implementing conservation strategies to preserve PPE:-Use of reusable respirators in place of disposable N95s (i.e. PAPRs elastomeric N95s etc.) Response ?',
+        ],
+    },
+    'consppedispon95': {
+        'aliases': [
+            'Are you currently implementing conservation strategies to preserve PPE:-Reuse of disposable N95 respirators Response ?',
+        ],
+    },
+    'consppestaffhours': {
+        'aliases': [
+            'Are you currently implementing conservation strategies to preserve PPE:-Extended staff hours/shifts Response ?',
+        ],
+    },
+    'consppecohortwodestaff': {
+        'aliases': [
+            'Are you currently implementing conservation strategies to preserve PPE:-Cohorting patients without dedicated staff Response ?',
+        ],
+    },
+    'consppecohortwdestaff': {
+        'aliases': [
+            'Are you currently implementing conservation strategies to preserve PPE:-Cohorting patients with dedicated staff Response ?',
+        ],
+    },
+    'n95utli3less': {
+        'aliases': [
+            'n95masksupply3less',
+            'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?',
+        ],
+    },
+    'n95utli47': {
+        'aliases': [
+            'n95util47',
+            'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-4-7 days Response ?',
+        ],
+    },
+    'n95util814': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-8-14 days Response ?',
+        ],
+    },
+    'n95util1528': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-15-28 days Response ?',
+        ],
+    },
+    'n95util29more': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-29 or more days Response ?',
+        ],
+    },
+    'ppeutli3less': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-3 or less days Response ?',
+        ],
+    },
+    'ppeutli47': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-4-7 days Response ?',
+        ],
+    },
+    'ppeutil814': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-8-14 days Response ?',
+        ],
+    },
+    'ppeutil1528': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-15-28 days Response ?',
+        ],
+    },
+    'ppeutil29more': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-29 or more days Response ?',
+        ],
+    },
+    'nputli3less': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-3 or less days Response ?',
+        ],
+    },
+    'nputli47': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-4-7 days Response ?',
+        ],
+    },
+    'nputil814': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-8-14 days Response ?',
+        ],
+    },
+    'nputil1528': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-15-28 days Response ?',
+        ],
+    },
+    'nputil29more': {
+        'aliases': [
+            'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-29 or more days Response ?',
+        ],
+    },
+    'ttlempcall': {
+        'aliases': [
+            'Employee Status-Total Employee Call Outs/Absenteeism ',
+        ],
+    },
+    'ttlempcvd19': {
+        'aliases': [
+            'Employee Status-Call out reason: sick with COVID-19 ',
+        ],
+    },
+    'ttlcalloutphys': {
+        'aliases': [
+            'Employee Status-Number of Call Outs that are Physicians ',
+        ],
+    },
+    'ttlcalloutnurse': {
+        'aliases': [
+            'Employee Status-Number of Call Outs that are Nurses ',
+        ],
+    },
+    'ttlcalloutisolation': {
+        'aliases': [
+            'Employee Status-Call out reason: quarantine or isolation due to exposure ',
+        ],
+    },
+    'ttlcalloutchildcare': {
+        'aliases': [
+            'Employee Status-Call out reason: child care issues ',
+        ],
+    },
+    'envrnmntlsrvcsday': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-Environmental Services Response ?',
+            'Todays Critical Staffing Shortages - Environmental Services',
+        ],
+    },
+    'rnlpnday': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-Nurses: RN and LPNs Response ?',
+            'Todays Critical Staffing Shortages -Nurses: RN and LPNs',
+        ],
+    },
+    'rsprtrythrpstday': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-Respritory Therapists Response ?',
+            'Todays Critical Staffing Shortages -Respritory Therapists',
+        ],
+    },
+    'phtmcstday': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-Pharmacists and Pharmacy Techs Response ?',
+            'Todays Critical Staffing Shortages -Pharmacists and Pharmacy Techs',
+        ],
+    },
+    'physcnstday': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-Physicans: Attending Fellows Response ?',
+            'Todays Critical Staffing Shortages -Physicans: Attending, Fellows',
+        ],
+    },
+    'otherindpendtday': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-Other licensed independent practitioners: Advanced Practice Nurses Physician Assistances Response ?',
+            'Todays Critical Staffing Shortages -Other licensed independent practitioners: Advanced Practice Nurses, Physician Assistances',
+        ],
+    },
+    'tempday': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-Temporary physicians nurse etc (per diems travelers retired seasonal) Response ?',
+            'Todays Critical Staffing Shortages -Temporary physicians, nurse, etc (per diems, travelers, retired, seasonal)',
+        ],
+    },
+    'otherhcpday': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-Other HCP Personnel (Other persons who work in the facilities not detailed above Response ?',
+            'Todays Critical Staffing Shortages -Other HCP Personnel (Other persons who work in the facilities not detailed above',
+        ],
+    },
+    'otherhcpdaylist': {
+        'aliases': [
+            'Critical Staffing Shortages Today?-What other HCP Personnel not listed above do you have a critical staff shortage of? Response ?',
+            'Todays Critical Staffing Shortages -What other HCP Personnel not listed above do you have a critical staff shortage of? ',
+        ],
+    },
+    'envrnmntlsrvcsweek': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-Environmental Services Response ?',
+            'Forecasted Critical Staffing Shortages - Environmental Services',
+        ],
+    },
+    'rnlpnweek': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-Nurses: RN and LPNs Response ?',
+            'Forecasted Critical Staffing Shortages -Nurses: RN and LPNs',
+        ],
+    },
+    'rsprtrythrpstweek': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-Respritory Therapists Response ?',
+            'Forecasted Critical Staffing Shortages -Respritory Therapists',
+        ],
+    },
+    'phtmcstweek': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-Pharmacists and Pharmacy Techs Response ?',
+            'Forecasted Critical Staffing Shortages -Pharmacists and Pharmacy Techs',
+        ],
+    },
+    'physcnstweek': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-Physicans: Attending Fellows Response ?',
+            'Forecasted Critical Staffing Shortages -Physicans: Attending, Fellows',
+        ],
+    },
+    'otherindpendtweek': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-Other licensed independent practitioners: Advanced Practice Nurses Physician Assistances Response ?',
+            'Forecasted Critical Staffing Shortages -Other licensed independent practitioners: Advanced Practice Nurses, Physician Assistances',
+        ],
+    },
+    'tempweek': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-Temporary physicians nurse etc (per diems travelers retired seasonal) Response ?',
+            'Forecasted Critical Staffing Shortages -Temporary physicians, nurse, etc (per diems, travelers, retired, seasonal)',
+        ],
+    },
+    'otherhcpweek': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-Other HCP Personnel (Other persons who work in the facilities not detailed above Response ?',
+            'Forecasted Critical Staffing Shortages -Other HCP Personnel (Other persons who work in the facilities not detailed above',
+        ],
+    },
+    'otherhcpweeklist': {
+        'aliases': [
+            'Critical Staffing Shortages within a week?-What other HCP Personnel not listed above do you have a critical staff shortage of? Response ?',
+            'Forecasted Critical Staffing Shortages -What other HCP Personnel not listed above do you have a critical staff shortage of? ',
+        ],
+    },
+    'numvent': {
+        'aliases': [
+            'Ventilator Counts-Ventilators Number of ventilators',
+        ],
+    },
+    'numventuse': {
+        'aliases': [
+            'Ventilator Counts-Ventilators Number of ventilators in use',
+        ],
+    },
+    'numanesthesia': {
+        'aliases': [
+            'Ventilator Counts-Ventilators Number of Anesthesia Machines',
+            'Ventilator Counts-Ventilators Number of Anestesia Machines',
+        ],
+    },
+    'numanesthesiaconvert': {
+        'aliases': [
+            'Ventilator Counts-Ventilators Number of Anesthesia Machines that are converted to be used as a Vent',
+            'Ventilator Counts-Ventilators Number of Anestesia Machines that are converted to be used as a Vent',
+        ],
+    },
+    'numcvd19onvent': {
+        'aliases': [
+            'Ventilator Usage-Ventilators Number of ventilators used for COVID-19 patients (confirmed)',
+        ],
+    },
+    'numecmo': {
+        'aliases': [
+            'Ventilator Usage-Ventilators ECMO units',
+        ],
+    },
+    'numecmouse': {
+        'aliases': [
+            'Ventilator Usage-Ventilators ECMO units in use',
+        ],
+    },
+    'numecmocvd19': {
+        'aliases': [
+            'Ventilator Usage-Ventilators ECMO units in use for COVID-19 patients',
+        ],
+    },
+    'aiiedtotal': {
+        'aliases': [
+            'Airborne Isolation Rooms-ED Total',
+        ],
+    },
+    'aiiedavailable': {
+        'aliases': [
+            'Airborne Isolation Rooms-ED Available',
+        ],
+    },
+    'aiiedoccupied': {
+        'aliases': [
+            'Airborne Isolation Rooms-ED Occupied requiring airborne isolation',
+        ],
+    },
+    'aiiedoccupiedcvd19': {
+        'aliases': [
+            'Airborne Isolation Rooms-ED Occupied by COVID-19 patient',
+        ],
+    },
+    'aiinonicutotal': {
+        'aliases': [
+            'Airborne Isolation Rooms-Inpatient non-ICU Total',
+        ],
+    },
+    'aiinonicuavail': {
+        'aliases': [
+            'Airborne Isolation Rooms-Inpatient non-ICU Available',
+        ],
+    },
+    'aiinonicuoccupied': {
+        'aliases': [
+            'Airborne Isolation Rooms-Inpatient non-ICU Occupied requiring airborne isolation',
+        ],
+    },
+    'aiinonicuoccupiedcvd19': {
+        'aliases': [
+            'Airborne Isolation Rooms-Inpatient non-ICU Occupied by COVID-19 patient',
+        ],
+    },
+    'aiiicutotal': {
+        'aliases': [
+            'Airborne Isolation Rooms-ICU Total',
+        ],
+    },
+    'aiiicuavail': {
+        'aliases': [
+            'Airborne Isolation Rooms-ICU Available',
+        ],
+    },
+    'aiiicuoccupied': {
+        'aliases': [
+            'Airborne Isolation Rooms-ICU Occupied requiring airborne isolation',
+        ],
+    },
+    'aiiicuoccupiedcvd19': {
+        'aliases': [
+            'Airborne Isolation Rooms-ICU Occupied by COVID-19 patient',
+        ],
+    },
 
     # Fields added by these scripts that we know are valid.
-    'HospitalCounty': [
-        'HospitalCounty',
-    ],
+    'HospitalCounty': {
+        'aliases': [
+            'HospitalCounty',
+        ],
+    },
 }
 
 # this will be used as the basis for ltc_mapping, which will be modeled
