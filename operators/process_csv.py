@@ -37,15 +37,11 @@ def normalize_row_keys(row, master_lookup):
     input lookup dictionary."""
 
     new_row = {}
-    unknown_keys = []
 
     for k, v in row.items():
         if k in master_lookup:
             new_row[master_lookup[k]] = v
-        else:
-            unknown_keys.append(k)
-    if unknown_keys:
-        print("During normalize row, I couldn't find these headers in our mapping tools:", unknown_keys)
+
     return new_row
 
 # accepts a list of files to get (or latest if no list), prefix, column restrictions
@@ -81,6 +77,10 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
         rows = []
         with open (os.path.join(source_data_dir, source_data_file), newline='', encoding="utf8") as rf:
             reader = csv.DictReader(rf)
+            unmapped_fields = [i for i in reader.fieldnames if i not in master_lookup.keys()]
+            if len(unmapped_fields) > 0:
+                print(f"{len(unmapped_fields)} unmapped field(s) will be ignored:")
+                print("|".join(unmapped_fields))
 
             for row in reader:
                 new_row = normalize_row_keys(row, master_lookup)
