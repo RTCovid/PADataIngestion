@@ -274,6 +274,10 @@ class Ingester(object):
 
         for new_col_name, num_denom in hm.summary_table_header.items():
             d2[new_col_name] = (d2[num_denom["n"]] / d2[num_denom["d"]]) * 100.0
+
+        # replace any 'inf' (from dividing by 0) with NaN
+        d2 = d2.replace([float('inf')], float('nan'))
+
         # PA wants to see 0.0 for any county that doesn't have a hospital, so:
         existing_counties = set(d2["HospitalCounty"].to_list())
         c = Counties()
