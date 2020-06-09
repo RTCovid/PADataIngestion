@@ -75,6 +75,36 @@ class HeaderMapping(object):
 
         return cols
 
+    def get_hos_supplies_mapping(self):
+
+        supplies_mapping = {
+            'supplies_headers': {
+                "3": "Less Than 3 Days",
+                "14": "4 to 14 Days",
+                "15": "15 or More Days"
+            },
+            'supplies_sum_columns': {
+                "N95": {
+                    "3": "n95masksupply3less",
+                    "14": "n95masksupply414",
+                    "15": "n95masksupply>=15",
+                },
+                "PPE": {
+                    "3": "ppeutil3less",
+                    "14": "ppeutil414",
+                    "15": "ppeutil>=15",
+                },
+                "NP Specimen Collection Supplies": {
+                    "3": "nputil3less",
+                    "14": "nputil414",
+                    "15": "nputil>=15",
+                }
+            }
+
+        }
+
+        return supplies_mapping
+
 
 ltc_mapping = {}
 
@@ -839,11 +869,17 @@ hos_mapping = {
             'Are you currently implementing conservation strategies to preserve PPE:-Cohorting patients with dedicated staff Response ?',
         ],
     },
-    'n95utli3less': {
+    'n95masksupply3less': {
         'aliases': [
-            'n95masksupply3less',
+            'n95utli3less',
             'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-3 or less days Response ?',
         ],
+    },
+    'n95masksupply414': {
+        'aliases': [],
+    },
+    'n95masksupply>=15': {
+        'aliases': [],
     },
     'n95utli47': {
         'aliases': [
@@ -866,10 +902,17 @@ hos_mapping = {
             'At current utilization rates how long do you expect your current supply of N95 respirators to last at your facility?-29 or more days Response ?',
         ],
     },
-    'ppeutli3less': {
+    'ppeutil3less': {
         'aliases': [
+            'ppeutli3less',
             'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-3 or less days Response ?',
         ],
+    },
+    'ppeutil414': {
+        'aliases': [],
+    },
+    'ppeutil>=15': {
+        'aliases': [],
     },
     'ppeutli47': {
         'aliases': [
@@ -891,10 +934,17 @@ hos_mapping = {
             'At current utilization rates how long do you expect your current supply of other PPE (gowns gloves etc) to last at your facility?-29 or more days Response ?',
         ],
     },
-    'nputli3less': {
+    'nputil3less': {
         'aliases': [
+            'nputli3less',
             'At current utilization rates how long do you expect your current supply of NP specimen collection supplies to last at your facility?-3 or less days Response ?',
         ],
+    },
+    'nputil414': {
+        'aliases': [],
+    },
+    'nputil>=15': {
+        'aliases': [],
     },
     'nputli47': {
         'aliases': [
@@ -1160,6 +1210,26 @@ hos_mapping = {
             'Airborne Isolation Rooms-ICU Occupied by COVID-19 patient',
         ],
     },
+    'prvisadmitcvd19pnt': {
+        'aliases': [
+            'Previously Admitted COVID19 Patient',
+        ],
+    },
+    'prvisadmitpuipnt': {
+        'aliases': [
+            'Previously Admitted Person Under Investigation Patient',
+        ],
+    },
+    'cvdnumc19hopatsprev': {
+        'aliases': [
+            'Number of COVID19 Patients hospitalized Previously',
+        ],
+    },
+    'cvdnumc19diedprev': {
+        'aliases': [
+            'Number of COVID19 Patients Died previously',
+        ],
+    },
 
     # Fields added by these scripts that we know are valid.
     'HospitalCounty': {
@@ -1348,40 +1418,6 @@ summary_table_header = {
         "d": "aiistaff",
     }
 }
-
-supplies_on_hand_headers = {
-    "3": "Less Than 3 Days",
-    "7": "4 to 7 Days",
-    "14": "8 to 14 Days",
-    "28": "15 to 28 Days",
-    "29": "Greater than 29 Days",
-}
-
-columns_to_sum_for_supplies_on_hand = {
-    "N95": {
-        "3": "n95utli3less",
-        "7": "n95utli47",
-        "14": "n95util814",
-        "28":  "n95util1528",
-        "29":  "n95util29more"
-    },
-    "PPE": {
-        "3": "ppeutli3less",
-        "7": "ppeutli47",
-        "14": "ppeutil814",
-        "28": "ppeutil1528",
-        "29": "ppeutil29more"
-    },
-    "NP Specimen Collection Supplies": {
-        "3": "nputli3less",
-        "7": "nputli47",
-        "14": "nputil814",
-        "28": "nputil1528",
-        "29": "nputil29more"
-    }
-}
-
-
 
 new_summary_columns = {
     "N95 masks >7 days": [

@@ -30,7 +30,17 @@ converters = {'n95util1528': y_to_one,
  'ppeutil29more': y_to_one,
  'ppeutil814': y_to_one,
  'ppeutli3less': y_to_one,
- 'ppeutli47': y_to_one}
+ 'ppeutli47': y_to_one,
+ 'n95masksupply3less': y_to_one,
+ 'n95masksupply414': y_to_one,
+ 'n95masksupply>=15': y_to_one,
+ 'ppeutil3less': y_to_one,
+ 'ppeutil414': y_to_one,
+ 'ppeutil>=15': y_to_one,
+ 'nputil3less': y_to_one,
+ 'nputil414': y_to_one,
+ 'nputil>=15': y_to_one,
+ }
 
 def normalize_row_keys(row, master_lookup):
     """transforms the input row's headers to the normalized set, based on the

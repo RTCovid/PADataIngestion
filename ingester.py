@@ -143,6 +143,12 @@ class Ingester(object):
         return processed_dir, processed_filename
 
     def process_supplies(self, processed_dir, processed_filename):
+
+        mappings = hm.HeaderMapping("HOS").get_hos_supplies_mapping()
+
+        supplies_on_hand_headers = mappings['supplies_headers']
+        columns_to_sum_for_supplies_on_hand = mappings['supplies_sum_columns']
+
         if self.verbose:
             print("Starting load of supplies data")
 
@@ -151,18 +157,30 @@ class Ingester(object):
 
         df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
 
+        # clumsy check for field names
+        missing_headers = list()
+        for k, v in columns_to_sum_for_supplies_on_hand.items():
+            for x, y in v.items():
+                if y not in list(df):
+                    missing_headers.append(y)
+        if len(missing_headers) > 0:
+            print("Headers needed for supplies table are missing:")
+            print("|".join(missing_headers))
+            print("Aborted load of supplies data")
+            return
+
         columns = ["Type"]
-        for s, col_name in hm.supplies_on_hand_headers.items():
+        for s, col_name in supplies_on_hand_headers.items():
             columns.append(col_name)
 
         supplies = pd.DataFrame(columns=columns)
 
-        for supply_type, value in hm.columns_to_sum_for_supplies_on_hand.items():
+        for supply_type, value in columns_to_sum_for_supplies_on_hand.items():
             new_row = {}
             new_row["Type"] = supply_type
             for time_window, column_name in value.items():
-                new_row[hm.supplies_on_hand_headers[time_window]] = df[column_name].count()
-            new_df = new_df.append(new_row, ignore_index=True)
+                new_row[supplies_on_hand_headers[time_window]] = df[column_name].count()
+            supplies = supplies.append(new_row, ignore_index=True)
 
         supplies.to_csv(os.path.join(processed_dir, supplies_filename), index=False)
 
