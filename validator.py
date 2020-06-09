@@ -87,7 +87,7 @@ class CSVValidator():
         }
         return result
 
-    def validate_csv(self, input_csv, raise_exception=True):
+    def validate_csv(self, input_csv, raise_exception=False):
 
         header_result = self.validate_headers(input_csv)
         location_result = self.validate_locations(input_csv)
@@ -98,18 +98,19 @@ class CSVValidator():
             "location_errors": location_result['errors'],
         }
 
-        if raise_exception is True and result['pass'] is False:
+        if result['pass'] is False:
             fname = os.path.basename(input_csv)
             h_er_str = '|'.join(result['header_errors'])
             l_er_str = '|'.join(result['location_errors'])
             report = f"{fname}\n" +\
                       f"header errors: {len(result['header_errors'])}"
-            if len(result['header_errors']) < 11:
-                report += f"  {h_er_str}"
+            report += f"  {h_er_str}"
             report += f" -=- location errors: {len(result['location_errors'])}"
-            if len(result['location_errors']) < 11:
-                report += f"  {l_er_str}"
+            report += f"  {l_er_str}"
 
-            raise ValidationError(report)
+            if raise_exception is True:
+                raise ValidationError(report)
+            else:
+                print(report)
 
         return result
