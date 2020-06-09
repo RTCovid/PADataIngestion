@@ -54,7 +54,7 @@ class Ingester(object):
 
         self.creds = creds
         self.dry_run = dry_run
-        agol_connection = AGOLConnection()
+        agol_connection = AGOLConnection(verbose=verbose)
         self.agol = agol_connection
         self.available_files = []
         self.verbose = verbose
