@@ -325,8 +325,6 @@ class Ingester(object):
 
         layer_conf = self.agol.layers['summary_table']
 
-        # this self.gis.gis.content pattern is evidence that the first pass at
-        # a refactored structure should not be the last...
         table = self.agol.gis.content.get(layer_conf['id'])
         t = table.tables[0]
 
@@ -364,11 +362,6 @@ class Ingester(object):
 
         table = self.agol.gis.content.get(layer_conf['id'])
         t = table.layers[0]
-        #pprint(t.properties.fields)
-
-        # get short field names that are in use online to test the input csv headers
-        # not used now but retained in case of future needs
-        #agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
 
         # iterate all csvs and collect the information from each one.
         # normalize header names at the same time
@@ -478,7 +471,7 @@ class Ingester(object):
     #
     #    df = df.rename(columns=new_col_names)
     #    print(df)
-            
+
             # cut the columns we want out.
             by_hospital_df = df.groupby(["HospitalName"]).mean().reset_index()
             by_hospital_df["Date"] = day

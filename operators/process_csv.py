@@ -1,9 +1,9 @@
 import os
 import csv
 from geo_utils import HospitalLocations
-import header_mapping 
+import header_mapping
 
-def y_to_one(x): 
+def y_to_one(x):
     if x == "Y":
         return 1
     if x == "N":
@@ -59,14 +59,6 @@ def normalize_row_keys(row, master_lookup):
 def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_", columns_wanted=[], overwrite=True):
     hl = HospitalLocations()
     HM = header_mapping.HeaderMapping("HOS")
-    # shortnames to a list of the "canonical" long names
-    # short_to_canonical_long = HM.get_alias_lookup()
-    # longnames to the alias
-    # long_to_short_header = HM.get_fieldname_lookup()
-    # all aliases
-    # short_to_all_aliases = HM.get_aliases()
-    # just the short names
-    # short_header_names = HM.get_fieldnames()
 
     master_lookup = HM.get_master_lookup()
 
@@ -102,14 +94,8 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                             del new_row[k]
 
                 for k, v in new_row.items():
-                    # Do any value processing here; it'd be nice if we could dataframe.apply() but we can't here.
-                    # ArcGIS can't handle ' in header column names.
-                    if not k:
-                        print(source_data_file)
-                        print(new_row)
                     if k in converters:
                         new_row[k] = converters[k](v)
-                        v = converters[k](v)
 
                 hos_name_key = master_lookup["HospitalName"]
                 hos_lat_key = master_lookup["HospitalLatitude"]
@@ -123,7 +109,6 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                     print(f"{source_data_file}: " + new_row[hos_name_key] + " has no canonical information!")
                     raise e
 
-
                 # fix bad lat/longs
                 try:
                     hos_name = new_row[hos_name_key]
@@ -134,8 +119,6 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
                 except TypeError as e:
                     print(f"{source_data_file}: " + new_row[hos_name_key] + " has no location information!")
                     raise e
-
-
 
                 # Add the county; future proof in case they add it later
                 try:
@@ -154,4 +137,3 @@ def process_csv(file_details, output_dir="/tmp", output_prefix="processed_HOS_",
             writer.writerows(rows)
         output_file_details.append(source_file_details)
     return output_file_details
-
