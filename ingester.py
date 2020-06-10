@@ -29,23 +29,6 @@ def chunks(l, n):
         yield l[i:i+n]
 
 
-def create_supplies_table(df):
-    columns = ["Type"]
-    for s, col_name in hm.supplies_on_hand_headers.items():
-        columns.append(col_name)
-
-    new_df = pd.DataFrame(columns=columns)
-
-    for supply_type, value in hm.columns_to_sum_for_supplies_on_hand.items():
-        new_row = {}
-        new_row["Type"] = supply_type
-        for time_window, column_name in value.items():
-            new_row[hm.supplies_on_hand_headers[time_window]] = df[column_name].count()
-        new_df = new_df.append(new_row, ignore_index=True)
-
-    return new_df
-
-
 def create_summary_table_row(df, source_data_timestamp, source_filename):
     new_row = {}
     new_row["Source Data Timestamp"] = source_data_timestamp.isoformat()
@@ -71,7 +54,7 @@ class Ingester(object):
 
         self.creds = creds
         self.dry_run = dry_run
-        agol_connection = AGOLConnection()
+        agol_connection = AGOLConnection(verbose=verbose)
         self.agol = agol_connection
         self.available_files = []
         self.verbose = verbose
@@ -160,6 +143,12 @@ class Ingester(object):
         return processed_dir, processed_filename
 
     def process_supplies(self, processed_dir, processed_filename):
+
+        mappings = hm.HeaderMapping("HOS").get_hos_supplies_mapping()
+
+        supplies_on_hand_headers = mappings['supplies_headers']
+        columns_to_sum_for_supplies_on_hand = mappings['supplies_sum_columns']
+
         if self.verbose:
             print("Starting load of supplies data")
 
@@ -167,7 +156,31 @@ class Ingester(object):
         supplies_filename = self.agol.layers['supplies']['original_file_name']
 
         df = load_csv_to_df(os.path.join(processed_dir, processed_filename))
-        supplies = create_supplies_table(df)
+
+        # clumsy check for field names
+        missing_headers = list()
+        for k, v in columns_to_sum_for_supplies_on_hand.items():
+            for x, y in v.items():
+                if y not in list(df):
+                    missing_headers.append(y)
+        if len(missing_headers) > 0:
+            print("Headers needed for supplies table are missing:")
+            print("|".join(missing_headers))
+            print("Aborted load of supplies data")
+            return
+
+        columns = ["Type"]
+        for s, col_name in supplies_on_hand_headers.items():
+            columns.append(col_name)
+
+        supplies = pd.DataFrame(columns=columns)
+
+        for supply_type, value in columns_to_sum_for_supplies_on_hand.items():
+            new_row = {}
+            new_row["Type"] = supply_type
+            for time_window, column_name in value.items():
+                new_row[supplies_on_hand_headers[time_window]] = df[column_name].count()
+            supplies = supplies.append(new_row, ignore_index=True)
 
         supplies.to_csv(os.path.join(processed_dir, supplies_filename), index=False)
 
@@ -261,6 +274,10 @@ class Ingester(object):
 
         for new_col_name, num_denom in hm.summary_table_header.items():
             d2[new_col_name] = (d2[num_denom["n"]] / d2[num_denom["d"]]) * 100.0
+
+        # replace any 'inf' (from dividing by 0) with NaN
+        d2 = d2.replace([float('inf')], float('nan'))
+
         # PA wants to see 0.0 for any county that doesn't have a hospital, so:
         existing_counties = set(d2["HospitalCounty"].to_list())
         c = Counties()
@@ -308,8 +325,6 @@ class Ingester(object):
 
         layer_conf = self.agol.layers['summary_table']
 
-        # this self.gis.gis.content pattern is evidence that the first pass at
-        # a refactored structure should not be the last...
         table = self.agol.gis.content.get(layer_conf['id'])
         t = table.tables[0]
 
@@ -347,11 +362,6 @@ class Ingester(object):
 
         table = self.agol.gis.content.get(layer_conf['id'])
         t = table.layers[0]
-        #pprint(t.properties.fields)
-
-        # get short field names that are in use online to test the input csv headers
-        # not used now but retained in case of future needs
-        #agol_fields = {n["alias"]: n["name"] for n in t.properties.fields}
 
         # iterate all csvs and collect the information from each one.
         # normalize header names at the same time
@@ -461,7 +471,7 @@ class Ingester(object):
     #
     #    df = df.rename(columns=new_col_names)
     #    print(df)
-            
+
             # cut the columns we want out.
             by_hospital_df = df.groupby(["HospitalName"]).mean().reset_index()
             by_hospital_df["Date"] = day

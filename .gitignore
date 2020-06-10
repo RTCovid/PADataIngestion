@@ -1,4 +1,5 @@
 creds.csv
 data/*.csv
+logs/*.log
 __pycache__
 .DS_Store

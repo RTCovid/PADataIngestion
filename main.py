@@ -3,7 +3,7 @@ import os
 import argparse
 from datetime import datetime
 
-import header_mapping as hm
+from header_mapping import HeaderMapping
 from operators import process_csv
 from agol_connection import AGOLConnection
 from validator import CSVValidator
@@ -11,6 +11,8 @@ from ingester import Ingester
 
 
 def process_instantaneous(dry_run=False, datadir=None, verbose=False):
+
+    hm_hos = HeaderMapping("HOS")
 
     start = datetime.now()
     print("\nSTARTING process_instantaneous()")
@@ -20,9 +22,6 @@ def process_instantaneous(dry_run=False, datadir=None, verbose=False):
 
     ingester = Ingester(dry_run, verbose=verbose)
 
-    # for now this part basically follows the same pattern as before, but work
-    # should be done to consolidate the sftp and file management process.
-    # the only difference is that now Ingester().get_files_from_sftp() is used.
     print("Getting latest HOS file from SFTP...")
     a = datetime.now()
     file_details, all_filenames = ingester.get_files_from_sftp(target_dir=datadir)
@@ -31,22 +30,18 @@ def process_instantaneous(dry_run=False, datadir=None, verbose=False):
     latest_file_details = file_details[0]
 
     # run a validation on the latest file (the one that will be used for instantaneous)
-    # validate_csv() will raise an exception if it fails. use raise_exception=False
-    # to run it quietly.
     a = datetime.now()
     v = CSVValidator("HOS")
     fpath = os.path.join(latest_file_details['dir'], latest_file_details['filename'])
     v.validate_csv(fpath)
     print(f"latest CSV validated: {datetime.now() - a}")
 
-    # validation passed on downloaded file, now do all processing
-
     # Public-only data
     a = datetime.now()
     public_processed_file_details = process_csv(
         [latest_file_details],
         output_prefix="public_processed_HOS_",
-        columns_wanted=hm.columns_for_public_release,
+        columns_wanted=hm_hos.get_public_column_names(),
         output_dir=datadir,
     )
     public_processed_filename = public_processed_file_details[0]["processed_filename"]
@@ -86,6 +81,7 @@ def process_instantaneous(dry_run=False, datadir=None, verbose=False):
     ingester.process_DHS_feeding_needs_county_summaries(datadir)
     print(f"process DHS feeding needs county summaries: {datetime.now() - a}")
 
+    # process county-level summary
     a = datetime.now()
     ingester.process_county_summaries(processed_dir, processed_filename)
     print(f"process county summaries: {datetime.now() - a}")
